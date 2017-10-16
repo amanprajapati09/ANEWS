@@ -57,6 +57,7 @@ struct CellIdentifier {
 //MARK:- Segue
 struct Segues {
     static let kToHomeViewControllerFromSignIn = "toHomeViewControllerFromLogin"
+    static let kToChangePasswordFromHome = "toChangePasswordViewControllerFromHome"
 }
 //MARK:- URLs
 struct StaticURL{

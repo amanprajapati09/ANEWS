@@ -55,6 +55,10 @@ class LoginViewController: BaseViewController {
         requestForLogin()
     }
     
+    @IBAction func btnSkipHomeClick(_ sender: Any) {
+        performSegue(withIdentifier: Segues.kToHomeViewControllerFromSignIn, sender: nil)
+    }
+    
     @IBAction func btnForgotPasswordClick(_ sender: Any) {
         presentForgotpasswordAlert()
     }
