@@ -66,12 +66,12 @@ class APIService : NSObject {
     }
     
     //MARK:- Request for login
-    func login(parameters params: [String: AnyObject], success:@escaping (_ result: ResultModel) -> (Void), failure:@escaping Failure) -> Void
+    func login(parameters params: [String: AnyObject], success:@escaping (_ result: ModelLogin) -> (Void), failure:@escaping Failure) -> Void
     {
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
         
         NetworkService.shared.callWebService(method: .post, path: PATH.LOGIN, params: params, type: JSONEncoding()){
-            (completion:DataResponse<ResultModel>) in
+            (completion:DataResponse<ModelLogin>) in
             UIApplication.shared.isNetworkActivityIndicatorVisible = false
             
             if !self.handleError(error: completion.result.error as NSError?, failure: failure, responseCode: completion.response?.statusCode)
@@ -126,72 +126,103 @@ class APIService : NSObject {
             }
         }
     }
-    /*
-    //MARK:- Request for signup
-    func signupUser(parameters params: [String: AnyObject], success:@escaping (_ result: ModelSignUpMain) -> (Void), failure:@escaping Failure) -> Void
+   
+    func resetPassword(parameters params: [String: AnyObject], success:@escaping (_ result: ResultModel) -> (Void), failure:@escaping Failure) -> Void
     {
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
         
-        NetworkService.shared.callWebService(method: .post, path: URLPath.SIGNUP, params: params, type: JSONEncoding()){
-            (completion:DataResponse<ModelSignUpMain>) in
+        NetworkService.shared.callWebService(method: .post, path: PATH.RESET_PASSWORD, params: params, type: JSONEncoding()){
+            (completion:DataResponse<ResultModel>) in
             UIApplication.shared.isNetworkActivityIndicatorVisible = false
             
             if !self.handleError(error: completion.result.error as NSError?, failure: failure, responseCode: completion.response?.statusCode)
             {
                 success(completion.result.value!)
-                
             } else {
                 
-                if let msg = completion.result.value?.modelSignUP.message {
+                if let msg = completion.result.value?.message {
                     failure(msg)
                 }
             }
         }
     }
     
-     
-    //MARK:- Forgot password
-    func forgotPassword(parameters params: [String: AnyObject], success:@escaping (_ result: ModelForgotPasswordMain) -> (Void), failure:@escaping Failure) -> Void
+    //MARK:- home related API
+    func flashList(parameters params: [String: AnyObject], success:@escaping (_ result: ModelFlashMain) -> (Void), failure:@escaping Failure) -> Void
     {
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
         
-        NetworkService.shared.callWebService(method: .post, path: URLPath.FORGOT_PASSWORD, params: params, type: JSONEncoding()){
-            (completion:DataResponse<ModelForgotPasswordMain>) in
+        NetworkService.shared.callWebService(method: .get, path: PATH.FLASH, params: params, type: JSONEncoding()){
+            (completion:DataResponse<ModelFlashMain>) in
             UIApplication.shared.isNetworkActivityIndicatorVisible = false
             
             if !self.handleError(error: completion.result.error as NSError?, failure: failure, responseCode: completion.response?.statusCode)
             {
                 success(completion.result.value!)
-                
             } else {
-                if let msg = completion.result.value?.modelForgotPassword.message {
+                
+                if let msg = completion.result.value?.message {
+                    failure(msg)
+                }
+            }
+        }
+    }
+    func list(parameters params: [String: AnyObject], success:@escaping (_ result: ModelListMain) -> (Void), failure:@escaping Failure) -> Void
+    {
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true
+        
+        NetworkService.shared.callWebService(method: .get, path: PATH.LIST, params: params, type: JSONEncoding()){
+            (completion:DataResponse<ModelListMain>) in
+            UIApplication.shared.isNetworkActivityIndicatorVisible = false
+            
+            if !self.handleError(error: completion.result.error as NSError?, failure: failure, responseCode: completion.response?.statusCode)
+            {
+                success(completion.result.value!)
+            } else {
+                
+                if let msg = completion.result.value?.message {
+                    failure(msg)
+                }
+            }
+        }
+    }
+    func bulletineList(parameters params: [String: AnyObject], success:@escaping (_ result: ModelBulletinMain) -> (Void), failure:@escaping Failure) -> Void
+    {
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true
+        
+        NetworkService.shared.callWebService(method: .get, path: PATH.BULLETIN, params: params, type: JSONEncoding()){
+            (completion:DataResponse<ModelBulletinMain>) in
+            UIApplication.shared.isNetworkActivityIndicatorVisible = false
+            
+            if !self.handleError(error: completion.result.error as NSError?, failure: failure, responseCode: completion.response?.statusCode)
+            {
+                success(completion.result.value!)
+            } else {
+                
+                if let msg = completion.result.value?.message {
+                    failure(msg)
+                }
+            }
+        }
+    }
+    func mediaList(parameters params: [String: AnyObject], success:@escaping (_ result: ModelMediaMain) -> (Void), failure:@escaping Failure) -> Void
+    {
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true
+        
+        NetworkService.shared.callWebService(method: .get, path: PATH.MEDIA, params: params, type: JSONEncoding()){
+            (completion:DataResponse<ModelMediaMain>) in
+            UIApplication.shared.isNetworkActivityIndicatorVisible = false
+            
+            if !self.handleError(error: completion.result.error as NSError?, failure: failure, responseCode: completion.response?.statusCode)
+            {
+                success(completion.result.value!)
+            } else {
+                
+                if let msg = completion.result.value?.message {
                     failure(msg)
                 }
             }
         }
     }
     
-    // MARK: - Get dasgboard details
-    func getChilds(parameters params:[String: AnyObject], success: @escaping (_ result: ModelDashboard) -> (Void), failure: @escaping Failure) {
-        
-        UIApplication.shared.isNetworkActivityIndicatorVisible = true
-        NetworkService.shared.callWebService(method: .get, path: URLPath.CHILDS.appending("parent/\(params["parent"]!)"), params: nil, type: JSONEncoding()) { (completion:DataResponse<ModelDashboard>) in
-            
-            UIApplication.shared.isNetworkActivityIndicatorVisible = false
-            
-            if !self.handleError(error: completion.result.error as NSError?, failure: failure, responseCode: completion.response?.statusCode) {
-                if completion.result.value?.error == false {
-                    
-                    success(completion.result.value!)
-                }
-                else {
-                    
-                    if let msg = completion.result.value!.message {
-                        failure(msg)
-                    }
-                }
-            }
-        }
-    }
-    */
 }

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12118" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="MediaCollectionViewCell" customModule="NewsApp" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="543"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="375" height="543"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="BOL-qb-DXP">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="543"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <connections>
+                            <outlet property="dataSource" destination="gTV-IL-0wX" id="Vhv-B3-JRG"/>
+                            <outlet property="delegate" destination="gTV-IL-0wX" id="iKz-es-X1k"/>
+                        </connections>
+                    </tableView>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstItem="BOL-qb-DXP" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="0yb-bB-si3"/>
+                <constraint firstAttribute="trailing" secondItem="BOL-qb-DXP" secondAttribute="trailing" id="CvN-dC-ZQu"/>
+                <constraint firstItem="BOL-qb-DXP" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="ZUm-7x-8ql"/>
+                <constraint firstAttribute="bottom" secondItem="BOL-qb-DXP" secondAttribute="bottom" id="vZP-fo-atz"/>
+            </constraints>
+            <connections>
+                <outlet property="tblView" destination="BOL-qb-DXP" id="bXn-9K-cFN"/>
+            </connections>
+        </collectionViewCell>
+    </objects>
+</document>

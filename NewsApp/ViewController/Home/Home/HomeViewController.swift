@@ -9,14 +9,16 @@
 import UIKit
 import FTPopOverMenu_Swift
 
+
 class HomeViewController: BaseViewController {
 
-    @IBOutlet weak var navigationBar: NavigationBar!
+    @IBOutlet weak var navigationBar: NavigationBar!    
+    @IBOutlet weak var segmentView: STVSegmentButtonView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItemClick()
-        // Do any additional setup after loading the view.
+        segmentViewDelegateMethod()
     }
 
     override func didReceiveMemoryWarning() {
@@ -24,6 +26,11 @@ class HomeViewController: BaseViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        segmentView.buttonArray = ["FLASH","LISTING","BULLETING","JOB-HIRE","MEDIA"]
+    }
+
     private func navigationItemClick() {
         navigationBar.rightItemClick = {
             let barButtonItem = self.navigationItem.rightBarButtonItem!
@@ -33,16 +40,17 @@ class HomeViewController: BaseViewController {
         }
     }
     
+    //MARK:- Methods to create menu option
     private func presentPopover(senderFrame:CGRect) {
        
         let configuration = FTConfiguration.shared
         configuration.backgoundTintColor = .white
         configuration.textColor = .gray
-        
+        configuration.menuWidth = 160
         FTPopOverMenu.showFromSenderFrame(senderFrame:senderFrame,
                                           with: ["Change Language","Change Password", "Logout"],
                                           done: { (selectedIndex) -> () in
-            
+            self.popoverButtonClick(index: selectedIndex)
         }) {
             
         }
@@ -61,4 +69,11 @@ class HomeViewController: BaseViewController {
             break
         }
     }
+    
+    private func segmentViewDelegateMethod() {
+        segmentView.segmentButtonSelectAtIndex { (index) in
+            
+        }
+    }
+    
 }

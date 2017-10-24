@@ -21,7 +21,7 @@ class NavigationBar: UINavigationItem {
         didSet {
             let leftBarItem = UIBarButtonItem(image: leftButtonImage, style: .plain, target: self, action: #selector(leftButtonClick(sender:)))
             self.leftBarButtonItem = leftBarItem
-            self.leftBarButtonItem?.tintColor = #colorLiteral(red: 0.06274510175, green: 0, blue: 0.1921568662, alpha: 1)
+            self.leftBarButtonItem?.tintColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         }
     }
     
@@ -30,7 +30,7 @@ class NavigationBar: UINavigationItem {
         didSet {
             let rightBarItem = UIBarButtonItem(image: rightButtonImage, style: .plain, target: self, action: #selector(rightButtonClick(sender:)))
             self.rightBarButtonItem = rightBarItem
-            self.rightBarButtonItem?.tintColor = #colorLiteral(red: 0.06274510175, green: 0, blue: 0.1921568662, alpha: 1)
+            self.rightBarButtonItem?.tintColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         }
     }
     

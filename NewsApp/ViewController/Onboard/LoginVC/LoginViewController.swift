@@ -32,7 +32,7 @@ class LoginViewController: BaseViewController {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        btnSignIn.setCornerRadious(corner: Int(btnSignIn.frame.height/2))
+        prepareView()
     }
     
     override func didReceiveMemoryWarning() {
@@ -69,9 +69,14 @@ class LoginViewController: BaseViewController {
         APIService.sharedInstance.login(parameters: param , success: { (result) -> (Void) in
             //Navigate to home view controller
             self.hideLoading()
-            showNotificationAlert(type: .success, title: "Success", message: "Login Success")
-            self.performSegue(withIdentifier: Segues.kToHomeViewControllerFromSignIn, sender: nil)
-            self.activityIndigator.stopAnimating()
+            if (result.status) {
+                showNotificationAlert(type: .success, title: "Success", message: "Login Success")
+                self.performSegue(withIdentifier: Segues.kToHomeViewControllerFromSignIn, sender: nil)
+                self.activityIndigator.stopAnimating()
+                self.objLoginViewModel.saveLoginInfo(model: (result.modelLoginData?.modelUser)!)
+            } else {
+                showNotificationAlert(type: .success, title: "Error", message: result.message)
+            }
             
         }) { (error) -> (Void) in
             // Show error
@@ -111,7 +116,12 @@ class LoginViewController: BaseViewController {
         let param = objLoginViewModel.createForgotParams(email: email)
         APIService.sharedInstance.forgotPassword(parameters: param as [String : AnyObject] , success: { (result) -> (Void) in
             //Navigate to home view controller
-            showNotificationAlert(type: .success, title: "Success", message: "Link send to your email.")
+            if (result.status) {
+                showNotificationAlert(type: .success, title: "Success", message: "Link send to your email.")
+            } else {
+                showNotificationAlert(type: .error, title: "Error", message: result.message)
+                
+            }
             
         }) { (error) -> (Void) in
             // Show error
@@ -119,6 +129,7 @@ class LoginViewController: BaseViewController {
         }
     }
     
+    //MARK:- Helper methods
     private func showLoading() {
         activityIndigator.startAnimating()
         btnSignIn.isEnabled = false
@@ -129,4 +140,8 @@ class LoginViewController: BaseViewController {
         btnSignIn.isEnabled = true
     }
 
+    private func prepareView() {
+        btnSignIn.setCornerRadious(corner: Int(btnSignIn.frame.height/2))
+        txtPassword.textField.isSecureTextEntry = true
+    }
 }
