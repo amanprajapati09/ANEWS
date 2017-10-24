@@ -66,6 +66,9 @@
                                 <state key="normal" title="Skip to Home">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="btnSkipHomeClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="5k5-9T-63P"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PM4-a8-LU1">
                                 <rect key="frame" x="274" y="619.5" width="64" height="35"/>
@@ -116,7 +119,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MJD-rs-NWP" customClass="RSFloatInputView" customModule="RSFloatInputView">
-                                <rect key="frame" x="79" y="313" width="276" height="56"/>
+                                <rect key="frame" x="89" y="313.5" width="266" height="54"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="MJD-rs-NWP" secondAttribute="height" multiplier="69:14" id="GDr-Fv-EBW"/>
@@ -134,7 +137,7 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="MJD-rs-NWP" firstAttribute="leading" secondItem="zSR-Yd-uws" secondAttribute="trailing" constant="19" id="0DM-am-hwG"/>
+                            <constraint firstItem="MJD-rs-NWP" firstAttribute="leading" secondItem="zSR-Yd-uws" secondAttribute="trailing" constant="29" id="0DM-am-hwG"/>
                             <constraint firstItem="3W2-tv-rSn" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" constant="-10" id="2ty-Rh-o7r"/>
                             <constraint firstItem="gL6-dI-eDL" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="32T-D7-37m"/>
                             <constraint firstAttribute="trailing" secondItem="avc-7X-W2C" secondAttribute="trailing" constant="80" id="4cJ-uV-VFx"/>
@@ -177,24 +180,242 @@
             </objects>
             <point key="canvasLocation" x="1076" y="137.18140929535232"/>
         </scene>
-        <!--View Controller-->
+        <!--Tamakuru-->
         <scene sceneID="gx1-VO-02D">
             <objects>
-                <viewController id="mOy-Tn-Tqx" sceneMemberID="viewController">
+                <viewController id="mOy-Tn-Tqx" customClass="HomeViewController" customModule="NewsApp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="6La-NP-gib"/>
                         <viewControllerLayoutGuide type="bottom" id="wM7-Nm-fGT"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="bsY-NK-gsb">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WrL-Dz-f50" customClass="STVSegmentButtonView" customModule="NewsApp" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="TTu-3J-QeH"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wxj-Ul-G8y" customClass="HomeCollectionView" customModule="NewsApp" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="60" width="375" height="543"/>
+                                <subviews>
+                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Mfo-qv-McT">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="543"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="j1z-be-6hM">
+                                            <size key="itemSize" width="50" height="50"/>
+                                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        </collectionViewFlowLayout>
+                                        <cells/>
+                                        <connections>
+                                            <outlet property="dataSource" destination="wxj-Ul-G8y" id="10U-gs-toh"/>
+                                            <outlet property="delegate" destination="wxj-Ul-G8y" id="2d5-KM-Atm"/>
+                                        </connections>
+                                    </collectionView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="Mfo-qv-McT" firstAttribute="top" secondItem="wxj-Ul-G8y" secondAttribute="top" id="Dcj-g2-UGT"/>
+                                    <constraint firstAttribute="trailing" secondItem="Mfo-qv-McT" secondAttribute="trailing" id="OM4-Rz-Sia"/>
+                                    <constraint firstItem="Mfo-qv-McT" firstAttribute="leading" secondItem="wxj-Ul-G8y" secondAttribute="leading" id="T88-ol-K9h"/>
+                                    <constraint firstAttribute="bottom" secondItem="Mfo-qv-McT" secondAttribute="bottom" id="iTq-1H-PlU"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="homeCollectionView" destination="Mfo-qv-McT" id="NDg-cS-YkK"/>
+                                </connections>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="wxj-Ul-G8y" firstAttribute="top" secondItem="WrL-Dz-f50" secondAttribute="bottom" id="7dC-oA-ZZL"/>
+                            <constraint firstItem="wxj-Ul-G8y" firstAttribute="leading" secondItem="bsY-NK-gsb" secondAttribute="leading" id="A0h-h7-Dnc"/>
+                            <constraint firstItem="WrL-Dz-f50" firstAttribute="leading" secondItem="bsY-NK-gsb" secondAttribute="leading" id="Eui-c5-pHW"/>
+                            <constraint firstAttribute="trailing" secondItem="WrL-Dz-f50" secondAttribute="trailing" id="Gzk-ca-geF"/>
+                            <constraint firstAttribute="trailing" secondItem="wxj-Ul-G8y" secondAttribute="trailing" id="cZs-Xb-Nq6"/>
+                            <constraint firstItem="wM7-Nm-fGT" firstAttribute="top" secondItem="wxj-Ul-G8y" secondAttribute="bottom" id="jES-Hb-1cZ"/>
+                            <constraint firstItem="WrL-Dz-f50" firstAttribute="top" secondItem="6La-NP-gib" secondAttribute="bottom" id="xdD-2A-ZI1"/>
+                        </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="ugM-hq-HZh"/>
+                    <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
+                    <navigationItem key="navigationItem" title="Tamakuru" id="YXg-aP-vPp" customClass="NavigationBar" customModule="NewsApp" customModuleProvider="target">
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="image" keyPath="rightButtonImage" value="menu"/>
+                        </userDefinedRuntimeAttributes>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="navigationBar" destination="YXg-aP-vPp" id="oYp-WB-yxW"/>
+                        <outlet property="segmentView" destination="WrL-Dz-f50" id="Ao8-28-6wi"/>
+                        <segue destination="zSU-W2-ev0" kind="show" identifier="toChangePasswordViewControllerFromHome" id="D2h-N0-mnP"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ply-1z-xOa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2071.1999999999998" y="867.61619190404804"/>
+        </scene>
+        <!--Change Password View Controller-->
+        <scene sceneID="aDJ-al-8HB">
+            <objects>
+                <viewController id="zSU-W2-ev0" customClass="ChangePasswordViewController" customModule="NewsApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ytl-9F-xDo"/>
+                        <viewControllerLayoutGuide type="bottom" id="4B8-e8-ENT"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="MEh-e2-U6V">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mku-sx-uZL" userLabel="currentPass">
+                                <rect key="frame" x="0.0" y="105" width="375" height="60"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wx4-LR-DXz" customClass="RSFloatInputView" customModule="RSFloatInputView">
+                                        <rect key="frame" x="57.5" y="3.5" width="307.5" height="53"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="Wx4-LR-DXz" secondAttribute="height" multiplier="307:53" id="2pl-Qf-Nfd"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="placeHolderStringKey" value="Current Password"/>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="idlePlaceHolderColor">
+                                                <color key="value" red="0.99215686270000003" green="0.81960784310000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="password" translatesAutoresizingMaskIntoConstraints="NO" id="Oki-GH-ENe">
+                                        <rect key="frame" x="15" y="15" width="32.5" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="Oki-GH-ENe" secondAttribute="height" multiplier="16:15" id="BVc-Qd-iXh"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="Wx4-LR-DXz" firstAttribute="centerY" secondItem="mku-sx-uZL" secondAttribute="centerY" id="A8d-EA-PpK"/>
+                                    <constraint firstItem="Wx4-LR-DXz" firstAttribute="leading" secondItem="Oki-GH-ENe" secondAttribute="trailing" constant="10" id="CwY-eq-lFH"/>
+                                    <constraint firstAttribute="trailing" secondItem="Wx4-LR-DXz" secondAttribute="trailing" constant="10" id="D1V-CL-PXr"/>
+                                    <constraint firstItem="Oki-GH-ENe" firstAttribute="leading" secondItem="mku-sx-uZL" secondAttribute="leading" constant="15" id="hNi-dC-5sL"/>
+                                    <constraint firstItem="Oki-GH-ENe" firstAttribute="centerY" secondItem="mku-sx-uZL" secondAttribute="centerY" id="qFf-or-JVe"/>
+                                    <constraint firstAttribute="width" secondItem="mku-sx-uZL" secondAttribute="height" multiplier="25:4" id="tbK-OD-dII"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Y8R-T8-Lum" userLabel="newPass">
+                                <rect key="frame" x="0.0" y="170" width="375" height="60"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mH0-3a-fm8" customClass="RSFloatInputView" customModule="RSFloatInputView">
+                                        <rect key="frame" x="55" y="3.5" width="310" height="53"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="mH0-3a-fm8" secondAttribute="height" multiplier="310:53" id="xzp-8v-GrL"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="placeHolderStringKey" value="New Password"/>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="idlePlaceHolderColor">
+                                                <color key="value" red="0.99215686270000003" green="0.81960784310000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="password" translatesAutoresizingMaskIntoConstraints="NO" id="zQr-6T-uEj">
+                                        <rect key="frame" x="15" y="15" width="30" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="zQr-6T-uEj" secondAttribute="height" multiplier="1:1" id="Nyd-Pa-F4E"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="mH0-3a-fm8" secondAttribute="trailing" constant="10" id="DKD-R6-GcG"/>
+                                    <constraint firstItem="zQr-6T-uEj" firstAttribute="centerY" secondItem="Y8R-T8-Lum" secondAttribute="centerY" id="Fj1-uk-GVF"/>
+                                    <constraint firstItem="zQr-6T-uEj" firstAttribute="leading" secondItem="Y8R-T8-Lum" secondAttribute="leading" constant="15" id="WLv-QR-QKT"/>
+                                    <constraint firstItem="mH0-3a-fm8" firstAttribute="centerY" secondItem="Y8R-T8-Lum" secondAttribute="centerY" id="vmc-aN-HVE"/>
+                                    <constraint firstItem="mH0-3a-fm8" firstAttribute="leading" secondItem="zQr-6T-uEj" secondAttribute="trailing" constant="10" id="y4i-CG-yQS"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TEk-Yz-RSi" userLabel="reTypePass">
+                                <rect key="frame" x="0.0" y="235" width="375" height="60"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cJd-Gg-iot" customClass="RSFloatInputView" customModule="RSFloatInputView">
+                                        <rect key="frame" x="55" y="3.5" width="310" height="53"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="cJd-Gg-iot" secondAttribute="height" multiplier="310:53" id="QD1-hf-LGG"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="placeHolderStringKey" value="Re-type Password"/>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="idlePlaceHolderColor">
+                                                <color key="value" red="0.99215686270000003" green="0.81960784310000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="password" translatesAutoresizingMaskIntoConstraints="NO" id="Pjk-i9-tgf">
+                                        <rect key="frame" x="15" y="15" width="30" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="Pjk-i9-tgf" secondAttribute="height" multiplier="1:1" id="fg0-5h-qh6"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="Pjk-i9-tgf" firstAttribute="centerY" secondItem="TEk-Yz-RSi" secondAttribute="centerY" id="A4y-Vq-sUp"/>
+                                    <constraint firstItem="Pjk-i9-tgf" firstAttribute="leading" secondItem="TEk-Yz-RSi" secondAttribute="leading" constant="15" id="E9q-Mu-GS4"/>
+                                    <constraint firstAttribute="trailing" secondItem="cJd-Gg-iot" secondAttribute="trailing" constant="10" id="KT8-Rf-mQ4"/>
+                                    <constraint firstItem="cJd-Gg-iot" firstAttribute="leading" secondItem="Pjk-i9-tgf" secondAttribute="trailing" constant="10" id="dX2-BD-qaB"/>
+                                    <constraint firstItem="cJd-Gg-iot" firstAttribute="centerY" secondItem="TEk-Yz-RSi" secondAttribute="centerY" id="hF9-kn-ihX"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OhI-Od-jLj">
+                                <rect key="frame" x="100" y="325" width="175" height="58"/>
+                                <color key="backgroundColor" red="0.99215686270000003" green="0.81960784310000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="OhI-Od-jLj" secondAttribute="height" multiplier="163:54" id="3Oy-SQ-kq2"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                <state key="normal" title="Finish">
+                                    <color key="titleColor" red="0.99019607840000001" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="btnFinishClick:" destination="zSU-W2-ev0" eventType="touchUpInside" id="ACA-Hz-9BV"/>
+                                </connections>
+                            </button>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="iui-Bk-3ER">
+                                <rect key="frame" x="235" y="344" width="20" height="20"/>
+                            </activityIndicatorView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="TEk-Yz-RSi" secondAttribute="trailing" id="3K8-Z9-Ye8"/>
+                            <constraint firstItem="TEk-Yz-RSi" firstAttribute="height" secondItem="mku-sx-uZL" secondAttribute="height" id="6yp-aA-N0S"/>
+                            <constraint firstAttribute="trailing" secondItem="OhI-Od-jLj" secondAttribute="trailing" constant="100" id="8Bf-3R-SgM"/>
+                            <constraint firstItem="Y8R-T8-Lum" firstAttribute="top" secondItem="mku-sx-uZL" secondAttribute="bottom" constant="5" id="Aon-vM-kvL"/>
+                            <constraint firstItem="TEk-Yz-RSi" firstAttribute="top" secondItem="Y8R-T8-Lum" secondAttribute="bottom" constant="5" id="IbG-BA-pNf"/>
+                            <constraint firstItem="Y8R-T8-Lum" firstAttribute="height" secondItem="mku-sx-uZL" secondAttribute="height" id="Kg7-RZ-RHL"/>
+                            <constraint firstAttribute="trailing" secondItem="mku-sx-uZL" secondAttribute="trailing" id="M7h-Pp-Dn0"/>
+                            <constraint firstItem="iui-Bk-3ER" firstAttribute="leading" secondItem="OhI-Od-jLj" secondAttribute="trailing" constant="-40" id="QRN-W6-ODj"/>
+                            <constraint firstItem="mku-sx-uZL" firstAttribute="leading" secondItem="MEh-e2-U6V" secondAttribute="leading" id="T4Y-MZ-xAt"/>
+                            <constraint firstItem="OhI-Od-jLj" firstAttribute="width" secondItem="OhI-Od-jLj" secondAttribute="height" multiplier="163:54" id="fpF-NP-5aq"/>
+                            <constraint firstItem="OhI-Od-jLj" firstAttribute="leading" secondItem="MEh-e2-U6V" secondAttribute="leading" constant="100" id="mxP-09-g1h"/>
+                            <constraint firstItem="mku-sx-uZL" firstAttribute="top" secondItem="ytl-9F-xDo" secondAttribute="bottom" constant="41" id="niA-ZL-ryD"/>
+                            <constraint firstItem="TEk-Yz-RSi" firstAttribute="leading" secondItem="MEh-e2-U6V" secondAttribute="leading" id="nsY-fa-e5u"/>
+                            <constraint firstItem="Y8R-T8-Lum" firstAttribute="leading" secondItem="MEh-e2-U6V" secondAttribute="leading" id="oGa-Wa-8ng"/>
+                            <constraint firstAttribute="trailing" secondItem="Y8R-T8-Lum" secondAttribute="trailing" id="ost-vT-vKD"/>
+                            <constraint firstItem="OhI-Od-jLj" firstAttribute="top" secondItem="TEk-Yz-RSi" secondAttribute="bottom" constant="30" id="pjQ-TW-gP9"/>
+                            <constraint firstItem="iui-Bk-3ER" firstAttribute="centerY" secondItem="OhI-Od-jLj" secondAttribute="centerY" id="t6z-YG-8ZI"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="activityIndicator" destination="iui-Bk-3ER" id="m4y-dz-boW"/>
+                        <outlet property="btnFinish" destination="OhI-Od-jLj" id="9xb-5j-Zdy"/>
+                        <outlet property="txtCurrentPassword" destination="Wx4-LR-DXz" id="9vg-yr-CTz"/>
+                        <outlet property="txtNewPassword" destination="mH0-3a-fm8" id="06d-p7-50o"/>
+                        <outlet property="txtReTypePassword" destination="cJd-Gg-iot" id="m37-9J-G4t"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jzI-93-AcC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2844" y="868"/>
         </scene>
         <!--Signup View Controller-->
         <scene sceneID="YdR-du-tj0">
@@ -464,6 +685,12 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="5U1-y3-Cw3">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="barTintColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -478,6 +705,7 @@
     <resources>
         <image name="email" width="30" height="30"/>
         <image name="location" width="30" height="30"/>
+        <image name="menu" width="18" height="18"/>
         <image name="name" width="30" height="30"/>
         <image name="password" width="30" height="30"/>
         <image name="phone" width="30" height="30"/>

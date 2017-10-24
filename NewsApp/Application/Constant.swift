@@ -26,23 +26,14 @@ internal let kMapsAPIKey = "AIzaSyBppMjqp2KUZmAOtw8UFbhcQCdYm1yLKWU"
 
 
 struct MyUserDefault {
-    static let kUDIDLogin = "Login"
-    static let kUDIDLoginUser = "LoginUser"
-    static let kUDIDAuthToken = "AuthToken"
-    static let kChangePassword = "ChangePassword"
-    static let kSetPassword = "SetPassword"
-    static let kInviteUser = "InviteUser"
-    static let kNotificationTrigger = "NotificationTrigger"
-    static let kChangePasswordToken = "ChangePasswordToken"
-    static let kSetPasswordToken = "SetPasswordToken"
-    static let kUDIDPassword = "password"
-    static let kUDIDDeviceId = "deviceid"
-    static let kUDIDDeviceToken = "devicetoken"
-    static let kCitrixCreateFolderID = "createdFolderID"
-    static let kNotificationRefreshData = "notificationDataRefresh"
-    static let kPermissionAsked = "PermissionAsked"
-    static let kAWSAuthDetail = "AWSAuthDetail"
-    static let kAllowPermission = "allowPermission"
+    
+    static let USER_ADDRESS = "address"
+    static let USER_EMAIL = "email"
+    static let USER_FIRSTNAME = "fierstname"
+    static let USER_ID = "user_id"
+    static let USER_ROLE_ID = "role_id"
+    static let USER_STATUS = "status"
+   
 }
 
 //MARK:- Cell Identifier
@@ -57,6 +48,7 @@ struct CellIdentifier {
 //MARK:- Segue
 struct Segues {
     static let kToHomeViewControllerFromSignIn = "toHomeViewControllerFromLogin"
+    static let kToChangePasswordFromHome = "toChangePasswordViewControllerFromHome"
 }
 //MARK:- URLs
 struct StaticURL{
@@ -70,6 +62,12 @@ struct PATH{
     static let SIGNUP = "\(StaticURL.BASE_URL)App_Registration"
     static let LOGIN = "\(StaticURL.BASE_URL)App_login"
     static let FORGOT_PASSWORD = "\(StaticURL.BASE_URL)App_forgot_password"
+    static let RESET_PASSWORD = "\(StaticURL.BASE_URL)App_ChangePassword"
+    
+    static let FLASH = "\(StaticURL.BASE_URL)FlashTab/App_FlashTabData"
+    static let LIST = "\(StaticURL.BASE_URL)ListTab/App_ListTabData"
+    static let BULLETIN = "\(StaticURL.BASE_URL)BulletinTab/App_BulletinTabData"
+    static let MEDIA = "\(StaticURL.BASE_URL)MediaTab/App_MediaTabData"
 }
 
 //MARK:- Alert Titles

@@ -11,7 +11,7 @@ import UIKit
 import GooglePlacePicker
 
 extension SignupViewController  {
-    internal func validateSignUp()-> (Bool,String) {
+    internal func validateSignUp() -> (Bool,String) {
         
         guard !txtName.textField.validateIsEmpty() else {
             return (false,"Enter proper name!")
