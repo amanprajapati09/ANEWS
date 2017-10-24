@@ -10,15 +10,29 @@ import UIKit
 
 class ListingTableViewCell: UITableViewCell, NibLoadableView, ReusableView {
 
+    @IBOutlet weak var imageList: UIImageView!
+    @IBOutlet weak var lblTitle: UILabel!
+    @IBOutlet weak var lblDescription: UILabel!
+    @IBOutlet weak var lblAddress: UILabel!
+    
+    var objList:ModelList! {
+        didSet {
+            lblTitle.text = objList.title!
+            lblDescription.text = objList.descriptionField!
+            lblAddress.text = objList.address!            
+        }
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
-        // Configure the view for the selected state
     }
     
+    @IBAction func btnDirectCallClick(_ sender: Any) {
+        
+    }
 }

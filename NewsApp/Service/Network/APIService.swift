@@ -148,7 +148,7 @@ class APIService : NSObject {
     }
     
     //MARK:- home related API
-    func flashList(parameters params: [String: AnyObject], success:@escaping (_ result: ModelFlashMain) -> (Void), failure:@escaping Failure) -> Void
+    func flashList(parameters params: [String: AnyObject]?, success:@escaping (_ result: ModelFlashMain) -> (Void), failure:@escaping Failure) -> Void
     {
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
         
@@ -167,7 +167,7 @@ class APIService : NSObject {
             }
         }
     }
-    func list(parameters params: [String: AnyObject], success:@escaping (_ result: ModelListMain) -> (Void), failure:@escaping Failure) -> Void
+    func list(parameters params: [String: AnyObject]?, success:@escaping (_ result: ModelListMain) -> (Void), failure:@escaping Failure) -> Void
     {
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
         
@@ -186,7 +186,7 @@ class APIService : NSObject {
             }
         }
     }
-    func bulletineList(parameters params: [String: AnyObject], success:@escaping (_ result: ModelBulletinMain) -> (Void), failure:@escaping Failure) -> Void
+    func bulletineList(parameters params: [String: AnyObject]?, success:@escaping (_ result: ModelBulletinMain) -> (Void), failure:@escaping Failure) -> Void
     {
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
         
@@ -205,7 +205,7 @@ class APIService : NSObject {
             }
         }
     }
-    func mediaList(parameters params: [String: AnyObject], success:@escaping (_ result: ModelMediaMain) -> (Void), failure:@escaping Failure) -> Void
+    func mediaList(parameters params: [String: AnyObject]?, success:@escaping (_ result: ModelMediaMain) -> (Void), failure:@escaping Failure) -> Void
     {
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
         

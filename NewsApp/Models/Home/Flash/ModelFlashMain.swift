@@ -11,13 +11,12 @@ import ObjectMapper
 
 class ModelFlashMain : BaseModel {
 
-	var modelFlash : [ModelFlash]?
+	var flashList = [ModelFlash]()
 	var totalPageCount : Int?
 
 	override func mapping(map: Map) {
         super.mapping(map: map)
-		modelFlash <- map["ModelFlash"]
-		message <- map["message"]
+		flashList <- map["data"]		
 		totalPageCount <- map["total_page_count"]
 	}
 

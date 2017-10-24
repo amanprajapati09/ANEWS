@@ -10,6 +10,25 @@ import UIKit
 
 class FlashTableViewCell: UITableViewCell, NibLoadableView, ReusableView {
 
+    //MARK:- outlates
+    @IBOutlet weak var imageFlash: UIImageView!
+    @IBOutlet weak var lblTitle: UILabel!
+    @IBOutlet weak var lblDescription: UILabel!
+    
+    @IBOutlet weak var lblDate: UILabel!
+    @IBOutlet weak var lblTime: UILabel!
+    
+    //MARK:- variables
+    var modelFlash:ModelFlash! {
+        didSet {
+            lblTitle.text = modelFlash.title!
+            lblDescription.text = modelFlash.descriptionField!
+            lblDate.text = modelFlash.modified?.convertToDateString()
+            lblTime.text = modelFlash.modified?.convertToTimeString()
+//            imageFlash.d_setImage(with: imagePath, placeholderImage: UIImage.init(named: ""))
+        }
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -17,8 +36,6 @@ class FlashTableViewCell: UITableViewCell, NibLoadableView, ReusableView {
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
     
 }

@@ -11,13 +11,13 @@ import ObjectMapper
 
 class ModelListMain : BaseModel {
 
-	var modelList : [ModelList]?
+	var modelList = [ModelList]()
 	
 	var totalPageCount : Int?
 
 	override func mapping(map: Map) {
         super.mapping(map: map)
-		modelList <- map["ModelList"]
+		modelList <- map["data"]
 		status <- map["status"]
 		totalPageCount <- map["total_page_count"]		
 	}

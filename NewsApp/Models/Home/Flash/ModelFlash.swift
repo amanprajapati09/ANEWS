@@ -15,7 +15,6 @@ class ModelFlash : ModelBaseHome{
     var descriptionField : String?
     var image : String?
     
-    
     override func mapping(map:Map) {
         super.mapping(map: map)
         

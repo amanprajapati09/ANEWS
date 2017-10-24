@@ -14,6 +14,7 @@ class HomeViewController: BaseViewController {
 
     @IBOutlet weak var navigationBar: NavigationBar!    
     @IBOutlet weak var segmentView: STVSegmentButtonView!
+    @IBOutlet weak var homeCollectionContainer: HomeCollectionView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -72,7 +73,7 @@ class HomeViewController: BaseViewController {
     
     private func segmentViewDelegateMethod() {
         segmentView.segmentButtonSelectAtIndex { (index) in
-            
+                self.homeCollectionContainer.homeCollectionView.scrollToItem(at: IndexPath(row: index, section: 0), at: .centeredHorizontally, animated: true)
         }
     }
     

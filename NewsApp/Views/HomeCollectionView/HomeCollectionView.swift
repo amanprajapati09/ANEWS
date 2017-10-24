@@ -14,8 +14,7 @@ class HomeCollectionView: UIView, UICollectionViewDataSource, UICollectionViewDe
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        registerCell()
-        
+        registerCell()        
     }
     
     //MARK:- Collectionview datasource methods

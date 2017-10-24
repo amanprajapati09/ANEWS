@@ -65,6 +65,8 @@
 		078F46A41F9EE73E00F8BE2F /* ModelBulletinMain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078F46A21F9EE73E00F8BE2F /* ModelBulletinMain.swift */; };
 		078F46A71F9EE74800F8BE2F /* ModelMedia.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078F46A51F9EE74800F8BE2F /* ModelMedia.swift */; };
 		078F46A81F9EE74800F8BE2F /* ModelMediaMain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078F46A61F9EE74800F8BE2F /* ModelMediaMain.swift */; };
+		078F46AB1F9F9E7700F8BE2F /* ModelRequestHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078F46AA1F9F9E7700F8BE2F /* ModelRequestHelper.swift */; };
+		078F46AD1F9FA70000F8BE2F /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078F46AC1F9FA70000F8BE2F /* StringExtension.swift */; };
 		07A49D931F86B1F30022562D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07A49D631F86B1F30022562D /* AppDelegate.swift */; };
 		07A49D941F86B1F30022562D /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07A49D641F86B1F30022562D /* Constant.swift */; };
 		07A49D951F86B1F30022562D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 07A49D661F86B1F30022562D /* LaunchScreen.storyboard */; };
@@ -142,6 +144,8 @@
 		078F46A21F9EE73E00F8BE2F /* ModelBulletinMain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelBulletinMain.swift; sourceTree = "<group>"; };
 		078F46A51F9EE74800F8BE2F /* ModelMedia.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelMedia.swift; sourceTree = "<group>"; };
 		078F46A61F9EE74800F8BE2F /* ModelMediaMain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelMediaMain.swift; sourceTree = "<group>"; };
+		078F46AA1F9F9E7700F8BE2F /* ModelRequestHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelRequestHelper.swift; sourceTree = "<group>"; };
+		078F46AC1F9FA70000F8BE2F /* StringExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		07A49D311F86AFE00022562D /* NewsApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NewsApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		07A49D631F86B1F30022562D /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		07A49D641F86B1F30022562D /* Constant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
@@ -183,6 +187,7 @@
 				078F45F21F8DC53D00F8BE2F /* TextFieldExtension.swift */,
 				078F45FD1F92278500F8BE2F /* UIButtonExtension.swift */,
 				078F46191F9C909A00F8BE2F /* UIColorExtension.swift */,
+				078F46AC1F9FA70000F8BE2F /* StringExtension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -408,6 +413,14 @@
 			path = Media;
 			sourceTree = "<group>";
 		};
+		078F46A91F9F9E5100F8BE2F /* HelperModel */ = {
+			isa = PBXGroup;
+			children = (
+				078F46AA1F9F9E7700F8BE2F /* ModelRequestHelper.swift */,
+			);
+			path = HelperModel;
+			sourceTree = "<group>";
+		};
 		07A49D281F86AFE00022562D = {
 			isa = PBXGroup;
 			children = (
@@ -518,6 +531,7 @@
 		07A49D7B1F86B1F30022562D /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				078F46A91F9F9E5100F8BE2F /* HelperModel */,
 				078F46921F9EE48B00F8BE2F /* Home */,
 				078F45F01F8DC25400F8BE2F /* ResultModel.swift */,
 				07A49D7C1F86B1F30022562D /* BaseModel.swift */,
@@ -814,6 +828,7 @@
 				078F461A1F9C909A00F8BE2F /* UIColorExtension.swift in Sources */,
 				078F46941F9EE4B900F8BE2F /* ModelBaseHome.swift in Sources */,
 				07A49DAA1F86B1F30022562D /* BaseViewController.swift in Sources */,
+				078F46AB1F9F9E7700F8BE2F /* ModelRequestHelper.swift in Sources */,
 				078F466B1F9E600300F8BE2F /* ListingCollectionViewCell.swift in Sources */,
 				078F46591F9CDA2600F8BE2F /* STVSegmentButton.swift in Sources */,
 				078F46881F9E62D600F8BE2F /* BullatineTableViewCell.swift in Sources */,
@@ -833,6 +848,7 @@
 				078F46071F953CC500F8BE2F /* ChangePasswordViewController.swift in Sources */,
 				078F460B1F959CF800F8BE2F /* ModelLogin.swift in Sources */,
 				078F465A1F9CDA2600F8BE2F /* STVSegmentButtonCell.swift in Sources */,
+				078F46AD1F9FA70000F8BE2F /* StringExtension.swift in Sources */,
 				07A49D931F86B1F30022562D /* AppDelegate.swift in Sources */,
 				078F46A41F9EE73E00F8BE2F /* ModelBulletinMain.swift in Sources */,
 				07A49DA31F86B1F30022562D /* BaseModel.swift in Sources */,

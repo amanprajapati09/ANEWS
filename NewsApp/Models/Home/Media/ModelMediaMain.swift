@@ -11,12 +11,12 @@ import ObjectMapper
 
 class ModelMediaMain : BaseModel {
 
-	var modelMedia : [ModelMedia]?
+	var MediaList = [ModelMedia]()
 	var totalPageCount : Int?
 
     override func mapping(map:Map) {
         super.mapping(map: map)
-		modelMedia <- map["ModelMedia"]
+		MediaList <- map["data"]
 		totalPageCount <- map["total_page_count"]
 		
 	}

@@ -10,6 +10,18 @@ import UIKit
 
 class MeddiaTableViewCell: UITableViewCell, NibLoadableView, ReusableView {
 
+    @IBOutlet weak var imageMedia: UIImageView!
+    @IBOutlet weak var lblTitle: UILabel!    
+    @IBOutlet weak var lblDescription: UILabel!
+    
+    var modelMedia = ModelMedia() {
+        didSet {
+            lblTitle.text = modelMedia.title!
+            lblDescription.text = modelMedia.descriptionField!            
+        }
+    }
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

@@ -53,16 +53,16 @@ struct Segues {
 //MARK:- URLs
 struct StaticURL{
     
-    static let BASE_URL = "http://repairzone4.in/OLX/User/"
+    static let BASE_URL = "http://repairzone4.in/B2C/"
 }
 
 //MARK:- PATH
 struct PATH{
     
-    static let SIGNUP = "\(StaticURL.BASE_URL)App_Registration"
-    static let LOGIN = "\(StaticURL.BASE_URL)App_login"
-    static let FORGOT_PASSWORD = "\(StaticURL.BASE_URL)App_forgot_password"
-    static let RESET_PASSWORD = "\(StaticURL.BASE_URL)App_ChangePassword"
+    static let SIGNUP = "User/\(StaticURL.BASE_URL)App_Registration"
+    static let LOGIN = "User/\(StaticURL.BASE_URL)App_login"
+    static let FORGOT_PASSWORD = "User/\(StaticURL.BASE_URL)App_forgot_password"
+    static let RESET_PASSWORD = "User/\(StaticURL.BASE_URL)App_ChangePassword"
     
     static let FLASH = "\(StaticURL.BASE_URL)FlashTab/App_FlashTabData"
     static let LIST = "\(StaticURL.BASE_URL)ListTab/App_ListTabData"

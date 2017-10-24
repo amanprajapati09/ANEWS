@@ -15,20 +15,64 @@ class MediaCollectionViewCell: UICollectionViewCell,UITableViewDataSource,UITabl
     override func awakeFromNib() {
         super.awakeFromNib()
         registerCell()
+        requestForMediaList()
     }
+    
+    var mediaList = [ModelMedia]() {
+        didSet {
+            tblView.reloadData()
+        }
+    }
+    
     
     //MARK:- UITableview datasource methods 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
+        return mediaList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: MeddiaTableViewCell.reuseIdentifier)   as! MeddiaTableViewCell
+        cell.modelMedia = mediaList[indexPath.row]
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 75.0
     }
     
     private func registerCell() {
         tblView.register(MeddiaTableViewCell.self)
+    }
+
+    private func requestForMediaList() {
+        
+        guard checkForRequest() else {
+            return
+        }
+        
+        APIService.sharedInstance.mediaList(parameters: nil, success: { (result) -> (Void) in
+            if (result.status) {
+                self.mediaList = result.MediaList
+                ModelRequestMedia.sharedObject.modelMedia = result
+            }
+        }) { (error) -> (Void) in
+            showTitleBarAlert(message: error)
+        }
+    }
+    
+    //Check if requst is required or not
+    private func checkForRequest() -> Bool {
+        
+        if ModelRequestMedia.sharedObject.modelMedia != nil {
+            if ModelRequestMedia.sharedObject.isRequestSend {
+                return false
+            } else {
+                return true
+            }
+            
+        } else {
+            return true
+        }
     }
 
 }
