@@ -27,4 +27,8 @@ class ModelMedia : ModelBaseHome {
         link <- map["link"]
         
     }
+    
+    var imageUrl:URL! {
+        return URL(string:  StaticURL.IMAGE_URL + image!)
+    }
 }

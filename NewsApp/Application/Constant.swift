@@ -9,7 +9,6 @@ import Foundation
 import UIKit
 
 let MainainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-//let OnboardStoryboard: UIStoryboard = UIStoryboard(name: "Onboard", bundle: nil)
 
 
 let userDefault = UserDefaults.standard
@@ -23,7 +22,7 @@ let constatBigLimit = 3000
 internal let kPlacesAPIKey = "AIzaSyC1rf-WYryQRhD-lcHC8WQRi3oprEskFpU"
 internal let kMapsAPIKey = "AIzaSyBppMjqp2KUZmAOtw8UFbhcQCdYm1yLKWU"
 
-
+let placeholdeImage = UIImage(named: "placeholderImage")
 
 struct MyUserDefault {
     
@@ -49,11 +48,15 @@ struct CellIdentifier {
 struct Segues {
     static let kToHomeViewControllerFromSignIn = "toHomeViewControllerFromLogin"
     static let kToChangePasswordFromHome = "toChangePasswordViewControllerFromHome"
+    static let kFlashDetail = "toFlashDetailScreen"
+    static let kListDetail = "toListDetailScreen"
+    static let kJobDetail = "toJobDetail"
 }
 //MARK:- URLs
 struct StaticURL{
     
     static let BASE_URL = "http://repairzone4.in/B2C/"
+    static let IMAGE_URL = "http://repairzone4.in/B2C/files/"
 }
 
 //MARK:- PATH
@@ -68,6 +71,7 @@ struct PATH{
     static let LIST = "\(StaticURL.BASE_URL)ListTab/App_ListTabData"
     static let BULLETIN = "\(StaticURL.BASE_URL)BulletinTab/App_BulletinTabData"
     static let MEDIA = "\(StaticURL.BASE_URL)MediaTab/App_MediaTabData"
+    static let JOB = "\(StaticURL.BASE_URL)Job/App_Get_Job"
 }
 
 //MARK:- Alert Titles
@@ -158,8 +162,11 @@ struct StaticDateFormatter {
     static let FORMATTER_H_A = "h a"
 }
 
-//MARK:- Application Font
+struct StroryBoardIdentifier {
+    static let landingScreenIdentifier = "loginscreen"
+}
 
+//MARK:- Application Font
 struct CustomeFont {
     static let AvenirNext_Regular = "AvenirNext-Regular"
     static let VarelaRound_Regular = "VarelaRound-Regular" //VarelaRound-Regular.ttf

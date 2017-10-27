@@ -10,7 +10,7 @@ import UIKit
 import FTPopOverMenu_Swift
 
 
-class HomeViewController: BaseViewController {
+class HomeViewController: BaseViewController, ItemSelection {
 
     @IBOutlet weak var navigationBar: NavigationBar!    
     @IBOutlet weak var segmentView: STVSegmentButtonView!
@@ -20,6 +20,7 @@ class HomeViewController: BaseViewController {
         super.viewDidLoad()
         navigationItemClick()
         segmentViewDelegateMethod()
+        homeCollectionContainer.delegate = self
     }
 
     override func didReceiveMemoryWarning() {
@@ -65,6 +66,7 @@ class HomeViewController: BaseViewController {
             performSegue(withIdentifier: Segues.kToChangePasswordFromHome, sender: nil)
             break
         case 2:
+            askLogout()
             break
         default:
             break
@@ -77,4 +79,17 @@ class HomeViewController: BaseViewController {
         }
     }
     
+    //MARK:- Segue methods
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == Segues.kFlashDetail {
+            let destinationViewController = segue.destination as! FlashDetailViewController
+            destinationViewController.modelFlash = sender as! ModelFlash
+        } else if segue.identifier == Segues.kListDetail {
+            let destinationViewController = segue.destination as! ListDetailViewController
+            destinationViewController.modelList = sender as! ModelList
+        } else if segue.identifier == Segues.kJobDetail {
+            let destinationViewController = segue.destination as! JobDetailViewController
+            destinationViewController.modelJob = sender as! ModelJob
+        }
+    }
 }

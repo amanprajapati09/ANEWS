@@ -11,6 +11,7 @@ import UIKit
 class FlashCollectionViewCell: UICollectionViewCell, UITableViewDataSource,UITableViewDelegate, NibLoadableView, ReusableView {
 
     @IBOutlet weak var tblView: UITableView!
+    var delegate:ItemSelection?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -38,6 +39,13 @@ class FlashCollectionViewCell: UICollectionViewCell, UITableViewDataSource,UITab
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 75.0
     }
+    
+    //MARK:- UITableview delegate methods 
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        delegate?.didSelecteItem(item: flashList[indexPath.row])
+    }
+    
+    //MARK:- Hepler methods
     private func registerCell() {
         tblView.register(FlashTableViewCell.self)
     }

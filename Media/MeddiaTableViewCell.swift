@@ -17,10 +17,10 @@ class MeddiaTableViewCell: UITableViewCell, NibLoadableView, ReusableView {
     var modelMedia = ModelMedia() {
         didSet {
             lblTitle.text = modelMedia.title!
-            lblDescription.text = modelMedia.descriptionField!            
+            lblDescription.text = modelMedia.descriptionField!
+            imageMedia.sd_setImage(with: modelMedia.imageUrl, placeholderImage: placeholdeImage!)
         }
     }
-    
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -29,7 +29,5 @@ class MeddiaTableViewCell: UITableViewCell, NibLoadableView, ReusableView {
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
     }
-    
 }

@@ -11,6 +11,7 @@ import UIKit
 class ListingCollectionViewCell: UICollectionViewCell, UITableViewDataSource,UITableViewDelegate, NibLoadableView, ReusableView {
     
     @IBOutlet weak var tblView: UITableView!
+    var delegate:ItemSelection?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -32,7 +33,7 @@ class ListingCollectionViewCell: UICollectionViewCell, UITableViewDataSource,UIT
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: ListingTableViewCell.reuseIdentifier)   as! ListingTableViewCell
-        cell.objList = List[indexPath.row]
+        cell.objList = List[indexPath.row]        
         return cell
     }
     
@@ -40,8 +41,23 @@ class ListingCollectionViewCell: UICollectionViewCell, UITableViewDataSource,UIT
         return 150
     }
     
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 50.00
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        return tableView.dequeueReusableHeaderFooterView(withIdentifier: ListingHeader.reuseIdentifier)
+    }
+    
+    //MARK:- UITableview delegate methods 
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        delegate?.didSelecteItem(item: List[indexPath.row])
+    }
+    
+    //MARK:- Helper methods
     private func registerCell() {
         tblView.register(ListingTableViewCell.self)
+        tblView.registerHeaderCell(ListingHeader.self)
     }
     
     private func requestForList() {

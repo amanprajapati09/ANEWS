@@ -23,5 +23,8 @@ class ModelFlash : ModelBaseHome{
         
     }
     
+    var imageUrl:URL! {
+        return URL(string:  StaticURL.IMAGE_URL + image!)
+    }
     
 }

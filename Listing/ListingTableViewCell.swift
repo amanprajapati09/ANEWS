@@ -19,7 +19,8 @@ class ListingTableViewCell: UITableViewCell, NibLoadableView, ReusableView {
         didSet {
             lblTitle.text = objList.title!
             lblDescription.text = objList.descriptionField!
-            lblAddress.text = objList.address!            
+            lblAddress.text = objList.address!
+            imageList.sd_setImage(with: objList.imageUrl, placeholderImage: placeholdeImage!)
         }
     }
     

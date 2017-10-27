@@ -30,4 +30,8 @@ class ModelList : ModelBaseHome {
 		regionId <- map["region_id"]
 		
 	}
+    
+    var imageUrl:URL! {
+        return URL(string:  StaticURL.IMAGE_URL + image!)
+    }
 }

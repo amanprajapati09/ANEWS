@@ -40,8 +40,17 @@ class BulletineCollectionViewCell: UICollectionViewCell, UITableViewDataSource,U
         return 156.0
     }
     
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 50.0
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+       return tableView.dequeueReusableHeaderFooterView(withIdentifier: BullatineHeader.reuseIdentifier)
+    }
+    
     private func registerCell() {
         tblView.register(BullatineTableViewCell.self)
+        tblView.registerHeaderCell(BullatineHeader.self)
     }
 
     private func requestForBullatineList() {

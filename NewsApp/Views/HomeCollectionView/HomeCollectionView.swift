@@ -8,9 +8,14 @@
 
 import UIKit
 
-class HomeCollectionView: UIView, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+protocol ItemSelection {
+    func didSelecteItem(item:ModelBaseHome)
+}
+
+class HomeCollectionView: UIView, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, ItemSelection {
 
    @IBOutlet weak var homeCollectionView: UICollectionView!
+    var delegate:ItemSelection?
     
     override func layoutSubviews() {
         super.layoutSubviews()
@@ -23,25 +28,30 @@ class HomeCollectionView: UIView, UICollectionViewDataSource, UICollectionViewDe
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        var cell:UICollectionViewCell!
+        
         switch indexPath.row {
         case 0:
-            cell = collectionView.dequeueReusableCell(withReuseIdentifier: FlashCollectionViewCell.reuseIdentifier, for: indexPath) as! FlashCollectionViewCell
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FlashCollectionViewCell.reuseIdentifier, for: indexPath) as! FlashCollectionViewCell
+            cell.delegate = self
+            return cell
         case 1:
-            cell = collectionView.dequeueReusableCell(withReuseIdentifier: ListingCollectionViewCell.reuseIdentifier, for: indexPath) as! ListingCollectionViewCell
-            
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ListingCollectionViewCell.reuseIdentifier, for: indexPath) as! ListingCollectionViewCell
+            cell.delegate = self
+            return cell
         case 2:
-            cell = collectionView.dequeueReusableCell(withReuseIdentifier: BulletineCollectionViewCell.reuseIdentifier, for: indexPath) as! BulletineCollectionViewCell
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: BulletineCollectionViewCell.reuseIdentifier, for: indexPath) as! BulletineCollectionViewCell
+            return cell
         
         case 3:
-            cell = collectionView.dequeueReusableCell(withReuseIdentifier: JobCollectionViewCell.reuseIdentifier, for: indexPath) as! JobCollectionViewCell
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: JobCollectionViewCell.reuseIdentifier, for: indexPath) as! JobCollectionViewCell
+            return cell
         case 4:
-            cell = collectionView.dequeueReusableCell(withReuseIdentifier: MediaCollectionViewCell.reuseIdentifier, for: indexPath) as! MediaCollectionViewCell
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MediaCollectionViewCell.reuseIdentifier, for: indexPath) as! MediaCollectionViewCell
+            return cell
         default :
-          cell = collectionView.dequeueReusableCell(withReuseIdentifier: FlashCollectionViewCell.reuseIdentifier, for: indexPath) as! FlashCollectionViewCell
+          let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FlashCollectionViewCell.reuseIdentifier, for: indexPath) as! FlashCollectionViewCell
+            return cell
         }
-        
-        return cell
     }
     
     //MARK:- Collectionview delegate methods 
@@ -55,5 +65,10 @@ class HomeCollectionView: UIView, UICollectionViewDataSource, UICollectionViewDe
         homeCollectionView.register(BulletineCollectionViewCell.self)
         homeCollectionView.register(JobCollectionViewCell.self)
         homeCollectionView.register(MediaCollectionViewCell.self)
+    }
+
+    //MARK:- Delegate Methods
+    func didSelecteItem(item: ModelBaseHome) {
+        delegate?.didSelecteItem(item: item)
     }
 }

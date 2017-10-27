@@ -19,6 +19,7 @@ target 'NewsApp' do
     pod 'GooglePlaces', '= 2.3.0'
     pod 'GoogleMaps', '= 2.3.0'
     pod 'FTPopOverMenu_Swift'
+    pod 'AARatingBar'
     # Pods for NewsApp
     
 end

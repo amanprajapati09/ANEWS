@@ -40,8 +40,17 @@ class MediaCollectionViewCell: UICollectionViewCell,UITableViewDataSource,UITabl
         return 75.0
     }
     
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 50.00
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        return tableView.dequeueReusableHeaderFooterView(withIdentifier: ListingHeader.reuseIdentifier)
+    }
+    
     private func registerCell() {
         tblView.register(MeddiaTableViewCell.self)
+        tblView.registerHeaderCell(ListingHeader.self)
     }
 
     private func requestForMediaList() {

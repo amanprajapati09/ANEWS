@@ -35,6 +35,12 @@ extension UITableView {
         let Nib = UINib(nibName: T.NibName, bundle: nil)
         register(Nib, forCellReuseIdentifier: T.reuseIdentifier)
     }
+    
+    func registerHeaderCell<T: UITableViewHeaderFooterView>(_: T.Type) where T: ReusableView, T: NibLoadableView {
+        
+        let Nib = UINib(nibName: T.NibName, bundle: nil)
+        register(Nib, forHeaderFooterViewReuseIdentifier: T.reuseIdentifier)
+    }
 }
 
 extension UICollectionView{

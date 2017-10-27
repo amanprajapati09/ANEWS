@@ -67,6 +67,17 @@
 		078F46A81F9EE74800F8BE2F /* ModelMediaMain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078F46A61F9EE74800F8BE2F /* ModelMediaMain.swift */; };
 		078F46AB1F9F9E7700F8BE2F /* ModelRequestHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078F46AA1F9F9E7700F8BE2F /* ModelRequestHelper.swift */; };
 		078F46AD1F9FA70000F8BE2F /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078F46AC1F9FA70000F8BE2F /* StringExtension.swift */; };
+		078F46B91FA0FC0000F8BE2F /* ListingHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078F46B81FA0FC0000F8BE2F /* ListingHeader.swift */; };
+		078F46BB1FA0FC0F00F8BE2F /* ListingHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 078F46BA1FA0FC0F00F8BE2F /* ListingHeader.xib */; };
+		078F46BE1FA0FFB200F8BE2F /* BullatineHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078F46BD1FA0FFB200F8BE2F /* BullatineHeader.swift */; };
+		078F46C01FA0FFE400F8BE2F /* BullatineHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 078F46BF1FA0FFE400F8BE2F /* BullatineHeader.xib */; };
+		078F46C31FA11A8D00F8BE2F /* FlashDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078F46C21FA11A8D00F8BE2F /* FlashDetailViewController.swift */; };
+		078F46C51FA1873000F8BE2F /* HomeViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078F46C41FA1873000F8BE2F /* HomeViewControllerExtension.swift */; };
+		078F46C81FA18F3700F8BE2F /* ListDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078F46C71FA18F3700F8BE2F /* ListDetailViewController.swift */; };
+		078F46CD1FA2CA6400F8BE2F /* Job.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078F46CA1FA2CA6400F8BE2F /* Job.swift */; };
+		078F46CE1FA2CA6400F8BE2F /* ModelJob.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078F46CB1FA2CA6400F8BE2F /* ModelJob.swift */; };
+		078F46CF1FA2CA6400F8BE2F /* ModelJobMain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078F46CC1FA2CA6400F8BE2F /* ModelJobMain.swift */; };
+		078F46D61FA2E1E000F8BE2F /* JobDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078F46D51FA2E1E000F8BE2F /* JobDetailViewController.swift */; };
 		07A49D931F86B1F30022562D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07A49D631F86B1F30022562D /* AppDelegate.swift */; };
 		07A49D941F86B1F30022562D /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07A49D641F86B1F30022562D /* Constant.swift */; };
 		07A49D951F86B1F30022562D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 07A49D661F86B1F30022562D /* LaunchScreen.storyboard */; };
@@ -146,6 +157,18 @@
 		078F46A61F9EE74800F8BE2F /* ModelMediaMain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelMediaMain.swift; sourceTree = "<group>"; };
 		078F46AA1F9F9E7700F8BE2F /* ModelRequestHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelRequestHelper.swift; sourceTree = "<group>"; };
 		078F46AC1F9FA70000F8BE2F /* StringExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
+		078F46AE1FA042F000F8BE2F /* NewsApp-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "NewsApp-Bridging-Header.h"; path = "../Views/NewsApp-Bridging-Header.h"; sourceTree = "<group>"; };
+		078F46B81FA0FC0000F8BE2F /* ListingHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListingHeader.swift; sourceTree = "<group>"; };
+		078F46BA1FA0FC0F00F8BE2F /* ListingHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ListingHeader.xib; sourceTree = "<group>"; };
+		078F46BD1FA0FFB200F8BE2F /* BullatineHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BullatineHeader.swift; sourceTree = "<group>"; };
+		078F46BF1FA0FFE400F8BE2F /* BullatineHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BullatineHeader.xib; sourceTree = "<group>"; };
+		078F46C21FA11A8D00F8BE2F /* FlashDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlashDetailViewController.swift; sourceTree = "<group>"; };
+		078F46C41FA1873000F8BE2F /* HomeViewControllerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewControllerExtension.swift; sourceTree = "<group>"; };
+		078F46C71FA18F3700F8BE2F /* ListDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListDetailViewController.swift; sourceTree = "<group>"; };
+		078F46CA1FA2CA6400F8BE2F /* Job.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Job.swift; sourceTree = "<group>"; };
+		078F46CB1FA2CA6400F8BE2F /* ModelJob.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelJob.swift; sourceTree = "<group>"; };
+		078F46CC1FA2CA6400F8BE2F /* ModelJobMain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelJobMain.swift; sourceTree = "<group>"; };
+		078F46D51FA2E1E000F8BE2F /* JobDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JobDetailViewController.swift; sourceTree = "<group>"; };
 		07A49D311F86AFE00022562D /* NewsApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NewsApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		07A49D631F86B1F30022562D /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		07A49D641F86B1F30022562D /* Constant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
@@ -223,6 +246,7 @@
 			isa = PBXGroup;
 			children = (
 				078F46031F952FCC00F8BE2F /* HomeViewController.swift */,
+				078F46C41FA1873000F8BE2F /* HomeViewControllerExtension.swift */,
 			);
 			name = Home;
 			path = Home/Home;
@@ -368,6 +392,7 @@
 		078F46921F9EE48B00F8BE2F /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				078F46C91FA2C9CD00F8BE2F /* Job */,
 				078F46981F9EE6F900F8BE2F /* Media */,
 				078F46971F9EE6E400F8BE2F /* Bulletin */,
 				078F46961F9EE6D100F8BE2F /* List */,
@@ -421,6 +446,59 @@
 			path = HelperModel;
 			sourceTree = "<group>";
 		};
+		078F46B21FA0F2DF00F8BE2F /* TableviewHeader */ = {
+			isa = PBXGroup;
+			children = (
+				078F46BC1FA0FF9400F8BE2F /* BullatineHeader */,
+				078F46B31FA0F2F400F8BE2F /* ListingHeader */,
+			);
+			path = TableviewHeader;
+			sourceTree = "<group>";
+		};
+		078F46B31FA0F2F400F8BE2F /* ListingHeader */ = {
+			isa = PBXGroup;
+			children = (
+				078F46B81FA0FC0000F8BE2F /* ListingHeader.swift */,
+				078F46BA1FA0FC0F00F8BE2F /* ListingHeader.xib */,
+			);
+			path = ListingHeader;
+			sourceTree = "<group>";
+		};
+		078F46BC1FA0FF9400F8BE2F /* BullatineHeader */ = {
+			isa = PBXGroup;
+			children = (
+				078F46BF1FA0FFE400F8BE2F /* BullatineHeader.xib */,
+				078F46BD1FA0FFB200F8BE2F /* BullatineHeader.swift */,
+			);
+			path = BullatineHeader;
+			sourceTree = "<group>";
+		};
+		078F46C11FA1173600F8BE2F /* FlashDetail */ = {
+			isa = PBXGroup;
+			children = (
+				078F46C21FA11A8D00F8BE2F /* FlashDetailViewController.swift */,
+			);
+			path = FlashDetail;
+			sourceTree = "<group>";
+		};
+		078F46C61FA18EB900F8BE2F /* ListDetail */ = {
+			isa = PBXGroup;
+			children = (
+				078F46C71FA18F3700F8BE2F /* ListDetailViewController.swift */,
+			);
+			path = ListDetail;
+			sourceTree = "<group>";
+		};
+		078F46C91FA2C9CD00F8BE2F /* Job */ = {
+			isa = PBXGroup;
+			children = (
+				078F46CA1FA2CA6400F8BE2F /* Job.swift */,
+				078F46CB1FA2CA6400F8BE2F /* ModelJob.swift */,
+				078F46CC1FA2CA6400F8BE2F /* ModelJobMain.swift */,
+			);
+			path = Job;
+			sourceTree = "<group>";
+		};
 		07A49D281F86AFE00022562D = {
 			isa = PBXGroup;
 			children = (
@@ -457,6 +535,7 @@
 		07A49D621F86B1F30022562D /* Application */ = {
 			isa = PBXGroup;
 			children = (
+				078F46AE1FA042F000F8BE2F /* NewsApp-Bridging-Header.h */,
 				07A49D631F86B1F30022562D /* AppDelegate.swift */,
 				078F45FA1F8FD8D200F8BE2F /* ConstantMethods.swift */,
 				07A49D641F86B1F30022562D /* Constant.swift */,
@@ -581,10 +660,13 @@
 		07A49D871F86B1F30022562D /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				078F46C61FA18EB900F8BE2F /* ListDetail */,
+				078F46C11FA1173600F8BE2F /* FlashDetail */,
 				078F46051F953CA100F8BE2F /* ChangePassword */,
 				078F45FF1F9526B700F8BE2F /* Home */,
 				07A49D881F86B1F30022562D /* BaseViewController */,
 				07A49D8A1F86B1F30022562D /* Onboard */,
+				078F46D51FA2E1E000F8BE2F /* JobDetailViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -618,6 +700,7 @@
 		07A49D8D1F86B1F30022562D /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				078F46B21FA0F2DF00F8BE2F /* TableviewHeader */,
 				07A49D8F1F86B1F30022562D /* TableViewCell */,
 				078F465F1F9D14C500F8BE2F /* CollectionViewCell */,
 				078F465C1F9D103F00F8BE2F /* HomeCollectionView */,
@@ -716,6 +799,7 @@
 				TargetAttributes = {
 					07A49D301F86AFE00022562D = {
 						CreatedOnToolsVersion = 8.3.1;
+						LastSwiftMigration = 0830;
 						ProvisioningStyle = Manual;
 					};
 				};
@@ -748,12 +832,14 @@
 				078F468D1F9E62E500F8BE2F /* JobTableViewCell.xib in Resources */,
 				078F46781F9E604100F8BE2F /* MediaCollectionViewCell.xib in Resources */,
 				078F46851F9E62C300F8BE2F /* ListingTableViewCell.xib in Resources */,
+				078F46BB1FA0FC0F00F8BE2F /* ListingHeader.xib in Resources */,
 				07A49DA61F86B1F30022562D /* Info.plist in Resources */,
 				078F46891F9E62D600F8BE2F /* BullatineTableViewCell.xib in Resources */,
 				078F46681F9E5FE200F8BE2F /* FlashCollectionViewCell.xib in Resources */,
 				07A49D951F86B1F30022562D /* LaunchScreen.storyboard in Resources */,
 				078F46701F9E601F00F8BE2F /* BulletineCollectionViewCell.xib in Resources */,
 				078F46811F9E62B200F8BE2F /* FlashTableViewCell.xib in Resources */,
+				078F46C01FA0FFE400F8BE2F /* BullatineHeader.xib in Resources */,
 				07A49DA51F86B1F30022562D /* Assets.xcassets in Resources */,
 				078F466C1F9E600300F8BE2F /* ListingCollectionViewCell.xib in Resources */,
 				07A49D961F86B1F30022562D /* Main.storyboard in Resources */,
@@ -819,9 +905,11 @@
 				078F45EB1F8D464B00F8BE2F /* SignupViewController.swift in Sources */,
 				078F46A81F9EE74800F8BE2F /* ModelMediaMain.swift in Sources */,
 				078F46731F9E603000F8BE2F /* JobCollectionViewCell.swift in Sources */,
+				078F46C51FA1873000F8BE2F /* HomeViewControllerExtension.swift in Sources */,
 				078F460C1F959CF800F8BE2F /* ModelLoginData.swift in Sources */,
 				0784308E1F8C665B000368EB /* APISessionService.swift in Sources */,
 				0784308D1F8C665B000368EB /* APIService.swift in Sources */,
+				078F46CD1FA2CA6400F8BE2F /* Job.swift in Sources */,
 				078F45F31F8DC53D00F8BE2F /* TextFieldExtension.swift in Sources */,
 				07A49DA01F86B1F30022562D /* NVActivityIndicatorView.swift in Sources */,
 				0784308F1F8C665B000368EB /* NetworkService.swift in Sources */,
@@ -837,6 +925,7 @@
 				078F468C1F9E62E500F8BE2F /* JobTableViewCell.swift in Sources */,
 				078F46111F9B920C00F8BE2F /* ChangePasswordViewControllerExtension.swift in Sources */,
 				078F469B1F9EE72000F8BE2F /* ModelFlash.swift in Sources */,
+				078F46C31FA11A8D00F8BE2F /* FlashDetailViewController.swift in Sources */,
 				078F46671F9E5FE200F8BE2F /* FlashCollectionViewCell.swift in Sources */,
 				078F466F1F9E601F00F8BE2F /* BulletineCollectionViewCell.swift in Sources */,
 				07A49D9D1F86B1F30022562D /* NVActivityIndicatorAnimationDelegate.swift in Sources */,
@@ -844,9 +933,11 @@
 				078F46A01F9EE73200F8BE2F /* ModelListMain.swift in Sources */,
 				078F45F11F8DC25400F8BE2F /* ResultModel.swift in Sources */,
 				078F45FB1F8FD8D200F8BE2F /* ConstantMethods.swift in Sources */,
+				078F46CE1FA2CA6400F8BE2F /* ModelJob.swift in Sources */,
 				07A49DA11F86B1F30022562D /* NVActivityIndicatorViewable.swift in Sources */,
 				078F46071F953CC500F8BE2F /* ChangePasswordViewController.swift in Sources */,
 				078F460B1F959CF800F8BE2F /* ModelLogin.swift in Sources */,
+				078F46B91FA0FC0000F8BE2F /* ListingHeader.swift in Sources */,
 				078F465A1F9CDA2600F8BE2F /* STVSegmentButtonCell.swift in Sources */,
 				078F46AD1F9FA70000F8BE2F /* StringExtension.swift in Sources */,
 				07A49D931F86B1F30022562D /* AppDelegate.swift in Sources */,
@@ -862,8 +953,10 @@
 				078F46771F9E604100F8BE2F /* MediaCollectionViewCell.swift in Sources */,
 				078F46041F952FCC00F8BE2F /* HomeViewController.swift in Sources */,
 				078F45F91F8DC87E00F8BE2F /* SignupViewModel.swift in Sources */,
+				078F46C81FA18F3700F8BE2F /* ListDetailViewController.swift in Sources */,
 				07A49D9E1F86B1F30022562D /* NVActivityIndicatorPresenter.swift in Sources */,
 				078F46841F9E62C300F8BE2F /* ListingTableViewCell.swift in Sources */,
+				078F46CF1FA2CA6400F8BE2F /* ModelJobMain.swift in Sources */,
 				078F45FE1F92278500F8BE2F /* UIButtonExtension.swift in Sources */,
 				078F460D1F959CF800F8BE2F /* ModelUser.swift in Sources */,
 				078F45E21F8D27D600F8BE2F /* AppdelegateExtension.swift in Sources */,
@@ -873,7 +966,9 @@
 				078F469C1F9EE72000F8BE2F /* ModelFlashMain.swift in Sources */,
 				078F46901F9E62F300F8BE2F /* MeddiaTableViewCell.swift in Sources */,
 				078F460F1F9B918400F8BE2F /* ChangePasswordViewModel.swift in Sources */,
+				078F46D61FA2E1E000F8BE2F /* JobDetailViewController.swift in Sources */,
 				078F469F1F9EE73200F8BE2F /* ModelList.swift in Sources */,
+				078F46BE1FA0FFB200F8BE2F /* BullatineHeader.swift in Sources */,
 				07A49D9F1F86B1F30022562D /* NVActivityIndicatorShape.swift in Sources */,
 				078F465E1F9D106300F8BE2F /* HomeCollectionView.swift in Sources */,
 			);
@@ -980,12 +1075,15 @@
 			baseConfigurationReference = 633795B34E696785A554349D /* Pods-NewsApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "$(SRCROOT)/NewsApp/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.newsapp.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "NewsApp/Views/NewsApp-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -995,12 +1093,14 @@
 			baseConfigurationReference = 2FBE3D050966A30FBD219437 /* Pods-NewsApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "$(SRCROOT)/NewsApp/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.newsapp.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "NewsApp/Views/NewsApp-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;

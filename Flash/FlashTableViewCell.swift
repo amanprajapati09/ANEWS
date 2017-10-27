@@ -25,7 +25,8 @@ class FlashTableViewCell: UITableViewCell, NibLoadableView, ReusableView {
             lblDescription.text = modelFlash.descriptionField!
             lblDate.text = modelFlash.modified?.convertToDateString()
             lblTime.text = modelFlash.modified?.convertToTimeString()
-//            imageFlash.d_setImage(with: imagePath, placeholderImage: UIImage.init(named: ""))
+
+            imageFlash.sd_setImage(with: modelFlash.imageUrl, placeholderImage: placeholdeImage!)
         }
     }
     

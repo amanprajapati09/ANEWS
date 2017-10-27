@@ -225,4 +225,23 @@ class APIService : NSObject {
         }
     }
     
+    func jobList(parameters params: [String: AnyObject]?, success:@escaping (_ result: ModelJobMain) -> (Void), failure:@escaping Failure) -> Void
+    {
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true
+        
+        NetworkService.shared.callWebService(method: .get, path: PATH.JOB, params: params, type: JSONEncoding()){
+            (completion:DataResponse<ModelJobMain>) in
+            UIApplication.shared.isNetworkActivityIndicatorVisible = false
+            
+            if !self.handleError(error: completion.result.error as NSError?, failure: failure, responseCode: completion.response?.statusCode)
+            {
+                success(completion.result.value!)
+            } else {
+                
+                if let msg = completion.result.value?.message {
+                    failure(msg)
+                }
+            }
+        }
+    }
 }
