@@ -8,10 +8,16 @@
 
 import UIKit
 
-class ListingCollectionViewCell: UICollectionViewCell, UITableViewDataSource,UITableViewDelegate, NibLoadableView, ReusableView {
+class ListingCollectionViewCell: UICollectionViewCell, UITableViewDataSource,UITableViewDelegate, NibLoadableView, ReusableView, HeaderClickDelegate {
     
     @IBOutlet weak var tblView: UITableView!
     var delegate:ItemSelection?
+    
+    var selectedCategory:Category? {
+        didSet{
+            filterData()
+        }
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -25,15 +31,31 @@ class ListingCollectionViewCell: UICollectionViewCell, UITableViewDataSource,UIT
         }
     }
     
+    var filterList = [ModelList]() {
+        didSet {
+            tblView.reloadData()
+        }
+    }
+
+    
+    private func filterData() {
+        guard (selectedCategory != nil) else {
+            return
+        }
+        
+        filterList = List.filter({ (object) -> Bool in
+            return object.categoryId == selectedCategory?.id
+        })
+    }
     
     //MARK:- UITableview datasource methods
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return List.count
+        return filterList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: ListingTableViewCell.reuseIdentifier)   as! ListingTableViewCell
-        cell.objList = List[indexPath.row]        
+        cell.objList = filterList[indexPath.row]
         return cell
     }
     
@@ -46,7 +68,9 @@ class ListingCollectionViewCell: UICollectionViewCell, UITableViewDataSource,UIT
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        return tableView.dequeueReusableHeaderFooterView(withIdentifier: ListingHeader.reuseIdentifier)
+        let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: ListingHeader.reuseIdentifier) as! ListingHeader
+        header.delegate = self
+        return header
     }
     
     //MARK:- UITableview delegate methods 
@@ -69,6 +93,7 @@ class ListingCollectionViewCell: UICollectionViewCell, UITableViewDataSource,UIT
         APIService.sharedInstance.list(parameters: nil, success: { (result) -> (Void) in
             if (result.status) {
                 self.List = result.modelList
+                self.filterList = result.modelList
                 ModelRequestList.sharedObject.modelList = result
             } else {
                 showTitleBarAlert(message: result.message)
@@ -90,6 +115,15 @@ class ListingCollectionViewCell: UICollectionViewCell, UITableViewDataSource,UIT
             
         } else {
             return true
+        }
+    }
+    
+    //HeaderClick Delegate
+    func didSelecteHeader(isRegion: Bool) {
+        if isRegion {
+            delegate?.didSelectHeaderItem(headerValue: .eRegion)
+        } else {
+            delegate?.didSelectHeaderItem(headerValue: .eListing)
         }
     }
 }

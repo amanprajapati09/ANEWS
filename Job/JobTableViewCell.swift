@@ -24,7 +24,7 @@ class JobTableViewCell: UITableViewCell, NibLoadableView, ReusableView {
             lblNumberofPost.text = "Post : " + modelJob.noOfPost!
             lblCompanyName.text = "Job in : " + modelJob.firmName!
             lblInterviewDate.text = modelJob.interviewDate!
-            lblPostDate.text = modelJob.modified!
+            lblPostDate.text = modelJob.modified
         }
     }
     

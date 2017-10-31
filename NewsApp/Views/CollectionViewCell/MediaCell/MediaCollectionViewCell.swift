@@ -8,9 +8,16 @@
 
 import UIKit
 
-class MediaCollectionViewCell: UICollectionViewCell,UITableViewDataSource,UITableViewDelegate, NibLoadableView, ReusableView {
+class MediaCollectionViewCell: UICollectionViewCell,UITableViewDataSource,UITableViewDelegate, NibLoadableView, ReusableView, HeaderClickDelegate {
 
     @IBOutlet weak var tblView: UITableView!
+     var delegate:ItemSelection?
+    
+    var selectegCategory:Category? {
+        didSet {
+            filterUsingCategory()
+        }
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -24,15 +31,31 @@ class MediaCollectionViewCell: UICollectionViewCell,UITableViewDataSource,UITabl
         }
     }
     
+    var filterList = [ModelMedia]() {
+        didSet {
+            tblView.reloadData()
+        }
+    }
+    
+    func filterUsingCategory()  {
+        guard selectegCategory != nil else {
+            filterList = mediaList
+            return
+        }
+        
+        filterList = mediaList.filter({ (object) -> Bool in
+            return object.categoryId == selectegCategory?.id
+        })
+    }
     
     //MARK:- UITableview datasource methods 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return mediaList.count
+        return filterList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: MeddiaTableViewCell.reuseIdentifier)   as! MeddiaTableViewCell
-        cell.modelMedia = mediaList[indexPath.row]
+        cell.modelMedia = filterList[indexPath.row]
         return cell
     }
     
@@ -45,7 +68,15 @@ class MediaCollectionViewCell: UICollectionViewCell,UITableViewDataSource,UITabl
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        return tableView.dequeueReusableHeaderFooterView(withIdentifier: ListingHeader.reuseIdentifier)
+
+        let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: ListingHeader.reuseIdentifier) as! ListingHeader
+        header.delegate = self
+        return header
+    }
+    
+    //MARK:- UITableview delegate methods
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        delegate?.didSelecteItem(item: mediaList[indexPath.row])
     }
     
     private func registerCell() {
@@ -62,6 +93,7 @@ class MediaCollectionViewCell: UICollectionViewCell,UITableViewDataSource,UITabl
         APIService.sharedInstance.mediaList(parameters: nil, success: { (result) -> (Void) in
             if (result.status) {
                 self.mediaList = result.MediaList
+                self.filterList = result.MediaList
                 ModelRequestMedia.sharedObject.modelMedia = result
             }
         }) { (error) -> (Void) in
@@ -84,4 +116,8 @@ class MediaCollectionViewCell: UICollectionViewCell,UITableViewDataSource,UITabl
         }
     }
 
+    //HeaderClick Delegate 
+    func didSelecteHeader(isRegion: Bool) {
+        delegate?.didSelectHeaderItem(headerValue: .eMedia)
+    }
 }

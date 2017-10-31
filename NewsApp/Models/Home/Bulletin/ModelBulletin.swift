@@ -14,8 +14,8 @@ class ModelBulletin : ModelBaseHome {
 	
 	var descriptionField : String?
 	
-	var mobileNo : String?
-	var webLink : String?
+	var mobileNo : String = ""
+	var webLink : String = ""
 
 
     override func mapping(map:Map) {

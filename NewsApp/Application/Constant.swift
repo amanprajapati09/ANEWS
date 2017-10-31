@@ -51,6 +51,7 @@ struct Segues {
     static let kFlashDetail = "toFlashDetailScreen"
     static let kListDetail = "toListDetailScreen"
     static let kJobDetail = "toJobDetail"
+    static let categoryView = "toCategorySelectionViewControllerFromHome"
 }
 //MARK:- URLs
 struct StaticURL{
@@ -62,16 +63,17 @@ struct StaticURL{
 //MARK:- PATH
 struct PATH{
     
-    static let SIGNUP = "User/\(StaticURL.BASE_URL)App_Registration"
-    static let LOGIN = "User/\(StaticURL.BASE_URL)App_login"
-    static let FORGOT_PASSWORD = "User/\(StaticURL.BASE_URL)App_forgot_password"
-    static let RESET_PASSWORD = "User/\(StaticURL.BASE_URL)App_ChangePassword"
+    static let SIGNUP = "\(StaticURL.BASE_URL)User/App_Registration"
+    static let LOGIN = "\(StaticURL.BASE_URL)User/App_login"
+    static let FORGOT_PASSWORD = "\(StaticURL.BASE_URL)User/App_forgot_password"
+    static let RESET_PASSWORD = "\(StaticURL.BASE_URL)User/App_ChangePassword"
     
     static let FLASH = "\(StaticURL.BASE_URL)FlashTab/App_FlashTabData"
     static let LIST = "\(StaticURL.BASE_URL)ListTab/App_ListTabData"
     static let BULLETIN = "\(StaticURL.BASE_URL)BulletinTab/App_BulletinTabData"
     static let MEDIA = "\(StaticURL.BASE_URL)MediaTab/App_MediaTabData"
     static let JOB = "\(StaticURL.BASE_URL)Job/App_Get_Job"
+    static let CATEGORY = "\(StaticURL.BASE_URL)Category/App_GetCategoryRegion"
 }
 
 //MARK:- Alert Titles
@@ -164,6 +166,7 @@ struct StaticDateFormatter {
 
 struct StroryBoardIdentifier {
     static let landingScreenIdentifier = "loginscreen"
+    static let categoryViewController = "categorySelectionViewController"
 }
 
 //MARK:- Application Font
@@ -228,155 +231,16 @@ protocol Color_Enum_protocol {
     var color: UIColor { get }
 }
 
-public enum activityType: Int, Description_Enum_protocol{
-    case Practice = 0
-    case Game = 1
-    case Scrimmage = 2
-    case Outside_of_Game = 3
-    
-    var description: String {
-        switch self {
-        case .Practice: return "Practice"
-        case .Game: return "Game"
-        case .Scrimmage : return "Scrimmage"
-        case .Outside_of_Game: return "Outside of Game"
-        }
-    }
-}
-
-public enum ampm: Int, Description_Enum_protocol {
-    case am = 0
-    case pm = 1
-    
-    var description: String {
-        switch self {
-        case .am: return "AM"
-        case .pm: return "PM"
-        }
-    }
-}
-
-public enum locationType: Int, Description_Enum_protocol{
-    case Indoor = 0
-    case Outdoor = 1
-    
-    var description: String {
-        switch self {
-        case .Indoor: return "Indoor"
-        case .Outdoor: return "Outdoor"
-        }
-    }
-}
-
-public enum locationSurface: Int, Description_Enum_protocol{
-    case Grass = 0
-    case Turf = 1
-    case Pavement = 2
-    case Wood = 3
-    case Clay = 4
-    case Ice = 5
-    case Mat = 6
-    
-    var description: String {
-        switch self {
-        case .Grass: return "Grass"
-        case .Turf: return "Turf"
-        case .Pavement: return "Pavement"
-        case .Wood: return "Wood"
-        case .Clay: return "Clay"
-        case .Ice: return "Ice"
-        case .Mat: return "Mat"
-        }
-    }
-}
-
-public enum breathingStatus: Int, Description_Enum_protocol{
-    case Normal = 0
-    case Abnormal = 1
-    case Elevated = 2
-    
-    var description: String {
-        switch self {
-        case .Normal: return "Normal"
-        case .Abnormal: return "Abnormal"
-        case .Elevated: return "Elevated"
-        }
-    }
-}
-
-public enum pulseStatus: Int, Description_Enum_protocol{
-    case Normal = 0
-    case Abnormal = 1
-    case Elevated = 2
-    case Low = 3
-    
-    var description: String {
-        switch self {
-        case .Normal: return "Normal"
-        case .Abnormal: return "Abnormal"
-        case .Elevated: return "Elevated"
-        case .Low: return "Low"
-        }
-    }
-}
-
-public enum participationStatus: Int, Description_Enum_protocol{
-    case ClearToPractice = 0
-    case ClearToPlay = 1
-    case CannotPlay = 2
-    
-    var description: String {
-        switch self {
-        case .ClearToPractice: return "Cleared to practice"
-        case .ClearToPlay: return "Clear to Play"
-        case .CannotPlay: return "Cannot Play"
-        }
-    }
-}
-
-public enum referToList: Int, Description_Enum_protocol{
-    case Physcian = 0
-    case NotReferred = 1
-    
-    var description: String {
-        switch self {
-        case .Physcian: return "Physician"
-        case .NotReferred: return "Not Referred"
-        }
-    }
-}
-
-public enum referList: Int, Description_Enum_protocol{
-    case Physcian = 0
-    case NotReferred = 1
-    
-    var description: String {
-        switch self {
-        case .Physcian: return "Physcian"
-        case .NotReferred: return "Not Referred"
-        }
-    }
-}
-
-enum FILE_FORMAT:Int, Description_Enum_protocol{
-    case pdf = 0
-    case image = 1
-    
-    var description: String {
-        switch self {
-        case .pdf: return "application/pdf"
-        case .image: return "image/jpeg"
-        }
-    }
-}
-
-enum MyError: Error {
-    case FoundNil(String)
+enum headerEnum: String {
+   
+    case eRegion = "region"
+    case eListing = "listing"
+    case eMedia = "mediad"
+    case eBulletin = "bulletin"
+    case eJob = "job"
 }
 
 //MARK:- Application extention
-
-
 extension String {
     
     func widthOfString(usingFont font: UIFont) -> CGFloat {

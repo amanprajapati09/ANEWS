@@ -37,7 +37,7 @@ class ModelRequestJob {
     
     static let sharedObject = ModelRequestJob()
     var isRequestSend:Bool = false
-    var modelJob:ModelFlashMain?
+    var modelJob:ModelJobMain?
     
 }
 
@@ -46,5 +46,11 @@ class ModelRequestMedia {
     static let sharedObject = ModelRequestMedia()
     var isRequestSend:Bool = false
     var modelMedia:ModelMediaMain?
+    
+}
+
+class ModelCategorySingleTone {
+    static let sharedObject = ModelCategorySingleTone()
+    var objCategory:CategoryMain?
     
 }

@@ -244,4 +244,24 @@ class APIService : NSObject {
             }
         }
     }
+    
+    func CategoryList(parameters params: [String: AnyObject]?, success:@escaping (_ result: CategoryMain) -> (Void), failure:@escaping Failure) -> Void
+    {
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true
+        
+        NetworkService.shared.callWebService(method: .get, path: PATH.CATEGORY, params: params, type: JSONEncoding()){
+            (completion:DataResponse<CategoryMain>) in
+            UIApplication.shared.isNetworkActivityIndicatorVisible = false
+            
+            if !self.handleError(error: completion.result.error as NSError?, failure: failure, responseCode: completion.response?.statusCode)
+            {
+                success(completion.result.value!)
+            } else {
+                
+                if let msg = completion.result.value?.message {
+                    failure(msg)
+                }
+            }
+        }
+    }
 }

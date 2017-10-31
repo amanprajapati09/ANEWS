@@ -24,6 +24,7 @@ class ListDetailViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         prepareView()
+        addGesture()
         // Do any additional setup after loading the view.
     }
 
@@ -34,10 +35,32 @@ class ListDetailViewController: BaseViewController {
 
     private func prepareView() {
         imageView.sd_setImage(with: modelList.imageUrl, placeholderImage: placeholdeImage!)
-        lblTitle.text = modelList.title!
-        lblName.text =  modelList.fullName!
+        lblTitle.text = modelList.title
+        lblName.text =  modelList.fullName
         lblContactNo.text = modelList.mobileNo
-        lblEmail.text = modelList.emailId!
-        lblAddress.text = modelList.address!
+        lblEmail.text = modelList.emailId
+        lblAddress.text = modelList.address
+    }
+    
+    private func addGesture() {
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(askToSaveImage))
+        imageView.addGestureRecognizer(tapGesture)
+    }
+    
+    func askToSaveImage()  {
+        let alert = UIAlertController(title: "Warning", message: "Are you sure want to save image to photos ?", preferredStyle: .alert)
+        
+        let actionOk = UIAlertAction(title: "Ok", style: .default) { (action) in
+            CustomPhotoAlbum.sharedInstance.save(image: self.imageView.image!)
+        }
+        
+        let actionCancel = UIAlertAction(title: "Cancel", style: .destructive) { (action) in
+            
+        }
+        
+        alert.addAction(actionOk)
+        alert.addAction(actionCancel)
+        
+        present(alert, animated: true, completion: nil)
     }
 }

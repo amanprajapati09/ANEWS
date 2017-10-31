@@ -8,9 +8,9 @@
 
 import UIKit
 import FTPopOverMenu_Swift
+import SafariServices
 
-
-class HomeViewController: BaseViewController, ItemSelection {
+class HomeViewController: BaseViewController, ItemSelection, SFSafariViewControllerDelegate, CategorySelectionDelegate {
 
     @IBOutlet weak var navigationBar: NavigationBar!    
     @IBOutlet weak var segmentView: STVSegmentButtonView!
@@ -18,6 +18,8 @@ class HomeViewController: BaseViewController, ItemSelection {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        requestForCategory()
         navigationItemClick()
         segmentViewDelegateMethod()
         homeCollectionContainer.delegate = self
@@ -30,7 +32,7 @@ class HomeViewController: BaseViewController, ItemSelection {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        segmentView.buttonArray = ["FLASH","LISTING","BULLETING","JOB-HIRE","MEDIA"]
+        segmentView.buttonArray = ["FLASH","LISTING","BULLETIN","JOB-HIRE","MEDIA"]
     }
 
     private func navigationItemClick() {
@@ -75,6 +77,7 @@ class HomeViewController: BaseViewController, ItemSelection {
     
     private func segmentViewDelegateMethod() {
         segmentView.segmentButtonSelectAtIndex { (index) in
+                self.homeCollectionContainer.selectedCategory = nil
                 self.homeCollectionContainer.homeCollectionView.scrollToItem(at: IndexPath(row: index, section: 0), at: .centeredHorizontally, animated: true)
         }
     }
@@ -90,6 +93,12 @@ class HomeViewController: BaseViewController, ItemSelection {
         } else if segue.identifier == Segues.kJobDetail {
             let destinationViewController = segue.destination as! JobDetailViewController
             destinationViewController.modelJob = sender as! ModelJob
+        } else if segue.identifier == Segues.categoryView {
+            let destinationViewController = segue.destination as! CategorySelectionViewController
+            destinationViewController.titleString = "Select"
+            destinationViewController.delegate = self
+            destinationViewController.categoryList = sender as! [Category]
         }
     }
+
 }

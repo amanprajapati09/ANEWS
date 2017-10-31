@@ -12,11 +12,11 @@ import ObjectMapper
 class ModelBaseHome: BaseModel {
 
     var id : String?
-    var created : String?
-    var modified : String?
-    var listStatus : String?
-    var title : String?
-    var categoryId : String?
+    var created : String = ""
+    var modified : String = ""
+    var listStatus : String = ""
+    var title : String = ""
+    var categoryId : String = ""
     
     override func mapping(map:Map) {
         super.mapping(map: map)

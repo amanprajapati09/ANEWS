@@ -19,12 +19,11 @@ class BullatineTableViewCell: UITableViewCell, NibLoadableView, ReusableView {
     //MARK:- variables 
     var modelBullatine = ModelBulletin() {
         didSet {
-            lblTitle.text = modelBullatine.title!
-            lblDescription.text = modelBullatine.descriptionField!
-            btnMobileNumber.titleLabel?.text = modelBullatine.mobileNo!
+            lblTitle.text = modelBullatine.title
+            lblDescription.text = modelBullatine.descriptionField
+            btnMobileNumber.setTitle(modelBullatine.mobileNo, for: .normal)
         }
     }
-    
     
     override func awakeFromNib() {
         super.awakeFromNib()

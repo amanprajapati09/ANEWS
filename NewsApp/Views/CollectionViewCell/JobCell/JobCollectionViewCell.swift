@@ -8,26 +8,55 @@
 
 import UIKit
 
-class JobCollectionViewCell: UICollectionViewCell, UITableViewDataSource,UITableViewDelegate,NibLoadableView, ReusableView {
+class JobCollectionViewCell: UICollectionViewCell, UITableViewDataSource,UITableViewDelegate,NibLoadableView, ReusableView, HeaderClickDelegate {
 
     @IBOutlet weak var tblView: UITableView!
     var delegate:ItemSelection?
     
-    var jobList = [Job]()
+    var jobList = [ModelJob]() {
+        didSet {
+            filterUsingCategory()
+            tblView.reloadData()
+        }
+    }
+    
+    var filterList = [ModelJob]() {
+        didSet {
+            tblView.reloadData()
+        }
+    }
+    
+    var selectedCategory:Category? {
+        didSet {
+            tblView.reloadData()
+        }
+    }
+
     
     override func awakeFromNib() {
         super.awakeFromNib()
         registerCell()
+        requestForJobList()
     }
 
+    func filterUsingCategory()  {
+        guard selectedCategory != nil else {
+            return
+        }
+        
+        filterList = jobList.filter({ (object) -> Bool in
+            return object.categoryId == selectedCategory?.id
+        })
+    }
+    
     //MARK:- UITableview datasource methods
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return jobList.count
+        return filterList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: JobTableViewCell.reuseIdentifier)   as! JobTableViewCell
-        cell.modelJob = jobList[indexPath.row].modelJob
+        cell.modelJob = filterList[indexPath.row]
         return cell
     }
     
@@ -40,17 +69,60 @@ class JobCollectionViewCell: UICollectionViewCell, UITableViewDataSource,UITable
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        return tableView.dequeueReusableHeaderFooterView(withIdentifier: ListingHeader.reuseIdentifier)
+        let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: ListingHeader.reuseIdentifier) as! ListingHeader
+        header.delegate = self
+        return header
     }
     
     //MARK:- UITableview delegate methods
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        delegate?.didSelecteItem(item: jobList[indexPath.row].modelJob!)
+        delegate?.didSelecteItem(item: jobList[indexPath.row])
     }
     
+    //HeaderClick Delegate
+    func didSelecteHeader(isRegion: Bool) {
+        if isRegion {
+            delegate?.didSelectHeaderItem(headerValue: .eRegion)
+        } else {
+            delegate?.didSelectHeaderItem(headerValue: .eJob)
+        }
+    }
     
     private func registerCell() {
         tblView.register(JobTableViewCell.self)
         tblView.registerHeaderCell(ListingHeader.self)
     }
+    
+    private func requestForJobList() {
+        
+        guard checkForRequest() else {
+            return
+        }
+        
+        APIService.sharedInstance.jobList(parameters: nil, success: { (result) -> (Void) in
+            if (result.status) {
+                self.jobList = result.jobList!
+                self.filterList = result.jobList!
+                ModelRequestJob.sharedObject.modelJob = result
+            }
+        }) { (error) -> (Void) in
+            showTitleBarAlert(message: error)
+        }
+    }
+    
+    //Check if requst is required or not
+    private func checkForRequest() -> Bool {
+        
+        if ModelRequestBullatine.sharedObject.modelBullatine != nil {
+            if ModelRequestBullatine.sharedObject.isRequestSend {
+                return false
+            } else {
+                return true
+            }
+            
+        } else {
+            return true
+        }
+    }
+
 }

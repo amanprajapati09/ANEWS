@@ -11,12 +11,12 @@ import ObjectMapper
 
 class ModelJobMain : ModelBaseHome{
 
-	var job : [Job]?
+	var jobList : [ModelJob]?
 	
 	override func mapping(map: Map)
 	{
         super.mapping(map: map)
-		job <- map["data"]
+		jobList <- map["data"]
     }
 
 }

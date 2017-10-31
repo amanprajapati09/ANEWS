@@ -21,10 +21,10 @@ class FlashTableViewCell: UITableViewCell, NibLoadableView, ReusableView {
     //MARK:- variables
     var modelFlash:ModelFlash! {
         didSet {
-            lblTitle.text = modelFlash.title!
+            lblTitle.text = modelFlash.title
             lblDescription.text = modelFlash.descriptionField!
-            lblDate.text = modelFlash.modified?.convertToDateString()
-            lblTime.text = modelFlash.modified?.convertToTimeString()
+            lblDate.text = modelFlash.modified.convertToDateString()
+            lblTime.text = modelFlash.modified.convertToTimeString()
 
             imageFlash.sd_setImage(with: modelFlash.imageUrl, placeholderImage: placeholdeImage!)
         }

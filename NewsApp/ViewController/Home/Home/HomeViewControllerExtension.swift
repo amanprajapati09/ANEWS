@@ -8,6 +8,7 @@
 //
 
 import Foundation
+import SafariServices
 
 extension HomeViewController {
     
@@ -20,7 +21,47 @@ extension HomeViewController {
             performSegue(withIdentifier: Segues.kListDetail, sender: item)
         } else if item.isKind(of: ModelJob.self) {
             performSegue(withIdentifier: Segues.kJobDetail, sender: item)
+        } else if item.isKind(of: ModelBulletin.self) {
+            let bulletine = item as! ModelBulletin
+            openSafariview(urlString: bulletine.webLink)
+        } else if item.isKind(of: ModelMedia.self) {
+            let media = item as! ModelMedia
+            openSafariview(urlString: media.link!)
         }
+    }
+    
+    func didSelectHeaderItem(headerValue: headerEnum) {
+        guard ModelCategorySingleTone.sharedObject.objCategory != nil else {
+            return
+        }
+        switch headerValue {
+        case .eBulletin:
+            prepareCategory(categoryList: (ModelCategorySingleTone.sharedObject.objCategory?.data?.bullatineList)!)
+            break;
+        case .eRegion:
+            prepareCategory(categoryList: (ModelCategorySingleTone.sharedObject.objCategory?.data?.regionList)!)
+            
+            break;
+        case .eJob:
+            prepareCategory(categoryList: (ModelCategorySingleTone.sharedObject.objCategory?.data?.jobList)!)
+            
+            break;
+        case .eListing:
+            prepareCategory(categoryList: (ModelCategorySingleTone.sharedObject.objCategory?.data?.liostingList)!)
+            
+            break
+        case .eMedia:
+            prepareCategory(categoryList: (ModelCategorySingleTone.sharedObject.objCategory?.data?.mediaList)!)
+            
+            break;
+        default:
+            break
+        }
+        
+    }
+    
+    private func prepareCategory(categoryList:[Category]) {
+        performSegue(withIdentifier: Segues.categoryView, sender: categoryList)
     }
     
     //MARK:- logout alert
@@ -40,5 +81,25 @@ extension HomeViewController {
     
     internal func logout() {
         UIApplication.shared.keyWindow?.rootViewController = MainainStoryboard.instantiateViewController(withIdentifier: StroryBoardIdentifier.landingScreenIdentifier)
+    }
+    
+    private func openSafariview(urlString:String) {
+        let safariVC = SFSafariViewController(url: URL(string: urlString)!)
+        self.present(safariVC, animated: true, completion: nil)
+        safariVC.delegate = self
+    }
+    
+    internal func requestForCategory() {
+        
+        APIService.sharedInstance.CategoryList(parameters: nil, success: { (result) -> (Void) in
+            ModelCategorySingleTone.sharedObject.objCategory = result
+        }) { (error) -> (Void) in
+            print("Error")
+        }
+    }
+    
+    //MARK:- category selection delegate methods 
+    func didSelectCagtegory(seletedCategory: Category) {
+        homeCollectionContainer.selectedCategory = seletedCategory
     }
 }

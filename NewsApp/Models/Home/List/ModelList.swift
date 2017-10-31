@@ -11,13 +11,13 @@ import ObjectMapper
 
 class ModelList : ModelBaseHome {
 
-	var address : String?
-	var descriptionField : String?
-	var emailId : String?
-	var fullName : String?
-	var image : String?
-	var mobileNo : String?
-	var regionId : String?
+	var address : String = ""
+	var descriptionField : String = ""
+	var emailId : String = ""
+	var fullName : String = ""
+	var image : String = ""
+	var mobileNo : String = ""
+	var regionId : String = ""
 
     override func mapping(map:Map) {
         super.mapping(map: map)
@@ -32,6 +32,6 @@ class ModelList : ModelBaseHome {
 	}
     
     var imageUrl:URL! {
-        return URL(string:  StaticURL.IMAGE_URL + image!)
+        return URL(string:  StaticURL.IMAGE_URL + image)
     }
 }

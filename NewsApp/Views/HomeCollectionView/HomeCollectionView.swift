@@ -10,12 +10,19 @@ import UIKit
 
 protocol ItemSelection {
     func didSelecteItem(item:ModelBaseHome)
+    func didSelectHeaderItem(headerValue:headerEnum)
 }
 
 class HomeCollectionView: UIView, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, ItemSelection {
 
    @IBOutlet weak var homeCollectionView: UICollectionView!
     var delegate:ItemSelection?
+    
+    var selectedCategory:Category? {
+        didSet {
+            homeCollectionView.reloadData()
+        }
+    }
     
     override func layoutSubviews() {
         super.layoutSubviews()
@@ -36,17 +43,23 @@ class HomeCollectionView: UIView, UICollectionViewDataSource, UICollectionViewDe
             return cell
         case 1:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ListingCollectionViewCell.reuseIdentifier, for: indexPath) as! ListingCollectionViewCell
+            cell.selectedCategory = selectedCategory
             cell.delegate = self
             return cell
         case 2:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: BulletineCollectionViewCell.reuseIdentifier, for: indexPath) as! BulletineCollectionViewCell
+            cell.selectedCategory = selectedCategory
+            cell.delegate = self
             return cell
         
         case 3:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: JobCollectionViewCell.reuseIdentifier, for: indexPath) as! JobCollectionViewCell
+            cell.selectedCategory = selectedCategory
             return cell
         case 4:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MediaCollectionViewCell.reuseIdentifier, for: indexPath) as! MediaCollectionViewCell
+            cell.selectegCategory = selectedCategory
+            cell.delegate = self
             return cell
         default :
           let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FlashCollectionViewCell.reuseIdentifier, for: indexPath) as! FlashCollectionViewCell
@@ -71,4 +84,9 @@ class HomeCollectionView: UIView, UICollectionViewDataSource, UICollectionViewDe
     func didSelecteItem(item: ModelBaseHome) {
         delegate?.didSelecteItem(item: item)
     }
+    
+    func didSelectHeaderItem(headerValue: headerEnum) {
+        delegate?.didSelectHeaderItem(headerValue: headerValue)
+    }
+
 }

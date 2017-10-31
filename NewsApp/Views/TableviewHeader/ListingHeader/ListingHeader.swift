@@ -8,7 +8,19 @@
 
 import UIKit
 
+protocol HeaderClickDelegate {
+    func didSelecteHeader(isRegion:Bool)
+}
+
 class ListingHeader: UITableViewHeaderFooterView, NibLoadableView, ReusableView {
 
-
+    var delegate:HeaderClickDelegate?
+    
+    @IBAction func btnCategoryClick(_ sender: Any) {
+        delegate?.didSelecteHeader(isRegion: false)
+    }
+    
+    @IBAction func btnRegionClick(_ sender: Any) {
+        delegate?.didSelecteHeader(isRegion: true)
+    }
 }

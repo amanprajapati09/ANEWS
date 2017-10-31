@@ -10,5 +10,10 @@ import UIKit
 
 class BullatineHeader: UITableViewHeaderFooterView, NibLoadableView, ReusableView {
 
+    var delegate:HeaderClickDelegate?
+    
+    @IBAction func btnCategoryClick(_ sender: Any) {
+        delegate?.didSelecteHeader(isRegion: false)
+    }
 
 }

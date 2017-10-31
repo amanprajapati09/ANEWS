@@ -49,7 +49,8 @@ class SignupViewController: BaseViewController, UITextFieldDelegate, GMSPlacePic
     }
     
     private func prepareView() {
-        txtAddress.textField.delegate = self 
+        txtAddress.textField.delegate = self
+        txtPassword.textField.isSecureTextEntry = true
     }
     
     private func requestForSignup() {
@@ -66,6 +67,7 @@ class SignupViewController: BaseViewController, UITextFieldDelegate, GMSPlacePic
                 showNotificationAlert(type: .success, title: "Success", message: "Signup completed")
                 self.navigationController?.popViewController(animated: true)
             } else {
+                self.hideLoading()
                showNotificationAlert(type: .error, title: "Error", message: result.message)
             }
             

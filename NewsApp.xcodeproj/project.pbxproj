@@ -78,6 +78,11 @@
 		078F46CE1FA2CA6400F8BE2F /* ModelJob.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078F46CB1FA2CA6400F8BE2F /* ModelJob.swift */; };
 		078F46CF1FA2CA6400F8BE2F /* ModelJobMain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078F46CC1FA2CA6400F8BE2F /* ModelJobMain.swift */; };
 		078F46D61FA2E1E000F8BE2F /* JobDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078F46D51FA2E1E000F8BE2F /* JobDetailViewController.swift */; };
+		078F47021FA76E9C00F8BE2F /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078F46FF1FA76E9C00F8BE2F /* Category.swift */; };
+		078F47031FA76E9C00F8BE2F /* CategoryMain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078F47001FA76E9C00F8BE2F /* CategoryMain.swift */; };
+		078F47041FA76E9C00F8BE2F /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078F47011FA76E9C00F8BE2F /* Data.swift */; };
+		078F47071FA7AB9D00F8BE2F /* CategorySelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078F47061FA7AB9D00F8BE2F /* CategorySelectionViewController.swift */; };
+		078F47091FA8FEF600F8BE2F /* PhotoSaver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078F47081FA8FEF600F8BE2F /* PhotoSaver.swift */; };
 		07A49D931F86B1F30022562D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07A49D631F86B1F30022562D /* AppDelegate.swift */; };
 		07A49D941F86B1F30022562D /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07A49D641F86B1F30022562D /* Constant.swift */; };
 		07A49D951F86B1F30022562D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 07A49D661F86B1F30022562D /* LaunchScreen.storyboard */; };
@@ -169,6 +174,11 @@
 		078F46CB1FA2CA6400F8BE2F /* ModelJob.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelJob.swift; sourceTree = "<group>"; };
 		078F46CC1FA2CA6400F8BE2F /* ModelJobMain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelJobMain.swift; sourceTree = "<group>"; };
 		078F46D51FA2E1E000F8BE2F /* JobDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JobDetailViewController.swift; sourceTree = "<group>"; };
+		078F46FF1FA76E9C00F8BE2F /* Category.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
+		078F47001FA76E9C00F8BE2F /* CategoryMain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryMain.swift; sourceTree = "<group>"; };
+		078F47011FA76E9C00F8BE2F /* Data.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
+		078F47061FA7AB9D00F8BE2F /* CategorySelectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategorySelectionViewController.swift; sourceTree = "<group>"; };
+		078F47081FA8FEF600F8BE2F /* PhotoSaver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoSaver.swift; sourceTree = "<group>"; };
 		07A49D311F86AFE00022562D /* NewsApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NewsApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		07A49D631F86B1F30022562D /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		07A49D641F86B1F30022562D /* Constant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
@@ -499,6 +509,24 @@
 			path = Job;
 			sourceTree = "<group>";
 		};
+		078F46FE1FA76E7900F8BE2F /* CategoryModel */ = {
+			isa = PBXGroup;
+			children = (
+				078F46FF1FA76E9C00F8BE2F /* Category.swift */,
+				078F47001FA76E9C00F8BE2F /* CategoryMain.swift */,
+				078F47011FA76E9C00F8BE2F /* Data.swift */,
+			);
+			path = CategoryModel;
+			sourceTree = "<group>";
+		};
+		078F47051FA7AB6400F8BE2F /* CategorySelection */ = {
+			isa = PBXGroup;
+			children = (
+				078F47061FA7AB9D00F8BE2F /* CategorySelectionViewController.swift */,
+			);
+			path = CategorySelection;
+			sourceTree = "<group>";
+		};
 		07A49D281F86AFE00022562D = {
 			isa = PBXGroup;
 			children = (
@@ -565,6 +593,7 @@
 		07A49D691F86B1F30022562D /* Helper */ = {
 			isa = PBXGroup;
 			children = (
+				078F47081FA8FEF600F8BE2F /* PhotoSaver.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -610,6 +639,7 @@
 		07A49D7B1F86B1F30022562D /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				078F46FE1FA76E7900F8BE2F /* CategoryModel */,
 				078F46A91F9F9E5100F8BE2F /* HelperModel */,
 				078F46921F9EE48B00F8BE2F /* Home */,
 				078F45F01F8DC25400F8BE2F /* ResultModel.swift */,
@@ -660,6 +690,7 @@
 		07A49D871F86B1F30022562D /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				078F47051FA7AB6400F8BE2F /* CategorySelection */,
 				078F46C61FA18EB900F8BE2F /* ListDetail */,
 				078F46C11FA1173600F8BE2F /* FlashDetail */,
 				078F46051F953CA100F8BE2F /* ChangePassword */,
@@ -708,7 +739,6 @@
 				078F46001F952D2600F8BE2F /* NavigationBar */,
 				078F45E01F8D27AE00F8BE2F /* Extension */,
 				07A49D8E1F86B1F30022562D /* Manager */,
-				07A49D901F86B1F30022562D /* ViewModel */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -730,21 +760,6 @@
 				078F46791F9E623200F8BE2F /* Flash */,
 			);
 			path = TableViewCell;
-			sourceTree = "<group>";
-		};
-		07A49D901F86B1F30022562D /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				07A49D911F86B1F30022562D /* LoginVM */,
-			);
-			path = ViewModel;
-			sourceTree = "<group>";
-		};
-		07A49D911F86B1F30022562D /* LoginVM */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = LoginVM;
 			sourceTree = "<group>";
 		};
 		15DAB443A71C55A4D022D8AC /* Pods */ = {
@@ -903,11 +918,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				078F45EB1F8D464B00F8BE2F /* SignupViewController.swift in Sources */,
+				078F47031FA76E9C00F8BE2F /* CategoryMain.swift in Sources */,
 				078F46A81F9EE74800F8BE2F /* ModelMediaMain.swift in Sources */,
 				078F46731F9E603000F8BE2F /* JobCollectionViewCell.swift in Sources */,
 				078F46C51FA1873000F8BE2F /* HomeViewControllerExtension.swift in Sources */,
 				078F460C1F959CF800F8BE2F /* ModelLoginData.swift in Sources */,
 				0784308E1F8C665B000368EB /* APISessionService.swift in Sources */,
+				078F47041FA76E9C00F8BE2F /* Data.swift in Sources */,
 				0784308D1F8C665B000368EB /* APIService.swift in Sources */,
 				078F46CD1FA2CA6400F8BE2F /* Job.swift in Sources */,
 				078F45F31F8DC53D00F8BE2F /* TextFieldExtension.swift in Sources */,
@@ -934,8 +951,10 @@
 				078F45F11F8DC25400F8BE2F /* ResultModel.swift in Sources */,
 				078F45FB1F8FD8D200F8BE2F /* ConstantMethods.swift in Sources */,
 				078F46CE1FA2CA6400F8BE2F /* ModelJob.swift in Sources */,
+				078F47091FA8FEF600F8BE2F /* PhotoSaver.swift in Sources */,
 				07A49DA11F86B1F30022562D /* NVActivityIndicatorViewable.swift in Sources */,
 				078F46071F953CC500F8BE2F /* ChangePasswordViewController.swift in Sources */,
+				078F47071FA7AB9D00F8BE2F /* CategorySelectionViewController.swift in Sources */,
 				078F460B1F959CF800F8BE2F /* ModelLogin.swift in Sources */,
 				078F46B91FA0FC0000F8BE2F /* ListingHeader.swift in Sources */,
 				078F465A1F9CDA2600F8BE2F /* STVSegmentButtonCell.swift in Sources */,
@@ -943,6 +962,7 @@
 				07A49D931F86B1F30022562D /* AppDelegate.swift in Sources */,
 				078F46A41F9EE73E00F8BE2F /* ModelBulletinMain.swift in Sources */,
 				07A49DA31F86B1F30022562D /* BaseModel.swift in Sources */,
+				078F47021FA76E9C00F8BE2F /* Category.swift in Sources */,
 				078F45F71F8DC85100F8BE2F /* SignupViewControllerExtension.swift in Sources */,
 				07A49DA21F86B1F30022562D /* RevealingSplashView.swift in Sources */,
 				078430901F8C665B000368EB /* Reachability.swift in Sources */,

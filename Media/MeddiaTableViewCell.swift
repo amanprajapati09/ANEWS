@@ -16,7 +16,7 @@ class MeddiaTableViewCell: UITableViewCell, NibLoadableView, ReusableView {
     
     var modelMedia = ModelMedia() {
         didSet {
-            lblTitle.text = modelMedia.title!
+            lblTitle.text = modelMedia.title
             lblDescription.text = modelMedia.descriptionField!
             imageMedia.sd_setImage(with: modelMedia.imageUrl, placeholderImage: placeholdeImage!)
         }
