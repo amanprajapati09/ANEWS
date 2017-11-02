@@ -19,11 +19,11 @@ class JobTableViewCell: UITableViewCell, NibLoadableView, ReusableView {
     
     var modelJob:ModelJob! {
         didSet {
-            lblTitle.text = modelJob.jobTitle!
-            lblSalary.text = "Salary : " + modelJob.salary!
-            lblNumberofPost.text = "Post : " + modelJob.noOfPost!
-            lblCompanyName.text = "Job in : " + modelJob.firmName!
-            lblInterviewDate.text = modelJob.interviewDate!
+            lblTitle.text = modelJob.jobTitle
+            lblSalary.text = "Salary : " + modelJob.salary
+            lblNumberofPost.text = "Post : " + modelJob.noOfPost
+            lblCompanyName.text = "Job in : " + modelJob.firmName
+            lblInterviewDate.text = modelJob.interviewDate
             lblPostDate.text = modelJob.modified
         }
     }

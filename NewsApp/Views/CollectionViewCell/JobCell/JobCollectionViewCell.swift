@@ -8,14 +8,13 @@
 
 import UIKit
 
-class JobCollectionViewCell: UICollectionViewCell, UITableViewDataSource,UITableViewDelegate,NibLoadableView, ReusableView, HeaderClickDelegate {
-
-    @IBOutlet weak var tblView: UITableView!
+class JobCollectionViewCell: UICollectionViewCell, UITableViewDataSource,UITableViewDelegate,NibLoadableView, ReusableView {
+    
     var delegate:ItemSelection?
+    @IBOutlet weak var tblView: UITableView!
     
     var jobList = [ModelJob]() {
         didSet {
-            filterUsingCategory()
             tblView.reloadData()
         }
     }
@@ -28,24 +27,65 @@ class JobCollectionViewCell: UICollectionViewCell, UITableViewDataSource,UITable
     
     var selectedCategory:Category? {
         didSet {
-            tblView.reloadData()
+            filterUsingCategory()
         }
     }
-
     
+    var selectedRegion:Category? {
+        didSet {
+            filterUsingCategory()
+        }
+    }
     override func awakeFromNib() {
         super.awakeFromNib()
         registerCell()
         requestForJobList()
     }
-
+    
     func filterUsingCategory()  {
-        guard selectedCategory != nil else {
+
+        //check selected category and region both nil one of them nil or both valid
+        guard (selectedCategory != nil) else {
+            
+            if selectedRegion != nil {
+                
+                //Selected category nil but selected region not nil
+                filterList = filterUsingRegion()
+            } else {
+                
+                //Selected region nil but selected category nil
+                filterList = jobList
+            }
+            
             return
         }
         
-        filterList = jobList.filter({ (object) -> Bool in
-            return object.categoryId == selectedCategory?.id
+        guard (selectedRegion != nil ) else {
+            
+            //Selected region nil but selected category not nil
+            filterList = jobList.filter({ (object) -> Bool in
+                
+                return (object.categoryId == selectedCategory!.id)
+            })
+            
+            return
+        }
+        
+        //Selected region and selected category not nil
+        filterList = filterUsingRegion().filter({ (object) -> Bool in
+            
+            return (object.categoryId == selectedCategory!.id)
+        })
+    }
+    
+    func filterUsingRegion() -> [ModelJob] {
+        guard (selectedRegion != nil) else {
+            return jobList
+        }
+        
+        return jobList.filter({ (object) -> Bool in
+            
+            return (object.regionId == selectedRegion?.id)
         })
     }
     
@@ -64,33 +104,13 @@ class JobCollectionViewCell: UICollectionViewCell, UITableViewDataSource,UITable
         return 169
     }
     
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 50.00
-    }
-    
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: ListingHeader.reuseIdentifier) as! ListingHeader
-        header.delegate = self
-        return header
-    }
-    
     //MARK:- UITableview delegate methods
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         delegate?.didSelecteItem(item: jobList[indexPath.row])
     }
     
-    //HeaderClick Delegate
-    func didSelecteHeader(isRegion: Bool) {
-        if isRegion {
-            delegate?.didSelectHeaderItem(headerValue: .eRegion)
-        } else {
-            delegate?.didSelectHeaderItem(headerValue: .eJob)
-        }
-    }
-    
     private func registerCell() {
         tblView.register(JobTableViewCell.self)
-        tblView.registerHeaderCell(ListingHeader.self)
     }
     
     private func requestForJobList() {
@@ -124,5 +144,4 @@ class JobCollectionViewCell: UICollectionViewCell, UITableViewDataSource,UITable
             return true
         }
     }
-
 }

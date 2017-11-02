@@ -8,16 +8,23 @@
 
 import UIKit
 
-class ListingCollectionViewCell: UICollectionViewCell, UITableViewDataSource,UITableViewDelegate, NibLoadableView, ReusableView, HeaderClickDelegate {
+class ListingCollectionViewCell: UICollectionViewCell, UITableViewDataSource,UITableViewDelegate, NibLoadableView, ReusableView {
     
-    @IBOutlet weak var tblView: UITableView!
     var delegate:ItemSelection?
+    @IBOutlet weak var tblView: UITableView!
     
     var selectedCategory:Category? {
         didSet{
-            filterData()
+            filterUsingCategory()
         }
     }
+    
+    var selectedRegion:Category? {
+        didSet {
+            filterUsingCategory()
+        }
+    }
+
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -38,15 +45,53 @@ class ListingCollectionViewCell: UICollectionViewCell, UITableViewDataSource,UIT
     }
 
     
-    private func filterData() {
+    func filterUsingCategory()  {
+        
+        //check selected category and region both nil one of them nil or both valid
         guard (selectedCategory != nil) else {
+            
+            if selectedRegion != nil {
+                
+                //Selected category nil but selected region not nil
+                filterList = filterUsingRegion()
+            } else {
+                
+                //Selected region nil but selected category nil
+                filterList = List
+            }
+            
             return
         }
         
-        filterList = List.filter({ (object) -> Bool in
-            return object.categoryId == selectedCategory?.id
+        guard (selectedRegion != nil ) else {
+            
+            //Selected region nil but selected category not nil
+            filterList = List.filter({ (object) -> Bool in
+                
+                return (object.categoryId == selectedCategory!.id)
+            })
+            
+            return
+        }
+        
+        //Selected region and selected category not nil
+        filterList = filterUsingRegion().filter({ (object) -> Bool in
+            
+            return (object.categoryId == selectedCategory!.id)
         })
     }
+    
+    func filterUsingRegion() -> [ModelList] {
+        guard (selectedRegion != nil) else {
+            return List
+        }
+        
+        return List.filter({ (object) -> Bool in
+            
+            return (object.regionId == selectedRegion?.id)
+        })
+    }
+
     
     //MARK:- UITableview datasource methods
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -62,16 +107,7 @@ class ListingCollectionViewCell: UICollectionViewCell, UITableViewDataSource,UIT
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 150
     }
-    
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 50.00
-    }
-    
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: ListingHeader.reuseIdentifier) as! ListingHeader
-        header.delegate = self
-        return header
-    }
+
     
     //MARK:- UITableview delegate methods 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -81,7 +117,6 @@ class ListingCollectionViewCell: UICollectionViewCell, UITableViewDataSource,UIT
     //MARK:- Helper methods
     private func registerCell() {
         tblView.register(ListingTableViewCell.self)
-        tblView.registerHeaderCell(ListingHeader.self)
     }
     
     private func requestForList() {
@@ -117,13 +152,5 @@ class ListingCollectionViewCell: UICollectionViewCell, UITableViewDataSource,UIT
             return true
         }
     }
-    
-    //HeaderClick Delegate
-    func didSelecteHeader(isRegion: Bool) {
-        if isRegion {
-            delegate?.didSelectHeaderItem(headerValue: .eRegion)
-        } else {
-            delegate?.didSelectHeaderItem(headerValue: .eListing)
-        }
-    }
+
 }

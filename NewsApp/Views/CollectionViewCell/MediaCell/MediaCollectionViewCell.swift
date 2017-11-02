@@ -8,10 +8,10 @@
 
 import UIKit
 
-class MediaCollectionViewCell: UICollectionViewCell,UITableViewDataSource,UITableViewDelegate, NibLoadableView, ReusableView, HeaderClickDelegate {
+class MediaCollectionViewCell: UICollectionViewCell,UITableViewDataSource,UITableViewDelegate, NibLoadableView, ReusableView {
 
+    var delegate:ItemSelection?
     @IBOutlet weak var tblView: UITableView!
-     var delegate:ItemSelection?
     
     var selectegCategory:Category? {
         didSet {
@@ -38,6 +38,7 @@ class MediaCollectionViewCell: UICollectionViewCell,UITableViewDataSource,UITabl
     }
     
     func filterUsingCategory()  {
+      
         guard selectegCategory != nil else {
             filterList = mediaList
             return
@@ -63,17 +64,6 @@ class MediaCollectionViewCell: UICollectionViewCell,UITableViewDataSource,UITabl
         return 75.0
     }
     
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 50.00
-    }
-    
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-
-        let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: ListingHeader.reuseIdentifier) as! ListingHeader
-        header.delegate = self
-        return header
-    }
-    
     //MARK:- UITableview delegate methods
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         delegate?.didSelecteItem(item: mediaList[indexPath.row])
@@ -81,7 +71,6 @@ class MediaCollectionViewCell: UICollectionViewCell,UITableViewDataSource,UITabl
     
     private func registerCell() {
         tblView.register(MeddiaTableViewCell.self)
-        tblView.registerHeaderCell(ListingHeader.self)
     }
 
     private func requestForMediaList() {
@@ -114,10 +103,5 @@ class MediaCollectionViewCell: UICollectionViewCell,UITableViewDataSource,UITabl
         } else {
             return true
         }
-    }
-
-    //HeaderClick Delegate 
-    func didSelecteHeader(isRegion: Bool) {
-        delegate?.didSelectHeaderItem(headerValue: .eMedia)
     }
 }

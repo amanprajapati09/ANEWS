@@ -8,14 +8,14 @@
 
 import UIKit
 
-class BulletineCollectionViewCell: UICollectionViewCell, UITableViewDataSource,UITableViewDelegate ,NibLoadableView, ReusableView, HeaderClickDelegate {
+class BulletineCollectionViewCell: UICollectionViewCell, UITableViewDataSource,UITableViewDelegate ,NibLoadableView, ReusableView {
 
+    var delegate:ItemSelection?
     @IBOutlet weak var tblView: UITableView!
-     var delegate:ItemSelection?
     
-    var selectedCategory:Category? {
+    var selectegCategory:Category? {
         didSet {
-            tblView.reloadData()
+            filterUsingCategory()
         }
     }
 
@@ -27,7 +27,6 @@ class BulletineCollectionViewCell: UICollectionViewCell, UITableViewDataSource,U
     
     var bullatineList = [ModelBulletin]() {
         didSet {
-            filterUsingCategory()
             tblView.reloadData()
         }
     }
@@ -39,12 +38,14 @@ class BulletineCollectionViewCell: UICollectionViewCell, UITableViewDataSource,U
     }
     
     func filterUsingCategory()  {
-        guard selectedCategory != nil else {
+       
+        guard selectegCategory != nil else {
+            filterList = bullatineList
             return
         }
         
         filterList = bullatineList.filter({ (object) -> Bool in
-            return object.categoryId == selectedCategory?.id
+            return object.categoryId == selectegCategory?.id
         })
     }
     
@@ -63,16 +64,6 @@ class BulletineCollectionViewCell: UICollectionViewCell, UITableViewDataSource,U
         return 156.0
     }
     
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 50.0
-    }
-    
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: BullatineHeader.reuseIdentifier) as! BullatineHeader
-       header.delegate = self
-        return header
-    }
-    
     //MARK:- UITableview delegate methods
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         delegate?.didSelecteItem(item: bullatineList[indexPath.row])
@@ -80,7 +71,6 @@ class BulletineCollectionViewCell: UICollectionViewCell, UITableViewDataSource,U
     
     private func registerCell() {
         tblView.register(BullatineTableViewCell.self)
-        tblView.registerHeaderCell(BullatineHeader.self)
     }
 
     private func requestForBullatineList() {
@@ -113,10 +103,5 @@ class BulletineCollectionViewCell: UICollectionViewCell, UITableViewDataSource,U
         } else {
             return true
         }
-    }
-    
-    //HeaderClick Delegate
-    func didSelecteHeader(isRegion: Bool) {
-        delegate?.didSelectHeaderItem(headerValue: .eBulletin)
     }
 }

@@ -11,21 +11,21 @@ import ObjectMapper
 
 class ModelJob : ModelBaseHome{
 
-	var altContactNo : String?
-	var contactNo : String?
-	var contactPerson : String?
-	var emailId : String?
-	var firmAddress : String?
-	var firmName : String?
-	var interviewDate : String?
-	var jobDescription : String?
-	var jobLocation : String?
-	var jobTitle : String?
-	var noOfPost : String?
-	var recruiterDesignation : String?
-	var regionId : String?
-	var salary : String?
-	var userId : String?
+	var altContactNo : String = ""
+	var contactNo : String = ""
+	var contactPerson : String = ""
+	var emailId : String = ""
+	var firmAddress : String = ""
+	var firmName : String = ""
+	var interviewDate : String = ""
+	var jobDescription : String = ""
+	var jobLocation : String = ""
+	var jobTitle : String = ""
+	var noOfPost : String = ""
+	var recruiterDesignation : String = ""
+	var regionId : String = ""
+	var salary : String = ""
+	var userId : String = ""
 
 	override func mapping(map: Map)
 	{

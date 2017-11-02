@@ -10,19 +10,27 @@ import UIKit
 
 protocol ItemSelection {
     func didSelecteItem(item:ModelBaseHome)
-    func didSelectHeaderItem(headerValue:headerEnum)
 }
 
 class HomeCollectionView: UIView, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, ItemSelection {
-
-   @IBOutlet weak var homeCollectionView: UICollectionView!
+    
+    @IBOutlet weak var homeCollectionView: UICollectionView!
     var delegate:ItemSelection?
+    
+    var scrollingAtIndex : segmentButtonClick?
     
     var selectedCategory:Category? {
         didSet {
             homeCollectionView.reloadData()
         }
     }
+    
+    var selectedRegion:Category? {
+        didSet {
+            homeCollectionView.reloadData()
+        }
+    }
+    
     
     override func layoutSubviews() {
         super.layoutSubviews()
@@ -44,17 +52,20 @@ class HomeCollectionView: UIView, UICollectionViewDataSource, UICollectionViewDe
         case 1:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ListingCollectionViewCell.reuseIdentifier, for: indexPath) as! ListingCollectionViewCell
             cell.selectedCategory = selectedCategory
+            cell.selectedRegion = selectedRegion
             cell.delegate = self
             return cell
         case 2:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: BulletineCollectionViewCell.reuseIdentifier, for: indexPath) as! BulletineCollectionViewCell
-            cell.selectedCategory = selectedCategory
+            cell.selectegCategory = selectedCategory
             cell.delegate = self
             return cell
         
         case 3:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: JobCollectionViewCell.reuseIdentifier, for: indexPath) as! JobCollectionViewCell
             cell.selectedCategory = selectedCategory
+            cell.selectedRegion = selectedRegion
+            cell.delegate = self
             return cell
         case 4:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MediaCollectionViewCell.reuseIdentifier, for: indexPath) as! MediaCollectionViewCell
@@ -69,7 +80,7 @@ class HomeCollectionView: UIView, UICollectionViewDataSource, UICollectionViewDe
     
     //MARK:- Collectionview delegate methods 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return collectionView.frame.size
+        return collectionView.bounds.size
     }
     
     private func registerCell() {
@@ -80,13 +91,28 @@ class HomeCollectionView: UIView, UICollectionViewDataSource, UICollectionViewDe
         homeCollectionView.register(MediaCollectionViewCell.self)
     }
 
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 0.0
+    }
+    
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        if scrollView == self.homeCollectionView {
+            var currentCellOffset = self.homeCollectionView.contentOffset
+            currentCellOffset.x += self.homeCollectionView.frame.width / 2
+            if let indexPath = self.homeCollectionView.indexPathForItem(at: currentCellOffset) {
+                
+                if scrollingAtIndex != nil {
+                    scrollingAtIndex!(indexPath.row)
+                }
+                
+//                self.homeCollectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
+            }
+        }
+    }
+    
     //MARK:- Delegate Methods
     func didSelecteItem(item: ModelBaseHome) {
         delegate?.didSelecteItem(item: item)
-    }
-    
-    func didSelectHeaderItem(headerValue: headerEnum) {
-        delegate?.didSelectHeaderItem(headerValue: headerValue)
     }
 
 }

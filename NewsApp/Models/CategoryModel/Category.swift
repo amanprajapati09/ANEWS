@@ -17,7 +17,11 @@ class Category : BaseModel {
 	override func mapping(map: Map) {
 		id <- map["id"]
 		name <- map["name"]
-		
 	}
 
+    class func defaultObject() -> Category {
+        let defauldObject = Category()
+        defauldObject.name = "All"
+        return defauldObject
+    }
 }

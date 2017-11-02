@@ -16,13 +16,34 @@ class HomeViewController: BaseViewController, ItemSelection, SFSafariViewControl
     @IBOutlet weak var segmentView: STVSegmentButtonView!
     @IBOutlet weak var homeCollectionContainer: HomeCollectionView!
     
+    @IBOutlet weak var categoryView: UIView!
+    @IBOutlet weak var regionView: UIView!
+    @IBOutlet weak var btnGetAJob: UIButton!
+    @IBOutlet weak var btnPostAJob: UIButton!
+    @IBOutlet weak var headerViewHeightConstraint: NSLayoutConstraint!
+    
+    @IBOutlet var regionWidthConstraint: NSLayoutConstraint!
+    @IBOutlet var categoryRegionEqualConstraint: NSLayoutConstraint!
+    
+    @IBOutlet weak var lblCategory: UILabel!
+    @IBOutlet weak var lblRegion: UILabel!
+    
+    var selectedMode = headerEnum.eFlash
+    var isRegion:Bool = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         requestForCategory()
         navigationItemClick()
         segmentViewDelegateMethod()
+        homeCollectionViewDelegateMethod() 
         homeCollectionContainer.delegate = self
+
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
     }
 
     override func didReceiveMemoryWarning() {
@@ -42,6 +63,25 @@ class HomeViewController: BaseViewController, ItemSelection, SFSafariViewControl
             let buttonItemSize = buttonItemView?.frame
             self.presentPopover(senderFrame:buttonItemSize!)
         }
+    }
+    
+    //MARK:- Action Methods
+    
+    @IBAction func categoryButtonClickAction(_ sender: Any) {
+        isRegion = false
+        didSelectHeaderItem()
+    }
+    
+    @IBAction func regionButtonClickAction(_ sender: Any) {
+        isRegion = true
+        didSelectHeaderItem()
+    }
+    
+    @IBAction func GetAJobButtonClickAction(_ sender: Any) {
+    }
+    
+    @IBAction func PostAJobButtonClickAction(_ sender: Any) {
+        performSegue(withIdentifier: Segues.postjobView, sender: nil)
     }
     
     //MARK:- Methods to create menu option
@@ -76,14 +116,31 @@ class HomeViewController: BaseViewController, ItemSelection, SFSafariViewControl
     }
     
     private func segmentViewDelegateMethod() {
+        
         segmentView.segmentButtonSelectAtIndex { (index) in
-                self.homeCollectionContainer.selectedCategory = nil
-                self.homeCollectionContainer.homeCollectionView.scrollToItem(at: IndexPath(row: index, section: 0), at: .centeredHorizontally, animated: true)
+           
+            self.resetCategoryandregion()
+            self.UIChangesAsPerIndexSelection(index: index)
+            self.homeCollectionContainer.selectedCategory = nil
+            self.homeCollectionContainer.homeCollectionView.scrollToItem(at: IndexPath(row: index, section: 0), at: .centeredHorizontally, animated: true)
+        }
+    }
+
+    private func homeCollectionViewDelegateMethod() {
+        homeCollectionContainer.scrollingAtIndex = { (index) in
+            
+            self.resetCategoryandregion()
+            self.UIChangesAsPerIndexSelection(index: index)
+            self.segmentView.buttonCollectionView?.scrollToItem(at: IndexPath(row: index, section: 0), at: .centeredHorizontally, animated: true)
+            self.segmentView.selectedIndex = index 
+            self.segmentView.buttonCollectionView?.reloadData()
+            self.segmentView.buttonCollectionView?.collectionViewLayout.invalidateLayout()
         }
     }
     
     //MARK:- Segue methods
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
         if segue.identifier == Segues.kFlashDetail {
             let destinationViewController = segue.destination as! FlashDetailViewController
             destinationViewController.modelFlash = sender as! ModelFlash
@@ -94,11 +151,66 @@ class HomeViewController: BaseViewController, ItemSelection, SFSafariViewControl
             let destinationViewController = segue.destination as! JobDetailViewController
             destinationViewController.modelJob = sender as! ModelJob
         } else if segue.identifier == Segues.categoryView {
+            
             let destinationViewController = segue.destination as! CategorySelectionViewController
-            destinationViewController.titleString = "Select"
+            
             destinationViewController.delegate = self
             destinationViewController.categoryList = sender as! [Category]
         }
     }
 
+    //MARK:- Helper Method
+    func UIChangesAsPerIndexSelection(index:Int) {
+        switch index {
+        case 0:
+            self.headerViewHeightConstraint.constant = 0.0
+            selectedMode = .eFlash
+            break
+        case 1:
+            self.headerViewHeightConstraint.constant = 50.0
+            self.categoryRegionBothVisible(flag: true)
+            self.categoryRegionWith(color: UIColor.black)
+            selectedMode = .eListing
+            break
+        case 2:
+            self.headerViewHeightConstraint.constant = 50.0
+            self.categoryRegionBothVisible(flag: false)
+            self.categoryRegionWith(color: UIColor.black)
+            selectedMode = .eBulletin
+            break
+        case 3:
+            self.headerViewHeightConstraint.constant = 94.0
+            self.categoryRegionBothVisible(flag: true)
+            self.categoryRegionWith(color: UIColor.lightGray)
+            selectedMode = .eJob
+            break
+        case 4:
+            self.headerViewHeightConstraint.constant = 50.0
+            self.categoryRegionBothVisible(flag: false)
+            self.categoryRegionWith(color: UIColor.black)
+            selectedMode = .eMedia
+            break
+        default:
+            break
+        }
+        self.view.layoutIfNeeded()
+    }
+    func categoryRegionBothVisible(flag:Bool) {
+        if flag {
+            self.categoryRegionEqualConstraint.isActive = true
+            self.regionWidthConstraint.isActive = false
+            self.regionWidthConstraint.constant = 0
+        }
+        else {
+            self.categoryRegionEqualConstraint.isActive = false
+            self.regionWidthConstraint.isActive = true
+            self.regionWidthConstraint.constant = 0
+        }
+        self.view.layoutIfNeeded()
+    }
+    func categoryRegionWith(color:UIColor)
+    {
+        self.categoryView.backgroundColor = color
+        self.regionView.backgroundColor = color
+    }
 }

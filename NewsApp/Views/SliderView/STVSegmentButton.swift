@@ -9,9 +9,9 @@
 import Foundation
 import UIKit
 
+typealias segmentButtonClick = ( _ index:Int) -> Void
+
 class STVSegmentButtonView: UIView, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
-    
-    typealias segmentButtonClick = ( _ index:Int) -> Void
     
     let cellIdentifier = "STVSegmentButtonCellIdentifier"
     let cellClassName = "STVSegmentButtonCell"
@@ -20,10 +20,10 @@ class STVSegmentButtonView: UIView, UICollectionViewDataSource, UICollectionView
     @IBInspectable var buttonArray = [String]()
     @IBInspectable var spaceBetweenCell : CGFloat = 10
     
-    @IBInspectable var selectedCellLineColor : UIColor = UIColor().colorWithHexString(hexString: "#100031", alpha: 1)
+    @IBInspectable var selectedCellLineColor : UIColor = UIColor().colorWithHexString(hexString: "#313AA6", alpha: 1)
     @IBInspectable var notSelectedCellLineColor : UIColor = UIColor.clear
     @IBInspectable var selectedTextColor: UIColor = UIColor().colorWithHexString(hexString: "#100031", alpha: 1)
-    @IBInspectable var nonSelectedTextColor: UIColor = UIColor().colorWithHexString(hexString: "#0000FF", alpha: 1)
+    @IBInspectable var nonSelectedTextColor: UIColor = UIColor().colorWithHexString(hexString: "#313AA6", alpha: 1)
     
     @IBInspectable var selectedFont: UIFont = UIFont.systemFont(ofSize: 15)
     @IBInspectable var nonSelectedFont: UIFont = UIFont.systemFont(ofSize: 15)
@@ -63,12 +63,12 @@ class STVSegmentButtonView: UIView, UICollectionViewDataSource, UICollectionView
         // condition for select - deselect cell
         if selectedIndex == indexPath.row {
             cell.lblButtonTitle.font = selectedFont
-            cell.lblButtonTitle.textColor = selectedTextColor
+            cell.lblButtonTitle.textColor = nonSelectedTextColor
             cell.sliderView.backgroundColor = selectedCellLineColor
             
         } else {
             cell.lblButtonTitle.font = nonSelectedFont
-            cell.lblButtonTitle.textColor = nonSelectedTextColor
+            cell.lblButtonTitle.textColor = selectedTextColor
             cell.sliderView.backgroundColor = notSelectedCellLineColor
         }
         return cell

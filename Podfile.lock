@@ -1,4 +1,5 @@
 PODS:
+  - AARatingBar (0.1.0)
   - Alamofire (4.5.0)
   - AlamofireObjectMapper (4.1.0):
     - Alamofire (~> 4.1)
@@ -19,6 +20,7 @@ PODS:
   - IBAnimatable (4.1.0)
   - IQKeyboardManagerSwift (4.0.13)
   - JDStatusBarNotification (1.5.5)
+  - Material (2.0.0)
   - ObjectMapper (2.2.8)
   - RaisePlaceholder (1.0.3)
   - RSFloatInputView (1.0.0)
@@ -27,6 +29,7 @@ PODS:
   - SDWebImage/Core (3.8.2)
 
 DEPENDENCIES:
+  - AARatingBar
   - Alamofire (~> 4.0)
   - AlamofireObjectMapper
   - BPStatusBarAlert
@@ -35,9 +38,10 @@ DEPENDENCIES:
   - GoogleMaps (= 2.3.0)
   - GooglePlacePicker (= 2.3.0)
   - GooglePlaces (= 2.3.0)
-  - IBAnimatable
+  - IBAnimatable (= 4.1.0)
   - IQKeyboardManagerSwift
   - JDStatusBarNotification
+  - Material (= 2.0)
   - ObjectMapper
   - RaisePlaceholder
   - RSFloatInputView
@@ -54,6 +58,7 @@ CHECKOUT OPTIONS:
     :git: https://github.com/dkcas11/CRNotifications.git
 
 SPEC CHECKSUMS:
+  AARatingBar: dd2f4b489478f5206930bb5f8f67b4db476265c8
   Alamofire: f28cdffd29de33a7bfa022cbd63ae95a27fae140
   AlamofireObjectMapper: 435adc82f5b367679bd9e71c4974a54efd0b2521
   BPStatusBarAlert: 400badfd78f16362bc29990be3e8bbfc1c22a50f
@@ -65,11 +70,12 @@ SPEC CHECKSUMS:
   IBAnimatable: 0fd2c9fd38c4798d71bcc18dbd87d473a7df2577
   IQKeyboardManagerSwift: fb399c4cddcd8d9bbcd2d0c7c81ed290b61c088e
   JDStatusBarNotification: 2b4f29bd68a60d7aa2f190b5265f1ce59c18aaf8
+  Material: 0ee6fc85d5b5db6ad22afd3c59edccf21024714e
   ObjectMapper: 3d571bb5af471c779e1160828cd9ad5c4ef90958
   RaisePlaceholder: e77c8565f556e25659bdf1b9a77647a952b8cb70
   RSFloatInputView: fea19c7b6c1228047379ee38ca9bca9e9d5a0fd6
   SDWebImage: 098e97e6176540799c27e804c96653ee0833d13c
 
-PODFILE CHECKSUM: 2579898ca2d2b81985d5bd6522376cdf9b26a4f8
+PODFILE CHECKSUM: 866649f6368754c04e13969c1487da884453d727
 
 COCOAPODS: 1.2.1

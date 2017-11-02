@@ -107,6 +107,8 @@ class LoginViewController: BaseViewController {
             self.requestForForgotPassword(email: (textField?.text)!)
         }))
         
+        alert.addAction(UIAlertAction.init(title: "Cancel", style: .cancel, handler: nil))
+        
         // 4. Present the alert.
         self.present(alert, animated: true, completion: nil)
     }

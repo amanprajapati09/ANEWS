@@ -52,6 +52,7 @@ struct Segues {
     static let kListDetail = "toListDetailScreen"
     static let kJobDetail = "toJobDetail"
     static let categoryView = "toCategorySelectionViewControllerFromHome"
+    static let postjobView = "toPostJobViewController"
 }
 //MARK:- URLs
 struct StaticURL{
@@ -233,6 +234,7 @@ protocol Color_Enum_protocol {
 
 enum headerEnum: String {
    
+    case eFlash = "flash"
     case eRegion = "region"
     case eListing = "listing"
     case eMedia = "mediad"

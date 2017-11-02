@@ -30,40 +30,6 @@ extension HomeViewController {
         }
     }
     
-    func didSelectHeaderItem(headerValue: headerEnum) {
-        guard ModelCategorySingleTone.sharedObject.objCategory != nil else {
-            return
-        }
-        switch headerValue {
-        case .eBulletin:
-            prepareCategory(categoryList: (ModelCategorySingleTone.sharedObject.objCategory?.data?.bullatineList)!)
-            break;
-        case .eRegion:
-            prepareCategory(categoryList: (ModelCategorySingleTone.sharedObject.objCategory?.data?.regionList)!)
-            
-            break;
-        case .eJob:
-            prepareCategory(categoryList: (ModelCategorySingleTone.sharedObject.objCategory?.data?.jobList)!)
-            
-            break;
-        case .eListing:
-            prepareCategory(categoryList: (ModelCategorySingleTone.sharedObject.objCategory?.data?.liostingList)!)
-            
-            break
-        case .eMedia:
-            prepareCategory(categoryList: (ModelCategorySingleTone.sharedObject.objCategory?.data?.mediaList)!)
-            
-            break;
-        default:
-            break
-        }
-        
-    }
-    
-    private func prepareCategory(categoryList:[Category]) {
-        performSegue(withIdentifier: Segues.categoryView, sender: categoryList)
-    }
-    
     //MARK:- logout alert
     internal func askLogout() {
         let alert = UIAlertController(title: "Alert", message: "Are you sure want to logout?", preferredStyle: UIAlertControllerStyle.alert)
@@ -88,18 +54,99 @@ extension HomeViewController {
         self.present(safariVC, animated: true, completion: nil)
         safariVC.delegate = self
     }
+
+    //MARK:- Filter related mnethods 
+    func didSelectHeaderItem() {
+        //check condiotion if category data is availablew or not
+        guard ModelCategorySingleTone.sharedObject.objCategory != nil else {
+            return
+        }
+        
+        guard !isRegion else {
+              prepareCategory(categoryList: (ModelCategorySingleTone.sharedObject.objCategory?.data?.regionList)!)
+            return
+        }
+        
+        switch selectedMode {
+        case .eBulletin:
+            prepareCategory(categoryList: (ModelCategorySingleTone.sharedObject.objCategory?.data?.bullatineList)!)
+            break;
+            
+        case .eJob:
+            prepareCategory(categoryList: (ModelCategorySingleTone.sharedObject.objCategory?.data?.jobList)!)
+            break;
+            
+        case .eListing:
+            prepareCategory(categoryList: (ModelCategorySingleTone.sharedObject.objCategory?.data?.liostingList)!)
+            
+            break
+        case .eMedia:
+            prepareCategory(categoryList: (ModelCategorySingleTone.sharedObject.objCategory?.data?.mediaList)!)
+            
+            break;
+        default:
+            break
+        }
+        
+    }
+    
+    private func prepareCategory(categoryList:[Category]) {
+        performSegue(withIdentifier: Segues.categoryView, sender: categoryList)
+    }
     
     internal func requestForCategory() {
         
         APIService.sharedInstance.CategoryList(parameters: nil, success: { (result) -> (Void) in
+            self.addDefauldCategoryToAllList(result: result)
             ModelCategorySingleTone.sharedObject.objCategory = result
         }) { (error) -> (Void) in
             print("Error")
         }
     }
     
+    private func addDefauldCategoryToAllList(result:CategoryMain) {
+        result.data?.bullatineList?[0] = Category.defaultObject()
+        result.data?.jobList?[0] = Category.defaultObject()
+        result.data?.liostingList?[0] = Category.defaultObject()
+        result.data?.mediaList?[0] = Category.defaultObject()
+        result.data?.regionList?[0] = Category.defaultObject()
+    }
+    
     //MARK:- category selection delegate methods 
     func didSelectCagtegory(seletedCategory: Category) {
-        homeCollectionContainer.selectedCategory = seletedCategory
+        
+        if isRegion {
+            if seletedCategory.id == nil {
+                homeCollectionContainer.selectedRegion = nil
+                updateRegionLabel(title: "Region")
+            } else {
+                homeCollectionContainer.selectedRegion = seletedCategory
+                updateRegionLabel(title: seletedCategory.name!)
+            }
+            
+        } else {
+            if seletedCategory.id == nil {
+             homeCollectionContainer.selectedCategory = nil
+                updateCategoryLabel(title: "Category")
+            } else {
+                homeCollectionContainer.selectedCategory = seletedCategory
+                updateCategoryLabel(title: seletedCategory.name!)
+            }            
+        }
+    }
+    
+    internal func resetCategoryandregion() {
+        homeCollectionContainer.selectedRegion = nil
+        updateRegionLabel(title: "Region")
+        homeCollectionContainer.selectedCategory = nil
+        updateCategoryLabel(title: "Category")
+    }
+    
+    private func updateCategoryLabel(title:String) {
+        lblCategory.text = title
+    }
+    
+    private func updateRegionLabel(title:String) {
+        lblRegion.text = title
     }
 }

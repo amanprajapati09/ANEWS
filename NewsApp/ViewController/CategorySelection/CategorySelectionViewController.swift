@@ -17,11 +17,7 @@ class CategorySelectionViewController: BaseViewController, UITableViewDataSource
     @IBOutlet weak var tblView: UITableView!
     @IBOutlet weak var lblTitle: UILabel!
     
-    var titleString:String! {
-        didSet {
-//            lblTitle.text = titleString
-        }
-    }
+    
     
     var categoryList = [Category]()
     var filterList = [Category]() {
