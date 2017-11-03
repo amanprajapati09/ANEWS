@@ -734,16 +734,29 @@
                                     <action selector="textFieldValueChange:" destination="Ni6-DT-DZl" eventType="editingChanged" id="uYb-Xl-pVL"/>
                                 </connections>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PRD-4W-CMX">
+                                <rect key="frame" x="20" y="20" width="60" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="60" id="NOV-hn-28v"/>
+                                    <constraint firstAttribute="height" constant="40" id="xpx-31-ZDY"/>
+                                </constraints>
+                                <state key="normal" title="Cancel"/>
+                                <connections>
+                                    <action selector="btnCancelClick:" destination="Ni6-DT-DZl" eventType="touchUpInside" id="ULe-lh-UWF"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="RA2-EE-I5G" firstAttribute="leading" secondItem="STb-v4-3vN" secondAttribute="leading" constant="20" id="CZz-8q-Md5"/>
                             <constraint firstAttribute="trailing" secondItem="RA2-EE-I5G" secondAttribute="trailing" constant="20" id="D8E-xA-21o"/>
                             <constraint firstItem="YAL-ej-wpV" firstAttribute="top" secondItem="RA2-EE-I5G" secondAttribute="bottom" constant="10" id="GwS-AP-G8W"/>
+                            <constraint firstItem="PRD-4W-CMX" firstAttribute="top" secondItem="YRH-aw-8ZA" secondAttribute="bottom" id="Lis-WX-DYN"/>
                             <constraint firstAttribute="trailing" secondItem="YAL-ej-wpV" secondAttribute="trailing" id="WGb-xY-WnX"/>
                             <constraint firstItem="RA2-EE-I5G" firstAttribute="top" secondItem="ESx-VZ-hHv" secondAttribute="bottom" constant="15" id="Z9a-Vd-NWR"/>
                             <constraint firstItem="YAL-ej-wpV" firstAttribute="leading" secondItem="STb-v4-3vN" secondAttribute="leading" id="gFu-sT-dDM"/>
                             <constraint firstItem="gxN-Jl-E0Z" firstAttribute="top" secondItem="YAL-ej-wpV" secondAttribute="bottom" id="hiw-OM-drI"/>
+                            <constraint firstItem="PRD-4W-CMX" firstAttribute="leading" secondItem="STb-v4-3vN" secondAttribute="leadingMargin" constant="4" id="jcx-f7-H99"/>
                             <constraint firstItem="ESx-VZ-hHv" firstAttribute="centerX" secondItem="STb-v4-3vN" secondAttribute="centerX" id="uvS-Bm-kNc"/>
                             <constraint firstItem="ESx-VZ-hHv" firstAttribute="top" secondItem="YRH-aw-8ZA" secondAttribute="bottom" constant="10" id="ynb-3F-yBQ"/>
                         </constraints>
@@ -755,7 +768,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Gwy-AJ-eI2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2844" y="160"/>
+            <point key="canvasLocation" x="3909.5999999999999" y="857.72113943028489"/>
         </scene>
         <!--Signup View Controller-->
         <scene sceneID="YdR-du-tj0">
@@ -1460,7 +1473,7 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H65-vU-EVW" userLabel="containerView">
-                                        <rect key="frame" x="0.0" y="-50" width="375" height="686"/>
+                                        <rect key="frame" x="0.0" y="-50" width="375" height="736"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7F0-ri-187">
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
@@ -1487,6 +1500,9 @@
                                                                 <state key="normal">
                                                                     <color key="titleColor" red="0.99019607840000001" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 </state>
+                                                                <connections>
+                                                                    <action selector="btnCategoryClick:" destination="6xJ-9q-QFA" eventType="touchUpInside" id="0HJ-c5-jbU"/>
+                                                                </connections>
                                                             </button>
                                                         </subviews>
                                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
@@ -1522,6 +1538,9 @@
                                                                 <state key="normal">
                                                                     <color key="titleColor" red="0.99019607840000001" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 </state>
+                                                                <connections>
+                                                                    <action selector="btnRegionClick:" destination="6xJ-9q-QFA" eventType="touchUpInside" id="Xph-Bg-MBA"/>
+                                                                </connections>
                                                             </button>
                                                         </subviews>
                                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
@@ -1773,7 +1792,7 @@
                                                     <constraint firstAttribute="width" secondItem="1em-sz-Gx2" secondAttribute="height" multiplier="375:53" id="8pn-Ss-HYJ"/>
                                                 </constraints>
                                                 <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="string" keyPath="placeHolderStringKey" value="Job title"/>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="placeHolderStringKey" value="Contact Person"/>
                                                     <userDefinedRuntimeAttribute type="color" keyPath="idlePlaceHolderColor">
                                                         <color key="value" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                     </userDefinedRuntimeAttribute>
@@ -1866,7 +1885,7 @@
                                                     <constraint firstAttribute="width" secondItem="g8u-Iv-5XZ" secondAttribute="height" multiplier="375:53" id="k5u-sV-tWK"/>
                                                 </constraints>
                                                 <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="string" keyPath="placeHolderStringKey" value="Job title"/>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="placeHolderStringKey" value="Job Location"/>
                                                     <userDefinedRuntimeAttribute type="color" keyPath="idlePlaceHolderColor">
                                                         <color key="value" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                     </userDefinedRuntimeAttribute>
@@ -1890,14 +1909,14 @@
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="L6X-Pb-DUu" userLabel="job title" customClass="RSFloatInputView" customModule="RSFloatInputView">
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="L6X-Pb-DUu" userLabel="jobDescription" customClass="RSFloatInputView" customModule="RSFloatInputView">
                                                 <rect key="frame" x="0.0" y="633" width="375" height="53"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="L6X-Pb-DUu" secondAttribute="height" multiplier="375:53" id="xAn-iq-E7k"/>
                                                 </constraints>
                                                 <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="string" keyPath="placeHolderStringKey" value="Job title"/>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="placeHolderStringKey" value="Job Description"/>
                                                     <userDefinedRuntimeAttribute type="color" keyPath="idlePlaceHolderColor">
                                                         <color key="value" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                     </userDefinedRuntimeAttribute>
@@ -1920,6 +1939,31 @@
                                                         <color key="value" red="0.98823529409999999" green="0.81960784310000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dX7-Q7-1vy">
+                                                <rect key="frame" x="0.0" y="686" width="375" height="50"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vwN-ug-Nf8">
+                                                        <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
+                                                        <state key="normal" title="Post Job"/>
+                                                        <connections>
+                                                            <action selector="btnPostJobClick:" destination="6xJ-9q-QFA" eventType="touchUpInside" id="rkW-Wt-hvb"/>
+                                                        </connections>
+                                                    </button>
+                                                    <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="8sc-n2-GlL">
+                                                        <rect key="frame" x="325" y="15" width="20" height="20"/>
+                                                    </activityIndicatorView>
+                                                </subviews>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="bottom" secondItem="vwN-ug-Nf8" secondAttribute="bottom" id="2TE-Wr-a9M"/>
+                                                    <constraint firstItem="vwN-ug-Nf8" firstAttribute="top" secondItem="dX7-Q7-1vy" secondAttribute="top" id="2xk-Ue-OVj"/>
+                                                    <constraint firstAttribute="height" constant="50" id="AVz-xf-kdf"/>
+                                                    <constraint firstItem="8sc-n2-GlL" firstAttribute="trailing" secondItem="vwN-ug-Nf8" secondAttribute="trailing" constant="-30" id="R1o-xs-UMC"/>
+                                                    <constraint firstItem="vwN-ug-Nf8" firstAttribute="leading" secondItem="dX7-Q7-1vy" secondAttribute="leading" id="SSv-NQ-072"/>
+                                                    <constraint firstAttribute="trailing" secondItem="vwN-ug-Nf8" secondAttribute="trailing" id="aUY-W2-sia"/>
+                                                    <constraint firstItem="8sc-n2-GlL" firstAttribute="centerY" secondItem="vwN-ug-Nf8" secondAttribute="centerY" id="fhs-AU-gT3"/>
+                                                </constraints>
                                             </view>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1944,12 +1988,13 @@
                                             <constraint firstItem="7F0-ri-187" firstAttribute="leading" secondItem="H65-vU-EVW" secondAttribute="leading" id="IVM-zM-vKF"/>
                                             <constraint firstItem="Qhn-fq-cI6" firstAttribute="top" secondItem="v2i-Gk-aSM" secondAttribute="bottom" id="KkQ-ZZ-qdR"/>
                                             <constraint firstItem="krP-xM-Rsv" firstAttribute="leading" secondItem="H65-vU-EVW" secondAttribute="leading" id="Kke-v2-fkH"/>
-                                            <constraint firstAttribute="height" constant="686" id="L3H-Oi-e8x"/>
+                                            <constraint firstAttribute="height" constant="736" id="L3H-Oi-e8x"/>
                                             <constraint firstAttribute="trailing" secondItem="Qx0-hl-Jwp" secondAttribute="trailing" id="Qkm-Ge-YZ1"/>
                                             <constraint firstItem="T0J-04-XEt" firstAttribute="top" secondItem="7F0-ri-187" secondAttribute="bottom" id="T0I-Dg-ZkR"/>
                                             <constraint firstAttribute="trailing" secondItem="1em-sz-Gx2" secondAttribute="trailing" id="TDF-nA-n6I"/>
                                             <constraint firstItem="Qhn-fq-cI6" firstAttribute="width" secondItem="Qhn-fq-cI6" secondAttribute="height" multiplier="375:53" id="Tnw-9T-bkz"/>
                                             <constraint firstItem="Fcu-cf-zj0" firstAttribute="leading" secondItem="H65-vU-EVW" secondAttribute="leading" id="VX4-dV-l3d"/>
+                                            <constraint firstItem="dX7-Q7-1vy" firstAttribute="leading" secondItem="H65-vU-EVW" secondAttribute="leading" id="Vw1-JJ-NiC"/>
                                             <constraint firstAttribute="trailing" secondItem="T0J-04-XEt" secondAttribute="trailing" id="XCg-OG-rsS"/>
                                             <constraint firstItem="t6r-UJ-GNC" firstAttribute="leading" secondItem="H65-vU-EVW" secondAttribute="leading" id="XcV-tD-cth"/>
                                             <constraint firstAttribute="trailing" secondItem="6KQ-PI-7ef" secondAttribute="trailing" id="ZXS-2B-GBA"/>
@@ -1957,6 +2002,7 @@
                                             <constraint firstItem="1em-sz-Gx2" firstAttribute="leading" secondItem="H65-vU-EVW" secondAttribute="leading" id="bge-af-Mea"/>
                                             <constraint firstItem="1em-sz-Gx2" firstAttribute="top" secondItem="t6r-UJ-GNC" secondAttribute="bottom" id="cZ5-PN-swY"/>
                                             <constraint firstAttribute="trailing" secondItem="krP-xM-Rsv" secondAttribute="trailing" id="cqV-do-kLI"/>
+                                            <constraint firstItem="dX7-Q7-1vy" firstAttribute="top" secondItem="L6X-Pb-DUu" secondAttribute="bottom" id="dEV-gg-oSE"/>
                                             <constraint firstItem="krP-xM-Rsv" firstAttribute="width" secondItem="krP-xM-Rsv" secondAttribute="height" multiplier="375:53" id="dwQ-py-Ecv"/>
                                             <constraint firstItem="Fcu-cf-zj0" firstAttribute="width" secondItem="Fcu-cf-zj0" secondAttribute="height" multiplier="375:53" id="f25-vd-d2Y"/>
                                             <constraint firstAttribute="trailing" secondItem="g8u-Iv-5XZ" secondAttribute="trailing" id="gA9-Ov-qSl"/>
@@ -1971,6 +2017,7 @@
                                             <constraint firstItem="Qx0-hl-Jwp" firstAttribute="leading" secondItem="H65-vU-EVW" secondAttribute="leading" id="rz8-0G-5IU"/>
                                             <constraint firstItem="v2i-Gk-aSM" firstAttribute="width" secondItem="v2i-Gk-aSM" secondAttribute="height" multiplier="375:53" id="sCs-bL-5nX"/>
                                             <constraint firstItem="Qfl-nb-Cej" firstAttribute="leading" secondItem="H65-vU-EVW" secondAttribute="leading" id="uSw-Am-5nj"/>
+                                            <constraint firstAttribute="trailing" secondItem="dX7-Q7-1vy" secondAttribute="trailing" id="xHe-05-2wR"/>
                                             <constraint firstItem="6KQ-PI-7ef" firstAttribute="width" secondItem="6KQ-PI-7ef" secondAttribute="height" multiplier="375:53" id="yNb-Qh-5ZL"/>
                                         </constraints>
                                     </view>
@@ -1992,10 +2039,29 @@
                             <constraint firstItem="BgJ-qR-cS3" firstAttribute="top" secondItem="V0F-ng-W5e" secondAttribute="bottom" id="gzb-s2-R0O"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="activityIndicator" destination="8sc-n2-GlL" id="7lD-I7-KzE"/>
+                        <outlet property="btnPostJob" destination="vwN-ug-Nf8" id="oKs-La-dCg"/>
+                        <outlet property="lblCategory" destination="H8K-V7-GIp" id="rhA-pq-Ked"/>
+                        <outlet property="lblRegion" destination="hcz-bg-zeH" id="Pyj-pU-n3c"/>
+                        <outlet property="txtAlterContactNumber" destination="t6r-UJ-GNC" id="zje-ad-sZW"/>
+                        <outlet property="txtContactNUmber" destination="6KQ-PI-7ef" id="8x9-Ee-eGz"/>
+                        <outlet property="txtContactPerson" destination="1em-sz-Gx2" id="Ad6-wb-OK0"/>
+                        <outlet property="txtEmail" destination="krP-xM-Rsv" id="C4i-fW-Upe"/>
+                        <outlet property="txtFirmName" destination="T0J-04-XEt" id="fKV-k0-hef"/>
+                        <outlet property="txtInterViewFirmAddress" destination="Qhn-fq-cI6" id="fPF-fh-RxI"/>
+                        <outlet property="txtJobDescription" destination="L6X-Pb-DUu" id="aOV-ns-w6j"/>
+                        <outlet property="txtJobLocation" destination="g8u-Iv-5XZ" id="JD9-eG-IAT"/>
+                        <outlet property="txtJobTitle" destination="Qfl-nb-Cej" id="6Gr-bN-4x2"/>
+                        <outlet property="txtNumberOfPosition" destination="Qx0-hl-Jwp" id="BuN-q7-5eQ"/>
+                        <outlet property="txtRecruterDesignation" destination="v2i-Gk-aSM" id="wAi-6F-CQO"/>
+                        <outlet property="txtSalary" destination="Fcu-cf-zj0" id="oi4-6f-g7K"/>
+                        <segue destination="Ni6-DT-DZl" kind="presentation" identifier="toCategorySelectionFromJobPost" id="7Xv-1B-ysc"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W8q-JV-cWW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4000.8000000000002" y="1526.9865067466269"/>
+            <point key="canvasLocation" x="3911" y="1655"/>
         </scene>
     </scenes>
     <resources>
@@ -2011,4 +2077,7 @@
         <image name="password" width="30" height="30"/>
         <image name="phone" width="30" height="30"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="7Xv-1B-ysc"/>
+    </inferredMetricsTieBreakers>
 </document>

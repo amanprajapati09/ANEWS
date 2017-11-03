@@ -42,7 +42,7 @@ class APIService : NSObject {
             let statusCode = httpError.code
             
             if statusCode == -1009 {
-//                showStatusBarAlert(Str: AlertTitle.NETWORK_ERROR, Duration: 2.0)
+                //                showStatusBarAlert(Str: AlertTitle.NETWORK_ERROR, Duration: 2.0)
                 failure(AlertTitle.kAlertTitleNoInternet)
             }
             else if statusCode == -999
@@ -51,8 +51,8 @@ class APIService : NSObject {
             }
             else
             {
-              failure(AlertTitle.kAlertTitleGeneralError)
-//                showStatusBarAlert(Str: AlertTitle.ALERT_WEBSERVICE_ERROR , Duration: 2.0)
+                failure(AlertTitle.kAlertTitleGeneralError)
+                //                showStatusBarAlert(Str: AlertTitle.ALERT_WEBSERVICE_ERROR , Duration: 2.0)
             }
             return true
         }
@@ -85,7 +85,7 @@ class APIService : NSObject {
             }
         }
     }
-
+    
     //MARK:- Request for Registration
     func registration(parameters params: [String: AnyObject], success:@escaping (_ result: ResultModel) -> (Void), failure:@escaping Failure) -> Void
     {
@@ -126,7 +126,7 @@ class APIService : NSObject {
             }
         }
     }
-   
+    
     func resetPassword(parameters params: [String: AnyObject], success:@escaping (_ result: ResultModel) -> (Void), failure:@escaping Failure) -> Void
     {
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
@@ -251,6 +251,26 @@ class APIService : NSObject {
         
         NetworkService.shared.callWebService(method: .get, path: PATH.CATEGORY, params: params, type: JSONEncoding()){
             (completion:DataResponse<CategoryMain>) in
+            UIApplication.shared.isNetworkActivityIndicatorVisible = false
+            
+            if !self.handleError(error: completion.result.error as NSError?, failure: failure, responseCode: completion.response?.statusCode)
+            {
+                success(completion.result.value!)
+            } else {
+                
+                if let msg = completion.result.value?.message {
+                    failure(msg)
+                }
+            }
+        }
+    }
+    
+    func AddPostJob(parameters params: [String: AnyObject], success:@escaping (_ result: ResultModel) -> (Void), failure:@escaping Failure) -> Void
+    {
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true
+        
+        NetworkService.shared.callWebService(method: .post, path: PATH.POSTJOB, params: params, type: JSONEncoding()){
+            (completion:DataResponse<ResultModel>) in
             UIApplication.shared.isNetworkActivityIndicatorVisible = false
             
             if !self.handleError(error: completion.result.error as NSError?, failure: failure, responseCode: completion.response?.statusCode)

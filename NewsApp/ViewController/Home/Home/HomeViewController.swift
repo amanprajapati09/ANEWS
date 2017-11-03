@@ -81,6 +81,12 @@ class HomeViewController: BaseViewController, ItemSelection, SFSafariViewControl
     }
     
     @IBAction func PostAJobButtonClickAction(_ sender: Any) {
+        
+//        userDefault.setValue(model.id, forKey: MyUserDefault.USER_ID)
+        guard (userDefault.value(forKey: MyUserDefault.USER_ID) != nil) else {
+            showNotificationAlert(type: .error, title: "Warning!", message: "Please login  first to post job")
+            return 
+        }
         performSegue(withIdentifier: Segues.postjobView, sender: nil)
     }
     

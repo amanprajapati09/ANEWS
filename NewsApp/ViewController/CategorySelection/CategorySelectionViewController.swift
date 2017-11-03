@@ -51,6 +51,9 @@ class CategorySelectionViewController: BaseViewController, UITableViewDataSource
         filterList = categoryList
     }
     
+    @IBAction func btnCancelClick(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
     //MARK:- Tableview Datasource methods
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return filterList.count

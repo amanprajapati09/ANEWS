@@ -53,6 +53,7 @@ struct Segues {
     static let kJobDetail = "toJobDetail"
     static let categoryView = "toCategorySelectionViewControllerFromHome"
     static let postjobView = "toPostJobViewController"
+    static let kToCategoryFromJobPost = "toCategorySelectionFromJobPost"
 }
 //MARK:- URLs
 struct StaticURL{
@@ -75,6 +76,7 @@ struct PATH{
     static let MEDIA = "\(StaticURL.BASE_URL)MediaTab/App_MediaTabData"
     static let JOB = "\(StaticURL.BASE_URL)Job/App_Get_Job"
     static let CATEGORY = "\(StaticURL.BASE_URL)Category/App_GetCategoryRegion"
+    static let POSTJOB = "\(StaticURL.BASE_URL)Job/App_Add_Job"
 }
 
 //MARK:- Alert Titles
