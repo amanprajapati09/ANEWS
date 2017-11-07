@@ -19,6 +19,9 @@ class LoginViewController: BaseViewController {
     
     internal var objLoginViewModel = LoginViewModel()
     
+    var isFromApp: Bool = false
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -71,7 +74,13 @@ class LoginViewController: BaseViewController {
             self.hideLoading()
             if (result.status) {
                 showNotificationAlert(type: .success, title: "Success", message: "Login Success")
-                self.performSegue(withIdentifier: Segues.kToHomeViewControllerFromSignIn, sender: nil)
+                
+                //check if it is come from app then pop else goahed
+                if self.isFromApp {
+                    self.navigationController?.popViewController(animated: true)
+                } else {
+                    self.performSegue(withIdentifier: Segues.kToHomeViewControllerFromSignIn, sender: nil)
+                }
                 self.activityIndigator.stopAnimating()
                 self.objLoginViewModel.saveLoginInfo(model: (result.modelLoginData?.modelUser)!)
             } else {

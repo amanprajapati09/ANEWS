@@ -40,6 +40,15 @@ class BullatineTableViewCell: UITableViewCell, NibLoadableView, ReusableView {
     }
     
     @IBAction func btnMobileNoclick(_ sender: Any) {
+        if let url = URL(string: "tel://\(modelBullatine.mobileNo)"), UIApplication.shared.canOpenURL(url) {
+            if #available(iOS 10, *) {
+                UIApplication.shared.open(url)
+            } else {
+                UIApplication.shared.openURL(url)
+            }
+        } else {
+            showNotificationAlert(type: .error, title: "", message: "Call not available!")
+        }
     }
     
 }

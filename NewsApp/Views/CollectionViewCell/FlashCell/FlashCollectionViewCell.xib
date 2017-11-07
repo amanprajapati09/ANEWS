@@ -18,6 +18,13 @@
                 <rect key="frame" x="0.0" y="0.0" width="375" height="543"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="No Flash found :(" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vYP-3Y-7sF">
+                        <rect key="frame" x="111" y="260" width="152.5" height="21.5"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <fontDescription key="fontDescription" name="HelveticaNeue-BoldItalic" family="Helvetica Neue" pointSize="18"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="fev-gV-gnD">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="543"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -36,6 +43,7 @@
             </constraints>
             <size key="customSize" width="314" height="519"/>
             <connections>
+                <outlet property="lblTitleMessage" destination="vYP-3Y-7sF" id="fgT-of-cZj"/>
                 <outlet property="tblView" destination="fev-gV-gnD" id="ehs-sh-hsG"/>
             </connections>
             <point key="canvasLocation" x="11" y="20.5"/>

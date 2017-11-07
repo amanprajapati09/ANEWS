@@ -39,4 +39,18 @@ class BaseViewController: UIViewController {
     func showNavigationBar() {
         self.navigationController?.isNavigationBarHidden = false
     }
+    
+    func presentLoginView()  {
+        let loginViewController = MainainStoryboard.instantiateViewController(withIdentifier: StoryBoardId.loginView) as! LoginViewController
+        navigationController?.pushViewController(loginViewController, animated: true)
+    }
+    
+    func clearUserDefault()  {
+        userDefault.removeObject(forKey: MyUserDefault.USER_ID)
+        userDefault.removeObject(forKey: MyUserDefault.USER_EMAIL)
+        userDefault.removeObject(forKey: MyUserDefault.USER_ADDRESS)
+        userDefault.removeObject(forKey: MyUserDefault.USER_FIRSTNAME)
+        userDefault.removeObject(forKey: MyUserDefault.USER_ROLE_ID)
+        userDefault.removeObject(forKey: MyUserDefault.USER_STATUS)
+    }
 }

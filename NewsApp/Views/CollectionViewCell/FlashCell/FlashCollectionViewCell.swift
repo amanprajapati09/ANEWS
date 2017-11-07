@@ -10,6 +10,7 @@ import UIKit
 
 class FlashCollectionViewCell: UICollectionViewCell, UITableViewDataSource,UITableViewDelegate, NibLoadableView, ReusableView {
 
+    @IBOutlet weak var lblTitleMessage: UILabel!
     @IBOutlet weak var tblView: UITableView!
     var delegate:ItemSelection?
     
@@ -22,6 +23,7 @@ class FlashCollectionViewCell: UICollectionViewCell, UITableViewDataSource,UITab
     var flashList = [ModelFlash]() {
         didSet {
             tblView.reloadData()
+            manageNoDataFoundMessage()
         }
     }
 
@@ -79,5 +81,16 @@ class FlashCollectionViewCell: UICollectionViewCell, UITableViewDataSource,UITab
         } else {
             return true
         }
+    }
+    
+    private func manageNoDataFoundMessage() {
+        guard flashList.count > 0 else {
+            tblView.isHidden = true
+            lblTitleMessage.isHidden = false
+            return
+        }
+        
+        tblView.isHidden = false
+        lblTitleMessage.isHidden = true
     }
 }

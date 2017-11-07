@@ -18,6 +18,12 @@
                 <rect key="frame" x="0.0" y="0.0" width="375" height="543"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Media found :(" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a2E-0w-bAx">
+                        <rect key="frame" x="112" y="261" width="152.5" height="21.5"/>
+                        <fontDescription key="fontDescription" name="HelveticaNeue-BoldItalic" family="Helvetica Neue" pointSize="18"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="BOL-qb-DXP">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="543"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -32,9 +38,12 @@
                 <constraint firstItem="BOL-qb-DXP" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="0yb-bB-si3"/>
                 <constraint firstAttribute="trailing" secondItem="BOL-qb-DXP" secondAttribute="trailing" id="CvN-dC-ZQu"/>
                 <constraint firstItem="BOL-qb-DXP" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="ZUm-7x-8ql"/>
+                <constraint firstItem="a2E-0w-bAx" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="iaR-FP-4nJ"/>
+                <constraint firstItem="a2E-0w-bAx" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="m7u-9v-3QD"/>
                 <constraint firstAttribute="bottom" secondItem="BOL-qb-DXP" secondAttribute="bottom" id="vZP-fo-atz"/>
             </constraints>
             <connections>
+                <outlet property="lblTitleMessage" destination="a2E-0w-bAx" id="vA8-Ta-4it"/>
                 <outlet property="tblView" destination="BOL-qb-DXP" id="bXn-9K-cFN"/>
             </connections>
         </collectionViewCell>

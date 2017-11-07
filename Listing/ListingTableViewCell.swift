@@ -34,6 +34,14 @@ class ListingTableViewCell: UITableViewCell, NibLoadableView, ReusableView {
     }
     
     @IBAction func btnDirectCallClick(_ sender: Any) {
-        
+        if let url = URL(string: "tel://\(objList.mobileNo)"), UIApplication.shared.canOpenURL(url) {
+            if #available(iOS 10, *) {
+                UIApplication.shared.open(url)
+            } else {
+                UIApplication.shared.openURL(url)
+            }
+        } else {
+            showNotificationAlert(type: .error, title: "", message: "Call not available!")
+        }
     }
 }

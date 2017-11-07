@@ -7,11 +7,12 @@
 //
 
 import UIKit
+import MessageUI
 
-class JobDetailViewController: BaseViewController, UITableViewDataSource {
+class JobDetailViewController: BaseViewController, UITableViewDataSource, MFMailComposeViewControllerDelegate, UINavigationControllerDelegate {
 
     @IBOutlet weak var tblView: UITableView!
-    var modelJob: ModelJob!        
+    var modelJob: ModelJob!
     override func viewDidLoad() {
         super.viewDidLoad()
         tblView.register(JobDetailTableViewCell.self)
@@ -92,5 +93,21 @@ class JobDetailViewController: BaseViewController, UITableViewDataSource {
         }
         
         return cell
+    }
+    @IBAction func btnSendMailClick(_ sender: Any) {
+        guard MFMailComposeViewController.canSendMail() else {
+            showTitleBarAlert(message: "Configure mail first.")
+            return
+        }
+        
+        let mailViewController = MFMailComposeViewController()
+        mailViewController.setToRecipients([modelJob.emailId])
+        mailViewController.delegate = self
+        present(mailViewController, animated: true, completion: nil)
+    }
+    
+    //MARK:- mailviewcontroller delegate methods 
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+        controller.dismiss(animated: true, completion: nil)
     }
 }

@@ -13,6 +13,7 @@ class JobCollectionViewCell: UICollectionViewCell, UITableViewDataSource,UITable
     var delegate:ItemSelection?
     @IBOutlet weak var tblView: UITableView!
     
+    @IBOutlet weak var lblTitleMessage: UILabel!
     var jobList = [ModelJob]() {
         didSet {
             tblView.reloadData()
@@ -22,6 +23,7 @@ class JobCollectionViewCell: UICollectionViewCell, UITableViewDataSource,UITable
     var filterList = [ModelJob]() {
         didSet {
             tblView.reloadData()
+            manageNoDataFoundMessage()
         }
     }
     
@@ -111,6 +113,8 @@ class JobCollectionViewCell: UICollectionViewCell, UITableViewDataSource,UITable
     
     private func registerCell() {
         tblView.register(JobTableViewCell.self)
+        tblView.estimatedRowHeight = 45
+        tblView.rowHeight = UITableViewAutomaticDimension
     }
     
     private func requestForJobList() {
@@ -143,5 +147,16 @@ class JobCollectionViewCell: UICollectionViewCell, UITableViewDataSource,UITable
         } else {
             return true
         }
+    }
+    
+    private func manageNoDataFoundMessage() {
+        guard filterList.count > 0 else {
+            tblView.isHidden = true
+            lblTitleMessage.isHidden = false
+            return
+        }
+        
+        tblView.isHidden = false
+        lblTitleMessage.isHidden = true
     }
 }

@@ -55,6 +55,13 @@ struct Segues {
     static let postjobView = "toPostJobViewController"
     static let kToCategoryFromJobPost = "toCategorySelectionFromJobPost"
 }
+
+//MARK:- Storyboard ID
+struct StoryBoardId {
+    static let loginView = "loginViewStoryBoardID"
+    static let homeNavigation = "HomeNavigationController"
+}
+
 //MARK:- URLs
 struct StaticURL{
     

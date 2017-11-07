@@ -11,6 +11,8 @@ import UIKit
 class ListingCollectionViewCell: UICollectionViewCell, UITableViewDataSource,UITableViewDelegate, NibLoadableView, ReusableView {
     
     var delegate:ItemSelection?
+    
+    @IBOutlet weak var lblTitleMessage: UILabel!
     @IBOutlet weak var tblView: UITableView!
     
     var selectedCategory:Category? {
@@ -35,12 +37,14 @@ class ListingCollectionViewCell: UICollectionViewCell, UITableViewDataSource,UIT
     var List = [ModelList]() {
         didSet {
             tblView.reloadData()
+            manageNoDataFoundMessage()
         }
     }
     
     var filterList = [ModelList]() {
         didSet {
             tblView.reloadData()
+            manageNoDataFoundMessage()
         }
     }
 
@@ -153,4 +157,14 @@ class ListingCollectionViewCell: UICollectionViewCell, UITableViewDataSource,UIT
         }
     }
 
+    private func manageNoDataFoundMessage() {
+        guard filterList.count > 0 else {
+            tblView.isHidden = true
+            lblTitleMessage.isHidden = false
+            return
+        }
+        
+        tblView.isHidden = false
+        lblTitleMessage.isHidden = true
+    }
 }

@@ -85,6 +85,9 @@ class HomeViewController: BaseViewController, ItemSelection, SFSafariViewControl
 //        userDefault.setValue(model.id, forKey: MyUserDefault.USER_ID)
         guard (userDefault.value(forKey: MyUserDefault.USER_ID) != nil) else {
             showNotificationAlert(type: .error, title: "Warning!", message: "Please login  first to post job")
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime(uptimeNanoseconds: 2), execute: { 
+                self.presentLoginView()
+            })
             return 
         }
         performSegue(withIdentifier: Segues.postjobView, sender: nil)
@@ -159,64 +162,17 @@ class HomeViewController: BaseViewController, ItemSelection, SFSafariViewControl
         } else if segue.identifier == Segues.categoryView {
             
             let destinationViewController = segue.destination as! CategorySelectionViewController
-            
+            destinationViewController.titleLabel = createcategoryPickerTitleMessage()
             destinationViewController.delegate = self
             destinationViewController.categoryList = sender as! [Category]
         }
     }
 
-    //MARK:- Helper Method
-    func UIChangesAsPerIndexSelection(index:Int) {
-        switch index {
-        case 0:
-            self.headerViewHeightConstraint.constant = 0.0
-            selectedMode = .eFlash
-            break
-        case 1:
-            self.headerViewHeightConstraint.constant = 50.0
-            self.categoryRegionBothVisible(flag: true)
-            self.categoryRegionWith(color: UIColor.black)
-            selectedMode = .eListing
-            break
-        case 2:
-            self.headerViewHeightConstraint.constant = 50.0
-            self.categoryRegionBothVisible(flag: false)
-            self.categoryRegionWith(color: UIColor.black)
-            selectedMode = .eBulletin
-            break
-        case 3:
-            self.headerViewHeightConstraint.constant = 94.0
-            self.categoryRegionBothVisible(flag: true)
-            self.categoryRegionWith(color: UIColor.lightGray)
-            selectedMode = .eJob
-            break
-        case 4:
-            self.headerViewHeightConstraint.constant = 50.0
-            self.categoryRegionBothVisible(flag: false)
-            self.categoryRegionWith(color: UIColor.black)
-            selectedMode = .eMedia
-            break
-        default:
-            break
+    private func createcategoryPickerTitleMessage() -> String {
+        if isRegion {
+            return "Select region for \(selectedMode.rawValue)"
+        } else {
+            return "Select category for \(selectedMode.rawValue)"
         }
-        self.view.layoutIfNeeded()
-    }
-    func categoryRegionBothVisible(flag:Bool) {
-        if flag {
-            self.categoryRegionEqualConstraint.isActive = true
-            self.regionWidthConstraint.isActive = false
-            self.regionWidthConstraint.constant = 0
-        }
-        else {
-            self.categoryRegionEqualConstraint.isActive = false
-            self.regionWidthConstraint.isActive = true
-            self.regionWidthConstraint.constant = 0
-        }
-        self.view.layoutIfNeeded()
-    }
-    func categoryRegionWith(color:UIColor)
-    {
-        self.categoryView.backgroundColor = color
-        self.regionView.backgroundColor = color
     }
 }

@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -22,16 +23,16 @@
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Foq-6I-oON">
                         <rect key="frame" x="10" y="11" width="128" height="21"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="21" id="ySc-Ve-gl8"/>
+                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="21" id="ySc-Ve-gl8"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D9c-9F-e92">
-                        <rect key="frame" x="148" y="11.5" width="162" height="21"/>
+                        <rect key="frame" x="148" y="3.5" width="162" height="37"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="21" id="EcB-Mq-Vcw"/>
+                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="21" id="EcB-Mq-Vcw"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
@@ -40,11 +41,13 @@
                 </subviews>
                 <constraints>
                     <constraint firstItem="Foq-6I-oON" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="73o-dp-eP1"/>
-                    <constraint firstItem="D9c-9F-e92" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="9tS-Mh-Teq"/>
                     <constraint firstAttribute="trailing" secondItem="D9c-9F-e92" secondAttribute="trailing" constant="10" id="Jn7-sO-tNM"/>
-                    <constraint firstItem="Foq-6I-oON" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="JyS-wA-rJ9"/>
                     <constraint firstItem="D9c-9F-e92" firstAttribute="leading" secondItem="Foq-6I-oON" secondAttribute="trailing" constant="10" id="Pq6-Nx-reU"/>
+                    <constraint firstItem="Foq-6I-oON" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="3" id="QXd-0G-C0R"/>
                     <constraint firstItem="Foq-6I-oON" firstAttribute="width" secondItem="H2p-sc-9uM" secondAttribute="width" multiplier="0.4" id="lMN-vZ-C0V"/>
+                    <constraint firstItem="D9c-9F-e92" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="3.5" id="pDW-VG-ewg"/>
+                    <constraint firstAttribute="bottom" secondItem="D9c-9F-e92" secondAttribute="bottom" constant="3" id="wux-nw-sNI"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="Foq-6I-oON" secondAttribute="bottom" constant="3.5" id="z6X-AD-vDq"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>

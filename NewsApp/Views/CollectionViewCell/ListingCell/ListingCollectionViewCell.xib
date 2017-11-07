@@ -18,6 +18,12 @@
                 <rect key="frame" x="0.0" y="0.0" width="375" height="543"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Listing found :(" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nJy-xe-000">
+                        <rect key="frame" x="108.5" y="260" width="157.5" height="21.5"/>
+                        <fontDescription key="fontDescription" name="HelveticaNeue-BoldItalic" family="Helvetica Neue" pointSize="18"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="VVD-4H-dOu">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="543"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -31,10 +37,13 @@
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="VVD-4H-dOu" secondAttribute="trailing" id="FLo-rh-Ydy"/>
                 <constraint firstAttribute="bottom" secondItem="VVD-4H-dOu" secondAttribute="bottom" id="NoV-8j-xVM"/>
+                <constraint firstItem="nJy-xe-000" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="VCS-Mp-5WM"/>
                 <constraint firstItem="VVD-4H-dOu" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="qib-eM-NdM"/>
                 <constraint firstItem="VVD-4H-dOu" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="w91-bq-5W2"/>
+                <constraint firstItem="nJy-xe-000" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="yVO-K8-MdX"/>
             </constraints>
             <connections>
+                <outlet property="lblTitleMessage" destination="nJy-xe-000" id="RM9-7N-Qxs"/>
                 <outlet property="tblView" destination="VVD-4H-dOu" id="jLO-JK-9aG"/>
             </connections>
         </collectionViewCell>

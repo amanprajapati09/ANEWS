@@ -22,6 +22,11 @@ extension AppDelegate {
         // Picker displays a Google Map.
         GMSServices.provideAPIKey(kMapsAPIKey)
 
+        if (userDefault.object(forKey: MyUserDefault.USER_ID) != nil) {
+            let appDelegate = UIApplication.shared.delegate as! AppDelegate
+            appDelegate.window?.rootViewController =  MainainStoryboard.instantiateViewController(withIdentifier: StoryBoardId.homeNavigation)
+        }
+        
         return true
     }
     

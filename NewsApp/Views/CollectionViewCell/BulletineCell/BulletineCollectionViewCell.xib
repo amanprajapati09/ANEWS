@@ -18,6 +18,12 @@
                 <rect key="frame" x="0.0" y="0.0" width="375" height="543"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Bulletine found :(" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mpo-ef-cyE">
+                        <rect key="frame" x="99.5" y="260" width="176" height="21.5"/>
+                        <fontDescription key="fontDescription" name="HelveticaNeue-BoldItalic" family="Helvetica Neue" pointSize="18"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="8z4-GC-nUF">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="543"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -31,10 +37,13 @@
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="8z4-GC-nUF" secondAttribute="bottom" id="8Eh-S5-azk"/>
                 <constraint firstItem="8z4-GC-nUF" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="EgG-HF-6M3"/>
+                <constraint firstItem="mpo-ef-cyE" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="KXM-W5-Ovw"/>
                 <constraint firstAttribute="trailing" secondItem="8z4-GC-nUF" secondAttribute="trailing" id="U7N-xv-zyT"/>
+                <constraint firstItem="mpo-ef-cyE" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="suF-Hq-faP"/>
                 <constraint firstItem="8z4-GC-nUF" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="tUn-TE-CCo"/>
             </constraints>
             <connections>
+                <outlet property="lblTitleMessage" destination="mpo-ef-cyE" id="kLR-oA-NGM"/>
                 <outlet property="tblView" destination="8z4-GC-nUF" id="k9G-AC-WGn"/>
             </connections>
         </collectionViewCell>

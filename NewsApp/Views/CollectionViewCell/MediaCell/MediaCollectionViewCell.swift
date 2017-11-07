@@ -13,6 +13,7 @@ class MediaCollectionViewCell: UICollectionViewCell,UITableViewDataSource,UITabl
     var delegate:ItemSelection?
     @IBOutlet weak var tblView: UITableView!
     
+    @IBOutlet weak var lblTitleMessage: UILabel!
     var selectegCategory:Category? {
         didSet {
             filterUsingCategory()
@@ -34,6 +35,7 @@ class MediaCollectionViewCell: UICollectionViewCell,UITableViewDataSource,UITabl
     var filterList = [ModelMedia]() {
         didSet {
             tblView.reloadData()
+            manageNoDataFoundMessage()
         }
     }
     
@@ -103,5 +105,16 @@ class MediaCollectionViewCell: UICollectionViewCell,UITableViewDataSource,UITabl
         } else {
             return true
         }
+    }
+    
+    private func manageNoDataFoundMessage() {
+        guard filterList.count > 0 else {
+            tblView.isHidden = true
+            lblTitleMessage.isHidden = false
+            return
+        }
+        
+        tblView.isHidden = false
+        lblTitleMessage.isHidden = true
     }
 }

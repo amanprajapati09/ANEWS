@@ -17,8 +17,6 @@ class CategorySelectionViewController: BaseViewController, UITableViewDataSource
     @IBOutlet weak var tblView: UITableView!
     @IBOutlet weak var lblTitle: UILabel!
     
-    
-    
     var categoryList = [Category]()
     var filterList = [Category]() {
         didSet {
@@ -26,12 +24,15 @@ class CategorySelectionViewController: BaseViewController, UITableViewDataSource
         }
     }
     
+    var titleLabel: String = ""
+    
+    
     var delegate:CategorySelectionDelegate?
-    
-    
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         filterList = categoryList
+        lblTitle.text = titleLabel
     }
 
     override func didReceiveMemoryWarning() {

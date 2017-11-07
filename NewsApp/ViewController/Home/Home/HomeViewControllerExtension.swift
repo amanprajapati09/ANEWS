@@ -46,6 +46,7 @@ extension HomeViewController {
     }
     
     internal func logout() {
+        clearUserDefault()
         UIApplication.shared.keyWindow?.rootViewController = MainainStoryboard.instantiateViewController(withIdentifier: StroryBoardIdentifier.landingScreenIdentifier)
     }
     
@@ -148,5 +149,61 @@ extension HomeViewController {
     
     private func updateRegionLabel(title:String) {
         lblRegion.text = title
+    }
+    
+    //MARK:- Helper Method
+    func UIChangesAsPerIndexSelection(index:Int) {
+        switch index {
+        case 0:
+            self.headerViewHeightConstraint.constant = 0.0
+            selectedMode = .eFlash
+            break
+        case 1:
+            self.headerViewHeightConstraint.constant = 50.0
+            self.categoryRegionBothVisible(flag: true)
+            self.categoryRegionWith(color: UIColor.black)
+            selectedMode = .eListing
+            break
+        case 2:
+            self.headerViewHeightConstraint.constant = 50.0
+            self.categoryRegionBothVisible(flag: false)
+            self.categoryRegionWith(color: UIColor.black)
+            selectedMode = .eBulletin
+            break
+        case 3:
+            self.headerViewHeightConstraint.constant = 94.0
+            self.categoryRegionBothVisible(flag: true)
+            self.categoryRegionWith(color: UIColor.lightGray)
+            selectedMode = .eJob
+            break
+        case 4:
+            self.headerViewHeightConstraint.constant = 50.0
+            self.categoryRegionBothVisible(flag: false)
+            self.categoryRegionWith(color: UIColor.black)
+            selectedMode = .eMedia
+            break
+        default:
+            break
+        }
+        self.view.layoutIfNeeded()
+    }
+    func categoryRegionBothVisible(flag:Bool) {
+        if flag {
+            self.categoryRegionEqualConstraint.isActive = true
+            self.regionWidthConstraint.isActive = false
+            self.regionWidthConstraint.constant = 0
+        }
+        else {
+            self.categoryRegionEqualConstraint.isActive = false
+            self.regionWidthConstraint.isActive = true
+            self.regionWidthConstraint.constant = 0
+        }
+        self.view.layoutIfNeeded()
+    }
+    
+    func categoryRegionWith(color:UIColor)
+    {
+        self.categoryView.backgroundColor = color
+        self.regionView.backgroundColor = color
     }
 }

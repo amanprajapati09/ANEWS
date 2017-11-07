@@ -18,6 +18,12 @@
                 <rect key="frame" x="0.0" y="0.0" width="375" height="543"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No job found :(" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZRG-BV-Dhg">
+                        <rect key="frame" x="125" y="260" width="126" height="21.5"/>
+                        <fontDescription key="fontDescription" name="HelveticaNeue-BoldItalic" family="Helvetica Neue" pointSize="18"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ZD5-S4-PzU">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="543"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -29,12 +35,15 @@
                 </subviews>
             </view>
             <constraints>
+                <constraint firstItem="ZRG-BV-Dhg" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="1KJ-VV-rcZ"/>
                 <constraint firstItem="ZD5-S4-PzU" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="9xV-Kt-A5w"/>
+                <constraint firstItem="ZRG-BV-Dhg" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="VVA-lv-ay7"/>
                 <constraint firstItem="ZD5-S4-PzU" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="XhL-TX-qRt"/>
                 <constraint firstAttribute="trailing" secondItem="ZD5-S4-PzU" secondAttribute="trailing" id="bVH-DF-Lap"/>
                 <constraint firstAttribute="bottom" secondItem="ZD5-S4-PzU" secondAttribute="bottom" id="zHa-ks-AFx"/>
             </constraints>
             <connections>
+                <outlet property="lblTitleMessage" destination="ZRG-BV-Dhg" id="CvV-Gb-4mk"/>
                 <outlet property="tblView" destination="ZD5-S4-PzU" id="Gy0-BZ-1bR"/>
             </connections>
         </collectionViewCell>
