@@ -99,6 +99,14 @@
 		07A49DAA1F86B1F30022562D /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07A49D891F86B1F30022562D /* BaseViewController.swift */; };
 		07AF15351FABBC2A00FBE928 /* PostJobViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07AF15341FABBC2A00FBE928 /* PostJobViewController.swift */; };
 		07AF15371FAC0ED400FBE928 /* PostJobViewCotrollerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07AF15361FAC0ED400FBE928 /* PostJobViewCotrollerExtension.swift */; };
+		07AF15471FB38F5700FBE928 /* LGSideMenuBorderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 07AF153A1FB38F5700FBE928 /* LGSideMenuBorderView.m */; };
+		07AF15481FB38F5700FBE928 /* LGSideMenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = 07AF153C1FB38F5700FBE928 /* LGSideMenuController.m */; };
+		07AF15491FB38F5700FBE928 /* LGSideMenuGesturesHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 07AF153E1FB38F5700FBE928 /* LGSideMenuGesturesHandler.m */; };
+		07AF154A1FB38F5700FBE928 /* LGSideMenuHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 07AF15401FB38F5700FBE928 /* LGSideMenuHelper.m */; };
+		07AF154B1FB38F5700FBE928 /* LGSideMenuSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 07AF15421FB38F5700FBE928 /* LGSideMenuSegue.m */; };
+		07AF154C1FB38F5700FBE928 /* LGSideMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = 07AF15441FB38F5700FBE928 /* LGSideMenuView.m */; };
+		07AF154D1FB38F5700FBE928 /* UIViewController+LGSideMenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = 07AF15461FB38F5700FBE928 /* UIViewController+LGSideMenuController.m */; };
+		07AF154F1FB3915600FBE928 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07AF154E1FB3915600FBE928 /* MainViewController.swift */; };
 		53E4FC8244730F3B382DFD94 /* Pods_NewsApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E94DCF7A29ECF7108F54BD57 /* Pods_NewsApp.framework */; };
 /* End PBXBuildFile section */
 
@@ -197,6 +205,21 @@
 		07A49D891F86B1F30022562D /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		07AF15341FABBC2A00FBE928 /* PostJobViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostJobViewController.swift; sourceTree = "<group>"; };
 		07AF15361FAC0ED400FBE928 /* PostJobViewCotrollerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostJobViewCotrollerExtension.swift; sourceTree = "<group>"; };
+		07AF15391FB38F5700FBE928 /* LGSideMenuBorderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LGSideMenuBorderView.h; sourceTree = "<group>"; };
+		07AF153A1FB38F5700FBE928 /* LGSideMenuBorderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LGSideMenuBorderView.m; sourceTree = "<group>"; };
+		07AF153B1FB38F5700FBE928 /* LGSideMenuController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LGSideMenuController.h; sourceTree = "<group>"; };
+		07AF153C1FB38F5700FBE928 /* LGSideMenuController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LGSideMenuController.m; sourceTree = "<group>"; };
+		07AF153D1FB38F5700FBE928 /* LGSideMenuGesturesHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LGSideMenuGesturesHandler.h; sourceTree = "<group>"; };
+		07AF153E1FB38F5700FBE928 /* LGSideMenuGesturesHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LGSideMenuGesturesHandler.m; sourceTree = "<group>"; };
+		07AF153F1FB38F5700FBE928 /* LGSideMenuHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LGSideMenuHelper.h; sourceTree = "<group>"; };
+		07AF15401FB38F5700FBE928 /* LGSideMenuHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LGSideMenuHelper.m; sourceTree = "<group>"; };
+		07AF15411FB38F5700FBE928 /* LGSideMenuSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LGSideMenuSegue.h; sourceTree = "<group>"; };
+		07AF15421FB38F5700FBE928 /* LGSideMenuSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LGSideMenuSegue.m; sourceTree = "<group>"; };
+		07AF15431FB38F5700FBE928 /* LGSideMenuView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LGSideMenuView.h; sourceTree = "<group>"; };
+		07AF15441FB38F5700FBE928 /* LGSideMenuView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LGSideMenuView.m; sourceTree = "<group>"; };
+		07AF15451FB38F5700FBE928 /* UIViewController+LGSideMenuController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+LGSideMenuController.h"; sourceTree = "<group>"; };
+		07AF15461FB38F5700FBE928 /* UIViewController+LGSideMenuController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+LGSideMenuController.m"; sourceTree = "<group>"; };
+		07AF154E1FB3915600FBE928 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		2FBE3D050966A30FBD219437 /* Pods-NewsApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NewsApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-NewsApp/Pods-NewsApp.release.xcconfig"; sourceTree = "<group>"; };
 		633795B34E696785A554349D /* Pods-NewsApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NewsApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NewsApp/Pods-NewsApp.debug.xcconfig"; sourceTree = "<group>"; };
 		E94DCF7A29ECF7108F54BD57 /* Pods_NewsApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NewsApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -257,6 +280,7 @@
 		078F45FF1F9526B700F8BE2F /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				07AF154E1FB3915600FBE928 /* MainViewController.swift */,
 				078F46031F952FCC00F8BE2F /* HomeViewController.swift */,
 				078F46C41FA1873000F8BE2F /* HomeViewControllerExtension.swift */,
 			);
@@ -594,6 +618,7 @@
 		07A49D6D1F86B1F30022562D /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
+				07AF15381FB38F5700FBE928 /* LGSideMenuController */,
 				07A49D701F86B1F30022562D /* LoadMore&Views */,
 				07A49D7A1F86B1F30022562D /* RevealingSplashView.swift */,
 			);
@@ -765,6 +790,27 @@
 			path = PostJobViewController;
 			sourceTree = "<group>";
 		};
+		07AF15381FB38F5700FBE928 /* LGSideMenuController */ = {
+			isa = PBXGroup;
+			children = (
+				07AF15391FB38F5700FBE928 /* LGSideMenuBorderView.h */,
+				07AF153A1FB38F5700FBE928 /* LGSideMenuBorderView.m */,
+				07AF153B1FB38F5700FBE928 /* LGSideMenuController.h */,
+				07AF153C1FB38F5700FBE928 /* LGSideMenuController.m */,
+				07AF153D1FB38F5700FBE928 /* LGSideMenuGesturesHandler.h */,
+				07AF153E1FB38F5700FBE928 /* LGSideMenuGesturesHandler.m */,
+				07AF153F1FB38F5700FBE928 /* LGSideMenuHelper.h */,
+				07AF15401FB38F5700FBE928 /* LGSideMenuHelper.m */,
+				07AF15411FB38F5700FBE928 /* LGSideMenuSegue.h */,
+				07AF15421FB38F5700FBE928 /* LGSideMenuSegue.m */,
+				07AF15431FB38F5700FBE928 /* LGSideMenuView.h */,
+				07AF15441FB38F5700FBE928 /* LGSideMenuView.m */,
+				07AF15451FB38F5700FBE928 /* UIViewController+LGSideMenuController.h */,
+				07AF15461FB38F5700FBE928 /* UIViewController+LGSideMenuController.m */,
+			);
+			path = LGSideMenuController;
+			sourceTree = "<group>";
+		};
 		15DAB443A71C55A4D022D8AC /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -927,16 +973,19 @@
 				078F460C1F959CF800F8BE2F /* ModelLoginData.swift in Sources */,
 				0784308E1F8C665B000368EB /* APISessionService.swift in Sources */,
 				078F47041FA76E9C00F8BE2F /* Data.swift in Sources */,
+				07AF15471FB38F5700FBE928 /* LGSideMenuBorderView.m in Sources */,
 				0784308D1F8C665B000368EB /* APIService.swift in Sources */,
 				078F46CD1FA2CA6400F8BE2F /* Job.swift in Sources */,
 				078F45F31F8DC53D00F8BE2F /* TextFieldExtension.swift in Sources */,
 				07A49DA01F86B1F30022562D /* NVActivityIndicatorView.swift in Sources */,
+				07AF154D1FB38F5700FBE928 /* UIViewController+LGSideMenuController.m in Sources */,
 				0784308F1F8C665B000368EB /* NetworkService.swift in Sources */,
 				078F461A1F9C909A00F8BE2F /* UIColorExtension.swift in Sources */,
 				078F46941F9EE4B900F8BE2F /* ModelBaseHome.swift in Sources */,
 				07A49DAA1F86B1F30022562D /* BaseViewController.swift in Sources */,
 				078F46AB1F9F9E7700F8BE2F /* ModelRequestHelper.swift in Sources */,
 				078F466B1F9E600300F8BE2F /* ListingCollectionViewCell.swift in Sources */,
+				07AF154C1FB38F5700FBE928 /* LGSideMenuView.m in Sources */,
 				078F46591F9CDA2600F8BE2F /* STVSegmentButton.swift in Sources */,
 				078F46881F9E62D600F8BE2F /* BullatineTableViewCell.swift in Sources */,
 				078F47121FABB23700F8BE2F /* JobDetailTableViewCell.swift in Sources */,
@@ -950,6 +999,7 @@
 				078F466F1F9E601F00F8BE2F /* BulletineCollectionViewCell.swift in Sources */,
 				07A49D9D1F86B1F30022562D /* NVActivityIndicatorAnimationDelegate.swift in Sources */,
 				078F46A31F9EE73E00F8BE2F /* ModelBulletin.swift in Sources */,
+				07AF15481FB38F5700FBE928 /* LGSideMenuController.m in Sources */,
 				078F46A01F9EE73200F8BE2F /* ModelListMain.swift in Sources */,
 				078F45F11F8DC25400F8BE2F /* ResultModel.swift in Sources */,
 				078F45FB1F8FD8D200F8BE2F /* ConstantMethods.swift in Sources */,
@@ -963,18 +1013,22 @@
 				078F465A1F9CDA2600F8BE2F /* STVSegmentButtonCell.swift in Sources */,
 				078F46AD1F9FA70000F8BE2F /* StringExtension.swift in Sources */,
 				07A49D931F86B1F30022562D /* AppDelegate.swift in Sources */,
+				07AF154B1FB38F5700FBE928 /* LGSideMenuSegue.m in Sources */,
 				078F46A41F9EE73E00F8BE2F /* ModelBulletinMain.swift in Sources */,
 				07A49DA31F86B1F30022562D /* BaseModel.swift in Sources */,
 				078F47021FA76E9C00F8BE2F /* Category.swift in Sources */,
 				078F45F71F8DC85100F8BE2F /* SignupViewControllerExtension.swift in Sources */,
 				07A49DA21F86B1F30022562D /* RevealingSplashView.swift in Sources */,
+				07AF15491FB38F5700FBE928 /* LGSideMenuGesturesHandler.m in Sources */,
 				078430901F8C665B000368EB /* Reachability.swift in Sources */,
 				07A49D941F86B1F30022562D /* Constant.swift in Sources */,
 				078F46A71F9EE74800F8BE2F /* ModelMedia.swift in Sources */,
 				078F45E61F8D43DE00F8BE2F /* LoginViewController.swift in Sources */,
 				078F46801F9E62B200F8BE2F /* FlashTableViewCell.swift in Sources */,
 				078F46771F9E604100F8BE2F /* MediaCollectionViewCell.swift in Sources */,
+				07AF154A1FB38F5700FBE928 /* LGSideMenuHelper.m in Sources */,
 				078F46041F952FCC00F8BE2F /* HomeViewController.swift in Sources */,
+				07AF154F1FB3915600FBE928 /* MainViewController.swift in Sources */,
 				078F45F91F8DC87E00F8BE2F /* SignupViewModel.swift in Sources */,
 				078F470E1FABB1A900F8BE2F /* JobDetailViewController.swift in Sources */,
 				078F46C81FA18F3700F8BE2F /* ListDetailViewController.swift in Sources */,

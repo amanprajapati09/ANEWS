@@ -32,17 +32,23 @@
                             <outlet property="delegate" destination="gTV-IL-0wX" id="GWT-LF-6xM"/>
                         </connections>
                     </tableView>
+                    <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="qnO-qE-5Yn">
+                        <rect key="frame" x="177" y="261" width="20" height="20"/>
+                    </activityIndicatorView>
                 </subviews>
             </view>
             <constraints>
+                <constraint firstItem="qnO-qE-5Yn" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="8vj-Px-d6H"/>
                 <constraint firstAttribute="trailing" secondItem="VVD-4H-dOu" secondAttribute="trailing" id="FLo-rh-Ydy"/>
                 <constraint firstAttribute="bottom" secondItem="VVD-4H-dOu" secondAttribute="bottom" id="NoV-8j-xVM"/>
                 <constraint firstItem="nJy-xe-000" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="VCS-Mp-5WM"/>
+                <constraint firstItem="qnO-qE-5Yn" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="Yhd-1w-fjv"/>
                 <constraint firstItem="VVD-4H-dOu" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="qib-eM-NdM"/>
                 <constraint firstItem="VVD-4H-dOu" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="w91-bq-5W2"/>
                 <constraint firstItem="nJy-xe-000" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="yVO-K8-MdX"/>
             </constraints>
             <connections>
+                <outlet property="activityIndicator" destination="qnO-qE-5Yn" id="Q1M-V8-V7T"/>
                 <outlet property="lblTitleMessage" destination="nJy-xe-000" id="RM9-7N-Qxs"/>
                 <outlet property="tblView" destination="VVD-4H-dOu" id="jLO-JK-9aG"/>
             </connections>

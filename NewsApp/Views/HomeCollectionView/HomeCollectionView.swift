@@ -57,7 +57,7 @@ class HomeCollectionView: UIView, UICollectionViewDataSource, UICollectionViewDe
             return cell
         case 2:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: BulletineCollectionViewCell.reuseIdentifier, for: indexPath) as! BulletineCollectionViewCell
-            cell.selectegCategory = selectedCategory
+            cell.selectedCategory = selectedCategory
             cell.delegate = self
             return cell
         
@@ -69,7 +69,7 @@ class HomeCollectionView: UIView, UICollectionViewDataSource, UICollectionViewDe
             return cell
         case 4:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MediaCollectionViewCell.reuseIdentifier, for: indexPath) as! MediaCollectionViewCell
-            cell.selectegCategory = selectedCategory
+            cell.selectedCategory = selectedCategory
             cell.delegate = self
             return cell
         default :
@@ -104,8 +104,6 @@ class HomeCollectionView: UIView, UICollectionViewDataSource, UICollectionViewDe
                 if scrollingAtIndex != nil {
                     scrollingAtIndex!(indexPath.row)
                 }
-                
-//                self.homeCollectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
             }
         }
     }

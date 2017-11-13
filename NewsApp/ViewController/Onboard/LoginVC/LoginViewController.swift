@@ -17,6 +17,7 @@ class LoginViewController: BaseViewController {
     @IBOutlet weak var btnSignIn: UIButton!
     @IBOutlet weak var activityIndigator: UIActivityIndicatorView!
     
+    @IBOutlet weak var btnSkipToHome: UIButton!
     internal var objLoginViewModel = LoginViewModel()
     
     var isFromApp: Bool = false
@@ -30,7 +31,11 @@ class LoginViewController: BaseViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        hideNavigationBar()
+        
+        guard isFromApp else {
+            hideNavigationBar()
+            return
+        }
     }
     
     override func viewDidLayoutSubviews() {
@@ -130,8 +135,7 @@ class LoginViewController: BaseViewController {
             if (result.status) {
                 showNotificationAlert(type: .success, title: "Success", message: "Link send to your email.")
             } else {
-                showNotificationAlert(type: .error, title: "Error", message: result.message)
-                
+                showNotificationAlert(type: .error, title: "Error", message: result.message)                
             }
             
         }) { (error) -> (Void) in
@@ -154,5 +158,11 @@ class LoginViewController: BaseViewController {
     private func prepareView() {
         btnSignIn.setCornerRadious(corner: Int(btnSignIn.frame.height/2))
         txtPassword.textField.isSecureTextEntry = true
+        
+        guard isFromApp else {
+            return
+        }
+        
+        btnSkipToHome.isHidden = true
     }
 }

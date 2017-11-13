@@ -18,6 +18,7 @@ class FlashTableViewCell: UITableViewCell, NibLoadableView, ReusableView {
     @IBOutlet weak var lblDate: UILabel!
     @IBOutlet weak var lblTime: UILabel!
     
+    
     //MARK:- variables
     var modelFlash:ModelFlash! {
         didSet {

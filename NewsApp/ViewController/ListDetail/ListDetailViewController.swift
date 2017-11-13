@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import GooglePlacePicker
 
-class ListDetailViewController: BaseViewController {
+class ListDetailViewController: BaseViewController,UITextFieldDelegate, GMSPlacePickerViewControllerDelegate {
     
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var lblTitle: UILabel!
@@ -18,6 +19,7 @@ class ListDetailViewController: BaseViewController {
     @IBOutlet weak var lblContactNo: UILabel!
     @IBOutlet weak var lblEmail: UILabel!
     @IBOutlet weak var lblAddress: UILabel!
+    @IBOutlet weak var txtAddress: UITextField!
     
     var modelList = ModelList()
     
@@ -62,5 +64,47 @@ class ListDetailViewController: BaseViewController {
         alert.addAction(actionCancel)
         
         present(alert, animated: true, completion: nil)
+    }
+    
+    
+    //MARK:- helper methods
+    internal func presentAddressPicker() {
+        let config = GMSPlacePickerConfig(viewport: nil)
+        let placePicker = GMSPlacePickerViewController(config: config)
+        placePicker.delegate = self
+        placePicker.modalPresentationStyle = .popover
+        placePicker.popoverPresentationController?.sourceView = txtAddress
+        placePicker.popoverPresentationController?.sourceRect = txtAddress.bounds
+        
+        // Display the place picker. This will call the delegate methods defined below when the user
+        // has made a selection.
+        self.present(placePicker, animated: true, completion: nil)
+    }
+}
+
+extension ListDetailViewController {
+    
+    //MARK:- Textfield delegate methods
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        guard textField == txtAddress else {
+            return true
+        }
+        presentAddressPicker()
+        return false
+    }
+    
+    //MARK:- Place picker delegate methods
+    func placePicker(_ viewController: GMSPlacePickerViewController, didPick place: GMSPlace) {
+        txtAddress.text = place.name
+        viewController.dismiss(animated: true, completion: nil)
+    }
+    
+    func placePicker(_ viewController: GMSPlacePickerViewController, didFailWithError error: Error) {
+        
+    }
+    
+    func placePickerDidCancel(_ viewController: GMSPlacePickerViewController) {
+        viewController.dismiss(animated: true, completion: nil)
+        
     }
 }

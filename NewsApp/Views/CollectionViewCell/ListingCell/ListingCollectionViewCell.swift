@@ -11,9 +11,12 @@ import UIKit
 class ListingCollectionViewCell: UICollectionViewCell, UITableViewDataSource,UITableViewDelegate, NibLoadableView, ReusableView {
     
     var delegate:ItemSelection?
+    var page = 1
+    var totalPage = 0
     
     @IBOutlet weak var lblTitleMessage: UILabel!
     @IBOutlet weak var tblView: UITableView!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     var selectedCategory:Category? {
         didSet{
@@ -26,7 +29,6 @@ class ListingCollectionViewCell: UICollectionViewCell, UITableViewDataSource,UIT
             filterUsingCategory()
         }
     }
-
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -51,38 +53,17 @@ class ListingCollectionViewCell: UICollectionViewCell, UITableViewDataSource,UIT
     
     func filterUsingCategory()  {
         
-        //check selected category and region both nil one of them nil or both valid
-        guard (selectedCategory != nil) else {
-            
-            if selectedRegion != nil {
-                
-                //Selected category nil but selected region not nil
-                filterList = filterUsingRegion()
-            } else {
-                
-                //Selected region nil but selected category nil
-                filterList = List
-            }
-            
+        guard (selectedCategory == nil  && selectedRegion == nil)else {
+            requestForFilter()
             return
         }
         
-        guard (selectedRegion != nil ) else {
-            
-            //Selected region nil but selected category not nil
-            filterList = List.filter({ (object) -> Bool in
-                
-                return (object.categoryId == selectedCategory!.id)
-            })
-            
+        guard List.count == 0 else {
+            filterList = List
             return
         }
         
-        //Selected region and selected category not nil
-        filterList = filterUsingRegion().filter({ (object) -> Bool in
-            
-            return (object.categoryId == selectedCategory!.id)
-        })
+        requestForList()
     }
     
     func filterUsingRegion() -> [ModelList] {
@@ -121,6 +102,7 @@ class ListingCollectionViewCell: UICollectionViewCell, UITableViewDataSource,UIT
     //MARK:- Helper methods
     private func registerCell() {
         tblView.register(ListingTableViewCell.self)
+        self.tblView.contentInset = UIEdgeInsetsMake(tableviewTopSpace, 0, 0, 0);
     }
     
     private func requestForList() {
@@ -129,16 +111,42 @@ class ListingCollectionViewCell: UICollectionViewCell, UITableViewDataSource,UIT
             return
         }
         
-        APIService.sharedInstance.list(parameters: nil, success: { (result) -> (Void) in
+        let param = ["page":page]
+        APIService.sharedInstance.list(parameters: param as [String : AnyObject], success: { (result) -> (Void) in
             if (result.status) {
                 self.List = result.modelList
                 self.filterList = result.modelList
                 ModelRequestList.sharedObject.modelList = result
+                self.page = result.totalPageCount
             } else {
                 showTitleBarAlert(message: result.message)
+                self.filterList = [ModelList]()
             }
         }) { (error) -> (Void) in
             showTitleBarAlert(message: error)
+        }
+    }
+    
+    private func requestForFilter() {
+        
+        let param = ["category_id":selectedCategory?.id,
+                     "region_id":selectedRegion?.id,
+                     "page":page] as [String : Any]
+        
+        showIndicator()
+        APIService.sharedInstance.list(parameters: param as [String : AnyObject], success: { (result) -> (Void) in
+            self.hideIndicator()
+            
+            if (result.status) {
+                self.filterList = result.modelList
+            } else {
+                showTitleBarAlert(message: result.message)
+                self.filterList = [ModelList]()
+                self.page = result.totalPageCount
+            }
+        }) { (error) -> (Void) in
+            showTitleBarAlert(message: error)
+            self.hideIndicator()
         }
     }
     
@@ -151,7 +159,6 @@ class ListingCollectionViewCell: UICollectionViewCell, UITableViewDataSource,UIT
             } else {
                 return true
             }
-            
         } else {
             return true
         }
@@ -166,5 +173,36 @@ class ListingCollectionViewCell: UICollectionViewCell, UITableViewDataSource,UIT
         
         tblView.isHidden = false
         lblTitleMessage.isHidden = true
+    }
+    
+    private func showIndicator() {
+        activityIndicator.startAnimating()
+        tblView.isHidden = true
+    }
+    
+    private func hideIndicator() {
+        activityIndicator.stopAnimating()
+        tblView.isHidden = false
+    }
+    
+    //MARK:- Scrollview delegate methods
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        
+        //Bottom Refresh
+        
+        if scrollView == tblView {
+            
+            if ((scrollView.contentOffset.y + scrollView.frame.size.height) >= scrollView.contentSize.height)
+            {
+                if totalPage > page {
+                    
+                    if (selectedCategory == nil && selectedRegion == nil) {
+                        requestForList()
+                    } else {
+                        requestForFilter()
+                    }
+                }
+            }
+        }
     }
 }

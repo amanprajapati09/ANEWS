@@ -12,13 +12,10 @@ import ObjectMapper
 class ModelBulletinMain : BaseModel {
 
 	var bulletinList = [ModelBulletin]()
-	var totalPageCount : Int?
-
 
     override func mapping(map:Map) {
         super.mapping(map: map)
-		bulletinList <- map["data"]
-		totalPageCount <- map["total_page_count"]
+		bulletinList <- map["data"]		
 		
 	}
 }

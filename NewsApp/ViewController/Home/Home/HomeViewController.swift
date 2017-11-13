@@ -25,6 +25,7 @@ class HomeViewController: BaseViewController, ItemSelection, SFSafariViewControl
     @IBOutlet var regionWidthConstraint: NSLayoutConstraint!
     @IBOutlet var categoryRegionEqualConstraint: NSLayoutConstraint!
     
+    @IBOutlet weak var horizontalSpaceBetweenRegion_Category: NSLayoutConstraint!
     @IBOutlet weak var lblCategory: UILabel!
     @IBOutlet weak var lblRegion: UILabel!
     

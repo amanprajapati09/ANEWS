@@ -161,24 +161,28 @@ extension HomeViewController {
         case 1:
             self.headerViewHeightConstraint.constant = 50.0
             self.categoryRegionBothVisible(flag: true)
+            HorizontalSpaceVisiblie(flag: true)
             self.categoryRegionWith(color: UIColor.black)
             selectedMode = .eListing
             break
         case 2:
             self.headerViewHeightConstraint.constant = 50.0
             self.categoryRegionBothVisible(flag: false)
+            HorizontalSpaceVisiblie(flag: false)
             self.categoryRegionWith(color: UIColor.black)
             selectedMode = .eBulletin
             break
         case 3:
             self.headerViewHeightConstraint.constant = 94.0
             self.categoryRegionBothVisible(flag: true)
+            HorizontalSpaceVisiblie(flag: true)
             self.categoryRegionWith(color: UIColor.lightGray)
             selectedMode = .eJob
             break
         case 4:
             self.headerViewHeightConstraint.constant = 50.0
             self.categoryRegionBothVisible(flag: false)
+            HorizontalSpaceVisiblie(flag: true)
             self.categoryRegionWith(color: UIColor.black)
             selectedMode = .eMedia
             break
@@ -187,6 +191,16 @@ extension HomeViewController {
         }
         self.view.layoutIfNeeded()
     }
+    
+    func HorizontalSpaceVisiblie(flag:Bool){
+        if flag {
+            self.horizontalSpaceBetweenRegion_Category.constant = 5
+        }
+        else {
+            self.horizontalSpaceBetweenRegion_Category.constant = 0
+        }
+    }
+    
     func categoryRegionBothVisible(flag:Bool) {
         if flag {
             self.categoryRegionEqualConstraint.isActive = true

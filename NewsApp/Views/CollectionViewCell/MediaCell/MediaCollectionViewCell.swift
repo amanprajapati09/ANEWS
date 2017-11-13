@@ -10,11 +10,15 @@ import UIKit
 
 class MediaCollectionViewCell: UICollectionViewCell,UITableViewDataSource,UITableViewDelegate, NibLoadableView, ReusableView {
 
+    var page = 1
+    var totalPage = 0
+    
     var delegate:ItemSelection?
     @IBOutlet weak var tblView: UITableView!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     @IBOutlet weak var lblTitleMessage: UILabel!
-    var selectegCategory:Category? {
+    var selectedCategory:Category? {
         didSet {
             filterUsingCategory()
         }
@@ -40,15 +44,18 @@ class MediaCollectionViewCell: UICollectionViewCell,UITableViewDataSource,UITabl
     }
     
     func filterUsingCategory()  {
-      
-        guard selectegCategory != nil else {
+        
+        guard (selectedCategory == nil )else {
+            requestForFilter()
+            return
+        }
+        
+        guard mediaList.count == 0 else {
             filterList = mediaList
             return
         }
         
-        filterList = mediaList.filter({ (object) -> Bool in
-            return object.categoryId == selectegCategory?.id
-        })
+        requestForMediaList()
     }
     
     //MARK:- UITableview datasource methods 
@@ -73,6 +80,7 @@ class MediaCollectionViewCell: UICollectionViewCell,UITableViewDataSource,UITabl
     
     private func registerCell() {
         tblView.register(MeddiaTableViewCell.self)
+        self.tblView.contentInset = UIEdgeInsetsMake(tableviewTopSpace, 0, 0, 0);
     }
 
     private func requestForMediaList() {
@@ -80,17 +88,41 @@ class MediaCollectionViewCell: UICollectionViewCell,UITableViewDataSource,UITabl
         guard checkForRequest() else {
             return
         }
-        
-        APIService.sharedInstance.mediaList(parameters: nil, success: { (result) -> (Void) in
+        let param = ["page":page]
+        APIService.sharedInstance.mediaList(parameters: param as [String : AnyObject], success: { (result) -> (Void) in
             if (result.status) {
                 self.mediaList = result.MediaList
                 self.filterList = result.MediaList
                 ModelRequestMedia.sharedObject.modelMedia = result
+                self.page = result.totalPageCount
             }
         }) { (error) -> (Void) in
             showTitleBarAlert(message: error)
         }
     }
+    
+    private func requestForFilter() {
+        
+        let param = ["category_id":selectedCategory!.id,
+                     "page":page] as [String : Any]
+        
+        showIndicator()
+        APIService.sharedInstance.mediaList(parameters: param as [String : AnyObject], success: { (result) -> (Void) in
+            self.hideIndicator()
+            
+            if (result.status) {
+                self.filterList = result.MediaList
+                self.page = result.totalPageCount
+            } else {
+                showTitleBarAlert(message: result.message)
+                self.filterList = [ModelMedia]()
+            }
+        }) { (error) -> (Void) in
+            showTitleBarAlert(message: error)
+            self.hideIndicator()
+        }
+    }
+    
     
     //Check if requst is required or not
     private func checkForRequest() -> Bool {
@@ -116,5 +148,35 @@ class MediaCollectionViewCell: UICollectionViewCell,UITableViewDataSource,UITabl
         
         tblView.isHidden = false
         lblTitleMessage.isHidden = true
+    }
+    
+    private func showIndicator() {
+        activityIndicator.startAnimating()
+        tblView.isHidden = true
+    }
+    
+    private func hideIndicator() {
+        activityIndicator.stopAnimating()
+        tblView.isHidden = false
+    }
+    
+    //MARK:- Scrollview delegate methods
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        
+        //Bottom Refresh
+        if scrollView == tblView {
+            
+            if ((scrollView.contentOffset.y + scrollView.frame.size.height) >= scrollView.contentSize.height)
+            {
+                if totalPage > page {
+                    
+                    if (selectedCategory == nil) {
+                        requestForMediaList()
+                    } else {
+                        requestForFilter()
+                    }
+                }
+            }
+        }
     }
 }

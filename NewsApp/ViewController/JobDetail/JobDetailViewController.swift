@@ -15,7 +15,7 @@ class JobDetailViewController: BaseViewController, UITableViewDataSource, MFMail
     var modelJob: ModelJob!
     override func viewDidLoad() {
         super.viewDidLoad()
-        tblView.register(JobDetailTableViewCell.self)
+        prepareView()
     }
 
     override func didReceiveMemoryWarning() {
@@ -23,6 +23,12 @@ class JobDetailViewController: BaseViewController, UITableViewDataSource, MFMail
         // Dispose of any resources that can be recreated.
     }
 
+    private func prepareView() {
+        tblView.register(JobDetailTableViewCell.self)
+        tblView.estimatedRowHeight = 40
+        tblView.rowHeight = UITableViewAutomaticDimension
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 12
     }

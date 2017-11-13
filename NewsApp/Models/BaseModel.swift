@@ -13,6 +13,8 @@ class BaseModel: NSObject, Mappable {
     
     var status:Bool = false
     var message:String = ""
+    var totalPageCount = 0
+    
     
     override init() {
         
@@ -30,6 +32,7 @@ class BaseModel: NSObject, Mappable {
         
         status <- map["status"]
         message <- map["message"]
+        totalPageCount <- map["total_page_count"]
     }
 }
 

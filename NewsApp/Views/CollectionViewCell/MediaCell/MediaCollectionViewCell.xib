@@ -32,17 +32,23 @@
                             <outlet property="delegate" destination="gTV-IL-0wX" id="iKz-es-X1k"/>
                         </connections>
                     </tableView>
+                    <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="Ybb-fB-3xA">
+                        <rect key="frame" x="177" y="261" width="20" height="20"/>
+                    </activityIndicatorView>
                 </subviews>
             </view>
             <constraints>
                 <constraint firstItem="BOL-qb-DXP" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="0yb-bB-si3"/>
                 <constraint firstAttribute="trailing" secondItem="BOL-qb-DXP" secondAttribute="trailing" id="CvN-dC-ZQu"/>
+                <constraint firstItem="Ybb-fB-3xA" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="GW5-Ql-kof"/>
                 <constraint firstItem="BOL-qb-DXP" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="ZUm-7x-8ql"/>
                 <constraint firstItem="a2E-0w-bAx" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="iaR-FP-4nJ"/>
+                <constraint firstItem="Ybb-fB-3xA" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="ivE-l3-T84"/>
                 <constraint firstItem="a2E-0w-bAx" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="m7u-9v-3QD"/>
                 <constraint firstAttribute="bottom" secondItem="BOL-qb-DXP" secondAttribute="bottom" id="vZP-fo-atz"/>
             </constraints>
             <connections>
+                <outlet property="activityIndicator" destination="Ybb-fB-3xA" id="FHs-OW-yNY"/>
                 <outlet property="lblTitleMessage" destination="a2E-0w-bAx" id="vA8-Ta-4it"/>
                 <outlet property="tblView" destination="BOL-qb-DXP" id="bXn-9K-cFN"/>
             </connections>

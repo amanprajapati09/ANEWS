@@ -152,7 +152,7 @@ class APIService : NSObject {
     {
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
         
-        NetworkService.shared.callWebService(method: .get, path: PATH.FLASH, params: params, type: JSONEncoding()){
+        NetworkService.shared.callWebService(method: .post, path: PATH.FLASH, params: params, type: JSONEncoding()){
             (completion:DataResponse<ModelFlashMain>) in
             UIApplication.shared.isNetworkActivityIndicatorVisible = false
             
@@ -171,7 +171,7 @@ class APIService : NSObject {
     {
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
         
-        NetworkService.shared.callWebService(method: .get, path: PATH.LIST, params: params, type: JSONEncoding()){
+        NetworkService.shared.callWebService(method: .post, path: PATH.LIST, params: params, type: JSONEncoding()){
             (completion:DataResponse<ModelListMain>) in
             UIApplication.shared.isNetworkActivityIndicatorVisible = false
             
@@ -190,7 +190,7 @@ class APIService : NSObject {
     {
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
         
-        NetworkService.shared.callWebService(method: .get, path: PATH.BULLETIN, params: params, type: JSONEncoding()){
+        NetworkService.shared.callWebService(method: .post, path: PATH.BULLETIN, params: params, type: JSONEncoding()){
             (completion:DataResponse<ModelBulletinMain>) in
             UIApplication.shared.isNetworkActivityIndicatorVisible = false
             
@@ -209,7 +209,7 @@ class APIService : NSObject {
     {
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
         
-        NetworkService.shared.callWebService(method: .get, path: PATH.MEDIA, params: params, type: JSONEncoding()){
+        NetworkService.shared.callWebService(method: .post, path: PATH.MEDIA, params: params, type: JSONEncoding()){
             (completion:DataResponse<ModelMediaMain>) in
             UIApplication.shared.isNetworkActivityIndicatorVisible = false
             
@@ -229,7 +229,7 @@ class APIService : NSObject {
     {
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
         
-        NetworkService.shared.callWebService(method: .get, path: PATH.JOB, params: params, type: JSONEncoding()){
+        NetworkService.shared.callWebService(method: .post, path: PATH.JOB, params: params, type: JSONEncoding()){
             (completion:DataResponse<ModelJobMain>) in
             UIApplication.shared.isNetworkActivityIndicatorVisible = false
             

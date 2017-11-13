@@ -8,10 +8,15 @@
 
 import UIKit
 
-class FlashCollectionViewCell: UICollectionViewCell, UITableViewDataSource,UITableViewDelegate, NibLoadableView, ReusableView {
+class FlashCollectionViewCell: UICollectionViewCell, UITableViewDataSource,UITableViewDelegate, NibLoadableView, ReusableView, UIScrollViewDelegate {
 
+    var page = 1
+    var totalPage = 0
+    
+    
     @IBOutlet weak var lblTitleMessage: UILabel!
     @IBOutlet weak var tblView: UITableView!
+    
     var delegate:ItemSelection?
     
     override func awakeFromNib() {
@@ -50,6 +55,7 @@ class FlashCollectionViewCell: UICollectionViewCell, UITableViewDataSource,UITab
     //MARK:- Hepler methods
     private func registerCell() {
         tblView.register(FlashTableViewCell.self)
+        self.tblView.contentInset = UIEdgeInsetsMake(tableviewTopSpace, 0, 0, 0);
     }
     
     private func requestForFlashList() {
@@ -58,10 +64,13 @@ class FlashCollectionViewCell: UICollectionViewCell, UITableViewDataSource,UITab
             return
         }
         
-        APIService.sharedInstance.flashList(parameters: nil, success: { (result) -> (Void) in
+        let param = ["page":page]
+        APIService.sharedInstance.flashList(parameters: param as [String : AnyObject], success: { (result) -> (Void) in
             if (result.status) {
-                self.flashList = result.flashList
+                self.flashList.append(contentsOf: result.flashList)
                 ModelRequestFlash.sharedObject.modelFlash = result
+                self.page = self.page + 1
+                self.totalPage = result.totalPageCount
             }
         }) { (error) -> (Void) in
             showTitleBarAlert(message: error)
@@ -92,5 +101,21 @@ class FlashCollectionViewCell: UICollectionViewCell, UITableViewDataSource,UITab
         
         tblView.isHidden = false
         lblTitleMessage.isHidden = true
+    }
+    
+    //MARK:- Scrollview delegate methods 
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        
+        //Bottom Refresh
+        
+        if scrollView == tblView {
+            
+            if ((scrollView.contentOffset.y + scrollView.frame.size.height) >= scrollView.contentSize.height)
+            {
+                if totalPage > page {
+                    requestForFlashList()
+                }
+            }
+        }
     }
 }

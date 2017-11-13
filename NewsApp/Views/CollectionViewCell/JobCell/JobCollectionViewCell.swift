@@ -10,10 +10,15 @@ import UIKit
 
 class JobCollectionViewCell: UICollectionViewCell, UITableViewDataSource,UITableViewDelegate,NibLoadableView, ReusableView {
     
+    var page = 1
+    var totalPage = 0
     var delegate:ItemSelection?
-    @IBOutlet weak var tblView: UITableView!
     
+    @IBOutlet weak var tblView: UITableView!
     @IBOutlet weak var lblTitleMessage: UILabel!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+
+    
     var jobList = [ModelJob]() {
         didSet {
             tblView.reloadData()
@@ -45,39 +50,18 @@ class JobCollectionViewCell: UICollectionViewCell, UITableViewDataSource,UITable
     }
     
     func filterUsingCategory()  {
-
-        //check selected category and region both nil one of them nil or both valid
-        guard (selectedCategory != nil) else {
-            
-            if selectedRegion != nil {
-                
-                //Selected category nil but selected region not nil
-                filterList = filterUsingRegion()
-            } else {
-                
-                //Selected region nil but selected category nil
-                filterList = jobList
-            }
-            
+        guard (selectedCategory == nil  && selectedRegion == nil)else {
+            requestForFilter()
             return
         }
         
-        guard (selectedRegion != nil ) else {
-            
-            //Selected region nil but selected category not nil
-            filterList = jobList.filter({ (object) -> Bool in
-                
-                return (object.categoryId == selectedCategory!.id)
-            })
-            
+        guard jobList.count == 0 else {
+            filterList = jobList
             return
         }
         
-        //Selected region and selected category not nil
-        filterList = filterUsingRegion().filter({ (object) -> Bool in
-            
-            return (object.categoryId == selectedCategory!.id)
-        })
+        requestForJobList()
+        
     }
     
     func filterUsingRegion() -> [ModelJob] {
@@ -113,6 +97,7 @@ class JobCollectionViewCell: UICollectionViewCell, UITableViewDataSource,UITable
     
     private func registerCell() {
         tblView.register(JobTableViewCell.self)
+        self.tblView.contentInset = UIEdgeInsetsMake(tableviewTopSpace, 0, 0, 0);
         tblView.estimatedRowHeight = 45
         tblView.rowHeight = UITableViewAutomaticDimension
     }
@@ -122,15 +107,40 @@ class JobCollectionViewCell: UICollectionViewCell, UITableViewDataSource,UITable
         guard checkForRequest() else {
             return
         }
+        let param = ["page":page]
         
-        APIService.sharedInstance.jobList(parameters: nil, success: { (result) -> (Void) in
+        APIService.sharedInstance.jobList(parameters: param as [String : AnyObject], success: { (result) -> (Void) in
             if (result.status) {
                 self.jobList = result.jobList!
                 self.filterList = result.jobList!
                 ModelRequestJob.sharedObject.modelJob = result
+                self.page = result.totalPageCount
             }
         }) { (error) -> (Void) in
             showTitleBarAlert(message: error)
+        }
+    }
+    
+    private func requestForFilter() {
+        
+        let param = ["category_id":selectedCategory?.id!,
+                     "region_id":selectedRegion?.id!,
+                     "page":page] as [String : Any]
+        
+        showIndicator()
+        APIService.sharedInstance.jobList(parameters: param as [String : AnyObject], success: { (result) -> (Void) in
+            self.hideIndicator()
+            
+            if (result.status) {
+                self.filterList = result.jobList!
+                self.page = result.totalPageCount
+            } else {
+                showTitleBarAlert(message: result.message)
+                self.filterList = [ModelJob]()
+            }
+        }) { (error) -> (Void) in
+            showTitleBarAlert(message: error)
+            self.hideIndicator()
         }
     }
     
@@ -158,5 +168,36 @@ class JobCollectionViewCell: UICollectionViewCell, UITableViewDataSource,UITable
         
         tblView.isHidden = false
         lblTitleMessage.isHidden = true
+    }
+    
+    private func showIndicator() {
+        activityIndicator.startAnimating()
+        tblView.isHidden = true
+    }
+    
+    private func hideIndicator() {
+        activityIndicator.stopAnimating()
+        tblView.isHidden = false
+    }
+    
+    //MARK:- Scrollview delegate methods
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        
+        //Bottom Refresh
+        
+        if scrollView == tblView {
+            
+            if ((scrollView.contentOffset.y + scrollView.frame.size.height) >= scrollView.contentSize.height)
+            {
+                if totalPage > page {
+                    
+                    if (selectedCategory == nil && selectedRegion == nil) {
+                        requestForJobList()
+                    } else {
+                        requestForFilter()
+                    }
+                }
+            }
+        }
     }
 }

@@ -12,12 +12,11 @@ import ObjectMapper
 class ModelFlashMain : BaseModel {
 
 	var flashList = [ModelFlash]()
-	var totalPageCount : Int?
 
 	override func mapping(map: Map) {
         super.mapping(map: map)
 		flashList <- map["data"]		
-		totalPageCount <- map["total_page_count"]
+		
 	}
 
 }

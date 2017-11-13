@@ -32,17 +32,23 @@
                             <outlet property="delegate" destination="gTV-IL-0wX" id="gdn-xn-GNw"/>
                         </connections>
                     </tableView>
+                    <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="h1x-91-WYK">
+                        <rect key="frame" x="177" y="261" width="20" height="20"/>
+                    </activityIndicatorView>
                 </subviews>
             </view>
             <constraints>
                 <constraint firstItem="ZRG-BV-Dhg" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="1KJ-VV-rcZ"/>
                 <constraint firstItem="ZD5-S4-PzU" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="9xV-Kt-A5w"/>
+                <constraint firstItem="h1x-91-WYK" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="FZy-OO-sm8"/>
                 <constraint firstItem="ZRG-BV-Dhg" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="VVA-lv-ay7"/>
                 <constraint firstItem="ZD5-S4-PzU" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="XhL-TX-qRt"/>
                 <constraint firstAttribute="trailing" secondItem="ZD5-S4-PzU" secondAttribute="trailing" id="bVH-DF-Lap"/>
+                <constraint firstItem="h1x-91-WYK" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="li2-re-TQn"/>
                 <constraint firstAttribute="bottom" secondItem="ZD5-S4-PzU" secondAttribute="bottom" id="zHa-ks-AFx"/>
             </constraints>
             <connections>
+                <outlet property="activityIndicator" destination="h1x-91-WYK" id="AwL-Gk-ITT"/>
                 <outlet property="lblTitleMessage" destination="ZRG-BV-Dhg" id="CvV-Gb-4mk"/>
                 <outlet property="tblView" destination="ZD5-S4-PzU" id="Gy0-BZ-1bR"/>
             </connections>

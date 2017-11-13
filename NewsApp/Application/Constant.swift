@@ -18,6 +18,7 @@ var splashScreenDuration = 2
 let constatLimit = 20 // This Limitation affect in whole project
 let constatMyGearLimit = 200 // This Limitation affect in My Gear
 let constatBigLimit = 3000
+let tableviewTopSpace:CGFloat = 15
 
 internal let kPlacesAPIKey = "AIzaSyC1rf-WYryQRhD-lcHC8WQRi3oprEskFpU"
 internal let kMapsAPIKey = "AIzaSyBppMjqp2KUZmAOtw8UFbhcQCdYm1yLKWU"

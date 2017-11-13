@@ -42,7 +42,10 @@ class BaseViewController: UIViewController {
     
     func presentLoginView()  {
         let loginViewController = MainainStoryboard.instantiateViewController(withIdentifier: StoryBoardId.loginView) as! LoginViewController
-        navigationController?.pushViewController(loginViewController, animated: true)
+        loginViewController.isFromApp = true
+        if let objNavigationController = navigationController {
+            objNavigationController.pushViewController(loginViewController, animated: true)
+        }
     }
     
     func clearUserDefault()  {
