@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ListingCollectionViewCell: UICollectionViewCell, UITableViewDataSource,UITableViewDelegate, NibLoadableView, ReusableView {
+class ListingCollectionViewCell: UICollectionViewCell, UITableViewDataSource,UITableViewDelegate, NibLoadableView, ReusableView, UIScrollViewDelegate {
     
     var delegate:ItemSelection?
     var page = 1
@@ -18,14 +18,17 @@ class ListingCollectionViewCell: UICollectionViewCell, UITableViewDataSource,UIT
     @IBOutlet weak var tblView: UITableView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
-    var selectedCategory:Category? {
-        didSet{
-            filterUsingCategory()
-        }
-    }
+    var selectedCategory:Category?
+    var selectedRegion:Category?
+    var searchListText:String = ""
     
-    var selectedRegion:Category? {
+    var selectedFilter:FilterContainer? {
         didSet {
+            selectedCategory = selectedFilter?.selectedCategory
+            selectedRegion = selectedFilter?.selectedRegion
+            if let obj = selectedFilter {
+                searchListText = obj.searchText
+            }
             filterUsingCategory()
         }
     }
@@ -33,7 +36,6 @@ class ListingCollectionViewCell: UICollectionViewCell, UITableViewDataSource,UIT
     override func awakeFromNib() {
         super.awakeFromNib()
         registerCell()
-        requestForList()
     }
     
     var List = [ModelList]() {
@@ -49,34 +51,13 @@ class ListingCollectionViewCell: UICollectionViewCell, UITableViewDataSource,UIT
             manageNoDataFoundMessage()
         }
     }
-
     
     func filterUsingCategory()  {
         
-        guard (selectedCategory == nil  && selectedRegion == nil)else {
-            requestForFilter()
-            return
-        }
-        
-        guard List.count == 0 else {
-            filterList = List
-            return
-        }
-        
-        requestForList()
+        page = 1
+        requestForFilter()
     }
     
-    func filterUsingRegion() -> [ModelList] {
-        guard (selectedRegion != nil) else {
-            return List
-        }
-        
-        return List.filter({ (object) -> Bool in
-            
-            return (object.regionId == selectedRegion?.id)
-        })
-    }
-
     
     //MARK:- UITableview datasource methods
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -92,9 +73,9 @@ class ListingCollectionViewCell: UICollectionViewCell, UITableViewDataSource,UIT
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 150
     }
-
     
-    //MARK:- UITableview delegate methods 
+    
+    //MARK:- UITableview delegate methods
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         delegate?.didSelecteItem(item: List[indexPath.row])
     }
@@ -105,65 +86,66 @@ class ListingCollectionViewCell: UICollectionViewCell, UITableViewDataSource,UIT
         self.tblView.contentInset = UIEdgeInsetsMake(tableviewTopSpace, 0, 0, 0);
     }
     
-    private func requestForList() {
+    private func requestForFilter(isForPagination:Bool = false) {
         
-        guard checkForRequest() else {
+        guard !checkForRequest() else {
             return
         }
         
-        let param = ["page":page]
-        APIService.sharedInstance.list(parameters: param as [String : AnyObject], success: { (result) -> (Void) in
-            if (result.status) {
-                self.List = result.modelList
-                self.filterList = result.modelList
-                ModelRequestList.sharedObject.modelList = result
-                self.page = result.totalPageCount
-            } else {
-                showTitleBarAlert(message: result.message)
-                self.filterList = [ModelList]()
-            }
-        }) { (error) -> (Void) in
-            showTitleBarAlert(message: error)
+        var param = [String:AnyObject]()
+        
+      
+        param["page"] = page as AnyObject
+        param["filter_name"] = searchListText as AnyObject
+        
+        if let categoryId = selectedCategory {
+            param["category_id"] = categoryId.id! as AnyObject
         }
-    }
-    
-    private func requestForFilter() {
         
-        let param = ["category_id":selectedCategory?.id,
-                     "region_id":selectedRegion?.id,
-                     "page":page] as [String : Any]
+        if let regionId = selectedRegion {
+            param["region_id"] = regionId.id! as AnyObject
+        }
         
-        showIndicator()
+        if !isForPagination {
+            showIndicator()
+        }
+        
+        ModelRequestList.sharedObject.isRequestSend = true
         APIService.sharedInstance.list(parameters: param as [String : AnyObject], success: { (result) -> (Void) in
             self.hideIndicator()
             
             if (result.status) {
-                self.filterList = result.modelList
+                
+                if !isForPagination {
+                    self.List = result.modelList
+                    self.filterList = result.modelList
+                    
+                } else {
+                    self.List.append(contentsOf: result.modelList)
+                    self.filterList.append(contentsOf: result.modelList)
+                }
+                
+                self.page = self.page + 1
+                self.totalPage = result.totalPageCount
             } else {
                 showTitleBarAlert(message: result.message)
                 self.filterList = [ModelList]()
-                self.page = result.totalPageCount
             }
+            ModelRequestList.sharedObject.isRequestSend = false
         }) { (error) -> (Void) in
             showTitleBarAlert(message: error)
             self.hideIndicator()
+            ModelRequestList.sharedObject.isRequestSend = false
         }
     }
+    
     
     //Check if requst is required or not
     private func checkForRequest() -> Bool {
         
-        if ModelRequestList.sharedObject.modelList != nil {
-            if ModelRequestList.sharedObject.isRequestSend {
-                return false
-            } else {
-                return true
-            }
-        } else {
-            return true
-        }
+        return ModelRequestList.sharedObject.isRequestSend
     }
-
+    
     private func manageNoDataFoundMessage() {
         guard filterList.count > 0 else {
             tblView.isHidden = true
@@ -194,13 +176,11 @@ class ListingCollectionViewCell: UICollectionViewCell, UITableViewDataSource,UIT
             
             if ((scrollView.contentOffset.y + scrollView.frame.size.height) >= scrollView.contentSize.height)
             {
-                if totalPage > page {
-                    
-                    if (selectedCategory == nil && selectedRegion == nil) {
-                        requestForList()
-                    } else {
-                        requestForFilter()
-                    }
+                guard totalPage > 1 else {
+                    return
+                }
+                if totalPage >= page {
+                    requestForFilter(isForPagination: true)
                 }
             }
         }

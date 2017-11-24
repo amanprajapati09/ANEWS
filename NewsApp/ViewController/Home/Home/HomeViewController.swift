@@ -10,9 +10,9 @@ import UIKit
 import FTPopOverMenu_Swift
 import SafariServices
 
-class HomeViewController: BaseViewController, ItemSelection, SFSafariViewControllerDelegate, CategorySelectionDelegate {
-
-    @IBOutlet weak var navigationBar: NavigationBar!    
+class HomeViewController: BaseViewController, ItemSelection, SFSafariViewControllerDelegate, CategorySelectionDelegate,UISearchBarDelegate {
+    
+    @IBOutlet weak var navigationBar: NavigationBar!
     @IBOutlet weak var segmentView: STVSegmentButtonView!
     @IBOutlet weak var homeCollectionContainer: HomeCollectionView!
     
@@ -30,7 +30,12 @@ class HomeViewController: BaseViewController, ItemSelection, SFSafariViewControl
     @IBOutlet weak var lblRegion: UILabel!
     
     var selectedMode = headerEnum.eFlash
-    var isRegion:Bool = false
+    var isRegion:Bool = false //Use for message title in category selection view
+    
+    var searchBar = UISearchBar()
+    var searchBarButtonItem: UIBarButtonItem?
+    
+    var selectedFilter = FilterContainer()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,15 +43,21 @@ class HomeViewController: BaseViewController, ItemSelection, SFSafariViewControl
         requestForCategory()
         navigationItemClick()
         segmentViewDelegateMethod()
-        homeCollectionViewDelegateMethod() 
+        homeCollectionViewDelegateMethod()
         homeCollectionContainer.delegate = self
-
+        
+        
+        searchBar.delegate = self
+        searchBar.searchBarStyle = UISearchBarStyle.minimal
+        searchBar.showsCancelButton = true
+        searchBarButtonItem = navigationItem.rightBarButtonItem
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -56,13 +67,25 @@ class HomeViewController: BaseViewController, ItemSelection, SFSafariViewControl
         super.viewDidLayoutSubviews()
         segmentView.buttonArray = ["FLASH","LISTING","BULLETIN","JOB-HIRE","MEDIA"]
     }
-
+    
     private func navigationItemClick() {
         navigationBar.rightItemClick = {
             let barButtonItem = self.navigationItem.rightBarButtonItem!
             let buttonItemView = barButtonItem.value(forKey: "view") as? UIView
             let buttonItemSize = buttonItemView?.frame
             self.presentPopover(senderFrame:buttonItemSize!)
+        }
+        navigationBar.rightSearchItemClick = {
+            self.showSearchBar()
+        }
+        
+        navigationBar.rightProfileItemClick = {
+            
+            if userDefault.value(forKey: MyUserDefault.USER_ID) == nil {
+                self.presentLoginView()
+            } else {
+                self.performSegue(withIdentifier: Segues.kToEditProfile, sender: nil)
+            }
         }
     }
     
@@ -83,28 +106,37 @@ class HomeViewController: BaseViewController, ItemSelection, SFSafariViewControl
     
     @IBAction func PostAJobButtonClickAction(_ sender: Any) {
         
-//        userDefault.setValue(model.id, forKey: MyUserDefault.USER_ID)
+        //        userDefault.setValue(model.id, forKey: MyUserDefault.USER_ID)
         guard (userDefault.value(forKey: MyUserDefault.USER_ID) != nil) else {
             showNotificationAlert(type: .error, title: "Warning!", message: "Please login  first to post job")
-            DispatchQueue.main.asyncAfter(deadline: DispatchTime(uptimeNanoseconds: 2), execute: { 
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime(uptimeNanoseconds: 2), execute: {
                 self.presentLoginView()
             })
-            return 
+            return
         }
         performSegue(withIdentifier: Segues.postjobView, sender: nil)
     }
     
     //MARK:- Methods to create menu option
     private func presentPopover(senderFrame:CGRect) {
-       
+        
         let configuration = FTConfiguration.shared
         configuration.backgoundTintColor = .white
         configuration.textColor = .gray
         configuration.menuWidth = 160
+        
+        var menuArray:[String]!
+        
+        if userDefault.value(forKey: MyUserDefault.USER_ID) == nil {
+            menuArray = ["Change Language"]
+        } else {
+            menuArray = ["Change Language","Change Password", "Logout"]
+        }
+        
         FTPopOverMenu.showFromSenderFrame(senderFrame:senderFrame,
-                                          with: ["Change Language","Change Password", "Logout"],
+                                          with: menuArray,
                                           done: { (selectedIndex) -> () in
-            self.popoverButtonClick(index: selectedIndex)
+                                            self.popoverButtonClick(index: selectedIndex)
         }) {
             
         }
@@ -128,21 +160,28 @@ class HomeViewController: BaseViewController, ItemSelection, SFSafariViewControl
     private func segmentViewDelegateMethod() {
         
         segmentView.segmentButtonSelectAtIndex { (index) in
-           
+            
+            if index == 1 {
+                self.navigationBar.showSearchBar()
+            } else {
+                self.navigationBar.hideSearchBar()
+                self.hideSearchBar()
+            }
+            
             self.resetCategoryandregion()
             self.UIChangesAsPerIndexSelection(index: index)
             self.homeCollectionContainer.selectedCategory = nil
             self.homeCollectionContainer.homeCollectionView.scrollToItem(at: IndexPath(row: index, section: 0), at: .centeredHorizontally, animated: true)
         }
     }
-
+    
     private func homeCollectionViewDelegateMethod() {
         homeCollectionContainer.scrollingAtIndex = { (index) in
             
             self.resetCategoryandregion()
             self.UIChangesAsPerIndexSelection(index: index)
             self.segmentView.buttonCollectionView?.scrollToItem(at: IndexPath(row: index, section: 0), at: .centeredHorizontally, animated: true)
-            self.segmentView.selectedIndex = index 
+            self.segmentView.selectedIndex = index
             self.segmentView.buttonCollectionView?.reloadData()
             self.segmentView.buttonCollectionView?.collectionViewLayout.invalidateLayout()
         }
@@ -166,14 +205,50 @@ class HomeViewController: BaseViewController, ItemSelection, SFSafariViewControl
             destinationViewController.titleLabel = createcategoryPickerTitleMessage()
             destinationViewController.delegate = self
             destinationViewController.categoryList = sender as! [Category]
+        } else if segue.identifier == Segues.kToEditProfile {
+            let destinationViewController = segue.destination as! SignupViewController
+            destinationViewController.isForEditProfile = true
         }
     }
-
+    
     private func createcategoryPickerTitleMessage() -> String {
         if isRegion {
             return "Select region for \(selectedMode.rawValue)"
         } else {
             return "Select category for \(selectedMode.rawValue)"
         }
+    }
+    
+    //MARK:- Extra methods
+    func showSearchBar() {
+        searchBar.alpha = 0
+        navigationItem.titleView = searchBar
+        navigationItem.setLeftBarButton(nil, animated: true)
+        UIView.animate(withDuration: 0.5, animations: {
+            self.searchBar.alpha = 1
+        }, completion: { finished in
+            self.searchBar.becomeFirstResponder()
+        })
+    }
+    
+    func hideSearchBar() {
+        //navigationItem.setLeftBarButton(searchBarButtonItem, animated: true)
+        UIView.animate(withDuration: 0.3, animations: {
+            self.navigationItem.titleView = nil
+        }, completion: { finished in
+            
+        })
+    }
+    
+    //MARK: UISearchBarDelegate
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        hideSearchBar()
+        selectedFilter.searchText = ""
+        homeCollectionContainer.selectedFilter = selectedFilter
+    }
+    
+    public func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        selectedFilter.searchText = searchBar.text!
+        homeCollectionContainer.selectedFilter = selectedFilter
     }
 }

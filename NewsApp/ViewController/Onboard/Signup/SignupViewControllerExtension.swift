@@ -36,6 +36,23 @@ extension SignupViewController  {
         return (true,"")
     }
     
+    internal func validateEdit() -> (Bool,String) {
+        
+        guard !txtName.textField.validateIsEmpty() else {
+            return (false,"Enter proper name!")
+        }
+        
+        guard txtPhone.textField.validatePhoneNumber() else {
+            return (false,"Enter proper phone!")
+        }
+        
+        guard !txtAddress.textField.validateIsEmpty() else {
+            return (false,"Enter proper Address!")
+        }
+        
+        return (true,"")
+    }
+    
     //MARK:- Textfield delegate methods
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         guard textField == txtAddress.textField else {

@@ -55,5 +55,6 @@ class BaseViewController: UIViewController {
         userDefault.removeObject(forKey: MyUserDefault.USER_FIRSTNAME)
         userDefault.removeObject(forKey: MyUserDefault.USER_ROLE_ID)
         userDefault.removeObject(forKey: MyUserDefault.USER_STATUS)
+        userDefault.removeObject(forKey: MyUserDefault.USER_PHONE)
     }
 }

@@ -19,13 +19,15 @@ class HomeCollectionView: UIView, UICollectionViewDataSource, UICollectionViewDe
     
     var scrollingAtIndex : segmentButtonClick?
     
-    var selectedCategory:Category? {
+    var selectedCategory:Category?
+    var selectedRegion:Category?
+    
+    var selectedFilter:FilterContainer? {
         didSet {
             homeCollectionView.reloadData()
         }
     }
-    
-    var selectedRegion:Category? {
+    var searchListText:String = "" {
         didSet {
             homeCollectionView.reloadData()
         }
@@ -51,25 +53,23 @@ class HomeCollectionView: UIView, UICollectionViewDataSource, UICollectionViewDe
             return cell
         case 1:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ListingCollectionViewCell.reuseIdentifier, for: indexPath) as! ListingCollectionViewCell
-            cell.selectedCategory = selectedCategory
-            cell.selectedRegion = selectedRegion
+            cell.selectedFilter = selectedFilter
             cell.delegate = self
             return cell
         case 2:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: BulletineCollectionViewCell.reuseIdentifier, for: indexPath) as! BulletineCollectionViewCell
-            cell.selectedCategory = selectedCategory
+            cell.selectedFilter = selectedFilter
             cell.delegate = self
             return cell
         
         case 3:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: JobCollectionViewCell.reuseIdentifier, for: indexPath) as! JobCollectionViewCell
-            cell.selectedCategory = selectedCategory
-            cell.selectedRegion = selectedRegion
+            cell.selectedFilter = selectedFilter
             cell.delegate = self
             return cell
         case 4:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MediaCollectionViewCell.reuseIdentifier, for: indexPath) as! MediaCollectionViewCell
-            cell.selectedCategory = selectedCategory
+            cell.selectedFilter = selectedFilter
             cell.delegate = self
             return cell
         default :

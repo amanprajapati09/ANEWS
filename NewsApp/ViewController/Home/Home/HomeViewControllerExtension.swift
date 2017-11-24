@@ -106,11 +106,12 @@ extension HomeViewController {
     }
     
     private func addDefauldCategoryToAllList(result:CategoryMain) {
-        result.data?.bullatineList?[0] = Category.defaultObject()
-        result.data?.jobList?[0] = Category.defaultObject()
-        result.data?.liostingList?[0] = Category.defaultObject()
-        result.data?.mediaList?[0] = Category.defaultObject()
-        result.data?.regionList?[0] = Category.defaultObject()
+     
+        result.data?.bullatineList?.insert(Category.defaultObject(), at: 0)
+        result.data?.jobList?.insert(Category.defaultObject(), at: 0)
+        result.data?.liostingList?.insert(Category.defaultObject(), at: 0)
+        result.data?.mediaList?.insert(Category.defaultObject(), at: 0)
+        result.data?.regionList?.insert(Category.defaultObject(), at: 0)
     }
     
     //MARK:- category selection delegate methods 
@@ -118,22 +119,24 @@ extension HomeViewController {
         
         if isRegion {
             if seletedCategory.id == nil {
-                homeCollectionContainer.selectedRegion = nil
+                selectedFilter.selectedRegion = nil
                 updateRegionLabel(title: "Region")
             } else {
-                homeCollectionContainer.selectedRegion = seletedCategory
+                selectedFilter.selectedRegion = seletedCategory
                 updateRegionLabel(title: seletedCategory.name!)
             }
             
         } else {
             if seletedCategory.id == nil {
-             homeCollectionContainer.selectedCategory = nil
+                selectedFilter.selectedCategory = nil
                 updateCategoryLabel(title: "Category")
             } else {
-                homeCollectionContainer.selectedCategory = seletedCategory
+                selectedFilter.selectedCategory = seletedCategory
                 updateCategoryLabel(title: seletedCategory.name!)
             }            
         }
+        
+        homeCollectionContainer.selectedFilter = selectedFilter
     }
     
     internal func resetCategoryandregion() {
@@ -159,30 +162,30 @@ extension HomeViewController {
             selectedMode = .eFlash
             break
         case 1:
-            self.headerViewHeightConstraint.constant = 50.0
+            self.headerViewHeightConstraint.constant = 45.0
             self.categoryRegionBothVisible(flag: true)
             HorizontalSpaceVisiblie(flag: true)
             self.categoryRegionWith(color: UIColor.black)
             selectedMode = .eListing
             break
         case 2:
-            self.headerViewHeightConstraint.constant = 50.0
+            self.headerViewHeightConstraint.constant = 45.0
             self.categoryRegionBothVisible(flag: false)
             HorizontalSpaceVisiblie(flag: false)
             self.categoryRegionWith(color: UIColor.black)
             selectedMode = .eBulletin
             break
         case 3:
-            self.headerViewHeightConstraint.constant = 94.0
+            self.headerViewHeightConstraint.constant = 89.0
             self.categoryRegionBothVisible(flag: true)
             HorizontalSpaceVisiblie(flag: true)
             self.categoryRegionWith(color: UIColor.lightGray)
             selectedMode = .eJob
             break
         case 4:
-            self.headerViewHeightConstraint.constant = 50.0
+            self.headerViewHeightConstraint.constant = 45.0
             self.categoryRegionBothVisible(flag: false)
-            HorizontalSpaceVisiblie(flag: true)
+            HorizontalSpaceVisiblie(flag: false)
             self.categoryRegionWith(color: UIColor.black)
             selectedMode = .eMedia
             break

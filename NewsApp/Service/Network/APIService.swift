@@ -45,6 +45,10 @@ class APIService : NSObject {
                 //                showStatusBarAlert(Str: AlertTitle.NETWORK_ERROR, Duration: 2.0)
                 failure(AlertTitle.kAlertTitleNoInternet)
             }
+            else if statusCode == -1005 {
+                //                showStatusBarAlert(Str: AlertTitle.NETWORK_ERROR, Duration: 2.0)
+                failure(AlertTitle.kAlertTitleNoInternet)
+            }
             else if statusCode == -999
             { // opration cancel by us so no process more
                 failure(AlertTitle.kAlertTitleGeneralError)
@@ -284,4 +288,86 @@ class APIService : NSObject {
             }
         }
     }
+    
+    func ratingList(parameters params: [String: AnyObject], success:@escaping (_ result: RatingListMain) -> (Void), failure:@escaping Failure) -> Void
+    {
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true
+        
+        NetworkService.shared.callWebService(method: .post, path: PATH.REVIEW_LIST, params: params, type: JSONEncoding()){
+            (completion:DataResponse<RatingListMain>) in
+            UIApplication.shared.isNetworkActivityIndicatorVisible = false
+            
+            if !self.handleError(error: completion.result.error as NSError?, failure: failure, responseCode: completion.response?.statusCode)
+            {
+                success(completion.result.value!)
+            } else {
+                
+                if let msg = completion.result.value?.message {
+                    failure(msg)
+                }
+            }
+        }
+    }
+    
+    func submitReview(parameters params: [String: AnyObject], success:@escaping (_ result: ResultModel) -> (Void), failure:@escaping Failure) -> Void
+    {
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true
+        
+        NetworkService.shared.callWebService(method: .post, path: PATH.SUBMIT_REVIEW, params: params, type: JSONEncoding()){
+            (completion:DataResponse<ResultModel>) in
+            UIApplication.shared.isNetworkActivityIndicatorVisible = false
+            
+            if !self.handleError(error: completion.result.error as NSError?, failure: failure, responseCode: completion.response?.statusCode)
+            {
+                success(completion.result.value!)
+            } else {
+                
+                if let msg = completion.result.value?.message {
+                    failure(msg)
+                }
+            }
+        }
+    }
+    
+    func listDetail(parameters params: [String: AnyObject], success:@escaping (_ result: ListDetailMain) -> (Void), failure:@escaping Failure) -> Void
+    {
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true
+        
+        NetworkService.shared.callWebService(method: .post, path: PATH.LIST_DETAIL, params: params, type: JSONEncoding()){
+            (completion:DataResponse<ListDetailMain>) in
+            UIApplication.shared.isNetworkActivityIndicatorVisible = false
+            
+            if !self.handleError(error: completion.result.error as NSError?, failure: failure, responseCode: completion.response?.statusCode)
+            {
+                success(completion.result.value!)
+            } else {
+                
+                if let msg = completion.result.value?.message {
+                    failure(msg)
+                }
+            }
+        }
+    }
+    
+    func editProfile(parameters params: [String: AnyObject], success:@escaping (_ result: ResultModel) -> (Void), failure:@escaping Failure) -> Void
+    {
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true
+        
+        NetworkService.shared.callWebService(method: .post, path: PATH.EDIT_PROFILE, params: params, type: JSONEncoding()){
+            (completion:DataResponse<ResultModel>) in
+            UIApplication.shared.isNetworkActivityIndicatorVisible = false
+            
+            if !self.handleError(error: completion.result.error as NSError?, failure: failure, responseCode: completion.response?.statusCode)
+            {
+                success(completion.result.value!)
+            } else {
+                
+                if let msg = completion.result.value?.message {
+                    failure(msg)
+                }
+            }
+        }
+    }
+
+
 }

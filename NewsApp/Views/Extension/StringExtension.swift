@@ -30,4 +30,8 @@ extension String {
         dateFormatter.locale = tempLocale // reset the locale
         return dateFormatter.string(from: date)
     }
+    
+    var floatValue: Float {
+        return (self as NSString).floatValue
+    }
 }

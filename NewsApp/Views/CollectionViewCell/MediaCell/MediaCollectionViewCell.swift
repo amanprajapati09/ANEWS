@@ -9,7 +9,7 @@
 import UIKit
 
 class MediaCollectionViewCell: UICollectionViewCell,UITableViewDataSource,UITableViewDelegate, NibLoadableView, ReusableView {
-
+    
     var page = 1
     var totalPage = 0
     
@@ -18,8 +18,11 @@ class MediaCollectionViewCell: UICollectionViewCell,UITableViewDataSource,UITabl
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     @IBOutlet weak var lblTitleMessage: UILabel!
-    var selectedCategory:Category? {
+    
+    var selectedCategory:Category?
+    var selectedFilter:FilterContainer? {
         didSet {
+            selectedCategory = selectedFilter?.selectedCategory
             filterUsingCategory()
         }
     }
@@ -27,7 +30,6 @@ class MediaCollectionViewCell: UICollectionViewCell,UITableViewDataSource,UITabl
     override func awakeFromNib() {
         super.awakeFromNib()
         registerCell()
-        requestForMediaList()
     }
     
     var mediaList = [ModelMedia]() {
@@ -45,20 +47,11 @@ class MediaCollectionViewCell: UICollectionViewCell,UITableViewDataSource,UITabl
     
     func filterUsingCategory()  {
         
-        guard (selectedCategory == nil )else {
-            requestForFilter()
-            return
-        }
-        
-        guard mediaList.count == 0 else {
-            filterList = mediaList
-            return
-        }
-        
-        requestForMediaList()
+        page = 1
+        requestForFilter()
     }
     
-    //MARK:- UITableview datasource methods 
+    //MARK:- UITableview datasource methods
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return filterList.count
     }
@@ -82,37 +75,39 @@ class MediaCollectionViewCell: UICollectionViewCell,UITableViewDataSource,UITabl
         tblView.register(MeddiaTableViewCell.self)
         self.tblView.contentInset = UIEdgeInsetsMake(tableviewTopSpace, 0, 0, 0);
     }
-
-    private func requestForMediaList() {
-        
-        guard checkForRequest() else {
-            return
-        }
-        let param = ["page":page]
-        APIService.sharedInstance.mediaList(parameters: param as [String : AnyObject], success: { (result) -> (Void) in
-            if (result.status) {
-                self.mediaList = result.MediaList
-                self.filterList = result.MediaList
-                ModelRequestMedia.sharedObject.modelMedia = result
-                self.page = result.totalPageCount
-            }
-        }) { (error) -> (Void) in
-            showTitleBarAlert(message: error)
-        }
-    }
     
-    private func requestForFilter() {
+    private func requestForFilter(isForPagination:Bool = false) {
         
-        let param = ["category_id":selectedCategory!.id,
-                     "page":page] as [String : Any]
+        var param = [String:AnyObject]()
         
-        showIndicator()
+        param["page"] = page as AnyObject
+        
+        
+        if let categoryId = selectedCategory {
+            param["category_id"] = categoryId.id! as AnyObject
+        }
+        
+        
+        if !isForPagination {
+            showIndicator()
+        }
+        
         APIService.sharedInstance.mediaList(parameters: param as [String : AnyObject], success: { (result) -> (Void) in
             self.hideIndicator()
             
             if (result.status) {
-                self.filterList = result.MediaList
-                self.page = result.totalPageCount
+                
+                if !isForPagination {
+                    self.mediaList = result.MediaList
+                    self.filterList = result.MediaList
+                    
+                } else {
+                    self.mediaList.append(contentsOf: result.MediaList)
+                    self.filterList.append(contentsOf: result.MediaList)
+                }
+                
+                self.page = self.page + 1
+                self.totalPage = result.totalPageCount
             } else {
                 showTitleBarAlert(message: result.message)
                 self.filterList = [ModelMedia]()
@@ -168,13 +163,8 @@ class MediaCollectionViewCell: UICollectionViewCell,UITableViewDataSource,UITabl
             
             if ((scrollView.contentOffset.y + scrollView.frame.size.height) >= scrollView.contentSize.height)
             {
-                if totalPage > page {
-                    
-                    if (selectedCategory == nil) {
-                        requestForMediaList()
-                    } else {
-                        requestForFilter()
-                    }
+                if totalPage >= page {
+                    requestForFilter(isForPagination: true)
                 }
             }
         }

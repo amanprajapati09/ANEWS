@@ -19,16 +19,17 @@ class BulletineCollectionViewCell: UICollectionViewCell, UITableViewDataSource,U
     @IBOutlet weak var lblTitleMessage: UILabel!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
-    var selectedCategory:Category? {
+    var selectedCategory:Category?
+    var selectedFilter:FilterContainer? {
         didSet {
+            selectedCategory = selectedFilter?.selectedCategory
             filterUsingCategory()
         }
     }
-
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         registerCell()
-        requestForBullatineList()
     }
     
     var bullatineList = [ModelBulletin]() {
@@ -46,17 +47,9 @@ class BulletineCollectionViewCell: UICollectionViewCell, UITableViewDataSource,U
     
     func filterUsingCategory()  {
        
-        guard (selectedCategory == nil )else {
-            requestForFilter()
-            return
-        }
+        page = 1
+        requestForFilter()
         
-        guard bullatineList.count == 0 else {
-            filterList = bullatineList
-            return
-        }
-        
-        requestForBullatineList()
     }
     
     //MARK:- UITableview datasource methods
@@ -84,60 +77,52 @@ class BulletineCollectionViewCell: UICollectionViewCell, UITableViewDataSource,U
         self.tblView.contentInset = UIEdgeInsetsMake(tableviewTopSpace, 0, 0, 0);
     }
 
-    private func requestForBullatineList() {
+    private func requestForFilter(isForPagination:Bool = false) {
         
-        guard checkForRequest() else {
-            return
+        var param = [String:AnyObject]()
+        param["page"] = page as AnyObject
+        
+        if let categoryId = selectedCategory {
+            param["category_id"] = categoryId.id! as AnyObject
         }
         
-        let param = ["page":page]
-        APIService.sharedInstance.bulletineList(parameters: param as [String : AnyObject], success: { (result) -> (Void) in
-            if (result.status) {
-                self.bullatineList = result.bulletinList
-                self.filterList = result.bulletinList
-                ModelRequestBullatine.sharedObject.modelBullatine = result
-                self.page = result.totalPageCount
-            }
-        }) { (error) -> (Void) in
-            showTitleBarAlert(message: error)
+        if !isForPagination {
+            showIndicator()
         }
-    }
-    
-    private func requestForFilter() {
         
-        let param = ["category_id":selectedCategory!.id,
-                     "page":page] as [String : Any]
-        
-        showIndicator()
+        ModelRequestBullatine.sharedObject.isRequestSend = true
         APIService.sharedInstance.bulletineList(parameters: param as [String : AnyObject], success: { (result) -> (Void) in
             self.hideIndicator()
             
             if (result.status) {
-                self.filterList = result.bulletinList
-                self.page = result.totalPageCount
+                
+                if !isForPagination {
+                    self.bullatineList = result.bulletinList
+                    self.filterList = result.bulletinList
+                    
+                } else {
+                    self.bullatineList.append(contentsOf: result.bulletinList)
+                    self.filterList.append(contentsOf: result.bulletinList)
+                }
+                
+                self.page = self.page + 1
+                self.totalPage = result.totalPageCount
             } else {
                 showTitleBarAlert(message: result.message)
                 self.filterList = [ModelBulletin]()
             }
+            ModelRequestBullatine.sharedObject.isRequestSend = false
         }) { (error) -> (Void) in
             showTitleBarAlert(message: error)
             self.hideIndicator()
+            ModelRequestBullatine.sharedObject.isRequestSend = false
         }
     }
     
     //Check if requst is required or not
     private func checkForRequest() -> Bool {
         
-        if ModelRequestBullatine.sharedObject.modelBullatine != nil {
-            if ModelRequestBullatine.sharedObject.isRequestSend {
-                return false
-            } else {
-                return true
-            }
-            
-        } else {
-            return true
-        }
+        return ModelRequestBullatine.sharedObject.isRequestSend
     }
     
     private func manageNoDataFoundMessage() {
@@ -170,13 +155,9 @@ class BulletineCollectionViewCell: UICollectionViewCell, UITableViewDataSource,U
             
             if ((scrollView.contentOffset.y + scrollView.frame.size.height) >= scrollView.contentSize.height)
             {
-                if totalPage > page {
+                if totalPage >= page {
                     
-                    if (selectedCategory == nil) {
-                        requestForBullatineList()
-                    } else {
-                        requestForFilter()
-                    }
+                    requestForFilter(isForPagination: true)
                 }
             }
         }

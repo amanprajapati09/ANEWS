@@ -112,7 +112,7 @@ class FlashCollectionViewCell: UICollectionViewCell, UITableViewDataSource,UITab
             
             if ((scrollView.contentOffset.y + scrollView.frame.size.height) >= scrollView.contentSize.height)
             {
-                if totalPage > page {
+                if totalPage >= page {
                     requestForFlashList()
                 }
             }

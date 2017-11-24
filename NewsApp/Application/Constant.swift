@@ -33,6 +33,7 @@ struct MyUserDefault {
     static let USER_ID = "user_id"
     static let USER_ROLE_ID = "role_id"
     static let USER_STATUS = "status"
+    static let USER_PHONE = "phone_number'"
    
 }
 
@@ -55,6 +56,10 @@ struct Segues {
     static let categoryView = "toCategorySelectionViewControllerFromHome"
     static let postjobView = "toPostJobViewController"
     static let kToCategoryFromJobPost = "toCategorySelectionFromJobPost"
+    static let kToReviewListingScreen = "toReviewListingScreen"
+    static let ktoSubmitListingView = "toSubmitListingView"
+    static let kToGiveReviewViewController = "toGiveReviewViewController"
+    static let kToEditProfile = "toEditProfileViewControllerFromHome"
 }
 
 //MARK:- Storyboard ID
@@ -77,6 +82,7 @@ struct PATH{
     static let LOGIN = "\(StaticURL.BASE_URL)User/App_login"
     static let FORGOT_PASSWORD = "\(StaticURL.BASE_URL)User/App_forgot_password"
     static let RESET_PASSWORD = "\(StaticURL.BASE_URL)User/App_ChangePassword"
+    static let EDIT_PROFILE = "\(StaticURL.BASE_URL)User/App_EditProfile"
     
     static let FLASH = "\(StaticURL.BASE_URL)FlashTab/App_FlashTabData"
     static let LIST = "\(StaticURL.BASE_URL)ListTab/App_ListTabData"
@@ -85,6 +91,10 @@ struct PATH{
     static let JOB = "\(StaticURL.BASE_URL)Job/App_Get_Job"
     static let CATEGORY = "\(StaticURL.BASE_URL)Category/App_GetCategoryRegion"
     static let POSTJOB = "\(StaticURL.BASE_URL)Job/App_Add_Job"
+    static let REVIEW_LIST = "\(StaticURL.BASE_URL)ListTab/App_Get_Review"
+    static let SUBMIT_REVIEW = "\(StaticURL.BASE_URL)ListTab/App_Add_Review_Rating"
+    static let LIST_DETAIL = "\(StaticURL.BASE_URL)ListTab/App_One_List"
+    
 }
 
 //MARK:- Alert Titles

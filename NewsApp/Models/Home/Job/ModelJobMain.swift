@@ -11,7 +11,7 @@ import ObjectMapper
 
 class ModelJobMain : ModelBaseHome{
 
-	var jobList : [ModelJob]?
+	var jobList = [ModelJob]()
 	
 	override func mapping(map: Map)
 	{

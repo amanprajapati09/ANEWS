@@ -13,7 +13,12 @@ class NavigationBar: UINavigationItem {
 
     var leftItemClick : (() -> Void)? = nil
     var rightItemClick : (() -> Void)? = nil
+    var rightSearchItemClick : (() -> Void)? = nil
+    var rightProfileItemClick : (() -> Void)? = nil
     
+    var rightBarItemSearch:UIBarButtonItem?
+    var rightBarItem:UIBarButtonItem?
+    var profileBarItem:UIBarButtonItem?
     
     //MARK:- titlebar imageview variables
     ///Set left button image
@@ -28,8 +33,13 @@ class NavigationBar: UINavigationItem {
     ///Set right button image
     @IBInspectable var rightButtonImage : UIImage? = nil {
         didSet {
-            let rightBarItem = UIBarButtonItem(image: rightButtonImage, style: .plain, target: self, action: #selector(rightButtonClick(sender:)))
-            self.rightBarButtonItem = rightBarItem
+            rightBarItem = UIBarButtonItem(image: rightButtonImage, style: .plain, target: self, action: #selector(rightButtonClick(sender:)))
+          
+            profileBarItem = UIBarButtonItem(image: UIImage(named: "NavigationProfile"), style: .plain, target: self, action: #selector(profileButtonClick(sender:)))
+            
+            rightBarItemSearch = UIBarButtonItem(image: UIImage.init(named: "search"), style: .plain, target: self, action: #selector(rightSearchButtonClick(sender:)))
+            
+            self.rightBarButtonItems = [rightBarItem!, profileBarItem!]
             self.rightBarButtonItem?.tintColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         }
     }
@@ -56,5 +66,31 @@ class NavigationBar: UINavigationItem {
         }
         
         rightItemClick!()
+    }
+    
+    internal func profileButtonClick(sender:UIBarButtonItem) {
+        guard rightProfileItemClick != nil else {
+            return
+        }
+        
+        rightProfileItemClick!()
+    }
+    
+    internal func rightSearchButtonClick(sender:UIBarButtonItem) {
+        guard rightSearchItemClick != nil else {
+            return
+        }
+        
+        rightSearchItemClick!()
+    }
+    
+    
+    //Helper methods 
+    func hideSearchBar()  {
+        self.rightBarButtonItems = [rightBarItem!, profileBarItem!]
+    }
+    
+    func showSearchBar() {
+        self.rightBarButtonItems = [rightBarItem!, profileBarItem! ,rightBarItemSearch!]
     }
 }

@@ -27,5 +27,6 @@ struct LoginViewModel {
         userDefault.setValue(model.firstName, forKey: MyUserDefault.USER_FIRSTNAME)
         userDefault.setValue(model.roleId, forKey: MyUserDefault.USER_ROLE_ID)
         userDefault.setValue(model.status, forKey: MyUserDefault.USER_STATUS)
+        userDefault.setValue(model.mobileNo, forKey: MyUserDefault.USER_PHONE)
     }
 }

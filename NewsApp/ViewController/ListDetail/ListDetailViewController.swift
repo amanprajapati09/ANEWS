@@ -8,12 +8,12 @@
 
 import UIKit
 import GooglePlacePicker
+import HCSStarRatingView
 
-class ListDetailViewController: BaseViewController,UITextFieldDelegate, GMSPlacePickerViewControllerDelegate {
+class ListDetailViewController: BaseViewController,UITextFieldDelegate, GMSPlacePickerViewControllerDelegate, MyReviewDelegate {
     
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var lblTitle: UILabel!
-    
     
     @IBOutlet weak var lblName: UILabel!
     @IBOutlet weak var lblContactNo: UILabel!
@@ -21,11 +21,16 @@ class ListDetailViewController: BaseViewController,UITextFieldDelegate, GMSPlace
     @IBOutlet weak var lblAddress: UILabel!
     @IBOutlet weak var txtAddress: UITextField!
     
+    @IBOutlet weak var lblAverageRating: UILabel!
+    
+    @IBOutlet weak var ratingView: HCSStarRatingView!
+    @IBOutlet weak var btnTotalRating: UIButton!
+    
     var modelList = ModelList()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        prepareView()
+        
         addGesture()
         // Do any additional setup after loading the view.
     }
@@ -35,6 +40,11 @@ class ListDetailViewController: BaseViewController,UITextFieldDelegate, GMSPlace
         // Dispose of any resources that can be recreated.
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        prepareView()
+    }
+    
     private func prepareView() {
         imageView.sd_setImage(with: modelList.imageUrl, placeholderImage: placeholdeImage!)
         lblTitle.text = modelList.title
@@ -42,6 +52,9 @@ class ListDetailViewController: BaseViewController,UITextFieldDelegate, GMSPlace
         lblContactNo.text = modelList.mobileNo
         lblEmail.text = modelList.emailId
         lblAddress.text = modelList.address
+        btnTotalRating.setTitle("\(modelList.totalReview) Review", for: .normal)
+        lblAverageRating.text = "\(modelList.totalRating)"
+        ratingView.value = CGFloat(modelList.totalRating)
     }
     
     private func addGesture() {
@@ -80,6 +93,53 @@ class ListDetailViewController: BaseViewController,UITextFieldDelegate, GMSPlace
         // has made a selection.
         self.present(placePicker, animated: true, completion: nil)
     }
+    
+    @IBAction func myReviewClick(_ sender: Any) {
+        
+        guard (userDefault.value(forKey: MyUserDefault.USER_ID) != nil) else {
+            showNotificationAlert(type: .error, title: "Warning!", message: "Please login  first to post job")
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime(uptimeNanoseconds: 2), execute: {
+                self.presentLoginView()
+            })
+            return
+        }
+        
+        performSegue(withIdentifier: Segues.kToGiveReviewViewController, sender: nil)
+        
+    }
+    
+    @IBAction func TotalReviewClick(_ sender: Any) {
+        guard modelList.totalReview > 0 else {
+            return
+        }
+        performSegue(withIdentifier: Segues.kToReviewListingScreen, sender: nil)
+    }
+    
+    @IBAction func SubmitListingClick(_ sender: Any) {
+        
+        guard (userDefault.value(forKey: MyUserDefault.USER_ID) != nil) else {
+            showNotificationAlert(type: .error, title: "Warning!", message: "Please login  first to post job")
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime(uptimeNanoseconds: 2), execute: {
+                self.presentLoginView()
+            })
+            return
+        }
+        
+        performSegue(withIdentifier: Segues.ktoSubmitListingView, sender: nil)
+    }
+
+    //MARK:- Segue methods 
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == Segues.kToReviewListingScreen {
+            let destinationViewController = segue.destination as! RatingListViewController
+            destinationViewController.listId = modelList.id!
+        } else if segue.identifier == Segues.kToGiveReviewViewController {
+            let destinationViewController = segue.destination as! MyReviewViewController
+            destinationViewController.listID = modelList.id!
+            destinationViewController.delegate = self
+        }
+        
+    }
 }
 
 extension ListDetailViewController {
@@ -89,7 +149,13 @@ extension ListDetailViewController {
         guard textField == txtAddress else {
             return true
         }
-        presentAddressPicker()
+        
+        if (UIApplication.shared.canOpenURL(URL(string:"comgooglemaps://")!)) {
+            UIApplication.shared.open(URL(string:"")!, options: [:], completionHandler: nil)
+        } else {
+            showNotificationAlert(type: .error, title: "'", message: "Not able to open google map")
+        }
+        
         return false
     }
     
@@ -106,5 +172,10 @@ extension ListDetailViewController {
     func placePickerDidCancel(_ viewController: GMSPlacePickerViewController) {
         viewController.dismiss(animated: true, completion: nil)
         
+    }
+    
+    //MARK:- myreview delegate methods 
+    func didSubmitListing(listDetail: ModelList) {
+        modelList = listDetail
     }
 }

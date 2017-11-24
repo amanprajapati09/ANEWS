@@ -32,36 +32,26 @@ class JobCollectionViewCell: UICollectionViewCell, UITableViewDataSource,UITable
         }
     }
     
-    var selectedCategory:Category? {
+    var selectedCategory:Category?
+    var selectedRegion:Category?
+    
+    var selectedFilter:FilterContainer? {
         didSet {
+            selectedCategory = selectedFilter?.selectedCategory
+            selectedRegion = selectedFilter?.selectedRegion
+            
             filterUsingCategory()
         }
     }
     
-    var selectedRegion:Category? {
-        didSet {
-            filterUsingCategory()
-        }
-    }
     override func awakeFromNib() {
         super.awakeFromNib()
         registerCell()
-        requestForJobList()
     }
     
     func filterUsingCategory()  {
-        guard (selectedCategory == nil  && selectedRegion == nil)else {
-            requestForFilter()
-            return
-        }
-        
-        guard jobList.count == 0 else {
-            filterList = jobList
-            return
-        }
-        
-        requestForJobList()
-        
+        page = 1
+        requestForFilter()
     }
     
     func filterUsingRegion() -> [ModelJob] {
@@ -102,38 +92,44 @@ class JobCollectionViewCell: UICollectionViewCell, UITableViewDataSource,UITable
         tblView.rowHeight = UITableViewAutomaticDimension
     }
     
-    private func requestForJobList() {
+    private func requestForFilter(isForPagination:Bool = false) {
         
-        guard checkForRequest() else {
-            return
+        var param = [String:AnyObject]()
+        
+        param["page"] = page as AnyObject
+
+        
+        if let categoryId = selectedCategory {
+            param["category_id"] = categoryId.id! as AnyObject
         }
-        let param = ["page":page]
         
-        APIService.sharedInstance.jobList(parameters: param as [String : AnyObject], success: { (result) -> (Void) in
-            if (result.status) {
-                self.jobList = result.jobList!
-                self.filterList = result.jobList!
-                ModelRequestJob.sharedObject.modelJob = result
-                self.page = result.totalPageCount
-            }
-        }) { (error) -> (Void) in
-            showTitleBarAlert(message: error)
+        if let regionId = selectedRegion {
+            param["region_id"] = regionId.id! as AnyObject
         }
-    }
-    
-    private func requestForFilter() {
         
-        let param = ["category_id":selectedCategory?.id!,
-                     "region_id":selectedRegion?.id!,
-                     "page":page] as [String : Any]
+        if !isForPagination {
+            showIndicator()
+        }
+
         
         showIndicator()
         APIService.sharedInstance.jobList(parameters: param as [String : AnyObject], success: { (result) -> (Void) in
             self.hideIndicator()
             
             if (result.status) {
-                self.filterList = result.jobList!
-                self.page = result.totalPageCount
+                
+                if !isForPagination {
+                    self.jobList = result.jobList
+                    self.filterList = result.jobList
+                    
+                } else {
+                    self.jobList.append(contentsOf: result.jobList)
+                    self.filterList.append(contentsOf: result.jobList)
+                }
+                
+                self.page = self.page + 1
+                self.totalPage = result.totalPageCount
+                
             } else {
                 showTitleBarAlert(message: result.message)
                 self.filterList = [ModelJob]()
@@ -189,13 +185,8 @@ class JobCollectionViewCell: UICollectionViewCell, UITableViewDataSource,UITable
             
             if ((scrollView.contentOffset.y + scrollView.frame.size.height) >= scrollView.contentSize.height)
             {
-                if totalPage > page {
-                    
-                    if (selectedCategory == nil && selectedRegion == nil) {
-                        requestForJobList()
-                    } else {
-                        requestForFilter()
-                    }
+                if totalPage >= page {
+                    requestForFilter(isForPagination: true)
                 }
             }
         }

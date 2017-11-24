@@ -18,7 +18,13 @@ class ModelList : ModelBaseHome {
 	var image : String = ""
 	var mobileNo : String = ""
 	var regionId : String = ""
-
+    var myRating : Float = 0.0
+    var myReview : String = ""
+    var totalRating : Float = 0.0
+    var totalReview : Int = 0
+    
+    
+    
     override func mapping(map:Map) {
         super.mapping(map: map)
         address <- map["address"]		
@@ -28,7 +34,10 @@ class ModelList : ModelBaseHome {
 		image <- map["image"]
 		mobileNo <- map["mobile_no"]
 		regionId <- map["region_id"]
-		
+		myRating <- map["my_rating"]
+        myReview <- map["my_review"]
+        totalRating <- map["total_rating"]
+        totalReview <- map["total_review"]
 	}
     
     var imageUrl:URL! {
