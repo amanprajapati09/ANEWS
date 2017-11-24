@@ -250,5 +250,6 @@ class HomeViewController: BaseViewController, ItemSelection, SFSafariViewControl
     public func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         selectedFilter.searchText = searchBar.text!
         homeCollectionContainer.selectedFilter = selectedFilter
+        searchBar.resignFirstResponder()
     }
 }

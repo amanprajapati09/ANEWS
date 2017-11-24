@@ -23,10 +23,10 @@
                         <rect key="frame" x="8" y="4" width="359" height="141.5"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ZIL-6j-xps">
-                                <rect key="frame" x="301" y="8" width="50" height="50"/>
+                                <rect key="frame" x="276" y="8" width="75" height="75"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="DLE-vu-baX"/>
-                                    <constraint firstAttribute="width" constant="50" id="fFv-jL-tC1"/>
+                                    <constraint firstAttribute="height" constant="75" id="DLE-vu-baX"/>
+                                    <constraint firstAttribute="width" constant="75" id="fFv-jL-tC1"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -64,6 +64,29 @@
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XUL-2w-YWR" userLabel="ratingView" customClass="HCSStarRatingView">
+                                <rect key="frame" x="8" y="65" width="170" height="27"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="tintColor" red="0.99215686270000003" green="0.81960784310000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="170" id="uLB-Kf-Vw3"/>
+                                    <constraint firstAttribute="height" constant="27" id="wTC-iu-ngn"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="maximumValue">
+                                        <integer key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="minimumValue">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="spacing">
+                                        <real key="value" value="2"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="starBorderColor">
+                                        <color key="value" red="0.99215686270000003" green="0.81960784310000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xiG-S3-KG2">
                                 <rect key="frame" x="8" y="107" width="65" height="30"/>
                                 <subviews>
@@ -106,12 +129,14 @@
                         <constraints>
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="xiG-S3-KG2" secondAttribute="trailing" constant="70" id="0me-Y7-hLr"/>
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="lUH-y3-O9v" secondAttribute="trailing" constant="80" id="3Sk-lz-Gwd"/>
-                            <constraint firstItem="xiG-S3-KG2" firstAttribute="top" relation="greaterThanOrEqual" secondItem="lUH-y3-O9v" secondAttribute="bottom" constant="5" id="3Vc-f5-pcQ"/>
                             <constraint firstItem="Hnt-uH-UE8" firstAttribute="leading" secondItem="QrT-G5-C70" secondAttribute="leading" constant="8" id="4Yx-p8-F9G"/>
+                            <constraint firstItem="XUL-2w-YWR" firstAttribute="top" relation="greaterThanOrEqual" secondItem="lUH-y3-O9v" secondAttribute="bottom" constant="15" id="6Ll-qL-MzI"/>
                             <constraint firstItem="lUH-y3-O9v" firstAttribute="leading" secondItem="QrT-G5-C70" secondAttribute="leading" constant="8" id="8uV-GI-bKT"/>
                             <constraint firstAttribute="bottom" secondItem="xiG-S3-KG2" secondAttribute="bottom" constant="4.5" id="DWd-yz-oet"/>
+                            <constraint firstItem="xiG-S3-KG2" firstAttribute="top" secondItem="XUL-2w-YWR" secondAttribute="bottom" constant="15" id="PZ0-vN-1nZ"/>
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Hnt-uH-UE8" secondAttribute="trailing" constant="80" id="Rbd-fS-wuD"/>
                             <constraint firstAttribute="trailing" secondItem="LaT-ZR-KAt" secondAttribute="trailing" constant="5" id="U0F-mP-Pav"/>
+                            <constraint firstItem="XUL-2w-YWR" firstAttribute="leading" secondItem="lUH-y3-O9v" secondAttribute="leading" id="ZOt-mJ-FJw"/>
                             <constraint firstItem="Hnt-uH-UE8" firstAttribute="top" secondItem="QrT-G5-C70" secondAttribute="top" constant="8" id="crV-6l-9yW"/>
                             <constraint firstAttribute="trailing" secondItem="ZIL-6j-xps" secondAttribute="trailing" constant="8" id="dzP-OX-hyY"/>
                             <constraint firstItem="BAq-lj-igp" firstAttribute="trailing" secondItem="QrT-G5-C70" secondAttribute="trailingMargin" constant="-15" id="gTi-cK-3rQ"/>
@@ -152,6 +177,7 @@
                 <outlet property="lblAddress" destination="UtT-6f-LrU" id="iM8-nq-pfD"/>
                 <outlet property="lblDescription" destination="lUH-y3-O9v" id="dWr-oY-ZRE"/>
                 <outlet property="lblTitle" destination="Hnt-uH-UE8" id="jdD-W2-qhx"/>
+                <outlet property="ratingView" destination="XUL-2w-YWR" id="ZVx-Th-7Oq"/>
             </connections>
             <point key="canvasLocation" x="33.5" y="107"/>
         </tableViewCell>

@@ -45,7 +45,7 @@ class ListDetailViewController: BaseViewController,UITextFieldDelegate, GMSPlace
         prepareView()
     }
     
-    private func prepareView() {
+    internal func prepareView() {
         imageView.sd_setImage(with: modelList.imageUrl, placeholderImage: placeholdeImage!)
         lblTitle.text = modelList.title
         lblName.text =  modelList.fullName
@@ -97,7 +97,7 @@ class ListDetailViewController: BaseViewController,UITextFieldDelegate, GMSPlace
     @IBAction func myReviewClick(_ sender: Any) {
         
         guard (userDefault.value(forKey: MyUserDefault.USER_ID) != nil) else {
-            showNotificationAlert(type: .error, title: "Warning!", message: "Please login  first to post job")
+            showNotificationAlert(type: .error, title: "Warning!", message: "Please Signin to add your review!")
             DispatchQueue.main.asyncAfter(deadline: DispatchTime(uptimeNanoseconds: 2), execute: {
                 self.presentLoginView()
             })
@@ -150,10 +150,10 @@ extension ListDetailViewController {
             return true
         }
         
-        if (UIApplication.shared.canOpenURL(URL(string:"comgooglemaps://")!)) {
+        if (UIApplication.shared.canOpenURL(URL(string:"http://maps.google.co.in/maps?q=\(modelList.address)")!)) {
             UIApplication.shared.open(URL(string:"")!, options: [:], completionHandler: nil)
         } else {
-            showNotificationAlert(type: .error, title: "'", message: "Not able to open google map")
+            showNotificationAlert(type: .error, title: "", message: "Not able to open google map")
         }
         
         return false
@@ -171,11 +171,11 @@ extension ListDetailViewController {
     
     func placePickerDidCancel(_ viewController: GMSPlacePickerViewController) {
         viewController.dismiss(animated: true, completion: nil)
-        
     }
     
     //MARK:- myreview delegate methods 
     func didSubmitListing(listDetail: ModelList) {
         modelList = listDetail
+        prepareView()
     }
 }

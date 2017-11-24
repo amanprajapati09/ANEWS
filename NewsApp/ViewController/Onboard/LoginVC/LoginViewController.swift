@@ -102,7 +102,7 @@ class LoginViewController: BaseViewController {
 
     private func presentForgotpasswordAlert() {
         //1. Create the alert controller.
-        let alert = UIAlertController(title: "Alert!", message: "Enter your register email", preferredStyle: .alert)
+        let alert = UIAlertController(title: "Alert!", message: "Please enter your register email!", preferredStyle: .alert)
         
         //2. Add the text field. You can configure it however you need.
         alert.addTextField { (textField) in
@@ -114,7 +114,7 @@ class LoginViewController: BaseViewController {
             let textField = alert?.textFields![0] // Force unwrapping because we know it exists.
             
             guard (textField?.validateEmail())! else {
-                showTitleBarAlert(message: "Enter proper email")
+                showTitleBarAlert(message: "Please enter your email!")
                 return
             }
             
@@ -158,6 +158,8 @@ class LoginViewController: BaseViewController {
     private func prepareView() {
         btnSignIn.setCornerRadious(corner: Int(btnSignIn.frame.height/2))
         txtPassword.textField.isSecureTextEntry = true
+        txtEmail.textField.delegate = self
+        txtPassword.textField.delegate = self
         
         guard isFromApp else {
             return

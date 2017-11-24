@@ -13,49 +13,49 @@ extension PostJobViewController {
     func validateTextfielr() -> (Bool, String) {
         
         guard !txtFirmName.textField.validateIsEmpty() else {
-            return (false, "Enter propre firm name.")
+            return (false, "Enter Hiring Firm Name.")
         }
         guard !txtJobTitle.textField.validateIsEmpty() else {
-            return (false, "Enter propre job title.")
+            return (false, "Enter Job Title.")
         }
         guard !txtSalary.textField.validateIsEmpty() else {
             return (false, "Enter propre salary.")
         }
         guard !txtNumberOfPosition.textField.validateIsEmpty() else {
-            return (false, "Enter propre Number of position.")
+            return (false, "Provide No. of Posts.")
         }
         guard txtEmail.textField.validateEmail() else {
-            return (false, "Enter propre email.")
+            return (false, "Enter Valid Email ID.")
         }
         guard !txtContactNUmber.textField.validateIsEmpty() else {
-            return (false, "Enter propre phone number.")
+            return (false, "Enter Contact Number 1.")
         }
         guard !txtAlterContactNumber.textField.validateIsEmpty() else {
-            return (false, "Enter propre alternate phone number")
+            return (false, "Enter Contact Number 2.")
         }
         guard !txtContactPerson.textField.validateIsEmpty() else {
-            return (false, "Enter propre contact person name")
+            return (false, "Enter Contact Person Name.")
         }
         guard !txtRecruterDesignation.textField.validateIsEmpty() else {
-            return (false, "Enter propre recruter designation.")
+            return (false, "Enter Designation.")
         }
         guard !txtInterviewDate.textField.validateIsEmpty() else {
-            return (false, "Enter propre recruter designation.")
+            return (false, "Enter Recruiters designation.")
         }
         guard !txtInterViewFirmAddress.textField.validateIsEmpty() else {
-            return (false, "Enter propre firm address")
+            return (false, "Enter Interview Address")
         }
         guard !txtJobLocation.textField.validateIsEmpty() else {
-            return (false, "Enter propre job location.")
+            return (false, "Enter job location.")
         }
         guard !txtJobDescription.textField.validateIsEmpty() else {
-            return (false, "Enter propre job description.")
+            return (false, "Enter job description.")
         }     
         guard selectedCategory != nil else {
-            return (false, "Selecte category.")
+            return (false, "Please Select Category.")
         }
         guard selectedRegion != nil else {
-            return (false, "Selecte region.")
+            return (false, "Please Select Region.")
         }
         
         return (true, "Success")

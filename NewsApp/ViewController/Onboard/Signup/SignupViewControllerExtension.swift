@@ -14,23 +14,27 @@ extension SignupViewController  {
     internal func validateSignUp() -> (Bool,String) {
         
         guard !txtName.textField.validateIsEmpty() else {
-            return (false,"Enter proper name!")
+            return (false,"Please enter your name!")
         }
         
         guard txtPhone.textField.validatePhoneNumber() else {
-            return (false,"Enter proper phone!")
+            return (false,"Please enter valid phone number!")
         }
         
         guard !txtAddress.textField.validateIsEmpty() else {
-            return (false,"Enter proper Address!")
+            return (false,"Please enter your Address!")
         }
         
         guard txtEmail.textField.validateEmail() else {
-            return (false,"Enter proper Email!")
+            return (false,"Please enter your Email!")
         }
         
         guard !txtPassword.textField.validateIsEmpty() else {
-            return (false,"Enter proper password!")
+            return (false,"Please enter 6 digit password!")
+        }
+        
+        guard (txtPassword.textField.text?.characters.count)! >= 6 else {
+            return (false,"Please enter 6 digit password!")
         }
         
         return (true,"")
@@ -39,15 +43,15 @@ extension SignupViewController  {
     internal func validateEdit() -> (Bool,String) {
         
         guard !txtName.textField.validateIsEmpty() else {
-            return (false,"Enter proper name!")
+            return (false,"Please enter your name!")
         }
         
         guard txtPhone.textField.validatePhoneNumber() else {
-            return (false,"Enter proper phone!")
+            return (false,"Please enter valid phone number!")
         }
         
         guard !txtAddress.textField.validateIsEmpty() else {
-            return (false,"Enter proper Address!")
+            return (false,"Please enter your Address!")
         }
         
         return (true,"")
@@ -60,6 +64,10 @@ extension SignupViewController  {
         }
         presentAddressPicker()
         return false
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        return true
     }
     
     //MARK:- Place picker delegate methods

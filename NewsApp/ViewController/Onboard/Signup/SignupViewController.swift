@@ -20,6 +20,7 @@ class SignupViewController: BaseViewController, UITextFieldDelegate, GMSPlacePic
     
     @IBOutlet weak var btnFinish: UIButton!
     
+    @IBOutlet weak var passwordContainer: UIView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     var isForEditProfile = false
@@ -63,16 +64,22 @@ class SignupViewController: BaseViewController, UITextFieldDelegate, GMSPlacePic
     
     private func prepareView() {
         txtAddress.textField.delegate = self
+        txtName.textField.delegate = self
+        txtEmail.textField.delegate = self
+        txtPassword.textField.delegate = self
+        txtPhone.textField.delegate = self
         txtPassword.textField.isSecureTextEntry = true
-        
+        passwordContainer.isHidden = true
         if isForEditProfile {
             
             txtEmail.textField.text = (userDefault.value(forKey: MyUserDefault.USER_EMAIL) as? String)!
-            txtName.textField.becomeFirstResponder()
+            txtEmail.changeToFloat(animated: false)
             txtName.textField.text = (userDefault.value(forKey: MyUserDefault.USER_FIRSTNAME) as? String)!
+            txtName.changeToFloat(animated: false)
             txtPhone.textField.text = (userDefault.value(forKey: MyUserDefault.USER_PHONE) as? String)!
+            txtPhone.changeToFloat(animated: false)
             txtAddress.textField.text = (userDefault.value(forKey: MyUserDefault.USER_ADDRESS) as? String)!
-            txtPassword.isHidden = true
+            txtAddress.changeToFloat(animated: false)
             txtEmail.isUserInteractionEnabled = false
         }
     }

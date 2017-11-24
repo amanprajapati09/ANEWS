@@ -26,4 +26,5 @@ extension UITextField {
         let predicate = NSPredicate(format: "SELF MATCHES %@", phoneRegex)
         return  predicate.evaluate(with: self.text!)
     }
+
 }

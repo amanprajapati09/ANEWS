@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import HCSStarRatingView
 
 class ListingTableViewCell: UITableViewCell, NibLoadableView, ReusableView {
 
@@ -14,6 +15,7 @@ class ListingTableViewCell: UITableViewCell, NibLoadableView, ReusableView {
     @IBOutlet weak var lblTitle: UILabel!
     @IBOutlet weak var lblDescription: UILabel!
     @IBOutlet weak var lblAddress: UILabel!
+    @IBOutlet weak var ratingView: HCSStarRatingView!
     
     var objList:ModelList! {
         didSet {
@@ -21,6 +23,7 @@ class ListingTableViewCell: UITableViewCell, NibLoadableView, ReusableView {
             lblDescription.text = objList.descriptionField
             lblAddress.text = objList.address
             imageList.sd_setImage(with: objList.imageUrl, placeholderImage: placeholdeImage!)
+            ratingView.value = CGFloat(objList.totalRating)
         }
     }
     

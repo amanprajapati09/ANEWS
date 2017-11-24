@@ -1142,6 +1142,7 @@
                     <connections>
                         <outlet property="activityIndicator" destination="a89-zH-UtK" id="dGp-y1-NHF"/>
                         <outlet property="btnFinish" destination="M1f-LA-IvU" id="KRd-Y2-BTk"/>
+                        <outlet property="passwordContainer" destination="0zk-zt-TBB" id="Gv5-4e-c7o"/>
                         <outlet property="txtAddress" destination="gpP-wh-Bkm" id="cMY-Tw-FLM"/>
                         <outlet property="txtEmail" destination="YDY-YS-3MT" id="0wo-wP-FWa"/>
                         <outlet property="txtName" destination="g66-4C-pQ6" id="K52-rf-qdL"/>
@@ -2075,7 +2076,7 @@
                                                     <constraint firstAttribute="width" secondItem="T0J-04-XEt" secondAttribute="height" multiplier="375:53" constant="-20" id="aLW-ue-I18"/>
                                                 </constraints>
                                                 <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="string" keyPath="placeHolderStringKey" value="Firm name"/>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="placeHolderStringKey" value="Hiring Firm Name"/>
                                                     <userDefinedRuntimeAttribute type="color" keyPath="idlePlaceHolderColor">
                                                         <color key="value" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                     </userDefinedRuntimeAttribute>
@@ -2168,7 +2169,7 @@
                                                     <constraint firstAttribute="width" secondItem="Qx0-hl-Jwp" secondAttribute="height" multiplier="375:53" constant="-20" id="uCD-bv-Kd5"/>
                                                 </constraints>
                                                 <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="string" keyPath="placeHolderStringKey" value="No of pos"/>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="placeHolderStringKey" value="No of posts"/>
                                                     <userDefinedRuntimeAttribute type="color" keyPath="idlePlaceHolderColor">
                                                         <color key="value" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                     </userDefinedRuntimeAttribute>
@@ -2199,7 +2200,7 @@
                                                     <constraint firstAttribute="width" secondItem="krP-xM-Rsv" secondAttribute="height" multiplier="375:53" constant="-20" id="4jx-Is-ZIF"/>
                                                 </constraints>
                                                 <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="string" keyPath="placeHolderStringKey" value="EmailID"/>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="placeHolderStringKey" value="Email id"/>
                                                     <userDefinedRuntimeAttribute type="color" keyPath="idlePlaceHolderColor">
                                                         <color key="value" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                     </userDefinedRuntimeAttribute>
@@ -2230,7 +2231,7 @@
                                                     <constraint firstAttribute="width" secondItem="6KQ-PI-7ef" secondAttribute="height" multiplier="375:53" constant="-20" id="rrG-D8-1Yc"/>
                                                 </constraints>
                                                 <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="string" keyPath="placeHolderStringKey" value="Contact no"/>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="placeHolderStringKey" value="Contact number 1"/>
                                                     <userDefinedRuntimeAttribute type="color" keyPath="idlePlaceHolderColor">
                                                         <color key="value" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                     </userDefinedRuntimeAttribute>
@@ -2261,7 +2262,7 @@
                                                     <constraint firstAttribute="width" secondItem="t6r-UJ-GNC" secondAttribute="height" multiplier="375:53" constant="-20" id="qxW-z6-8nC"/>
                                                 </constraints>
                                                 <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="string" keyPath="placeHolderStringKey" value="alt contact no"/>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="placeHolderStringKey" value="Contact number 2"/>
                                                     <userDefinedRuntimeAttribute type="color" keyPath="idlePlaceHolderColor">
                                                         <color key="value" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                     </userDefinedRuntimeAttribute>
@@ -2323,7 +2324,7 @@
                                                     <constraint firstAttribute="width" secondItem="v2i-Gk-aSM" secondAttribute="height" multiplier="375:53" constant="-20" id="WFI-H2-nai"/>
                                                 </constraints>
                                                 <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="string" keyPath="placeHolderStringKey" value="Recruite designation"/>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="placeHolderStringKey" value="Recruiters Designation"/>
                                                     <userDefinedRuntimeAttribute type="color" keyPath="idlePlaceHolderColor">
                                                         <color key="value" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                     </userDefinedRuntimeAttribute>
@@ -2354,7 +2355,7 @@
                                                     <constraint firstAttribute="width" secondItem="Elm-qq-ayi" secondAttribute="height" multiplier="375:53" constant="-20" id="TUl-L1-qek"/>
                                                 </constraints>
                                                 <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="string" keyPath="placeHolderStringKey" value="Interview date"/>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="placeHolderStringKey" value="Interview/Walkin Date"/>
                                                     <userDefinedRuntimeAttribute type="color" keyPath="idlePlaceHolderColor">
                                                         <color key="value" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                     </userDefinedRuntimeAttribute>
@@ -2385,7 +2386,7 @@
                                                     <constraint firstAttribute="width" secondItem="Qhn-fq-cI6" secondAttribute="height" multiplier="375:53" constant="-20" id="vxc-cb-OWQ"/>
                                                 </constraints>
                                                 <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="string" keyPath="placeHolderStringKey" value="intervierw firm address"/>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="placeHolderStringKey" value="Hiring Firm/Interview Address"/>
                                                     <userDefinedRuntimeAttribute type="color" keyPath="idlePlaceHolderColor">
                                                         <color key="value" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                     </userDefinedRuntimeAttribute>
@@ -2447,7 +2448,7 @@
                                                     <constraint firstAttribute="width" secondItem="L6X-Pb-DUu" secondAttribute="height" multiplier="375:53" constant="-20" id="xAn-iq-E7k"/>
                                                 </constraints>
                                                 <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="string" keyPath="placeHolderStringKey" value="Job Description"/>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="placeHolderStringKey" value="Detailed Job Description"/>
                                                     <userDefinedRuntimeAttribute type="color" keyPath="idlePlaceHolderColor">
                                                         <color key="value" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                     </userDefinedRuntimeAttribute>
@@ -2955,6 +2956,6 @@
     <inferredMetricsTieBreakers>
         <segue reference="IWt-E6-m0S"/>
         <segue reference="6Q4-XX-SCa"/>
-        <segue reference="zu0-UP-W82"/>
+        <segue reference="7Xv-1B-ysc"/>
     </inferredMetricsTieBreakers>
 </document>

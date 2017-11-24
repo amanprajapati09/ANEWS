@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-extension LoginViewController {
+extension LoginViewController:UITextFieldDelegate {
     
     internal func validateLogin() -> (Bool,String) {
         guard txtEmail.textField.validateEmail() else {
@@ -23,5 +23,7 @@ extension LoginViewController {
         return (true,"")
     }
     
-    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        return true
+    }
 }

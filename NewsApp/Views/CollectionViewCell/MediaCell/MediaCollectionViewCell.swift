@@ -118,7 +118,6 @@ class MediaCollectionViewCell: UICollectionViewCell,UITableViewDataSource,UITabl
         }
     }
     
-    
     //Check if requst is required or not
     private func checkForRequest() -> Bool {
         
