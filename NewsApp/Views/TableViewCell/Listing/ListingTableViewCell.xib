@@ -64,7 +64,7 @@
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XUL-2w-YWR" userLabel="ratingView" customClass="HCSStarRatingView">
+                            <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XUL-2w-YWR" userLabel="ratingView" customClass="HCSStarRatingView">
                                 <rect key="frame" x="8" y="65" width="170" height="27"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="tintColor" red="0.99215686270000003" green="0.81960784310000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>

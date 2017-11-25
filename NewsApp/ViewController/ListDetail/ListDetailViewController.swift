@@ -149,12 +149,16 @@ extension ListDetailViewController {
         guard textField == txtAddress else {
             return true
         }
-        
-        if (UIApplication.shared.canOpenURL(URL(string:"http://maps.google.co.in/maps?q=\(modelList.address)")!)) {
-            UIApplication.shared.open(URL(string:"")!, options: [:], completionHandler: nil)
+        if let url = URL(string:"http://maps.google.co.in/maps?q=\(modelList.address)") {
+            if (UIApplication.shared.canOpenURL(url)) {
+                UIApplication.shared.open(URL(string:"")!, options: [:], completionHandler: nil)
+            } else {
+                showNotificationAlert(type: .error, title: "", message: "Not able to open google map")
+            }
         } else {
-            showNotificationAlert(type: .error, title: "", message: "Not able to open google map")
+             showNotificationAlert(type: .error, title: "", message: "Not able to open google map")
         }
+
         
         return false
     }
