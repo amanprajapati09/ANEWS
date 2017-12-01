@@ -38,13 +38,6 @@ class ListingCollectionViewCell: UICollectionViewCell, UITableViewDataSource,UIT
         registerCell()
     }
     
-    var List = [ModelList]() {
-        didSet {
-            tblView.reloadData()
-            manageNoDataFoundMessage()
-        }
-    }
-    
     var filterList = [ModelList]() {
         didSet {
             tblView.reloadData()
@@ -54,8 +47,25 @@ class ListingCollectionViewCell: UICollectionViewCell, UITableViewDataSource,UIT
     
     func filterUsingCategory()  {
         
-        page = 1
-        requestForFilter()
+        guard searchListText.characters.count == 0 else {
+            page = 1
+            requestForFilter()
+            return
+        }
+        
+        if (selectedRegion == nil && selectedCategory == nil)  {
+            
+            if ModelRequestList.sharedObject.modelList.count == 0 {
+                page = 1
+                requestForFilter()
+            } else {
+                page = ModelRequestList.sharedObject.page
+                filterList = ModelRequestList.sharedObject.modelList
+            }
+        } else {
+            page = 1
+            requestForFilter()
+        }
     }
     
     
@@ -77,7 +87,7 @@ class ListingCollectionViewCell: UICollectionViewCell, UITableViewDataSource,UIT
     
     //MARK:- UITableview delegate methods
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        delegate?.didSelecteItem(item: List[indexPath.row])
+        delegate?.didSelecteItem(item: filterList[indexPath.row])
     }
     
     //MARK:- Helper methods
@@ -116,17 +126,18 @@ class ListingCollectionViewCell: UICollectionViewCell, UITableViewDataSource,UIT
             
             if (result.status) {
                 
+                self.parseForNilFilter(result: result, isForPagination: isForPagination)
+                
                 if !isForPagination {
-                    self.List = result.modelList
                     self.filterList = result.modelList
                     
                 } else {
-                    self.List.append(contentsOf: result.modelList)
                     self.filterList.append(contentsOf: result.modelList)
                 }
                 
                 self.page = self.page + 1
                 self.totalPage = result.totalPageCount
+               
             } else {
                 showTitleBarAlert(message: result.message)
                 self.filterList = [ModelList]()
@@ -139,6 +150,19 @@ class ListingCollectionViewCell: UICollectionViewCell, UITableViewDataSource,UIT
         }
     }
     
+    private func parseForNilFilter (result:ModelListMain, isForPagination:Bool) {
+        
+        if (selectedCategory == nil && selectedRegion == nil)  {
+            
+            if isForPagination {
+                ModelRequestList.sharedObject.modelList.append(contentsOf: result.modelList)
+            } else {
+                ModelRequestList.sharedObject.modelList = result.modelList
+            }
+            
+            ModelRequestList.sharedObject.page = page + 1
+        }
+    }
     
     //Check if requst is required or not
     private func checkForRequest() -> Bool {

@@ -60,11 +60,13 @@ class FlashCollectionViewCell: UICollectionViewCell, UITableViewDataSource,UITab
     
     private func requestForFlashList() {
         
-        guard checkForRequest() else {
+        guard !checkForRequest() else {
             return
         }
         
         let param = ["page":page]
+        
+        ModelRequestFlash.sharedObject.isRequestSend = true
         APIService.sharedInstance.flashList(parameters: param as [String : AnyObject], success: { (result) -> (Void) in
             if (result.status) {
                 self.flashList.append(contentsOf: result.flashList)
@@ -72,24 +74,17 @@ class FlashCollectionViewCell: UICollectionViewCell, UITableViewDataSource,UITab
                 self.page = self.page + 1
                 self.totalPage = result.totalPageCount
             }
+            ModelRequestFlash.sharedObject.isRequestSend = true
         }) { (error) -> (Void) in
             showTitleBarAlert(message: error)
+            ModelRequestFlash.sharedObject.isRequestSend = true
         }
     }
     
     //Check if requst is required or not
     private func checkForRequest() -> Bool {
         
-        if ModelRequestFlash.sharedObject.modelFlash != nil {
-            if ModelRequestFlash.sharedObject.isRequestSend {
-                return false
-            } else {
-                return true
-            }
-            
-        } else {
-            return true
-        }
+        return ModelRequestFlash.sharedObject.isRequestSend
     }
     
     private func manageNoDataFoundMessage() {

@@ -50,20 +50,22 @@ class JobCollectionViewCell: UICollectionViewCell, UITableViewDataSource,UITable
     }
     
     func filterUsingCategory()  {
-        page = 1
-        requestForFilter()
-    }
-    
-    func filterUsingRegion() -> [ModelJob] {
-        guard (selectedRegion != nil) else {
-            return jobList
-        }
         
-        return jobList.filter({ (object) -> Bool in
+        if (selectedRegion == nil && selectedCategory == nil)  {
             
-            return (object.regionId == selectedRegion?.id)
-        })
+            if ModelRequestJob.sharedObject.modelJobList.count == 0 {
+                page = 1
+                requestForFilter()
+            } else {
+                page = ModelRequestJob.sharedObject.page
+                filterList = ModelRequestJob.sharedObject.modelJobList
+            }
+        } else {
+            page = 1
+            requestForFilter()
+        }
     }
+
     
     //MARK:- UITableview datasource methods
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -110,14 +112,15 @@ class JobCollectionViewCell: UICollectionViewCell, UITableViewDataSource,UITable
         if !isForPagination {
             showIndicator()
         }
-
         
-        showIndicator()
+        ModelRequestJob.sharedObject.isRequestSend = true
+      
         APIService.sharedInstance.jobList(parameters: param as [String : AnyObject], success: { (result) -> (Void) in
             self.hideIndicator()
             
             if (result.status) {
                 
+                self.parseForNilFilter(result: result, isForPagination: isForPagination)
                 if !isForPagination {
                     self.jobList = result.jobList
                     self.filterList = result.jobList
@@ -134,25 +137,33 @@ class JobCollectionViewCell: UICollectionViewCell, UITableViewDataSource,UITable
                 showTitleBarAlert(message: result.message)
                 self.filterList = [ModelJob]()
             }
+            return ModelRequestJob.sharedObject.isRequestSend = false
+            
         }) { (error) -> (Void) in
+            
+            ModelRequestJob.sharedObject.isRequestSend = false
             showTitleBarAlert(message: error)
             self.hideIndicator()
         }
     }
     
-    //Check if requst is required or not
-    private func checkForRequest() -> Bool {
+    private func parseForNilFilter (result:ModelJobMain, isForPagination:Bool) {
         
-        if ModelRequestBullatine.sharedObject.modelBullatine != nil {
-            if ModelRequestBullatine.sharedObject.isRequestSend {
-                return false
+        if (selectedCategory == nil && selectedRegion == nil)  {
+            
+            if isForPagination {
+                ModelRequestJob.sharedObject.modelJobList.append(contentsOf: result.jobList)
             } else {
-                return true
+                ModelRequestJob.sharedObject.modelJobList = result.jobList
             }
             
-        } else {
-            return true
+            ModelRequestJob.sharedObject.page = page + 1
         }
+    }
+    
+    //Check if requst is required or not
+    private func checkForRequest() -> Bool {
+        return ModelRequestBullatine.sharedObject.isRequestSend
     }
     
     private func manageNoDataFoundMessage() {

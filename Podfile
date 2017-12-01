@@ -21,7 +21,10 @@ target 'NewsApp' do
     pod 'GoogleMaps', '= 2.3.0'
     pod 'FTPopOverMenu_Swift'
     pod 'HCSStarRatingView', '~> 1.5'
-
+    pod 'FacebookCore'
+    pod 'FacebookLogin'
+    pod 'GoogleSignIn'
+    
     # Pods for NewsApp
     
 end

@@ -47,9 +47,20 @@ class BulletineCollectionViewCell: UICollectionViewCell, UITableViewDataSource,U
     
     func filterUsingCategory()  {
        
-        page = 1
-        requestForFilter()
-        
+        if (selectedCategory == nil)  {
+            
+            if ModelRequestList.sharedObject.modelList.count == 0 {
+                page = 1
+                requestForFilter()
+            } else {
+                page = ModelRequestBullatine.sharedObject.page
+                filterList = ModelRequestBullatine.sharedObject.modelBullatineList
+            }
+        } else {
+            page = 1
+            requestForFilter()
+        }
+    
     }
     
     //MARK:- UITableview datasource methods
@@ -94,7 +105,10 @@ class BulletineCollectionViewCell: UICollectionViewCell, UITableViewDataSource,U
         APIService.sharedInstance.bulletineList(parameters: param as [String : AnyObject], success: { (result) -> (Void) in
             self.hideIndicator()
             
+            
             if (result.status) {
+            
+                self.parseForNilFilter(result: result, isForPagination: isForPagination)
                 
                 if !isForPagination {
                     self.bullatineList = result.bulletinList
@@ -112,12 +126,28 @@ class BulletineCollectionViewCell: UICollectionViewCell, UITableViewDataSource,U
                 self.filterList = [ModelBulletin]()
             }
             ModelRequestBullatine.sharedObject.isRequestSend = false
+            
         }) { (error) -> (Void) in
             showTitleBarAlert(message: error)
             self.hideIndicator()
             ModelRequestBullatine.sharedObject.isRequestSend = false
         }
     }
+    
+    private func parseForNilFilter (result:ModelBulletinMain, isForPagination:Bool) {
+        
+        if (selectedCategory == nil)  {
+            
+            if isForPagination {
+                ModelRequestBullatine.sharedObject.modelBullatineList.append(contentsOf: result.bulletinList)
+            } else {
+                ModelRequestBullatine.sharedObject.modelBullatineList = result.bulletinList
+            }
+            
+            ModelRequestBullatine.sharedObject.page = page + 1
+        }
+    }
+    
     
     //Check if requst is required or not
     private func checkForRequest() -> Bool {

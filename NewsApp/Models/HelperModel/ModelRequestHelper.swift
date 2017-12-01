@@ -21,7 +21,8 @@ class ModelRequestList {
     
     static let sharedObject = ModelRequestList()
     var isRequestSend:Bool = false
-    var modelList:ModelListMain?
+    var modelList = [ModelList]()
+    var page = 1
     
 }
 
@@ -29,24 +30,24 @@ class ModelRequestBullatine {
     
     static let sharedObject =  ModelRequestBullatine()
     var isRequestSend:Bool = false
-    var modelBullatine:ModelBulletinMain?
-    
+    var modelBullatineList = [ModelBulletin]()
+    var page = 1
 }
 
 class ModelRequestJob {
     
     static let sharedObject = ModelRequestJob()
     var isRequestSend:Bool = false
-    var modelJob:ModelJobMain?
-    
+    var modelJobList = [ModelJob]()
+    var page = 1
 }
 
 class ModelRequestMedia {
     
     static let sharedObject = ModelRequestMedia()
     var isRequestSend:Bool = false
-    var modelMedia:ModelMediaMain?
-    
+    var modelMedia = [ModelMedia]()
+    var page = 1
 }
 
 class ModelCategorySingleTone {

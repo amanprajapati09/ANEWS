@@ -47,8 +47,19 @@ class MediaCollectionViewCell: UICollectionViewCell,UITableViewDataSource,UITabl
     
     func filterUsingCategory()  {
         
-        page = 1
-        requestForFilter()
+        if (selectedCategory == nil)  {
+            
+            if ModelRequestMedia.sharedObject.modelMedia.count == 0 {
+                page = 1
+                requestForFilter()
+            } else {
+                page = ModelRequestMedia.sharedObject.page
+                filterList = ModelRequestMedia.sharedObject.modelMedia
+            }
+        } else {
+            page = 1
+            requestForFilter()
+        }
     }
     
     //MARK:- UITableview datasource methods
@@ -92,10 +103,13 @@ class MediaCollectionViewCell: UICollectionViewCell,UITableViewDataSource,UITabl
             showIndicator()
         }
         
+        ModelRequestMedia.sharedObject.isRequestSend = true
         APIService.sharedInstance.mediaList(parameters: param as [String : AnyObject], success: { (result) -> (Void) in
             self.hideIndicator()
             
             if (result.status) {
+                
+                self.parseForNilFilter(result: result, isForPagination: isForPagination)
                 
                 if !isForPagination {
                     self.mediaList = result.MediaList
@@ -112,25 +126,32 @@ class MediaCollectionViewCell: UICollectionViewCell,UITableViewDataSource,UITabl
                 showTitleBarAlert(message: result.message)
                 self.filterList = [ModelMedia]()
             }
+            
+            ModelRequestMedia.sharedObject.isRequestSend = false
         }) { (error) -> (Void) in
             showTitleBarAlert(message: error)
             self.hideIndicator()
+            ModelRequestMedia.sharedObject.isRequestSend = false
+        }
+    }
+    
+    private func parseForNilFilter (result:ModelMediaMain, isForPagination:Bool) {
+        
+        if (selectedCategory == nil)  {
+            
+            if isForPagination {
+                ModelRequestMedia.sharedObject.modelMedia.append(contentsOf: result.MediaList)
+            } else {
+                ModelRequestMedia.sharedObject.modelMedia = result.MediaList
+            }
+            
+            ModelRequestMedia.sharedObject.page = page + 1
         }
     }
     
     //Check if requst is required or not
     private func checkForRequest() -> Bool {
-        
-        if ModelRequestMedia.sharedObject.modelMedia != nil {
-            if ModelRequestMedia.sharedObject.isRequestSend {
-                return false
-            } else {
-                return true
-            }
-            
-        } else {
-            return true
-        }
+        return ModelRequestMedia.sharedObject.isRequestSend
     }
     
     private func manageNoDataFoundMessage() {
