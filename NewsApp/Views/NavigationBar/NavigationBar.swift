@@ -20,6 +20,7 @@ class NavigationBar: UINavigationItem {
     var rightBarItem:UIBarButtonItem?
     var profileBarItem:UIBarButtonItem?
     
+    
     //MARK:- titlebar imageview variables
     ///Set left button image
     @IBInspectable var leftButtonImage : UIImage? = nil {
@@ -93,4 +94,5 @@ class NavigationBar: UINavigationItem {
     func showSearchBar() {
         self.rightBarButtonItems = [rightBarItem!, profileBarItem! ,rightBarItemSearch!]
     }
+
 }

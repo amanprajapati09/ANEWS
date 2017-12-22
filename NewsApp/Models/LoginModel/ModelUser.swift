@@ -26,6 +26,7 @@ class ModelUser : BaseModel {
 	}
 	
 	override func mapping(map: Map) {
+        
 		address <- map["address"]
 		emailId <- map["email_id"]
 		firstName <- map["first_name"]

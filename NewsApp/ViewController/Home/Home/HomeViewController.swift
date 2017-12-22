@@ -81,6 +81,11 @@ class HomeViewController: BaseViewController, ItemSelection, SFSafariViewControl
         
         navigationBar.rightProfileItemClick = {
             
+            guard userDefault.value(forKey: MyUserDefault.SOCIAL_LOGIN) == nil else {
+                showStatusBarAlert(Str: "You are not allow to edit your profile", Duration: 2.0)
+                return
+            }
+            
             if userDefault.value(forKey: MyUserDefault.USER_ID) == nil {
                 self.presentLoginView()
             } else {

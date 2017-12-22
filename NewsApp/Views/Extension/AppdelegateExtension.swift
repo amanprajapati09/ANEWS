@@ -11,6 +11,10 @@ import UIKit
 import IQKeyboardManagerSwift
 import GoogleMaps
 import GooglePlaces
+import GoogleSignIn
+import Firebase
+import FacebookLogin
+import FacebookCore
 
 extension AppDelegate {
     
@@ -27,12 +31,40 @@ extension AppDelegate {
             appDelegate.window?.rootViewController =  MainainStoryboard.instantiateViewController(withIdentifier: StoryBoardId.homeNavigation)
         }
         
+        //Code For google sign in config
+        FirebaseApp.configure()
+       GIDSignIn.sharedInstance().clientID = kGoogleClientID
+        
         return true
     }
     
     private func registerIQKeyboard() {
         IQKeyboardManager.sharedManager().enable = true
         IQKeyboardManager.sharedManager().shouldResignOnTouchOutside = true
+    }
+    
+    func application(_ application: UIApplication,
+                     open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
+        
+        let googleDidHandle = GIDSignIn.sharedInstance().handle(url,
+                                                                   sourceApplication: sourceApplication,
+                                                                   annotation: annotation)
+        
+        let facebookDidHandle = SDKApplicationDelegate.shared.application(application, open: url, sourceApplication: sourceApplication, annotation: annotation)
+        
+        return googleDidHandle || facebookDidHandle
+    }
+    
+    @available(iOS 9.0, *)
+    func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any]) -> Bool {
+        
+        let facebookDidHandle = SDKApplicationDelegate.shared.application(app, open: url, options: options)
+        
+        let googleDidHandle = GIDSignIn.sharedInstance().handle(url,
+                                                 sourceApplication: options[UIApplicationOpenURLOptionsKey.sourceApplication] as? String,
+                                                 annotation: options[UIApplicationOpenURLOptionsKey.annotation])
+        
+        return googleDidHandle || facebookDidHandle
     }
     
 }

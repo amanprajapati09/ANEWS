@@ -73,6 +73,7 @@
 		078F47091FA8FEF600F8BE2F /* PhotoSaver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078F47081FA8FEF600F8BE2F /* PhotoSaver.swift */; };
 		078F470B1FAAC9B200F8BE2F /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078F470A1FAAC9B200F8BE2F /* Utility.swift */; };
 		078F470E1FABB1A900F8BE2F /* JobDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078F470D1FABB1A900F8BE2F /* JobDetailViewController.swift */; };
+		0797493C1FE8264700A3E735 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0797493B1FE8264700A3E735 /* GoogleService-Info.plist */; };
 		07A49D931F86B1F30022562D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07A49D631F86B1F30022562D /* AppDelegate.swift */; };
 		07A49D941F86B1F30022562D /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07A49D641F86B1F30022562D /* Constant.swift */; };
 		07A49D951F86B1F30022562D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 07A49D661F86B1F30022562D /* LaunchScreen.storyboard */; };
@@ -114,6 +115,8 @@
 		07AF154D1FB38F5700FBE928 /* UIViewController+LGSideMenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = 07AF15461FB38F5700FBE928 /* UIViewController+LGSideMenuController.m */; };
 		07AF154F1FB3915600FBE928 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07AF154E1FB3915600FBE928 /* MainViewController.swift */; };
 		07F488161FC7A60900972D11 /* FilterContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F488151FC7A60900972D11 /* FilterContainer.swift */; };
+		07F5E0CD1FECC86B002964E6 /* ModelSocialRegister.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F5E0CC1FECC86B002964E6 /* ModelSocialRegister.swift */; };
+		07F5E0CF1FECD168002964E6 /* LoginViewcontrollerFacebook.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F5E0CE1FECD168002964E6 /* LoginViewcontrollerFacebook.swift */; };
 		07FBF9CB1FC000A700B93E33 /* PostListingScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07FBF9CA1FC000A700B93E33 /* PostListingScreen.swift */; };
 		07FBF9CE1FC00B1600B93E33 /* ListDetailMain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07FBF9CD1FC00B1600B93E33 /* ListDetailMain.swift */; };
 		53E4FC8244730F3B382DFD94 /* Pods_NewsApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E94DCF7A29ECF7108F54BD57 /* Pods_NewsApp.framework */; };
@@ -187,6 +190,7 @@
 		078F47081FA8FEF600F8BE2F /* PhotoSaver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoSaver.swift; sourceTree = "<group>"; };
 		078F470A1FAAC9B200F8BE2F /* Utility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
 		078F470D1FABB1A900F8BE2F /* JobDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JobDetailViewController.swift; sourceTree = "<group>"; };
+		0797493B1FE8264700A3E735 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		07A49D311F86AFE00022562D /* NewsApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NewsApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		07A49D631F86B1F30022562D /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		07A49D641F86B1F30022562D /* Constant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
@@ -236,6 +240,8 @@
 		07AF15461FB38F5700FBE928 /* UIViewController+LGSideMenuController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+LGSideMenuController.m"; sourceTree = "<group>"; };
 		07AF154E1FB3915600FBE928 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		07F488151FC7A60900972D11 /* FilterContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterContainer.swift; sourceTree = "<group>"; };
+		07F5E0CC1FECC86B002964E6 /* ModelSocialRegister.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelSocialRegister.swift; sourceTree = "<group>"; };
+		07F5E0CE1FECD168002964E6 /* LoginViewcontrollerFacebook.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewcontrollerFacebook.swift; sourceTree = "<group>"; };
 		07FBF9CA1FC000A700B93E33 /* PostListingScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostListingScreen.swift; sourceTree = "<group>"; };
 		07FBF9CD1FC00B1600B93E33 /* ListDetailMain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListDetailMain.swift; sourceTree = "<group>"; };
 		2FBE3D050966A30FBD219437 /* Pods-NewsApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NewsApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-NewsApp/Pods-NewsApp.release.xcconfig"; sourceTree = "<group>"; };
@@ -529,6 +535,7 @@
 		07A49D281F86AFE00022562D = {
 			isa = PBXGroup;
 			children = (
+				0797493B1FE8264700A3E735 /* GoogleService-Info.plist */,
 				07A49D331F86AFE00022562D /* NewsApp */,
 				07A49D321F86AFE00022562D /* Products */,
 				15DAB443A71C55A4D022D8AC /* Pods */,
@@ -658,6 +665,7 @@
 				078F46081F959CF800F8BE2F /* ModelLogin.swift */,
 				078F46091F959CF800F8BE2F /* ModelLoginData.swift */,
 				078F460A1F959CF800F8BE2F /* ModelUser.swift */,
+				07F5E0CC1FECC86B002964E6 /* ModelSocialRegister.swift */,
 			);
 			path = LoginModel;
 			sourceTree = "<group>";
@@ -730,6 +738,7 @@
 			children = (
 				078F45E51F8D43DE00F8BE2F /* LoginViewController.swift */,
 				078F45F41F8DC66400F8BE2F /* LoginViewControllerExtension.swift */,
+				07F5E0CE1FECD168002964E6 /* LoginViewcontrollerFacebook.swift */,
 			);
 			path = LoginVC;
 			sourceTree = "<group>";
@@ -959,6 +968,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				078F46741F9E603000F8BE2F /* JobCollectionViewCell.xib in Resources */,
+				0797493C1FE8264700A3E735 /* GoogleService-Info.plist in Resources */,
 				07AA52361FBF6D5100021159 /* ReviewTableViewCell.xib in Resources */,
 				078F46781F9E604100F8BE2F /* MediaCollectionViewCell.xib in Resources */,
 				07AA522B1FBF6D2300021159 /* JobTableViewCell.xib in Resources */,
@@ -1031,6 +1041,7 @@
 				"${BUILT_PRODUCTS_DIR}/RSFloatInputView/RSFloatInputView.framework",
 				"${BUILT_PRODUCTS_DIR}/RaisePlaceholder/RaisePlaceholder.framework",
 				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
@@ -1056,6 +1067,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RSFloatInputView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RaisePlaceholder.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1113,10 +1125,12 @@
 				078F46AB1F9F9E7700F8BE2F /* ModelRequestHelper.swift in Sources */,
 				078F466B1F9E600300F8BE2F /* ListingCollectionViewCell.swift in Sources */,
 				07AF154C1FB38F5700FBE928 /* LGSideMenuView.m in Sources */,
+				07F5E0CF1FECD168002964E6 /* LoginViewcontrollerFacebook.swift in Sources */,
 				078F46591F9CDA2600F8BE2F /* STVSegmentButton.swift in Sources */,
 				07A49D9C1F86B1F30022562D /* NVActivityIndicatorAnimationLineScaleParty.swift in Sources */,
 				078F46541F9CCB0400F8BE2F /* TableviewCellRegister.swift in Sources */,
 				078F46111F9B920C00F8BE2F /* ChangePasswordViewControllerExtension.swift in Sources */,
+				07F5E0CD1FECC86B002964E6 /* ModelSocialRegister.swift in Sources */,
 				078F469B1F9EE72000F8BE2F /* ModelFlash.swift in Sources */,
 				078F46C31FA11A8D00F8BE2F /* FlashDetailViewController.swift in Sources */,
 				078F46671F9E5FE200F8BE2F /* FlashCollectionViewCell.swift in Sources */,

@@ -90,6 +90,27 @@ class APIService : NSObject {
         }
     }
     
+    //MARK:- Request for social login
+    func socialLogin(parameters params: [String: AnyObject], success:@escaping (_ result: ModelSocialRegister) -> (Void), failure:@escaping Failure) -> Void
+    {
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true
+        
+        NetworkService.shared.callWebService(method: .post, path: PATH.SOCIAL_LOGIN, params: params, type: JSONEncoding()){
+            (completion:DataResponse<ModelSocialRegister>) in
+            UIApplication.shared.isNetworkActivityIndicatorVisible = false
+            
+            if !self.handleError(error: completion.result.error as NSError?, failure: failure, responseCode: completion.response?.statusCode)
+            {
+                success(completion.result.value!)
+            } else {
+                
+                if let msg = completion.result.value?.message {
+                    failure(msg)
+                }
+            }
+        }
+    }
+    
     //MARK:- Request for Registration
     func registration(parameters params: [String: AnyObject], success:@escaping (_ result: ResultModel) -> (Void), failure:@escaping Failure) -> Void
     {

@@ -8,6 +8,7 @@
 
 import UIKit
 import RSFloatInputView
+import GoogleSignIn
 
 class LoginViewController: BaseViewController {
 
@@ -17,10 +18,19 @@ class LoginViewController: BaseViewController {
     @IBOutlet weak var btnSignIn: UIButton!
     @IBOutlet weak var activityIndigator: UIActivityIndicatorView!
     
+    
     @IBOutlet weak var btnSkipToHome: UIButton!
     internal var objLoginViewModel = LoginViewModel()
     
+    @IBOutlet weak var googleIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var facebookIndicator: UIActivityIndicatorView!
+    
+    @IBOutlet weak var btnFacebookLogin: UIButton!
+    @IBOutlet weak var btnGoogleLogin: UIButton!
+    
     var isFromApp: Bool = false
+    
+    var googleUser: GIDGoogleUser!
     
     
     override func viewDidLoad() {
@@ -53,6 +63,7 @@ class LoginViewController: BaseViewController {
         showNavigationBar()
     }
     
+    //MARK:- Button Action
     @IBAction func btnSignClick(_ sender: Any) {
         guard validateLogin().0 else {
             //Show alert
@@ -71,6 +82,15 @@ class LoginViewController: BaseViewController {
         presentForgotpasswordAlert()
     }
     
+    @IBAction func btnFBLoginClick(_ sender: Any) {
+        
+    }
+    
+    @IBAction func btnGoogleClick(_ sender: Any) {
+        doLoginWithGoogle()
+    }
+    
+    //MARK:- Request methods
     private func requestForLogin() {
         showLoading()
         let param = objLoginViewModel.createLoginParams(username: txtEmail.textField.text!, password: txtPassword.textField.text!) as [String : AnyObject]

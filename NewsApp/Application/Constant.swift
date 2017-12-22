@@ -22,6 +22,7 @@ let tableviewTopSpace:CGFloat = 15
 
 internal let kPlacesAPIKey = "AIzaSyC1rf-WYryQRhD-lcHC8WQRi3oprEskFpU"
 internal let kMapsAPIKey = "AIzaSyBppMjqp2KUZmAOtw8UFbhcQCdYm1yLKWU"
+let kGoogleClientID = "380014634110-9fturiakagp8plh0eegkmnfiqofpmudg.apps.googleusercontent.com"
 
 let placeholdeImage = UIImage(named: "placeholderImage")
 
@@ -34,7 +35,7 @@ struct MyUserDefault {
     static let USER_ROLE_ID = "role_id"
     static let USER_STATUS = "status"
     static let USER_PHONE = "phone_number'"
-   
+    static let SOCIAL_LOGIN = "social_login"
 }
 
 //MARK:- Cell Identifier
@@ -83,6 +84,7 @@ struct PATH{
     static let FORGOT_PASSWORD = "\(StaticURL.BASE_URL)User/App_forgot_password"
     static let RESET_PASSWORD = "\(StaticURL.BASE_URL)User/App_ChangePassword"
     static let EDIT_PROFILE = "\(StaticURL.BASE_URL)User/App_EditProfile"
+    static let SOCIAL_LOGIN = "\(StaticURL.BASE_URL)User/App_CheckSocialLogin"
     
     static let FLASH = "\(StaticURL.BASE_URL)FlashTab/App_FlashTabData"
     static let LIST = "\(StaticURL.BASE_URL)ListTab/App_ListTabData"
@@ -94,7 +96,6 @@ struct PATH{
     static let REVIEW_LIST = "\(StaticURL.BASE_URL)ListTab/App_Get_Review"
     static let SUBMIT_REVIEW = "\(StaticURL.BASE_URL)ListTab/App_Add_Review_Rating"
     static let LIST_DETAIL = "\(StaticURL.BASE_URL)ListTab/App_One_List"
-    
 }
 
 //MARK:- Alert Titles
