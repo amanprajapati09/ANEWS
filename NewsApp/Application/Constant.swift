@@ -23,6 +23,7 @@ let tableviewTopSpace:CGFloat = 15
 internal let kPlacesAPIKey = "AIzaSyC1rf-WYryQRhD-lcHC8WQRi3oprEskFpU"
 internal let kMapsAPIKey = "AIzaSyBppMjqp2KUZmAOtw8UFbhcQCdYm1yLKWU"
 let kGoogleClientID = "380014634110-9fturiakagp8plh0eegkmnfiqofpmudg.apps.googleusercontent.com"
+let kFaceBookId = "1802162386751124"
 
 let placeholdeImage = UIImage(named: "placeholderImage")
 

@@ -25,7 +25,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sign in" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cur-Hr-bXC">
-                                <rect key="frame" x="161" y="195" width="93" height="36"/>
+                                <rect key="frame" x="160.66666666666666" y="195" width="93" height="36"/>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="30"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -78,7 +78,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gL6-dI-eDL">
-                                <rect key="frame" x="152" y="604" width="111" height="36"/>
+                                <rect key="frame" x="151.66666666666669" y="604" width="111.00000000000006" height="36"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="gL6-dI-eDL" secondAttribute="height" multiplier="31:10" id="pk8-IA-L7M"/>
                                 </constraints>
@@ -113,13 +113,13 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="password" translatesAutoresizingMaskIntoConstraints="NO" id="zSR-Yd-uws">
-                                <rect key="frame" x="30" y="355.66666666666669" width="33" height="33"/>
+                                <rect key="frame" x="30" y="355.33333333333331" width="33" height="33.333333333333371"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="zSR-Yd-uws" secondAttribute="height" multiplier="1:1" id="duf-a8-O0F"/>
                                 </constraints>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="email" translatesAutoresizingMaskIntoConstraints="NO" id="oBn-GP-2JI">
-                                <rect key="frame" x="30" y="282.66666666666669" width="33" height="33"/>
+                                <rect key="frame" x="30" y="282.33333333333331" width="33" height="33"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="oBn-GP-2JI" secondAttribute="height" multiplier="1:1" id="8sq-6u-XgP"/>
                                 </constraints>
@@ -157,7 +157,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MJD-rs-NWP" customClass="RSFloatInputView" customModule="RSFloatInputView">
-                                <rect key="frame" x="71" y="337" width="323" height="61"/>
+                                <rect key="frame" x="71" y="336.66666666666674" width="323" height="61.333333333333314"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="MJD-rs-NWP" secondAttribute="height" multiplier="69:14" constant="20.857142857142833" id="GDr-Fv-EBW"/>
@@ -566,7 +566,7 @@
                                 <rect key="frame" x="0.0" y="105.00000000000001" width="414" height="66.333333333333357"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wx4-LR-DXz" customClass="RSFloatInputView" customModule="RSFloatInputView">
-                                        <rect key="frame" x="57" y="3" width="347" height="60"/>
+                                        <rect key="frame" x="57" y="3.3333333333333286" width="347" height="59.666666666666671"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="Wx4-LR-DXz" secondAttribute="height" multiplier="307:53" id="2pl-Qf-Nfd"/>
@@ -617,7 +617,7 @@
                                 <rect key="frame" x="0.0" y="176.33333333333334" width="414" height="66"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mH0-3a-fm8" customClass="RSFloatInputView" customModule="RSFloatInputView">
-                                        <rect key="frame" x="55" y="3.6666666666666572" width="349" height="59.666666666666657"/>
+                                        <rect key="frame" x="55" y="3.3333333333333144" width="349" height="59.666666666666686"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="mH0-3a-fm8" secondAttribute="height" multiplier="310:53" id="xzp-8v-GrL"/>
@@ -748,7 +748,7 @@
                                 </connections>
                             </button>
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="iui-Bk-3ER">
-                                <rect key="frame" x="274" y="369.66666666666669" width="20" height="20"/>
+                                <rect key="frame" x="274" y="370" width="20" height="20"/>
                             </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -872,7 +872,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M1f-LA-IvU" customClass="AnimatableButton" customModule="IBAnimatable">
-                                <rect key="frame" x="100" y="490.33333333333337" width="214" height="71.000000000000114"/>
+                                <rect key="frame" x="100" y="490.33333333333326" width="214" height="70.666666666666742"/>
                                 <color key="backgroundColor" red="0.99215686274509807" green="0.81960784313725488" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="M1f-LA-IvU" secondAttribute="height" multiplier="163:54" id="Stb-Ex-Zg1"/>
@@ -1006,7 +1006,7 @@
                                 <rect key="frame" x="0.0" y="236.33333333333331" width="414" height="95.333333333333314"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gpP-wh-Bkm" customClass="RSFloatInputView" customModule="RSFloatInputView">
-                                        <rect key="frame" x="57.666666666666657" y="0.33333333333331439" width="346.33333333333337" height="94.666666666666657"/>
+                                        <rect key="frame" x="57.666666666666657" y="0.33333333333331439" width="346.33333333333337" height="95.000000000000028"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="gpP-wh-Bkm" secondAttribute="height" multiplier="63:10" constant="-250.69999999999993" id="UPT-1J-CC9"/>
@@ -1034,7 +1034,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="location" translatesAutoresizingMaskIntoConstraints="NO" id="02I-ml-C0o">
-                                        <rect key="frame" x="15" y="31.999999999999972" width="32.666666666666664" height="32.666666666666686"/>
+                                        <rect key="frame" x="15" y="32.333333333333343" width="32.666666666666664" height="32.333333333333314"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="02I-ml-C0o" secondAttribute="height" multiplier="1:1" id="wV1-OO-RIF"/>
                                         </constraints>
@@ -1102,7 +1102,7 @@
                                 <rect key="frame" x="0.0" y="404" width="414" height="66.333333333333314"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lOx-Wa-qgj" customClass="RSFloatInputView" customModule="RSFloatInputView">
-                                        <rect key="frame" x="58" y="3.3333333333333144" width="346" height="59.666666666666686"/>
+                                        <rect key="frame" x="58" y="3.3333333333333144" width="346" height="59.333333333333371"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="lOx-Wa-qgj" secondAttribute="height" multiplier="29:5" id="v5E-Zq-fQZ"/>
@@ -1147,7 +1147,7 @@
                                 </constraints>
                             </view>
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="a89-zH-UtK">
-                                <rect key="frame" x="274" y="516.33333333333337" width="20" height="20"/>
+                                <rect key="frame" x="274" y="516" width="20" height="20"/>
                             </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1270,7 +1270,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xk1-it-grl">
-                                <rect key="frame" x="97" y="196" width="220" height="184"/>
+                                <rect key="frame" x="96.666666666666686" y="195.99999999999997" width="220.66666666666663" height="184.33333333333329"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="xk1-it-grl" secondAttribute="height" multiplier="6:5" id="lwi-tg-5Sc"/>
                                 </constraints>
@@ -2997,7 +2997,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="IWt-E6-m0S"/>
-        <segue reference="6Q4-XX-SCa"/>
+        <segue reference="uwx-uh-VHX"/>
         <segue reference="zu0-UP-W82"/>
     </inferredMetricsTieBreakers>
 </document>

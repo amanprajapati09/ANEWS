@@ -34,6 +34,7 @@ extension AppDelegate {
         //Code For google sign in config
         FirebaseApp.configure()
        GIDSignIn.sharedInstance().clientID = kGoogleClientID
+        SDKApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
         
         return true
     }
@@ -43,6 +44,7 @@ extension AppDelegate {
         IQKeyboardManager.sharedManager().shouldResignOnTouchOutside = true
     }
     
+    @available(iOS 9.0, *)
     func application(_ application: UIApplication,
                      open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
         
@@ -55,7 +57,7 @@ extension AppDelegate {
         return googleDidHandle || facebookDidHandle
     }
     
-    @available(iOS 9.0, *)
+    
     func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any]) -> Bool {
         
         let facebookDidHandle = SDKApplicationDelegate.shared.application(app, open: url, options: options)

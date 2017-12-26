@@ -1,0 +1,114 @@
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "2Yw-kx-VNj"; */
+"2Yw-kx-VNj.text" = "Label";
+
+/* Class = "UILabel"; text = "Don't have an account?"; ObjectID = "3W2-tv-rSn"; */
+"3W2-tv-rSn.text" = "Don't have an account?";
+
+/* Class = "UIButton"; normalTitle = "Submit Listing"; ObjectID = "6PY-vb-MY9"; */
+"6PY-vb-MY9.normalTitle" = "Submit Listing";
+
+/* Class = "UIButton"; normalTitle = "My Review"; ObjectID = "AaK-9D-GQt"; */
+"AaK-9D-GQt.normalTitle" = "My Review";
+
+/* Class = "UILabel"; text = "Region"; ObjectID = "D49-NO-AIA"; */
+"D49-NO-AIA.text" = "Region";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "ESx-VZ-hHv"; */
+"ESx-VZ-hHv.text" = "Label";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "Gl7-4c-mES"; */
+"Gl7-4c-mES.text" = "Label";
+
+/* Class = "UILabel"; text = "Category"; ObjectID = "H8K-V7-GIp"; */
+"H8K-V7-GIp.text" = "Category";
+
+/* Class = "UIButton"; normalTitle = "Forgot Password?"; ObjectID = "KNa-Ae-ZLa"; */
+"KNa-Ae-ZLa.normalTitle" = "Forgot Password?";
+
+/* Class = "UIButton"; normalTitle = "Finish"; ObjectID = "M1f-LA-IvU"; */
+"M1f-LA-IvU.normalTitle" = "Finish";
+
+/* Class = "UIButton"; normalTitle = "Finish"; ObjectID = "OhI-Od-jLj"; */
+"OhI-Od-jLj.normalTitle" = "Finish";
+
+/* Class = "UIButton"; normalTitle = "Sign Up"; ObjectID = "PM4-a8-LU1"; */
+"PM4-a8-LU1.normalTitle" = "Sign Up";
+
+/* Class = "UIButton"; normalTitle = "Cancel"; ObjectID = "PRD-4W-CMX"; */
+"PRD-4W-CMX.normalTitle" = "Cancel";
+
+/* Class = "UITextField"; placeholder = "Search"; ObjectID = "RA2-EE-I5G"; */
+"RA2-EE-I5G.placeholder" = "Search";
+
+/* Class = "UILabel"; text = "Category"; ObjectID = "RK1-Wp-HZS"; */
+"RK1-Wp-HZS.text" = "Category";
+
+/* Class = "UIButton"; normalTitle = "POST A JOB"; ObjectID = "RqX-Il-Uea"; */
+"RqX-Il-Uea.normalTitle" = "POST A JOB";
+
+/* Class = "UIButton"; normalTitle = "GET A JOB"; ObjectID = "T6F-Qk-ccG"; */
+"T6F-Qk-ccG.normalTitle" = "GET A JOB";
+
+/* Class = "UIButton"; normalTitle = "Review 150"; ObjectID = "U8A-U2-Pmu"; */
+"U8A-U2-Pmu.normalTitle" = "Review 150";
+
+/* Class = "UIButton"; normalTitle = "Send Resume"; ObjectID = "Vyh-qa-Qmc"; */
+"Vyh-qa-Qmc.normalTitle" = "Send Resume";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "XrL-Az-WEs"; */
+"XrL-Az-WEs.text" = "Label";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "YNj-0y-CdN"; */
+"YNj-0y-CdN.text" = "Label";
+
+/* Class = "UINavigationItem"; title = "Tamakuru"; ObjectID = "YXg-aP-vPp"; */
+"YXg-aP-vPp.title" = "Tamakuru";
+
+/* Class = "UILabel"; text = "Review summary"; ObjectID = "Yr9-m8-bmn"; */
+"Yr9-m8-bmn.text" = "Review summary";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "Zo8-DM-ha3"; */
+"Zo8-DM-ha3.text" = "Label";
+
+/* Class = "UILabel"; text = "Job Detail"; ObjectID = "a9W-ir-KBU"; */
+"a9W-ir-KBU.text" = "Job Detail";
+
+/* Class = "UIButton"; normalTitle = "Sign In"; ObjectID = "avc-7X-W2C"; */
+"avc-7X-W2C.normalTitle" = "Sign In";
+
+/* Class = "UIButton"; normalTitle = "Submit"; ObjectID = "bY0-v0-uUF"; */
+"bY0-v0-uUF.normalTitle" = "Submit";
+
+/* Class = "UIButton"; normalTitle = "Submit"; ObjectID = "cbx-HD-PLs"; */
+"cbx-HD-PLs.normalTitle" = "Submit";
+
+/* Class = "UILabel"; text = "My Review "; ObjectID = "cbx-vX-Oad"; */
+"cbx-vX-Oad.text" = "My Review ";
+
+/* Class = "UILabel"; text = "Sign in"; ObjectID = "cur-Hr-bXC"; */
+"cur-Hr-bXC.text" = "Sign in";
+
+/* Class = "UIButton"; normalTitle = "Cancel"; ObjectID = "fpB-eT-2Rn"; */
+"fpB-eT-2Rn.normalTitle" = "Cancel";
+
+/* Class = "UIButton"; normalTitle = "Skip to Home"; ObjectID = "gL6-dI-eDL"; */
+"gL6-dI-eDL.normalTitle" = "Skip to Home";
+
+/* Class = "UILabel"; text = "Region"; ObjectID = "hcz-bg-zeH"; */
+"hcz-bg-zeH.text" = "Region";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "mYS-YZ-pjy"; */
+"mYS-YZ-pjy.text" = "Label";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "t5T-Sl-hjr"; */
+"t5T-Sl-hjr.text" = "Label";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "t8i-iD-vhF"; */
+"t8i-iD-vhF.text" = "Label";
+
+/* Class = "UITextField"; placeholder = "Get location by Map"; ObjectID = "ttS-MS-Jue"; */
+"ttS-MS-Jue.placeholder" = "Get location by Map";
+
+/* Class = "UIButton"; normalTitle = "Post Job"; ObjectID = "vwN-ug-Nf8"; */
+"vwN-ug-Nf8.normalTitle" = "Post Job";

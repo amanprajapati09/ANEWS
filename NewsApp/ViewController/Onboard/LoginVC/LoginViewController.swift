@@ -83,7 +83,7 @@ class LoginViewController: BaseViewController {
     }
     
     @IBAction func btnFBLoginClick(_ sender: Any) {
-        
+        doLoginWithFacebook()
     }
     
     @IBAction func btnGoogleClick(_ sender: Any) {
