@@ -27,6 +27,7 @@ class SignupViewController: BaseViewController, UITextFieldDelegate, GMSPlacePic
     override func viewDidLoad() {
         super.viewDidLoad()
         prepareView()
+        prepareForLanguage()
         // Do any additional setup after loading the view.
     }
     
@@ -156,5 +157,12 @@ class SignupViewController: BaseViewController, UITextFieldDelegate, GMSPlacePic
         btnFinish.isEnabled = true
     }
     
-    
+    private func prepareForLanguage() {
+        txtName.placeHolderLabel.string = localizedShared?.localizedString(forKey: "label_name")
+        txtPhone.placeHolderLabel.string = localizedShared?.localizedString(forKey: "label_contact")
+        txtAddress.placeHolderLabel.string = localizedShared?.localizedString(forKey: "label_address")
+        txtPassword.placeHolderLabel.string = localizedShared?.localizedString(forKey: "label_password")
+        txtEmail.placeHolderLabel.string = localizedShared?.localizedString(forKey: "label_email")
+        btnFinish.setTitle(localizedShared?.localizedString(forKey: "button_signup"), for: .normal)
+    }
 }

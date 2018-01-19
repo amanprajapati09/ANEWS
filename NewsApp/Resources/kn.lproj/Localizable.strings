@@ -1,0 +1,148 @@
+/* 
+  Localizable.strings
+  NewsApp
+
+  Created by Alpesh on 26/12/17.
+  Copyright © 2017 Aman Prajapati. All rights reserved.
+*/
+"HelloText" = "ಹಲೋ";
+/*
+ Kannad.strings
+ NewsApp
+ 
+ Created by Aman Prajapati on 12/26/17.
+ Copyright © 2017 Aman Prajapati. All rights reserved.
+ */
+
+"app_name" = "Tumakuru";
+
+"title_signup" = "ನೋಂದಾಯಿಸಿ";
+"title_edit_profile" = "ನನ್ನ ಖಾತೆ ";
+
+"label_name" = "ಹೆಸರು";
+"label_email" = "ಇ ಮೈಲ್ ";
+"label_contact" = "ದೂರವಾಣಿ ";
+"label_address" = "ವಿಳಾಸ";
+"label_password" = "ಪಾಸ್ ವರ್ಡ್";
+
+"button_signup" = "ಮುಗಿಸು ";
+"button_signin" = "ಲಾಗಿನ್ ";
+"button_save_password" = "ಉಳಿಸು";
+"button_save_profile" = "ಉಳಿಸು";
+"button_filter_apply" = "ಸರಿ";
+"button_filter_clearAll" = "Reset";
+
+"text_signin" = "ಲಾಗ್ ಇನ್ ";
+"dont_have_account" = "ಖಾತೆ ಇಲ್ಲವೆ?  ";
+"text_forgotPassword" = "ಪಾಸ್ ವರ್ಡ್ ಮರೆಯಿತೆ? ";
+"text_skipSignIn" = "ಮುಖಪುಟಕ್ಕೆ ತೆರಳಿ";
+
+"menu_label_signin" = "ಲಾಗ್ ಇನ್ ";
+"menu_label_home" = "ಮುಖ ಪುಟ ";
+"menu_label_categories" = "ಕೆಟಗರಿಗಳು";
+"menu_label_search" = "ಹುಡುಕು";
+"menu_lable_my_account" = "ನನ್ನ ಖಾತೆ";
+"menu_lable_post_ad" = "ಹೊಸ ಜಾಹಿರಾತು ಹಾಕು";
+"menu_lable_my_ads" = "ನನ್ನ ಜಾಹಿರಾತುಗಳು ";
+"menu_label_change_password" = "ಪಾಸ್ ವರ್ಡ್ ಬದಲಿಸು";
+"menu_label_logout" = "ಲಾಗ್ ಔಟ್";
+"menu_label_change_language" = "ಭಾಷೆ";
+
+"drawer_open" = "ತೆರೆ ";
+"drawer_close" = "ಮುಚ್ಚು ";
+
+"label_ad_itemname" = " ಹೆಸರು";
+"label_ad_itemPrice" = " ಬೆಲೆ";
+"label_ad_yourLocation" = " ಜಾಗ";
+"label_ad_itemDescription" = " ವಿವರ";
+"label_ad_itemPurchaseDate" = "ಖರೀದಿಸಿದ ದಿನಾಂಕ";
+"label_ad_itemCategory" = "ಕೆಟೆಗರಿ";
+"label_ad_yourRegion" = "ಸ್ಥಳ";
+"button_ad_post" = "ಸರಿ";
+
+"field_fuelType" = "ಇಂಧನ ";
+"field_kmsDriven" = "ಓಡಿದ ಕಿ. ಮಿ. ";
+"field_insurance" = "ವಿಮೆ ";
+"field_brand" = "ಬ್ರಾಂಡ್ ";
+"field_model" = "ಮಾಡೆಲ್";
+"field_year" = "ಇಸವಿ";
+
+"field_condition" = "ಸ್ಥಿತಿ";
+"field_invoice" = "ರಶೀದಿ";
+"label_current_password" = "ಈಗಿನ ಪಾಸ್ ವರ್ಡ್";
+"label_new_password" = "ಹೊಸ ಪಾಸ್ ವರ್ಡ್";
+"label_retype_password" = "ಮತ್ತೊಮ್ಮೆ ಪಾಸ್ ವರ್ಡ್";
+
+
+"label_tap_to_signin" = "ಒಳ ಹೋಗಲು ಇಲ್ಲಿ ಒತ್ತಿ";
+
+"label_filter_range_price" = "ಬೆಲೆ ";
+"hint_search" = "ಹುಡುಕು";
+"label_filter_title" = "ವರ್ಗೀಕರಿಸು";
+
+"dialog_forgot_password_title" = "ಪಾಸ್ವರ್ಡ್ ಮರುಪಡೆಯಿರಿ";
+
+"text_job_detail" = "ಉದ್ಯೋಗದ ವಿವರಗಳು";
+"text_send_resume" = "ರೆಸ್ಯುಮೆ ಕಳುಹಿಸಿ";
+"text_job_title" = "ಉದ್ಯೋಗದ ಹೆಸರು";
+"text_hiring_firm_name" = "ಕಂಪನಿ ಹೆಸರು";
+"text_salary" = "ಸಂಬಳ";
+"text_no_of_post" = "ಒಟ್ಟು ಕೆಲಸ";
+"text_email_id" = "ಇಮೈಲ್ ವಿಳಾಸ";
+"text_contact_number1" = "ಮೊಬೈಲ್ ಸಂಖೆ ೧ ";
+"text_contact_number2" = "ಮೊಬೈಲ್ ಸಂಖೆ ೨ ";
+"text_recruiter_designation" = "ನೇಮಕಾತಿ ಮಾಡುವವರು";
+"text_interview_date" = "ಸಂದರ್ಶನದ ದಿನಾಂಕ  ";
+"text_hiring_firm_addr" = "ಕಂಪನಿ ವಿಳಾಸ ";
+"text_job_location" = "ಕೆಲಸದ ಜಾಗ ";
+"text_job_description" = "ಕೆಲಸದ ವಿವರ";
+
+"text_get_location_by_map" = "ಮ್ಯಾಪ್ ನಲ್ಲಿ ಜಾಗ ಹುಡುಕಿ";
+"text_review_summary" = "ವಿಮರ್ಶೆ ಸಾರಾಂಶ";
+"button_my_review" = "ನನ್ನ ವಿಮರ್ಶೆ";
+"button_submit_listing" = "ನಿಮ್ಮ ಲಿಸ್ಟಿಂಗ್ ಸೇರಿಸಿ";
+
+"text_title" = "ಶೀರ್ಷಿಕೆ";
+"text_description" = "ವಿವರ ";
+"button_submit" = "ಸರಿ";
+
+"hint_type_to_search" = "ಹುಡುಕಿ";
+
+"textP_job_title" = "ಉದ್ಯೋಗದ ಹೆಸರು*";
+"textP_hiring_firm_name" = "ಕಂಪನಿ ಹೆಸರು*";
+"textP_salary" = "ಸಂಬಳ ";
+"textP_no_of_post" = "ಒಟ್ಟು ಕೆಲಸ*";
+"textP_email_id" = "ಇಮೈಲ್ ವಿಳಾಸ ";
+"textP_contact_number1" = "ಮೊಬೈಲ್ ಸಂಖೆ ೧*";
+"textP_contact_number2" = "ಮೊಬೈಲ್ ಸಂಖೆ ೨";
+"textP_recruiter_designation" = "ನೇಮಕಾತಿ ಮಾಡುವವರು*";
+"textP_interview_date" = "ಸಂದರ್ಶನದ ದಿನಾಂಕ  ";
+"textP_hiring_firm_addr" = "ಕಂಪನಿ ವಿಳಾಸ";
+"textP_job_location" = "ಕೆಲಸದ ಜಾಗ";
+"textP_job_description" = "ಕೆಲಸದ ವಿವರ";
+"textP_contact_person" = "ಸಂಪರ್ಕ ವ್ಯಕ್ತಿ*";
+"button_post_job" = "ಕೆಲಸ ಸೇರಿಸಿ";
+
+"link_read_more" = "ಇನ್ನಷ್ಟು ಓದಿ";
+
+"hint_write_review" = "ವಿಮರ್ಶೆ ಬರೆಯಿರಿ";
+
+"text_get_job_salary" = "ಸಂಬಳ :";
+"text_get_job_posts" = "ಒಟ್ಟು ಕೆಲಸ :";
+"text_get_job_jobIn" = "ಕೆಲಸ :";
+"text_get_job_interview_date" = "ಸಂದರ್ಶನ ದಿನಾಂಕ  :";
+"text_posted_on" = "ರಂದು";
+
+"text_direct_call" = "ಕರೆ ಮಾಡಿ";
+
+"menu_main_my_account" = "ನನ್ನ ಖಾತೆ";
+"menu_main_search" = "ಹುಡುಕು";
+
+"tab_flash" = "Flash";
+"tab_listing" = "Listing";
+"tab_bulletin" = "Bulletin";
+"tab_jobHire" = "Job-Hire";
+"tab_media" = "Media";
+"tab_getJob" = "GET A JOB";
+"tab_postJob" = "POST A JOB";
+

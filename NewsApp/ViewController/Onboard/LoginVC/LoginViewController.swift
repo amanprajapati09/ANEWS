@@ -18,7 +18,6 @@ class LoginViewController: BaseViewController {
     @IBOutlet weak var btnSignIn: UIButton!
     @IBOutlet weak var activityIndigator: UIActivityIndicatorView!
     
-    
     @IBOutlet weak var btnSkipToHome: UIButton!
     internal var objLoginViewModel = LoginViewModel()
     
@@ -28,6 +27,15 @@ class LoginViewController: BaseViewController {
     @IBOutlet weak var btnFacebookLogin: UIButton!
     @IBOutlet weak var btnGoogleLogin: UIButton!
     
+    
+    @IBOutlet weak var lblSignTitle: UILabel!
+    @IBOutlet weak var btnForgotPassword: UIButton!
+    @IBOutlet weak var btnSkipHome: UIButton!
+    @IBOutlet weak var btnSignUp: UIButton!
+    @IBOutlet weak var lblDonotHaveAccount: UILabel!
+    
+    
+    
     var isFromApp: Bool = false
     
     var googleUser: GIDGoogleUser!
@@ -35,7 +43,7 @@ class LoginViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        prepareForLanguage()
         // Do any additional setup after loading the view.
     }
     
@@ -122,11 +130,11 @@ class LoginViewController: BaseViewController {
 
     private func presentForgotpasswordAlert() {
         //1. Create the alert controller.
-        let alert = UIAlertController(title: "Alert!", message: "Please enter your register email!", preferredStyle: .alert)
+        let alert = UIAlertController(title: "", message: localizedShared?.localizedString(forKey: "dialog_forgot_password_title"), preferredStyle: .alert)
         
         //2. Add the text field. You can configure it however you need.
         alert.addTextField { (textField) in
-            textField.placeholder = "Email"
+            textField.placeholder = localizedShared?.localizedString(forKey: "label_email")
         }
         
         // 3. Grab the value from the text field, and print it when the user clicks OK.
@@ -186,5 +194,16 @@ class LoginViewController: BaseViewController {
         }
         
         btnSkipToHome.isHidden = true
+    }
+    
+    private func prepareForLanguage() {
+        lblSignTitle.text = localizedShared?.localizedString(forKey: "text_signin")
+        txtEmail.placeHolderLabel.string = localizedShared?.localizedString(forKey: "label_email")
+        txtPassword.placeHolderLabel.string = localizedShared?.localizedString(forKey: "label_password")
+        btnSignIn.setTitle(localizedShared?.localizedString(forKey: "text_signin"), for: .normal)
+        btnForgotPassword.setTitle(localizedShared?.localizedString(forKey: "text_forgotPassword"), for: .normal)
+        btnSkipHome.setTitle(localizedShared?.localizedString(forKey: "text_skipSignIn"), for: .normal)
+        btnSignUp.setTitle(localizedShared?.localizedString(forKey: "title_signup"), for: .normal)
+        lblDonotHaveAccount.text = localizedShared?.localizedString(forKey: "dont_have_account")
     }
 }

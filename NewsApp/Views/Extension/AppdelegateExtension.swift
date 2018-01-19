@@ -36,6 +36,12 @@ extension AppDelegate {
        GIDSignIn.sharedInstance().clientID = kGoogleClientID
         SDKApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
         
+        // Localize
+        
+        prepareForLanguage()
+        
+        print("--------\(LocalizeHelper.sharedLocalSystem().localizedString(forKey: "HelloText"))------");
+        
         return true
     }
     
@@ -69,4 +75,11 @@ extension AppDelegate {
         return googleDidHandle || facebookDidHandle
     }
     
+    private func prepareForLanguage() {
+        if let defaultLanguage = userDefault.value(forKey: "language") {
+            LocalizeHelper.sharedLocalSystem().setLanguage(defaultLanguage as! String);
+        } else {
+            LocalizeHelper.sharedLocalSystem().setLanguage("en");
+        }
+    }
 }

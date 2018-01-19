@@ -1,0 +1,148 @@
+/* 
+  Localizable.strings
+  NewsApp
+
+  Created by Alpesh on 26/12/17.
+  Copyright © 2017 Aman Prajapati. All rights reserved.
+*/
+"HelloText" = "नमस्ते";
+/*
+ Hindi.strings
+ NewsApp
+ 
+ Created by Aman Prajapati on 12/25/17.
+ Copyright © 2017 Aman Prajapati. All rights reserved.
+ */
+
+"app_name" = "Tumakuru";
+
+"title_signup" = "साइन अप करें";
+"title_edit_profile" = "मेरी प्रोफाइल";
+
+"label_name" = "नाम";
+"label_email" = "ईमेल";
+"label_contact" = "फ़ोन";
+"label_address" = "पता";
+"label_password" = "पासवर्ड";
+
+"button_signup" = "फिनिश";
+"button_signin" = "साइन इन करें";
+"button_save_password" = "सेव करे";
+"button_save_profile" = "सेव करे";
+"button_filter_apply" = "लागू करें";
+"button_filter_clearAll" = "रीसेट";
+
+"text_signin" = "साइन इन करें";
+"dont_have_account" = "खाता नहीं है?";
+"text_forgotPassword" = "पासवर्ड भूल गए?";
+"text_skipSignIn" = "घर पर जाएं";
+
+"menu_label_signin" = "साइन इन करें";
+"menu_label_home" = "घर";
+"menu_label_categories"  = "श्रेणियाँ";
+"menu_label_search"  = "खोज";
+"menu_lable_my_account"  = "मेरा खाता";
+"menu_lable_post_ad" = "नया विज्ञापन पोस्ट करें";
+"menu_lable_my_ads" = "मेरे विज्ञापन";
+"menu_label_change_password" = "पासवर्ड बदलें";
+"menu_label_logout" = "लोग आउट";
+"menu_label_change_language" = "ऐप भाषा";
+
+"drawer_open" = "ओपन करे";
+"drawer_close" = "बंद करे";
+
+
+"label_ad_itemname" = "वस्तु का नाम";
+"label_ad_itemPrice" = "सामान की क़ीमत";
+"label_ad_yourLocation" = "आपकी स्थिति";
+"label_ad_itemDescription" = "आइटम के बारे में संक्षिप्त";
+"label_ad_itemPurchaseDate" = "आइटम खरीद तारीख";
+"label_ad_itemCategory" = "वस्तु की श्रेणी";
+"label_ad_yourRegion" = "आपका क्षेत्र";
+"button_ad_post" = "पोस्ट करे";
+
+"field_model" = "मॉडल";
+"field_brand" = "ब्रांड";
+"field_year" = "वर्ष";
+"field_condition" = "स्थिति";
+"field_invoice" = "इनवॉइस";
+"field_fuelType" = "ईंधन प्रकार";
+"field_insurance" = "बीमा";
+"field_kmsDriven" = "किमी संचालित";
+
+"label_current_password" = "वर्तमान पासवर्ड";
+"label_new_password" = "नया पासवर्ड";
+"label_retype_password" = "पासवर्ड फिर से लिखे";
+"label_tap_to_signin" = "साइन इन करने के लिए यहां टैप करें";
+
+"label_filter_range_price" = "बीच में मूल्य";
+"hint_search" = "खोज";
+"label_filter_title" = "फ़िल्टर का उपयोग करना";
+
+"dialog_forgot_password_title" = "रिकवर पासवर्ड";
+
+
+"text_job_detail" = "नौकरी की डिटेल्स";
+"text_send_resume" = "रिज्यूमे भेजे";
+"text_job_title" = "नौकरी का नाम";
+"text_hiring_firm_name" = "फर्म का नाम";
+"text_salary" = "पगार";
+"text_no_of_post" = "खाली जगाये";
+"text_email_id" = "ईमेल आईडी";
+"text_contact_number1" = "संपर्क नंबर 1";
+"text_contact_number2" = "संपर्क नंबर 2";
+"text_recruiter_designation" = "भर्ती करने वाले का पद";
+"text_interview_date" = "इंटरव्यू की तारीख";
+"text_hiring_firm_addr" = "भर्ती करने वाली फर्म का पता";
+"text_job_location" = "नौकरी करने का स्थान";
+"text_job_description" = "नौकरी का विवरण";
+
+"text_get_location_by_map" = "नक़्शे से स्थान का पता";
+"text_review_summary" = "रिव्यु समरी";
+"button_my_review" = "मेरा रिव्यु";
+"button_submit_listing" = "लिस्टिंग जमा करें";
+
+"text_title" = "शीर्षक";
+"text_description" = "वर्णन";
+"button_submit" = "जमा करें";
+
+"hint_type_to_search" = "खोजने के लिए लिखें";
+
+"textP_job_title" = "नौकरी का नाम";
+"textP_hiring_firm_name" = "हायरिंग फर्म का नाम";
+"textP_salary" = "पगार";
+"textP_no_of_post" = "पदों की संख्या";
+"textP_email_id" = "ईमेल आईडी";
+"textP_contact_number1" = "संपर्क नंबर 1";
+"textP_contact_number2" = " संपर्क नंबर 2";
+"textP_recruiter_designation" = " भर्ती करने वाले का पद";
+"textP_interview_date" = "इंटरव्यू की तारीख";
+"textP_hiring_firm_addr" = "भर्ती करने वाली फर्म का पता";
+"textP_job_location" = "नौकरी करने का स्थान ";
+"textP_job_description" = "नौकरी का विवरण ";
+"textP_contact_person" = "संपर्क व्यक्ति";
+"button_post_job" = " जॉब पोस्ट करे ";
+
+"link_read_more" = "और पढो";
+
+"hint_write_review" = " रिव्यु लिखिए ";
+
+"text_get_job_salary" = " सेलरी:";
+"text_get_job_posts" = "पदों की संख्या :";
+"text_get_job_jobIn" = "में नौकरी :";
+"text_get_job_interview_date" = " इंटरव्यू की तारीख :";
+"text_posted_on" = " कब पोस्ट किया ";
+
+"text_direct_call" = " डायरेक्ट कॉल ";
+
+"menu_main_my_account" = "मेरा खाता";
+"menu_main_search" = " सर्च करे ";
+
+"tab_flash" = "Flash";
+"tab_listing" = "Listing";
+"tab_bulletin" = "Bulletin";
+"tab_jobHire" = "Job-Hire";
+"tab_media" = "Media";
+"tab_getJob" = "GET A JOB";
+"tab_postJob" = "POST A JOB";
+

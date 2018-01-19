@@ -20,6 +20,7 @@ class PostListingScreenViewController: BaseViewController {
     @IBOutlet weak var txtDescription: RSFloatInputView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        prepareForLanguage()
     }
     
     override func didReceiveMemoryWarning() {
@@ -34,4 +35,12 @@ class PostListingScreenViewController: BaseViewController {
         
     }
     
+    private func prepareForLanguage() {
+        txtName.placeHolderLabel.string = localizedShared?.localizedString(forKey: "label_name")
+        txtPhone.placeHolderLabel.string = localizedShared?.localizedString(forKey: "label_contact")
+        txtTitle.placeHolderLabel.string = localizedShared?.localizedString(forKey: "text_title")
+        txtDescription.placeHolderLabel.string = localizedShared?.localizedString(forKey: "text_description")
+        txtEmail.placeHolderLabel.string = localizedShared?.localizedString(forKey: "label_email")
+        btnFinish.setTitle(localizedShared?.localizedString(forKey: "button_submit"), for: .normal)
+    }
 }

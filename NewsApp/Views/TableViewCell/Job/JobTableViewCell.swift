@@ -16,15 +16,17 @@ class JobTableViewCell: UITableViewCell, NibLoadableView, ReusableView {
     @IBOutlet weak var lblNumberofPost: UILabel!
     @IBOutlet weak var lblCompanyName: UILabel!
     @IBOutlet weak var lblInterviewDate: UILabel!
+    @IBOutlet weak var lblSedResume: UILabel!
     
     var modelJob:ModelJob! {
         didSet {
             lblTitle.text = modelJob.jobTitle
-            lblSalary.text = "Salary : " + modelJob.salary
+            lblSalary.text = (localizedShared?.localizedString(forKey: "text_get_job_salary"))! + ":  \(modelJob.salary)"
             lblNumberofPost.text = modelJob.noOfPost
-            lblCompanyName.text = "Job in : " + modelJob.firmName
+            lblCompanyName.text = (localizedShared?.localizedString(forKey: "text_get_job_salary"))! + ": \(modelJob.firmName)"
             lblInterviewDate.text = modelJob.interviewDate
-            lblPostDate.text = "Posted on \(modelJob.modified)"
+            lblPostDate.text = (localizedShared?.localizedString(forKey: "text_posted_on"))! + "  \(modelJob.modified)"
+            lblSedResume.text = localizedShared?.localizedString(forKey: "text_send_resume")
         }
     }
     

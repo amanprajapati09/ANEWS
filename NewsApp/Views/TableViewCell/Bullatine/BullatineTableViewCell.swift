@@ -16,12 +16,14 @@ class BullatineTableViewCell: UITableViewCell, NibLoadableView, ReusableView {
     
     @IBOutlet weak var btnMobileNumber: UIButton!
     
+    @IBOutlet weak var btnReadMore: UIButton!
     //MARK:- variables 
     var modelBullatine = ModelBulletin() {
         didSet {
             lblTitle.text = modelBullatine.title
             lblDescription.text = modelBullatine.descriptionField
             btnMobileNumber.setTitle(modelBullatine.mobileNo, for: .normal)
+            prepareForLanguage()
         }
     }
     
@@ -34,6 +36,10 @@ class BullatineTableViewCell: UITableViewCell, NibLoadableView, ReusableView {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+    }
+    
+    private func prepareForLanguage() {
+        btnReadMore.setTitle(localizedShared?.localizedString(forKey: "link_read_more"), for: .normal)
     }
     
     @IBAction func btnReadMoreclick(_ sender: Any) {

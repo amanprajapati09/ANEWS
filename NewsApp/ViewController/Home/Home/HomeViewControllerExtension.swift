@@ -56,6 +56,35 @@ extension HomeViewController {
         safariVC.delegate = self
     }
 
+    internal func changeLanguageAction() {
+        let actionSheet = UIAlertController(title: (localizedShared?.localizedString(forKey: "menu_label_change_language"))!, message: "", preferredStyle: .actionSheet)
+     
+        let actionHindi = UIAlertAction(title: "Hindi", style: .default) { (action) in
+            LocalizeHelper.sharedLocalSystem().setLanguage("hi");
+            userDefault.setValue("hi", forKey: "language")
+        }
+        
+        let actionEnglish = UIAlertAction(title: "English", style: .default) { (action) in
+            LocalizeHelper.sharedLocalSystem().setLanguage("en");
+            userDefault.setValue("en", forKey: "language")
+        }
+        
+        let actionKannad = UIAlertAction(title: "Kannad", style: .default) { (action) in
+            LocalizeHelper.sharedLocalSystem().setLanguage("kn");
+            userDefault.setValue("kn", forKey: "language")
+        }
+        
+        let actionCancel = UIAlertAction(title: "cancel", style: .cancel, handler: nil)
+        
+        actionSheet.addAction(actionEnglish)
+        actionSheet.addAction(actionHindi)
+        actionSheet.addAction(actionKannad)
+        actionSheet.addAction(actionCancel)
+        
+        present(actionSheet, animated: true, completion: nil)
+        
+    }
+    
     //MARK:- Filter related mnethods 
     func didSelectHeaderItem() {
         //check condiotion if category data is availablew or not

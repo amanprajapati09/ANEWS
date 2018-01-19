@@ -19,6 +19,9 @@ class MyReviewViewController: UIViewController {
     @IBOutlet weak var ratingView: HCSStarRatingView!
     @IBOutlet weak var btnCancel: UIButton!
     @IBOutlet weak var btnSubmit: UIButton!
+    @IBOutlet weak var lblMyReview: UILabel!
+    
+    var objModel:ModelList!
     
     var listID:String!
     let userID = userDefault.value(forKey: MyUserDefault.USER_ID)
@@ -28,6 +31,9 @@ class MyReviewViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        prepareForLanguage()
+        txtReview.text = objModel.myReview
+        ratingView.value = CGFloat(objModel.myRating)
     }
 
     override func didReceiveMemoryWarning() {
@@ -82,7 +88,7 @@ class MyReviewViewController: UIViewController {
                      "list_id":listID]
         
         APIService.sharedInstance.listDetail(parameters: param as [String : AnyObject], success: { (result) -> (Void) in
-            if result.modelRatingData.count > 0{
+            if result.modelRatingData.count > 0 {
                 self.delegate?.didSubmitListing(listDetail: result.modelRatingData.first!)                
             }
             self.dismissView()
@@ -90,5 +96,9 @@ class MyReviewViewController: UIViewController {
             self.dismissView()
             self.hideLoading()
         }
+    }
+    
+    private func prepareForLanguage() {
+        lblMyReview.text = localizedShared?.localizedString(forKey: "button_my_review")        
     }
 }

@@ -23,6 +23,7 @@ class ChangePasswordViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         prepareView()
+        prepareForLanguage()
         // Do any additional setup after loading the view.
     }
 
@@ -75,4 +76,10 @@ class ChangePasswordViewController: BaseViewController {
         btnFinish.isEnabled = true
     }
     
+    private func prepareForLanguage() {
+        txtCurrentPassword.placeHolderLabel.string = localizedShared?.localizedString(forKey: "label_current_password")
+        txtNewPassword.placeHolderLabel.string = localizedShared?.localizedString(forKey: "label_new_password")
+        txtReTypePassword.placeHolderLabel.string = localizedShared?.localizedString(forKey: "label_retype_password")
+        btnFinish.setTitle(localizedShared?.localizedString(forKey: "button_save_password"), for: .normal)
+    }
 }

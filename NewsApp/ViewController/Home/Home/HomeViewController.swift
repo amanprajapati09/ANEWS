@@ -69,6 +69,7 @@ class HomeViewController: BaseViewController, ItemSelection, SFSafariViewControl
     }
     
     private func navigationItemClick() {
+        
         navigationBar.rightItemClick = {
             let barButtonItem = self.navigationItem.rightBarButtonItem!
             let buttonItemView = barButtonItem.value(forKey: "view") as? UIView
@@ -133,9 +134,10 @@ class HomeViewController: BaseViewController, ItemSelection, SFSafariViewControl
         var menuArray:[String]!
         
         if userDefault.value(forKey: MyUserDefault.USER_ID) == nil {
-            menuArray = ["Change Language"]
+            menuArray = [(localizedShared?.localizedString(forKey: "menu_label_change_language"))!]
         } else {
-            menuArray = ["Change Language","Change Password", "Logout"]
+            menuArray = [(localizedShared?.localizedString(forKey: "menu_label_change_language"))!,
+                         (localizedShared?.localizedString(forKey: "menu_label_change_password"))!, (localizedShared?.localizedString(forKey: "menu_label_logout"))!]
         }
         
         FTPopOverMenu.showFromSenderFrame(senderFrame:senderFrame,
@@ -150,6 +152,7 @@ class HomeViewController: BaseViewController, ItemSelection, SFSafariViewControl
     private func popoverButtonClick(index:Int) {
         switch index {
         case 0:
+            changeLanguageAction()
             break
         case 1:
             performSegue(withIdentifier: Segues.kToChangePasswordFromHome, sender: nil)

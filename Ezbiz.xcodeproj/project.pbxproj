@@ -119,6 +119,8 @@
 		07F615631FF172C100260096 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 07F615651FF172C100260096 /* Main.storyboard */; };
 		07FBF9CB1FC000A700B93E33 /* PostListingScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07FBF9CA1FC000A700B93E33 /* PostListingScreen.swift */; };
 		07FBF9CE1FC00B1600B93E33 /* ListDetailMain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07FBF9CD1FC00B1600B93E33 /* ListDetailMain.swift */; };
+		27C75EAC1FF2C2FA00EF04E1 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 27C75EAE1FF2C2FA00EF04E1 /* Localizable.strings */; };
+		27EB89851FF2C24500BDDD2A /* LocalizeHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 27EB89841FF2C24500BDDD2A /* LocalizeHelper.m */; };
 		53E4FC8244730F3B382DFD94 /* Pods_NewsApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E94DCF7A29ECF7108F54BD57 /* Pods_NewsApp.framework */; };
 /* End PBXBuildFile section */
 
@@ -191,7 +193,7 @@
 		078F470A1FAAC9B200F8BE2F /* Utility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
 		078F470D1FABB1A900F8BE2F /* JobDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JobDetailViewController.swift; sourceTree = "<group>"; };
 		0797493B1FE8264700A3E735 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		07A49D311F86AFE00022562D /* NewsApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NewsApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		07A49D311F86AFE00022562D /* Ezbiz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ezbiz.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		07A49D631F86B1F30022562D /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		07A49D641F86B1F30022562D /* Constant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		07A49D661F86B1F30022562D /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -247,6 +249,11 @@
 		07F615671FF1732D00260096 /* kn */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = kn; path = kn.lproj/Main.strings; sourceTree = "<group>"; };
 		07FBF9CA1FC000A700B93E33 /* PostListingScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostListingScreen.swift; sourceTree = "<group>"; };
 		07FBF9CD1FC00B1600B93E33 /* ListDetailMain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListDetailMain.swift; sourceTree = "<group>"; };
+		27C75EAD1FF2C2FA00EF04E1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		27C75EAF1FF2C2FC00EF04E1 /* hi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hi; path = hi.lproj/Localizable.strings; sourceTree = "<group>"; };
+		27C75EB01FF2C2FD00EF04E1 /* kn */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = kn; path = kn.lproj/Localizable.strings; sourceTree = "<group>"; };
+		27EB89831FF2C24400BDDD2A /* LocalizeHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocalizeHelper.h; sourceTree = "<group>"; };
+		27EB89841FF2C24500BDDD2A /* LocalizeHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocalizeHelper.m; sourceTree = "<group>"; };
 		2FBE3D050966A30FBD219437 /* Pods-NewsApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NewsApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-NewsApp/Pods-NewsApp.release.xcconfig"; sourceTree = "<group>"; };
 		633795B34E696785A554349D /* Pods-NewsApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NewsApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NewsApp/Pods-NewsApp.debug.xcconfig"; sourceTree = "<group>"; };
 		E94DCF7A29ECF7108F54BD57 /* Pods_NewsApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NewsApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -549,7 +556,7 @@
 		07A49D321F86AFE00022562D /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				07A49D311F86AFE00022562D /* NewsApp.app */,
+				07A49D311F86AFE00022562D /* Ezbiz.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -594,6 +601,8 @@
 		07A49D681F86B1F30022562D /* Library */ = {
 			isa = PBXGroup;
 			children = (
+				27EB89831FF2C24400BDDD2A /* LocalizeHelper.h */,
+				27EB89841FF2C24500BDDD2A /* LocalizeHelper.m */,
 				07A49D691F86B1F30022562D /* Helper */,
 				07A49D6D1F86B1F30022562D /* Vendor */,
 			);
@@ -679,6 +688,7 @@
 			children = (
 				07A49D801F86B1F30022562D /* Assets.xcassets */,
 				07A49D811F86B1F30022562D /* Info.plist */,
+				27C75EAE1FF2C2FA00EF04E1 /* Localizable.strings */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -911,9 +921,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		07A49D301F86AFE00022562D /* NewsApp */ = {
+		07A49D301F86AFE00022562D /* Ezbiz */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 07A49D431F86AFE00022562D /* Build configuration list for PBXNativeTarget "NewsApp" */;
+			buildConfigurationList = 07A49D431F86AFE00022562D /* Build configuration list for PBXNativeTarget "Ezbiz" */;
 			buildPhases = (
 				86F8B6C5DF62D0265D740AA7 /* [CP] Check Pods Manifest.lock */,
 				07A49D2D1F86AFE00022562D /* Sources */,
@@ -926,9 +936,9 @@
 			);
 			dependencies = (
 			);
-			name = NewsApp;
+			name = Ezbiz;
 			productName = NewsApp;
-			productReference = 07A49D311F86AFE00022562D /* NewsApp.app */;
+			productReference = 07A49D311F86AFE00022562D /* Ezbiz.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -943,6 +953,7 @@
 				TargetAttributes = {
 					07A49D301F86AFE00022562D = {
 						CreatedOnToolsVersion = 8.3.1;
+						DevelopmentTeam = T54AHU79PW;
 						LastSwiftMigration = 0830;
 						ProvisioningStyle = Manual;
 						SystemCapabilities = {
@@ -953,20 +964,22 @@
 					};
 				};
 			};
-			buildConfigurationList = 07A49D2C1F86AFE00022562D /* Build configuration list for PBXProject "NewsApp" */;
+			buildConfigurationList = 07A49D2C1F86AFE00022562D /* Build configuration list for PBXProject "Ezbiz" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 				Base,
+				hi,
+				kn,
 			);
 			mainGroup = 07A49D281F86AFE00022562D;
 			productRefGroup = 07A49D321F86AFE00022562D /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				07A49D301F86AFE00022562D /* NewsApp */,
+				07A49D301F86AFE00022562D /* Ezbiz */,
 			);
 		};
 /* End PBXProject section */
@@ -992,6 +1005,7 @@
 				07F615631FF172C100260096 /* Main.storyboard in Resources */,
 				07AA52271FBF6D2300021159 /* BullatineTableViewCell.xib in Resources */,
 				078F465B1F9CDA2600F8BE2F /* STVSegmentButtonCell.xib in Resources */,
+				27C75EAC1FF2C2FA00EF04E1 /* Localizable.strings in Resources */,
 				07AA522F1FBF6D2300021159 /* ListingTableViewCell.xib in Resources */,
 				07AA52311FBF6D2300021159 /* MeddiaTableViewCell.xib in Resources */,
 			);
@@ -1190,6 +1204,7 @@
 				078F46CF1FA2CA6400F8BE2F /* ModelJobMain.swift in Sources */,
 				078F45FE1F92278500F8BE2F /* UIButtonExtension.swift in Sources */,
 				078F460D1F959CF800F8BE2F /* ModelUser.swift in Sources */,
+				27EB89851FF2C24500BDDD2A /* LocalizeHelper.m in Sources */,
 				078F45E21F8D27D600F8BE2F /* AppdelegateExtension.swift in Sources */,
 				078F46021F952D4400F8BE2F /* NavigationBar.swift in Sources */,
 				07825BDD1FBFF1A1004A7B30 /* RatingListViewController.swift in Sources */,
@@ -1216,6 +1231,16 @@
 				07F615671FF1732D00260096 /* kn */,
 			);
 			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		27C75EAE1FF2C2FA00EF04E1 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				27C75EAD1FF2C2FA00EF04E1 /* en */,
+				27C75EAF1FF2C2FC00EF04E1 /* hi */,
+				27C75EB01FF2C2FD00EF04E1 /* kn */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -1323,12 +1348,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = NewsApp/NewsApp.entitlements;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = T54AHU79PW;
 				INFOPLIST_FILE = "$(SRCROOT)/NewsApp/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.newsapp.app;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mobivap.newsapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "e9915fd9-c78f-41d9-87c2-b3f3f6efc64f";
+				PROVISIONING_PROFILE_SPECIFIER = Alpesh_Mobivap_Development_Provisioning_Profile;
 				SWIFT_OBJC_BRIDGING_HEADER = "NewsApp/Views/NewsApp-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
@@ -1342,12 +1368,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = NewsApp/NewsApp.entitlements;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = T54AHU79PW;
 				INFOPLIST_FILE = "$(SRCROOT)/NewsApp/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.newsapp.app;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mobivap.newsapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "e9915fd9-c78f-41d9-87c2-b3f3f6efc64f";
+				PROVISIONING_PROFILE_SPECIFIER = Alpesh_Mobivap_Development_Provisioning_Profile;
 				SWIFT_OBJC_BRIDGING_HEADER = "NewsApp/Views/NewsApp-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
@@ -1356,7 +1383,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		07A49D2C1F86AFE00022562D /* Build configuration list for PBXProject "NewsApp" */ = {
+		07A49D2C1F86AFE00022562D /* Build configuration list for PBXProject "Ezbiz" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				07A49D411F86AFE00022562D /* Debug */,
@@ -1365,7 +1392,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		07A49D431F86AFE00022562D /* Build configuration list for PBXNativeTarget "NewsApp" */ = {
+		07A49D431F86AFE00022562D /* Build configuration list for PBXNativeTarget "Ezbiz" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				07A49D441F86AFE00022562D /* Debug */,

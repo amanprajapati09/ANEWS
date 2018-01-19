@@ -18,11 +18,14 @@ class ModelList : ModelBaseHome {
 	var image : String = ""
 	var mobileNo : String = ""
 	var regionId : String = ""
-    var myRating : Float = 0.0
+    var myRatingStr: String = "0.0"
     var myReview : String = ""
     var totalRating : Float = 0.0
     var totalReview : Int = 0
     
+    var myRating: Float {
+        return myRatingStr.floatValue
+    }
     
     
     override func mapping(map:Map) {
@@ -34,7 +37,7 @@ class ModelList : ModelBaseHome {
 		image <- map["image"]
 		mobileNo <- map["mobile_no"]
 		regionId <- map["region_id"]
-		myRating <- map["my_rating"]
+		myRatingStr <- map["my_rating"]
         myReview <- map["my_review"]
         totalRating <- map["total_rating"]
         totalReview <- map["total_review"]

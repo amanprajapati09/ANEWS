@@ -15,7 +15,7 @@
         <!--Login View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController storyboardIdentifier="loginViewStoryBoardID" id="BYZ-38-t0r" customClass="LoginViewController" customModule="NewsApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="loginViewStoryBoardID" id="BYZ-38-t0r" customClass="LoginViewController" customModule="Ezbiz" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -263,11 +263,16 @@
                     <connections>
                         <outlet property="activityIndigator" destination="sdJ-2d-Gl0" id="DqO-Pd-he1"/>
                         <outlet property="btnFacebookLogin" destination="0Qp-71-hNK" id="8e2-1Q-FwV"/>
+                        <outlet property="btnForgotPassword" destination="KNa-Ae-ZLa" id="ftQ-t7-hat"/>
                         <outlet property="btnGoogleLogin" destination="iYI-Wy-dqv" id="59c-4S-zw5"/>
                         <outlet property="btnSignIn" destination="avc-7X-W2C" id="lb2-wC-yOu"/>
+                        <outlet property="btnSignUp" destination="PM4-a8-LU1" id="tBY-zn-5GA"/>
+                        <outlet property="btnSkipHome" destination="gL6-dI-eDL" id="plC-We-Ibz"/>
                         <outlet property="btnSkipToHome" destination="gL6-dI-eDL" id="ftp-lJ-MdS"/>
                         <outlet property="facebookIndicator" destination="7R4-GW-6rV" id="FXC-ZC-kH9"/>
                         <outlet property="googleIndicator" destination="SYN-st-BGy" id="pX4-Fl-gjk"/>
+                        <outlet property="lblDonotHaveAccount" destination="3W2-tv-rSn" id="QZC-eZ-Nwj"/>
+                        <outlet property="lblSignTitle" destination="cur-Hr-bXC" id="TWg-cO-m5n"/>
                         <outlet property="txtEmail" destination="Br8-OA-HPm" id="Cv8-FM-3Gt"/>
                         <outlet property="txtPassword" destination="MJD-rs-NWP" id="Jji-Ir-Ksy"/>
                         <segue destination="Es6-BE-8qE" kind="presentation" identifier="toHomeViewControllerFromLogin" id="IWt-E6-m0S"/>
@@ -280,7 +285,7 @@
         <!--Main View Controller-->
         <scene sceneID="MxJ-pk-Rde">
             <objects>
-                <viewController id="x8e-qP-oTS" customClass="MainViewController" customModule="NewsApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="x8e-qP-oTS" customClass="MainViewController" customModule="Ezbiz" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="1zq-lL-YWb"/>
                         <viewControllerLayoutGuide type="bottom" id="Mrq-T7-B6P"/>
@@ -321,10 +326,10 @@
             </objects>
             <point key="canvasLocation" x="284" y="868"/>
         </scene>
-        <!--Tamakuru-->
+        <!--Ezbiz-->
         <scene sceneID="gx1-VO-02D">
             <objects>
-                <viewController storyboardIdentifier="HomeViewController" id="mOy-Tn-Tqx" customClass="HomeViewController" customModule="NewsApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="HomeViewController" id="mOy-Tn-Tqx" customClass="HomeViewController" customModule="Ezbiz" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="6La-NP-gib"/>
                         <viewControllerLayoutGuide type="bottom" id="wM7-Nm-fGT"/>
@@ -333,14 +338,14 @@
                         <rect key="frame" x="0.0" y="64" width="414" height="672"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WrL-Dz-f50" customClass="STVSegmentButtonView" customModule="NewsApp" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WrL-Dz-f50" customClass="STVSegmentButtonView" customModule="Ezbiz" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="60"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="TTu-3J-QeH"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wxj-Ul-G8y" customClass="HomeCollectionView" customModule="NewsApp" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wxj-Ul-G8y" customClass="HomeCollectionView" customModule="Ezbiz" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="60" width="414" height="612"/>
                                 <subviews>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Mfo-qv-McT">
@@ -518,7 +523,7 @@
                         </constraints>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
-                    <navigationItem key="navigationItem" title="Tamakuru" id="YXg-aP-vPp" customClass="NavigationBar" customModule="NewsApp" customModuleProvider="target">
+                    <navigationItem key="navigationItem" title="Ezbiz" id="YXg-aP-vPp" customClass="NavigationBar" customModule="Ezbiz" customModuleProvider="target">
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="image" keyPath="rightButtonImage" value="menu"/>
                         </userDefinedRuntimeAttributes>
@@ -553,7 +558,7 @@
         <!--Change Password View Controller-->
         <scene sceneID="aDJ-al-8HB">
             <objects>
-                <viewController id="zSU-W2-ev0" customClass="ChangePasswordViewController" customModule="NewsApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="zSU-W2-ev0" customClass="ChangePasswordViewController" customModule="Ezbiz" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ytl-9F-xDo"/>
                         <viewControllerLayoutGuide type="bottom" id="4B8-e8-ENT"/>
@@ -787,7 +792,7 @@
         <!--Category Selection View Controller-->
         <scene sceneID="mpF-Xy-Vxr">
             <objects>
-                <viewController storyboardIdentifier="categorySelectionViewController" id="Ni6-DT-DZl" customClass="CategorySelectionViewController" customModule="NewsApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="categorySelectionViewController" id="Ni6-DT-DZl" customClass="CategorySelectionViewController" customModule="Ezbiz" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="YRH-aw-8ZA"/>
                         <viewControllerLayoutGuide type="bottom" id="gxN-Jl-E0Z"/>
@@ -862,7 +867,7 @@
         <!--Signup View Controller-->
         <scene sceneID="YdR-du-tj0">
             <objects>
-                <viewController id="m4S-9W-hlF" customClass="SignupViewController" customModule="NewsApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="m4S-9W-hlF" customClass="SignupViewController" customModule="Ezbiz" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="oNP-7c-YaE"/>
                         <viewControllerLayoutGuide type="bottom" id="abx-0u-Cvx"/>
@@ -1199,7 +1204,7 @@
             <objects>
                 <navigationController storyboardIdentifier="loginscreen" automaticallyAdjustsScrollViewInsets="NO" id="2uQ-Jc-7oV" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="79t-sW-L3r">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="79t-sW-L3r">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" red="0.19215686269999999" green="0.2274509804" blue="0.65098039220000004" alpha="1" colorSpace="calibratedRGB"/>
@@ -1220,7 +1225,7 @@
             <objects>
                 <navigationController storyboardIdentifier="HomeNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="Es6-BE-8qE" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" barStyle="black" id="5U1-y3-Cw3">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="5U1-y3-Cw3">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" red="0.19215686269999999" green="0.2274509804" blue="0.65098039220000004" alpha="1" colorSpace="calibratedRGB"/>
@@ -1242,7 +1247,7 @@
         <!--Flash Detail View Controller-->
         <scene sceneID="goe-d3-cLu">
             <objects>
-                <viewController id="GbK-ni-qe8" customClass="FlashDetailViewController" customModule="NewsApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="GbK-ni-qe8" customClass="FlashDetailViewController" customModule="Ezbiz" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="xPI-n8-ARc"/>
                         <viewControllerLayoutGuide type="bottom" id="oWd-6h-68g"/>
@@ -1302,7 +1307,7 @@
         <!--List Detail View Controller-->
         <scene sceneID="3Yo-RV-13t">
             <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="nlD-4c-I3G" customClass="ListDetailViewController" customModule="NewsApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="nlD-4c-I3G" customClass="ListDetailViewController" customModule="Ezbiz" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Va2-wQ-VjK"/>
                         <viewControllerLayoutGuide type="bottom" id="CzR-yn-R3h"/>
@@ -1727,6 +1732,8 @@
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="375" height="810"/>
                     <connections>
+                        <outlet property="btnMyReview" destination="AaK-9D-GQt" id="dBy-yL-LmW"/>
+                        <outlet property="btnSubmitListing" destination="6PY-vb-MY9" id="rfN-pm-1n7"/>
                         <outlet property="btnTotalRating" destination="U8A-U2-Pmu" id="ABo-JX-vkB"/>
                         <outlet property="imageView" destination="Lxz-cK-hG0" id="hIS-6m-Bmb"/>
                         <outlet property="lblAddress" destination="mYS-YZ-pjy" id="wYI-SP-SsI"/>
@@ -1734,6 +1741,7 @@
                         <outlet property="lblContactNo" destination="XrL-Az-WEs" id="L5K-NU-KKm"/>
                         <outlet property="lblEmail" destination="Gl7-4c-mES" id="jzg-tQ-BqT"/>
                         <outlet property="lblName" destination="Zo8-DM-ha3" id="Diq-YN-BoH"/>
+                        <outlet property="lblReviewSummary" destination="Yr9-m8-bmn" id="YM3-wG-2mc"/>
                         <outlet property="lblTitle" destination="2Yw-kx-VNj" id="gQp-Cf-vIS"/>
                         <outlet property="ratingView" destination="EIM-a3-sAa" id="gXj-fC-yl2"/>
                         <outlet property="txtAddress" destination="ttS-MS-Jue" id="avb-Hl-cph"/>
@@ -1744,12 +1752,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yUg-6a-a9T" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1997.5999999999999" y="1650.6746626686659"/>
+            <point key="canvasLocation" x="1996.376811594203" y="1650.0000000000002"/>
         </scene>
         <!--Job Detail View Controller-->
         <scene sceneID="cf4-iT-Ha5">
             <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="Zsc-a1-uKV" customClass="JobDetailViewController" customModule="NewsApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="Zsc-a1-uKV" customClass="JobDetailViewController" customModule="Ezbiz" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Tva-vN-D03"/>
                         <viewControllerLayoutGuide type="bottom" id="WsC-PR-4Em"/>
@@ -1811,6 +1819,8 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="btnSendResume" destination="Vyh-qa-Qmc" id="ILj-5v-kjL"/>
+                        <outlet property="lblJobTitle" destination="a9W-ir-KBU" id="tbm-zW-ycp"/>
                         <outlet property="tblView" destination="jec-94-00w" id="jj2-AA-O2z"/>
                     </connections>
                 </viewController>
@@ -1821,7 +1831,7 @@
         <!--Rating List View Controller-->
         <scene sceneID="Jgh-78-mOl">
             <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="cxY-Uj-bCE" customClass="RatingListViewController" customModule="NewsApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="cxY-Uj-bCE" customClass="RatingListViewController" customModule="Ezbiz" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="e6v-7V-9U0"/>
                         <viewControllerLayoutGuide type="bottom" id="Qw4-YW-c0B"/>
@@ -1863,7 +1873,7 @@
         <!--My Review View Controller-->
         <scene sceneID="bV4-I5-coW">
             <objects>
-                <viewController id="WvN-A6-eS9" customClass="MyReviewViewController" customModule="NewsApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="WvN-A6-eS9" customClass="MyReviewViewController" customModule="Ezbiz" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="X0f-yW-P93"/>
                         <viewControllerLayoutGuide type="bottom" id="Fkh-Bj-Msk"/>
@@ -1990,6 +2000,7 @@
                     <connections>
                         <outlet property="btnCancel" destination="fpB-eT-2Rn" id="Ax1-jc-cMF"/>
                         <outlet property="btnSubmit" destination="cbx-HD-PLs" id="9hR-fc-TYB"/>
+                        <outlet property="lblMyReview" destination="cbx-vX-Oad" id="fTe-uB-cBM"/>
                         <outlet property="ratingView" destination="mlk-cv-pI9" id="Hle-nT-ehR"/>
                         <outlet property="txtReview" destination="dYS-dA-gqg" id="RwF-EC-1cR"/>
                     </connections>
@@ -2001,7 +2012,7 @@
         <!--Post Job View Controller-->
         <scene sceneID="ble-l2-LFy">
             <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="6xJ-9q-QFA" customClass="PostJobViewController" customModule="NewsApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="6xJ-9q-QFA" customClass="PostJobViewController" customModule="Ezbiz" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="V0F-ng-W5e"/>
                         <viewControllerLayoutGuide type="bottom" id="TQi-OX-DPs"/>
@@ -2648,7 +2659,7 @@
         <!--Post Listing Screen View Controller-->
         <scene sceneID="g32-7e-8eH">
             <objects>
-                <viewController id="btU-up-vOM" customClass="PostListingScreenViewController" customModule="NewsApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="btU-up-vOM" customClass="PostListingScreenViewController" customModule="Ezbiz" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="YzX-P3-Mk3"/>
                         <viewControllerLayoutGuide type="bottom" id="jju-TI-mtc"/>
@@ -2996,8 +3007,8 @@
         <image name="phone" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="IWt-E6-m0S"/>
-        <segue reference="uwx-uh-VHX"/>
         <segue reference="zu0-UP-W82"/>
+        <segue reference="IWt-E6-m0S"/>
+        <segue reference="6Q4-XX-SCa"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -25,6 +25,7 @@ target 'NewsApp' do
     pod 'FacebookLogin'
     pod 'GoogleSignIn'
     pod 'Firebase/Core'
+    pod 'FBSDKLoginKit'
     
     # Pods for NewsApp
     

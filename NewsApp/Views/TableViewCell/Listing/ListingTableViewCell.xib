@@ -176,6 +176,7 @@
                 <outlet property="imageList" destination="ZIL-6j-xps" id="nkC-GQ-sId"/>
                 <outlet property="lblAddress" destination="UtT-6f-LrU" id="iM8-nq-pfD"/>
                 <outlet property="lblDescription" destination="lUH-y3-O9v" id="dWr-oY-ZRE"/>
+                <outlet property="lblDirectCall" destination="LaT-ZR-KAt" id="Xsj-Cl-GOy"/>
                 <outlet property="lblTitle" destination="Hnt-uH-UE8" id="jdD-W2-qhx"/>
                 <outlet property="ratingView" destination="XUL-2w-YWR" id="ZVx-Th-7Oq"/>
             </connections>

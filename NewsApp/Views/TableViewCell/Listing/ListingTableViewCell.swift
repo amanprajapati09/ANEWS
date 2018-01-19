@@ -16,6 +16,7 @@ class ListingTableViewCell: UITableViewCell, NibLoadableView, ReusableView {
     @IBOutlet weak var lblDescription: UILabel!
     @IBOutlet weak var lblAddress: UILabel!
     @IBOutlet weak var ratingView: HCSStarRatingView!
+    @IBOutlet weak var lblDirectCall: UILabel!
     
     var objList:ModelList! {
         didSet {
@@ -24,16 +25,20 @@ class ListingTableViewCell: UITableViewCell, NibLoadableView, ReusableView {
             lblAddress.text = objList.address
             imageList.sd_setImage(with: objList.imageUrl, placeholderImage: placeholdeImage!)
             ratingView.value = CGFloat(objList.totalRating)
+            prepareForLanguage()
         }
     }
     
     override func awakeFromNib() {
         super.awakeFromNib()
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
+    }
 
+    private func prepareForLanguage() {
+        lblDirectCall.text = localizedShared?.localizedString(forKey: "text_direct_call")
     }
     
     @IBAction func btnDirectCallClick(_ sender: Any) {

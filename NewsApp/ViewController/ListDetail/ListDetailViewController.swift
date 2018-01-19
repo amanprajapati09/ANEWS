@@ -26,11 +26,17 @@ class ListDetailViewController: BaseViewController,UITextFieldDelegate, GMSPlace
     @IBOutlet weak var ratingView: HCSStarRatingView!
     @IBOutlet weak var btnTotalRating: UIButton!
     
+    @IBOutlet weak var btnMyReview: UIButton!
+    @IBOutlet weak var lblReviewSummary: UILabel!
+    @IBOutlet weak var btnSubmitListing: UIButton!
+    
+    
     var modelList = ModelList()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        requestForListDetail()
+        prepareForLanguage()
         addGesture()
         // Do any additional setup after loading the view.
     }
@@ -60,6 +66,21 @@ class ListDetailViewController: BaseViewController,UITextFieldDelegate, GMSPlace
     private func addGesture() {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(askToSaveImage))
         imageView.addGestureRecognizer(tapGesture)
+    }
+    
+    private func requestForListDetail() {
+        
+        let param = ["user_id":userDefault.value(forKey: MyUserDefault.USER_ID)!,
+                     "list_id":modelList.id!]
+        
+        APIService.sharedInstance.listDetail(parameters: param as [String : AnyObject], success: { (result) -> (Void) in
+            if result.modelRatingData.count > 0 {
+                self.modelList = result.modelRatingData.first!
+            }
+            
+        }) { (error) -> (Void) in
+            
+        }
     }
     
     func askToSaveImage()  {
@@ -136,10 +157,19 @@ class ListDetailViewController: BaseViewController,UITextFieldDelegate, GMSPlace
         } else if segue.identifier == Segues.kToGiveReviewViewController {
             let destinationViewController = segue.destination as! MyReviewViewController
             destinationViewController.listID = modelList.id!
+            destinationViewController.objModel = modelList
             destinationViewController.delegate = self
+            
         }
-        
     }
+    
+    private func prepareForLanguage() {
+        txtAddress.text = localizedShared?.localizedString(forKey: "text_get_location_by_map")
+        lblReviewSummary.text = localizedShared?.localizedString(forKey: "text_review_summary")
+        btnSubmitListing.setTitle(localizedShared?.localizedString(forKey: "button_submit_listing"), for: .normal)
+        btnMyReview.setTitle(localizedShared?.localizedString(forKey: "button_my_review"), for: .normal)
+    }
+
 }
 
 extension ListDetailViewController {

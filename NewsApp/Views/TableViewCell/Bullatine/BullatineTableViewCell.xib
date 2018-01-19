@@ -108,6 +108,7 @@
             </tableViewCellContentView>
             <connections>
                 <outlet property="btnMobileNumber" destination="d0A-Xu-Vos" id="C55-yB-SRB"/>
+                <outlet property="btnReadMore" destination="3uB-gS-JH1" id="2vb-rM-XH2"/>
                 <outlet property="lblDescription" destination="fsz-VT-Bm2" id="h2Z-8y-i9J"/>
                 <outlet property="lblTitle" destination="qlp-tK-25A" id="K0i-GM-gcn"/>
             </connections>

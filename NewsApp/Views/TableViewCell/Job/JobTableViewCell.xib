@@ -164,6 +164,7 @@
                 <outlet property="lblNumberofPost" destination="xmL-gD-Jjt" id="7A8-v5-0bM"/>
                 <outlet property="lblPostDate" destination="k2M-60-xvn" id="nQC-pg-8Tr"/>
                 <outlet property="lblSalary" destination="g5g-CL-ZaW" id="KHr-QG-LX0"/>
+                <outlet property="lblSedResume" destination="E9G-qD-nSp" id="2eZ-Q7-YIs"/>
                 <outlet property="lblTitle" destination="msB-JU-Hpc" id="oZd-gq-cF2"/>
             </connections>
             <point key="canvasLocation" x="-223.5" y="32.5"/>

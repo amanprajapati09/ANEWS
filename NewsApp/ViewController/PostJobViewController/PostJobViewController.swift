@@ -44,6 +44,7 @@ class PostJobViewController: BaseViewController, CategorySelectionDelegate, UITe
         super.viewDidLoad()
         createDatePicker()
         prepareView()
+        prepareForLanguage()
         // Do any additional setup after loading the view.
     }
 
@@ -162,5 +163,23 @@ class PostJobViewController: BaseViewController, CategorySelectionDelegate, UITe
         } else {
             return "Select category for job posting"
         }
+        
+    }
+    
+    private func prepareForLanguage() {
+         txtFirmName.placeHolderLabel.string = localizedShared?.localizedString(forKey:"text_hiring_firm_name")
+         txtJobTitle.placeHolderLabel.string = localizedShared?.localizedString(forKey:"text_job_title")
+         txtSalary.placeHolderLabel.string = localizedShared?.localizedString(forKey:"text_salary")
+         txtNumberOfPosition.placeHolderLabel.string = localizedShared?.localizedString(forKey:"text_no_of_post")
+         txtEmail.placeHolderLabel.string = localizedShared?.localizedString(forKey:"text_email_id")
+         txtContactNUmber.placeHolderLabel.string = localizedShared?.localizedString(forKey:"text_contact_number1")
+         txtAlterContactNumber.placeHolderLabel.string = localizedShared?.localizedString(forKey:"text_contact_number2")
+         txtContactPerson.placeHolderLabel.string = localizedShared?.localizedString(forKey:"textP_contact_person")
+         txtRecruterDesignation.placeHolderLabel.string = localizedShared?.localizedString(forKey:"text_recruiter_designation")
+         txtInterviewDate.placeHolderLabel.string = localizedShared?.localizedString(forKey:"textP_interview_date")
+         txtInterViewFirmAddress.placeHolderLabel.string = localizedShared?.localizedString(forKey:"textP_hiring_firm_addr")
+         txtJobLocation.placeHolderLabel.string = localizedShared?.localizedString(forKey:"textP_job_location")
+         txtJobDescription.placeHolderLabel.string = localizedShared?.localizedString(forKey:"textP_job_description")
+        btnPostJob.setTitle(localizedShared?.localizedString(forKey: "button_post_job"), for: .normal)
     }
 }
