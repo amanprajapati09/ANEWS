@@ -20,8 +20,6 @@ class ChangePasswordViewController: BaseViewController {
     
     
     
-    
-    
     let objViewModel = ChangePasswordViewModel()
     
     override func viewDidLoad() {
