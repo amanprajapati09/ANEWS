@@ -18,6 +18,10 @@ class ChangePasswordViewController: BaseViewController {
     @IBOutlet weak var btnFinish: UIButton!
     
     
+    
+    
+    
+    
     let objViewModel = ChangePasswordViewModel()
     
     override func viewDidLoad() {
